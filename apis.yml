@@ -1,0 +1,28 @@
+aid: portworx
+name: Portworx
+description: >-
+  Portworx is a cloud native storage and data management platform for running stateful applications in Kubernetes.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - Containers
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/portworx/refs/heads/main/apis.yml
+created: '2026-03-26'
+modified: '2026-03-26'
+specificationVersion: '0.19'
+apis:
+  - aid: portworx:portworx
+    name: Portworx
+    description: >-
+      Portworx is a cloud native storage and data management platform for running stateful applications in Kubernetes.
+    humanURL: https://github.com/api-evangelist/portworx
+    tags:
+      - Containers
+    properties: []
+common:
+  - type: Website
+    url: https://github.com/api-evangelist/portworx
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
