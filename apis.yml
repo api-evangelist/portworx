@@ -1,11 +1,15 @@
 aid: portworx
 name: Portworx
 description: >-
-  Portworx is a cloud native storage and data management platform for running stateful applications in Kubernetes.
+  Portworx by Pure Storage is a Kubernetes data services platform that provides persistent storage, data protection, disaster recovery, and security for containerized applications running in production.
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
   - Containers
+  - Kubernetes
+  - Storage
+  - Data Management
+  - Cloud Native
 url: >-
   https://raw.githubusercontent.com/api-evangelist/portworx/refs/heads/main/apis.yml
 created: '2026-03-26'
@@ -15,14 +19,33 @@ apis:
   - aid: portworx:portworx
     name: Portworx
     description: >-
-      Portworx is a cloud native storage and data management platform for running stateful applications in Kubernetes.
-    humanURL: https://github.com/api-evangelist/portworx
+      Portworx by Pure Storage is a Kubernetes data services platform that provides persistent storage, data protection, disaster recovery, and security for containerized applications running in production.
+    humanURL: https://portworx.com/
     tags:
       - Containers
-    properties: []
+      - Kubernetes
+      - Storage
+      - Data Management
+    properties:
+      - type: Documentation
+        url: https://docs.portworx.com/
+      - type: Getting Started
+        url: https://docs.portworx.com/portworx-enterprise/get-started
 common:
   - type: Website
-    url: https://github.com/api-evangelist/portworx
+    url: https://portworx.com/
+  - type: Documentation
+    url: https://docs.portworx.com/
+  - type: Blog
+    url: https://portworx.com/blog/
+  - type: GitHub Organization
+    url: https://github.com/portworx
+  - type: Pricing
+    url: https://portworx.com/pricing/
+  - type: Sign Up
+    url: https://central.portworx.com/
+  - type: Support
+    url: https://portworx.com/support/
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
