@@ -5,11 +5,11 @@ description: >-
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
+  - Cloud Native
   - Containers
+  - Data Management
   - Kubernetes
   - Storage
-  - Data Management
-  - Cloud Native
 url: >-
   https://raw.githubusercontent.com/api-evangelist/portworx/refs/heads/main/apis.yml
 created: '2026-03-26'
@@ -23,9 +23,9 @@ apis:
     humanURL: https://portworx.com/
     tags:
       - Containers
+      - Data Management
       - Kubernetes
       - Storage
-      - Data Management
     properties:
       - type: Documentation
         url: https://docs.portworx.com/
