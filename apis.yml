@@ -13,14 +13,15 @@ tags:
 url: >-
   https://raw.githubusercontent.com/api-evangelist/portworx/refs/heads/main/apis.yml
 created: '2026-03-26'
-modified: '2026-03-26'
+modified: '2026-04-28'
 specificationVersion: '0.19'
 apis:
   - aid: portworx:portworx
     name: Portworx
     description: >-
-      Portworx by Pure Storage is a Kubernetes data services platform that provides persistent storage, data protection, disaster recovery, and security for containerized applications running in production.
+      Portworx by Pure Storage is a Kubernetes data services platform that provides persistent storage, data protection, disaster recovery, and security for containerized applications running in production. The OpenStorage SDK exposes a REST API for volume, cluster, snapshot, backup, and credential management.
     humanURL: https://portworx.com/
+    baseURL: https://libopenstorage.github.io/
     tags:
       - Containers
       - Data Management
@@ -29,8 +30,12 @@ apis:
     properties:
       - type: Documentation
         url: https://docs.portworx.com/
-      - type: Getting Started
+      - type: GettingStarted
         url: https://docs.portworx.com/portworx-enterprise/get-started
+      - type: APIReference
+        url: https://libopenstorage.github.io/
+      - type: OpenAPI
+        url: openapi/portworx-openapi.yml
 common:
   - type: Website
     url: https://portworx.com/
