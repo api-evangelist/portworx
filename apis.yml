@@ -51,6 +51,28 @@ common:
     url: https://central.portworx.com/
   - type: Support
     url: https://portworx.com/support/
+  - type: Integrations
+    url: https://portworx.com/partners
+integrations:
+  - name: portworx
+  - name: IDC report
+  - name: user
+  - name: Redhat
+  - name: SUSE
+  - name: company
+  - name: amazon
+  - name: google_cloud
+  - name: mongo
+  - name: docker
+  - name: hsnomad
+  - name: logo
+  - name: image
+  - name: crossvale
+  - name: portworkx platform
+  - name: blank cta
+  - name: linkedin
+  - name: twitter
+  - name: youtube
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
