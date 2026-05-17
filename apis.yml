@@ -43,11 +43,11 @@ common:
     url: https://docs.portworx.com/
   - type: Blog
     url: https://portworx.com/blog/
-  - type: GitHub Organization
+  - type: GitHubOrganization
     url: https://github.com/portworx
   - type: Pricing
     url: https://portworx.com/pricing/
-  - type: Sign Up
+  - type: SignUp
     url: https://central.portworx.com/
   - type: Support
     url: https://portworx.com/support/
