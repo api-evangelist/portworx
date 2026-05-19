@@ -1,0 +1,80 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: OpenStorage SDK — OpenStorageWatch
+  description: 'OpenStorage SDK — OpenStorageWatch. 1 operations. Lead operation: Watch on resources managed by the driver
+    and receive them as a stream of events.. Self-contained Naftiko capability covering one Portworx business surface.'
+  tags:
+  - Portworx
+  - OpenStorageWatch
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    PORTWORX_API_KEY: PORTWORX_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: portworx-openstoragewatch
+    baseUri: ''
+    description: OpenStorage SDK — OpenStorageWatch business capability. Self-contained, no shared references.
+    resources:
+    - name: v1-watch
+      path: /v1/watch
+      operations:
+      - name: openstoragewatchwatch
+        method: POST
+        description: Watch on resources managed by the driver and receive them as a stream of events.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.PORTWORX_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: portworx-openstoragewatch-rest
+    port: 8080
+    description: REST adapter for OpenStorage SDK — OpenStorageWatch. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/v1/watch
+      name: v1-watch
+      description: REST surface for v1-watch.
+      operations:
+      - method: POST
+        name: openstoragewatchwatch
+        description: Watch on resources managed by the driver and receive them as a stream of events.
+        call: portworx-openstoragewatch.openstoragewatchwatch
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: portworx-openstoragewatch-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for OpenStorage SDK — OpenStorageWatch. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: watch-resources-managed-driver-and
+      description: Watch on resources managed by the driver and receive them as a stream of events.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: portworx-openstoragewatch.openstoragewatchwatch
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

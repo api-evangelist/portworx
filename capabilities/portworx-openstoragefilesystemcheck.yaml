@@ -1,0 +1,293 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: OpenStorage SDK — OpenStorageFilesystemCheck
+  description: 'OpenStorage SDK — OpenStorageFilesystemCheck. 6 operations. Lead operation: Delete all fsck created snapshots
+    on volume. Self-contained Naftiko capability covering one Portworx business surface.'
+  tags:
+  - Portworx
+  - OpenStorageFilesystemCheck
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    PORTWORX_API_KEY: PORTWORX_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: portworx-openstoragefilesystemcheck
+    baseUri: ''
+    description: OpenStorage SDK — OpenStorageFilesystemCheck business capability. Self-contained, no shared references.
+    resources:
+    - name: v1-filesystem-check-delete-snapshots
+      path: /v1/filesystem-check/delete-snapshots
+      operations:
+      - name: openstoragefilesystemcheckdeletesnapshots
+        method: POST
+        description: Delete all fsck created snapshots on volume
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v1-filesystem-check-list-snapshots
+      path: /v1/filesystem-check/list-snapshots
+      operations:
+      - name: openstoragefilesystemchecklistsnapshots
+        method: GET
+        description: List all fsck created snapshots on volume
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: volume_id
+          in: query
+          type: string
+          description: Id of the volume.
+        - name: node_id
+          in: query
+          type: string
+          description: Node Id of the volume.
+    - name: v1-filesystem-check-list-volumes
+      path: /v1/filesystem-check/list-volumes
+      operations:
+      - name: openstoragefilesystemchecklistvolumes
+        method: GET
+        description: List of all volumes which require fsck check/fix to be run
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: node_id
+          in: query
+          type: string
+          description: Node Id filter.
+    - name: v1-filesystem-check-start
+      path: /v1/filesystem-check/start
+      operations:
+      - name: openstoragefilesystemcheckstart
+        method: POST
+        description: Start a filesystem-check background operation on a unmounted volume.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v1-filesystem-check-status
+      path: /v1/filesystem-check/status
+      operations:
+      - name: openstoragefilesystemcheckstatus
+        method: GET
+        description: Get Status of a filesystem-check background operation on an unmounted
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: volume_id
+          in: query
+          type: string
+          description: Id of the volume.
+    - name: v1-filesystem-check-stop
+      path: /v1/filesystem-check/stop
+      operations:
+      - name: openstoragefilesystemcheckstop
+        method: POST
+        description: Stop a filesystem check background operation on an unmounted volume, if any
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.PORTWORX_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: portworx-openstoragefilesystemcheck-rest
+    port: 8080
+    description: REST adapter for OpenStorage SDK — OpenStorageFilesystemCheck. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/v1/filesystem-check/delete-snapshots
+      name: v1-filesystem-check-delete-snapshots
+      description: REST surface for v1-filesystem-check-delete-snapshots.
+      operations:
+      - method: POST
+        name: openstoragefilesystemcheckdeletesnapshots
+        description: Delete all fsck created snapshots on volume
+        call: portworx-openstoragefilesystemcheck.openstoragefilesystemcheckdeletesnapshots
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/filesystem-check/list-snapshots
+      name: v1-filesystem-check-list-snapshots
+      description: REST surface for v1-filesystem-check-list-snapshots.
+      operations:
+      - method: GET
+        name: openstoragefilesystemchecklistsnapshots
+        description: List all fsck created snapshots on volume
+        call: portworx-openstoragefilesystemcheck.openstoragefilesystemchecklistsnapshots
+        with:
+          volume_id: rest.volume_id
+          node_id: rest.node_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/filesystem-check/list-volumes
+      name: v1-filesystem-check-list-volumes
+      description: REST surface for v1-filesystem-check-list-volumes.
+      operations:
+      - method: GET
+        name: openstoragefilesystemchecklistvolumes
+        description: List of all volumes which require fsck check/fix to be run
+        call: portworx-openstoragefilesystemcheck.openstoragefilesystemchecklistvolumes
+        with:
+          node_id: rest.node_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/filesystem-check/start
+      name: v1-filesystem-check-start
+      description: REST surface for v1-filesystem-check-start.
+      operations:
+      - method: POST
+        name: openstoragefilesystemcheckstart
+        description: Start a filesystem-check background operation on a unmounted volume.
+        call: portworx-openstoragefilesystemcheck.openstoragefilesystemcheckstart
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/filesystem-check/status
+      name: v1-filesystem-check-status
+      description: REST surface for v1-filesystem-check-status.
+      operations:
+      - method: GET
+        name: openstoragefilesystemcheckstatus
+        description: Get Status of a filesystem-check background operation on an unmounted
+        call: portworx-openstoragefilesystemcheck.openstoragefilesystemcheckstatus
+        with:
+          volume_id: rest.volume_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/filesystem-check/stop
+      name: v1-filesystem-check-stop
+      description: REST surface for v1-filesystem-check-stop.
+      operations:
+      - method: POST
+        name: openstoragefilesystemcheckstop
+        description: Stop a filesystem check background operation on an unmounted volume, if any
+        call: portworx-openstoragefilesystemcheck.openstoragefilesystemcheckstop
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: portworx-openstoragefilesystemcheck-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for OpenStorage SDK — OpenStorageFilesystemCheck. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: delete-all-fsck-created-snapshots
+      description: Delete all fsck created snapshots on volume
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: portworx-openstoragefilesystemcheck.openstoragefilesystemcheckdeletesnapshots
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-all-fsck-created-snapshots
+      description: List all fsck created snapshots on volume
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: portworx-openstoragefilesystemcheck.openstoragefilesystemchecklistsnapshots
+      with:
+        volume_id: tools.volume_id
+        node_id: tools.node_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-all-volumes-which-require
+      description: List of all volumes which require fsck check/fix to be run
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: portworx-openstoragefilesystemcheck.openstoragefilesystemchecklistvolumes
+      with:
+        node_id: tools.node_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: start-filesystem-check-background-operation
+      description: Start a filesystem-check background operation on a unmounted volume.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: portworx-openstoragefilesystemcheck.openstoragefilesystemcheckstart
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-status-filesystem-check-background
+      description: Get Status of a filesystem-check background operation on an unmounted
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: portworx-openstoragefilesystemcheck.openstoragefilesystemcheckstatus
+      with:
+        volume_id: tools.volume_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: stop-filesystem-check-background-operation
+      description: Stop a filesystem check background operation on an unmounted volume, if any
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: portworx-openstoragefilesystemcheck.openstoragefilesystemcheckstop
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

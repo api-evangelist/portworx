@@ -1,0 +1,70 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: OpenStorage SDK — OpenStorageCluster
+  description: 'OpenStorage SDK — OpenStorageCluster. 1 operations. Lead operation: InspectCurrent returns information about
+    the current cluster. Self-contained Naftiko capability covering one Portworx business surface.'
+  tags:
+  - Portworx
+  - OpenStorageCluster
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    PORTWORX_API_KEY: PORTWORX_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: portworx-openstoragecluster
+    baseUri: ''
+    description: OpenStorage SDK — OpenStorageCluster business capability. Self-contained, no shared references.
+    resources:
+    - name: v1-clusters-inspectcurrent
+      path: /v1/clusters/inspectcurrent
+      operations:
+      - name: openstorageclusterinspectcurrent
+        method: GET
+        description: InspectCurrent returns information about the current cluster
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.PORTWORX_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: portworx-openstoragecluster-rest
+    port: 8080
+    description: REST adapter for OpenStorage SDK — OpenStorageCluster. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/v1/clusters/inspectcurrent
+      name: v1-clusters-inspectcurrent
+      description: REST surface for v1-clusters-inspectcurrent.
+      operations:
+      - method: GET
+        name: openstorageclusterinspectcurrent
+        description: InspectCurrent returns information about the current cluster
+        call: portworx-openstoragecluster.openstorageclusterinspectcurrent
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: portworx-openstoragecluster-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for OpenStorage SDK — OpenStorageCluster. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: inspectcurrent-returns-information-about-current
+      description: InspectCurrent returns information about the current cluster
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: portworx-openstoragecluster.openstorageclusterinspectcurrent
+      outputParameters:
+      - type: object
+        mapping: $.

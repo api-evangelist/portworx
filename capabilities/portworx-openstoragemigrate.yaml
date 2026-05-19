@@ -1,0 +1,164 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: OpenStorage SDK — OpenStorageMigrate
+  description: 'OpenStorage SDK — OpenStorageMigrate. 3 operations. Lead operation: Status for migration operation.
+
+    If status request is empty, status for all migration operation will be returned.. Self-contained Naftiko capability covering
+    one Portworx business surface.'
+  tags:
+  - Portworx
+  - OpenStorageMigrate
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    PORTWORX_API_KEY: PORTWORX_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: portworx-openstoragemigrate
+    baseUri: ''
+    description: OpenStorage SDK — OpenStorageMigrate business capability. Self-contained, no shared references.
+    resources:
+    - name: v1-volumemigrate
+      path: /v1/volumemigrate
+      operations:
+      - name: openstoragemigratestatus
+        method: GET
+        description: Status for migration operation.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: request.task_id
+          in: query
+          type: string
+          description: Task id for which to return status.
+        - name: request.cluster_id
+          in: query
+          type: string
+          description: ID of the cluster for which to return migration statuses.
+      - name: openstoragemigratestart
+        method: POST
+        description: Start a migration operation
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v1-volumemigrate-cancel
+      path: /v1/volumemigrate/cancel
+      operations:
+      - name: openstoragemigratecancel
+        method: POST
+        description: Cancel a migration operation
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.PORTWORX_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: portworx-openstoragemigrate-rest
+    port: 8080
+    description: REST adapter for OpenStorage SDK — OpenStorageMigrate. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/v1/volumemigrate
+      name: v1-volumemigrate
+      description: REST surface for v1-volumemigrate.
+      operations:
+      - method: GET
+        name: openstoragemigratestatus
+        description: Status for migration operation.
+        call: portworx-openstoragemigrate.openstoragemigratestatus
+        with:
+          request.task_id: rest.request.task_id
+          request.cluster_id: rest.request.cluster_id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: openstoragemigratestart
+        description: Start a migration operation
+        call: portworx-openstoragemigrate.openstoragemigratestart
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/volumemigrate/cancel
+      name: v1-volumemigrate-cancel
+      description: REST surface for v1-volumemigrate-cancel.
+      operations:
+      - method: POST
+        name: openstoragemigratecancel
+        description: Cancel a migration operation
+        call: portworx-openstoragemigrate.openstoragemigratecancel
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: portworx-openstoragemigrate-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for OpenStorage SDK — OpenStorageMigrate. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: status-migration-operation
+      description: Status for migration operation.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: portworx-openstoragemigrate.openstoragemigratestatus
+      with:
+        request.task_id: tools.request.task_id
+        request.cluster_id: tools.request.cluster_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: start-migration-operation
+      description: Start a migration operation
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: portworx-openstoragemigrate.openstoragemigratestart
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: cancel-migration-operation
+      description: Cancel a migration operation
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: portworx-openstoragemigrate.openstoragemigratecancel
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

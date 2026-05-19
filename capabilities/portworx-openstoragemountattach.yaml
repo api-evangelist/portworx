@@ -1,0 +1,206 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: OpenStorage SDK — OpenStorageMountAttach
+  description: 'OpenStorage SDK — OpenStorageMountAttach. 4 operations. Lead operation: Attach attaches device to the host
+    that the client is communicating with.. Self-contained Naftiko capability covering one Portworx business surface.'
+  tags:
+  - Portworx
+  - OpenStorageMountAttach
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    PORTWORX_API_KEY: PORTWORX_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: portworx-openstoragemountattach
+    baseUri: ''
+    description: OpenStorage SDK — OpenStorageMountAttach business capability. Self-contained, no shared references.
+    resources:
+    - name: v1-mountattach-attach
+      path: /v1/mountattach/attach
+      operations:
+      - name: openstoragemountattachattach
+        method: POST
+        description: Attach attaches device to the host that the client is communicating with.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v1-mountattach-detach
+      path: /v1/mountattach/detach
+      operations:
+      - name: openstoragemountattachdetach
+        method: POST
+        description: Detaches a the volume from the host
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v1-mountattach-mount
+      path: /v1/mountattach/mount
+      operations:
+      - name: openstoragemountattachmount
+        method: POST
+        description: Mount mounts an attached volume in the host that the client is communicating with
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v1-mountattach-unmount
+      path: /v1/mountattach/unmount
+      operations:
+      - name: openstoragemountattachunmount
+        method: POST
+        description: Unmount unmounts a mounted volume in the host that the client is communicating with
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.PORTWORX_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: portworx-openstoragemountattach-rest
+    port: 8080
+    description: REST adapter for OpenStorage SDK — OpenStorageMountAttach. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/v1/mountattach/attach
+      name: v1-mountattach-attach
+      description: REST surface for v1-mountattach-attach.
+      operations:
+      - method: POST
+        name: openstoragemountattachattach
+        description: Attach attaches device to the host that the client is communicating with.
+        call: portworx-openstoragemountattach.openstoragemountattachattach
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/mountattach/detach
+      name: v1-mountattach-detach
+      description: REST surface for v1-mountattach-detach.
+      operations:
+      - method: POST
+        name: openstoragemountattachdetach
+        description: Detaches a the volume from the host
+        call: portworx-openstoragemountattach.openstoragemountattachdetach
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/mountattach/mount
+      name: v1-mountattach-mount
+      description: REST surface for v1-mountattach-mount.
+      operations:
+      - method: POST
+        name: openstoragemountattachmount
+        description: Mount mounts an attached volume in the host that the client is communicating with
+        call: portworx-openstoragemountattach.openstoragemountattachmount
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/mountattach/unmount
+      name: v1-mountattach-unmount
+      description: REST surface for v1-mountattach-unmount.
+      operations:
+      - method: POST
+        name: openstoragemountattachunmount
+        description: Unmount unmounts a mounted volume in the host that the client is communicating with
+        call: portworx-openstoragemountattach.openstoragemountattachunmount
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: portworx-openstoragemountattach-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for OpenStorage SDK — OpenStorageMountAttach. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: attach-attaches-device-host-that
+      description: Attach attaches device to the host that the client is communicating with.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: portworx-openstoragemountattach.openstoragemountattachattach
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: detaches-volume-host
+      description: Detaches a the volume from the host
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: portworx-openstoragemountattach.openstoragemountattachdetach
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: mount-mounts-attached-volume-host
+      description: Mount mounts an attached volume in the host that the client is communicating with
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: portworx-openstoragemountattach.openstoragemountattachmount
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: unmount-unmounts-mounted-volume-host
+      description: Unmount unmounts a mounted volume in the host that the client is communicating with
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: portworx-openstoragemountattach.openstoragemountattachunmount
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

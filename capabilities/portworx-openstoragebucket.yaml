@@ -1,0 +1,238 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: OpenStorage SDK — OpenStorageBucket
+  description: 'OpenStorage SDK — OpenStorageBucket. 4 operations. Lead operation: OpenStorageBucket. Self-contained Naftiko
+    capability covering one Portworx business surface.'
+  tags:
+  - Portworx
+  - OpenStorageBucket
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    PORTWORX_API_KEY: PORTWORX_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: portworx-openstoragebucket
+    baseUri: ''
+    description: OpenStorage SDK — OpenStorageBucket business capability. Self-contained, no shared references.
+    resources:
+    - name: v1-bucket
+      path: /v1/bucket
+      operations:
+      - name: openstoragebucketcreate
+        method: POST
+        description: ''
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v1-bucket-access-bucket_id
+      path: /v1/bucket/access/{bucket_id}
+      operations:
+      - name: openstoragebucketgrantaccess
+        method: POST
+        description: ''
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: bucket_id
+          in: path
+          type: string
+          description: Id of the bucket
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v1-bucket-revoke-bucket_id
+      path: /v1/bucket/revoke/{bucket_id}
+      operations:
+      - name: openstoragebucketrevokeaccess
+        method: POST
+        description: ''
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: bucket_id
+          in: path
+          type: string
+          description: Id of bucket to delete
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v1-bucket-bucket_id
+      path: /v1/bucket/{bucket_id}
+      operations:
+      - name: openstoragebucketdelete
+        method: DELETE
+        description: ''
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: bucket_id
+          in: path
+          type: string
+          description: Id of bucket to delete
+          required: true
+        - name: region
+          in: query
+          type: string
+          description: Region in which bucket will be created.
+        - name: endpoint
+          in: query
+          type: string
+          description: Endpoint to use when deleting the bucket.
+        - name: clear_bucket
+          in: query
+          type: boolean
+          description: Flag to allow non empty bucket deletion.
+    authentication:
+      type: bearer
+      token: '{{env.PORTWORX_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: portworx-openstoragebucket-rest
+    port: 8080
+    description: REST adapter for OpenStorage SDK — OpenStorageBucket. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/v1/bucket
+      name: v1-bucket
+      description: REST surface for v1-bucket.
+      operations:
+      - method: POST
+        name: openstoragebucketcreate
+        description: openstoragebucketcreate
+        call: portworx-openstoragebucket.openstoragebucketcreate
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/bucket/access/{bucket-id}
+      name: v1-bucket-access-bucket-id
+      description: REST surface for v1-bucket-access-bucket_id.
+      operations:
+      - method: POST
+        name: openstoragebucketgrantaccess
+        description: openstoragebucketgrantaccess
+        call: portworx-openstoragebucket.openstoragebucketgrantaccess
+        with:
+          bucket_id: rest.bucket_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/bucket/revoke/{bucket-id}
+      name: v1-bucket-revoke-bucket-id
+      description: REST surface for v1-bucket-revoke-bucket_id.
+      operations:
+      - method: POST
+        name: openstoragebucketrevokeaccess
+        description: openstoragebucketrevokeaccess
+        call: portworx-openstoragebucket.openstoragebucketrevokeaccess
+        with:
+          bucket_id: rest.bucket_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/bucket/{bucket-id}
+      name: v1-bucket-bucket-id
+      description: REST surface for v1-bucket-bucket_id.
+      operations:
+      - method: DELETE
+        name: openstoragebucketdelete
+        description: openstoragebucketdelete
+        call: portworx-openstoragebucket.openstoragebucketdelete
+        with:
+          bucket_id: rest.bucket_id
+          region: rest.region
+          endpoint: rest.endpoint
+          clear_bucket: rest.clear_bucket
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: portworx-openstoragebucket-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for OpenStorage SDK — OpenStorageBucket. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: openstoragebucketcreate
+      description: openstoragebucketcreate
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: portworx-openstoragebucket.openstoragebucketcreate
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: openstoragebucketgrantaccess
+      description: openstoragebucketgrantaccess
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: portworx-openstoragebucket.openstoragebucketgrantaccess
+      with:
+        bucket_id: tools.bucket_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: openstoragebucketrevokeaccess
+      description: openstoragebucketrevokeaccess
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: portworx-openstoragebucket.openstoragebucketrevokeaccess
+      with:
+        bucket_id: tools.bucket_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: openstoragebucketdelete
+      description: openstoragebucketdelete
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: portworx-openstoragebucket.openstoragebucketdelete
+      with:
+        bucket_id: tools.bucket_id
+        region: tools.region
+        endpoint: tools.endpoint
+        clear_bucket: tools.clear_bucket
+      outputParameters:
+      - type: object
+        mapping: $.

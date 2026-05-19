@@ -1,0 +1,256 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: OpenStorage SDK — OpenStorageClusterPair
+  description: 'OpenStorage SDK — OpenStorageClusterPair. 6 operations. Lead operation: Enumerate returns list of cluster
+    pairs. Self-contained Naftiko capability covering one Portworx business surface.'
+  tags:
+  - Portworx
+  - OpenStorageClusterPair
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    PORTWORX_API_KEY: PORTWORX_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: portworx-openstorageclusterpair
+    baseUri: ''
+    description: OpenStorage SDK — OpenStorageClusterPair business capability. Self-contained, no shared references.
+    resources:
+    - name: v1-clusterpairs
+      path: /v1/clusterpairs
+      operations:
+      - name: openstorageclusterpairenumerate
+        method: GET
+        description: Enumerate returns list of cluster pairs
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: openstorageclusterpaircreate
+        method: POST
+        description: Creates Pair with a remote cluster and returns details about the remote cluster
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v1-clusterpairs-inspect-id
+      path: /v1/clusterpairs/inspect/{id}
+      operations:
+      - name: openstorageclusterpairinspect
+        method: GET
+        description: Inspect information about a cluster pair
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: ID of the cluster, if empty gets the default pair
+          required: true
+    - name: v1-clusterpairs-token
+      path: /v1/clusterpairs/token
+      operations:
+      - name: openstorageclusterpairgettoken
+        method: GET
+        description: GetToken returns a auth token
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: openstorageclusterpairresettoken
+        method: POST
+        description: ResetToken returns a auth token
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v1-clusterpairs-cluster_id
+      path: /v1/clusterpairs/{cluster_id}
+      operations:
+      - name: openstorageclusterpairdelete
+        method: DELETE
+        description: Delete a cluster pair
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: cluster_id
+          in: path
+          type: string
+          description: ID of the cluster pair to be deleted
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.PORTWORX_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: portworx-openstorageclusterpair-rest
+    port: 8080
+    description: REST adapter for OpenStorage SDK — OpenStorageClusterPair. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/v1/clusterpairs
+      name: v1-clusterpairs
+      description: REST surface for v1-clusterpairs.
+      operations:
+      - method: GET
+        name: openstorageclusterpairenumerate
+        description: Enumerate returns list of cluster pairs
+        call: portworx-openstorageclusterpair.openstorageclusterpairenumerate
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: openstorageclusterpaircreate
+        description: Creates Pair with a remote cluster and returns details about the remote cluster
+        call: portworx-openstorageclusterpair.openstorageclusterpaircreate
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/clusterpairs/inspect/{id}
+      name: v1-clusterpairs-inspect-id
+      description: REST surface for v1-clusterpairs-inspect-id.
+      operations:
+      - method: GET
+        name: openstorageclusterpairinspect
+        description: Inspect information about a cluster pair
+        call: portworx-openstorageclusterpair.openstorageclusterpairinspect
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/clusterpairs/token
+      name: v1-clusterpairs-token
+      description: REST surface for v1-clusterpairs-token.
+      operations:
+      - method: GET
+        name: openstorageclusterpairgettoken
+        description: GetToken returns a auth token
+        call: portworx-openstorageclusterpair.openstorageclusterpairgettoken
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: openstorageclusterpairresettoken
+        description: ResetToken returns a auth token
+        call: portworx-openstorageclusterpair.openstorageclusterpairresettoken
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/clusterpairs/{cluster-id}
+      name: v1-clusterpairs-cluster-id
+      description: REST surface for v1-clusterpairs-cluster_id.
+      operations:
+      - method: DELETE
+        name: openstorageclusterpairdelete
+        description: Delete a cluster pair
+        call: portworx-openstorageclusterpair.openstorageclusterpairdelete
+        with:
+          cluster_id: rest.cluster_id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: portworx-openstorageclusterpair-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for OpenStorage SDK — OpenStorageClusterPair. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: enumerate-returns-list-cluster-pairs
+      description: Enumerate returns list of cluster pairs
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: portworx-openstorageclusterpair.openstorageclusterpairenumerate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: creates-pair-remote-cluster-and
+      description: Creates Pair with a remote cluster and returns details about the remote cluster
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: portworx-openstorageclusterpair.openstorageclusterpaircreate
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: inspect-information-about-cluster-pair
+      description: Inspect information about a cluster pair
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: portworx-openstorageclusterpair.openstorageclusterpairinspect
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: gettoken-returns-auth-token
+      description: GetToken returns a auth token
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: portworx-openstorageclusterpair.openstorageclusterpairgettoken
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: resettoken-returns-auth-token
+      description: ResetToken returns a auth token
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: portworx-openstorageclusterpair.openstorageclusterpairresettoken
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-cluster-pair
+      description: Delete a cluster pair
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: portworx-openstorageclusterpair.openstorageclusterpairdelete
+      with:
+        cluster_id: tools.cluster_id
+      outputParameters:
+      - type: object
+        mapping: $.

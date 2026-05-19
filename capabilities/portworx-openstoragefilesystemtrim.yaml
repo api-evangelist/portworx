@@ -1,0 +1,317 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: OpenStorage SDK — OpenStorageFilesystemTrim
+  description: 'OpenStorage SDK — OpenStorageFilesystemTrim. 7 operations. Lead operation: Pop a auto filesystem Trim job
+    from the queue. Self-contained Naftiko capability covering one Portworx business surface.'
+  tags:
+  - Portworx
+  - OpenStorageFilesystemTrim
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    PORTWORX_API_KEY: PORTWORX_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: portworx-openstoragefilesystemtrim
+    baseUri: ''
+    description: OpenStorage SDK — OpenStorageFilesystemTrim business capability. Self-contained, no shared references.
+    resources:
+    - name: v1-filesystem-trim-auto-fstrim-pop
+      path: /v1/filesystem-trim/auto-fstrim-pop
+      operations:
+      - name: openstoragefilesystemtrimautofstrimpop
+        method: POST
+        description: Pop a auto filesystem Trim job from the queue
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v1-filesystem-trim-auto-fstrim-push
+      path: /v1/filesystem-trim/auto-fstrim-push
+      operations:
+      - name: openstoragefilesystemtrimautofstrimpush
+        method: POST
+        description: Push a auto filesystem Trim job into the queue
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v1-filesystem-trim-auto-fstrim-status
+      path: /v1/filesystem-trim/auto-fstrim-status
+      operations:
+      - name: openstoragefilesystemtrimautofstrimstatus
+        method: GET
+        description: ''
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-filesystem-trim-auto-fstrim-usage
+      path: /v1/filesystem-trim/auto-fstrim-usage
+      operations:
+      - name: openstoragefilesystemtrimautofstrimusage
+        method: GET
+        description: Usage of a filesystem Trim background operation on all locally mounted
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-filesystem-trim-start
+      path: /v1/filesystem-trim/start
+      operations:
+      - name: openstoragefilesystemtrimstart
+        method: POST
+        description: Start a filesystem Trim background operation on a mounted volume
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v1-filesystem-trim-status
+      path: /v1/filesystem-trim/status
+      operations:
+      - name: openstoragefilesystemtrimstatus
+        method: GET
+        description: Status of a filesystem Trim background operation on a mounted
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: volume_id
+          in: query
+          type: string
+          description: Id of the volume.
+        - name: mount_path
+          in: query
+          type: string
+          description: Path where the volume is mounted.
+    - name: v1-filesystem-trim-stop
+      path: /v1/filesystem-trim/stop
+      operations:
+      - name: openstoragefilesystemtrimstop
+        method: POST
+        description: Stop a filesystem Trim background operation on a mounted volume, if any
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.PORTWORX_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: portworx-openstoragefilesystemtrim-rest
+    port: 8080
+    description: REST adapter for OpenStorage SDK — OpenStorageFilesystemTrim. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/v1/filesystem-trim/auto-fstrim-pop
+      name: v1-filesystem-trim-auto-fstrim-pop
+      description: REST surface for v1-filesystem-trim-auto-fstrim-pop.
+      operations:
+      - method: POST
+        name: openstoragefilesystemtrimautofstrimpop
+        description: Pop a auto filesystem Trim job from the queue
+        call: portworx-openstoragefilesystemtrim.openstoragefilesystemtrimautofstrimpop
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/filesystem-trim/auto-fstrim-push
+      name: v1-filesystem-trim-auto-fstrim-push
+      description: REST surface for v1-filesystem-trim-auto-fstrim-push.
+      operations:
+      - method: POST
+        name: openstoragefilesystemtrimautofstrimpush
+        description: Push a auto filesystem Trim job into the queue
+        call: portworx-openstoragefilesystemtrim.openstoragefilesystemtrimautofstrimpush
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/filesystem-trim/auto-fstrim-status
+      name: v1-filesystem-trim-auto-fstrim-status
+      description: REST surface for v1-filesystem-trim-auto-fstrim-status.
+      operations:
+      - method: GET
+        name: openstoragefilesystemtrimautofstrimstatus
+        description: openstoragefilesystemtrimautofstrimstatus
+        call: portworx-openstoragefilesystemtrim.openstoragefilesystemtrimautofstrimstatus
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/filesystem-trim/auto-fstrim-usage
+      name: v1-filesystem-trim-auto-fstrim-usage
+      description: REST surface for v1-filesystem-trim-auto-fstrim-usage.
+      operations:
+      - method: GET
+        name: openstoragefilesystemtrimautofstrimusage
+        description: Usage of a filesystem Trim background operation on all locally mounted
+        call: portworx-openstoragefilesystemtrim.openstoragefilesystemtrimautofstrimusage
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/filesystem-trim/start
+      name: v1-filesystem-trim-start
+      description: REST surface for v1-filesystem-trim-start.
+      operations:
+      - method: POST
+        name: openstoragefilesystemtrimstart
+        description: Start a filesystem Trim background operation on a mounted volume
+        call: portworx-openstoragefilesystemtrim.openstoragefilesystemtrimstart
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/filesystem-trim/status
+      name: v1-filesystem-trim-status
+      description: REST surface for v1-filesystem-trim-status.
+      operations:
+      - method: GET
+        name: openstoragefilesystemtrimstatus
+        description: Status of a filesystem Trim background operation on a mounted
+        call: portworx-openstoragefilesystemtrim.openstoragefilesystemtrimstatus
+        with:
+          volume_id: rest.volume_id
+          mount_path: rest.mount_path
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/filesystem-trim/stop
+      name: v1-filesystem-trim-stop
+      description: REST surface for v1-filesystem-trim-stop.
+      operations:
+      - method: POST
+        name: openstoragefilesystemtrimstop
+        description: Stop a filesystem Trim background operation on a mounted volume, if any
+        call: portworx-openstoragefilesystemtrim.openstoragefilesystemtrimstop
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: portworx-openstoragefilesystemtrim-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for OpenStorage SDK — OpenStorageFilesystemTrim. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: pop-auto-filesystem-trim-job
+      description: Pop a auto filesystem Trim job from the queue
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: portworx-openstoragefilesystemtrim.openstoragefilesystemtrimautofstrimpop
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: push-auto-filesystem-trim-job
+      description: Push a auto filesystem Trim job into the queue
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: portworx-openstoragefilesystemtrim.openstoragefilesystemtrimautofstrimpush
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: openstoragefilesystemtrimautofstrimstatus
+      description: openstoragefilesystemtrimautofstrimstatus
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: portworx-openstoragefilesystemtrim.openstoragefilesystemtrimautofstrimstatus
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: usage-filesystem-trim-background-operation
+      description: Usage of a filesystem Trim background operation on all locally mounted
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: portworx-openstoragefilesystemtrim.openstoragefilesystemtrimautofstrimusage
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: start-filesystem-trim-background-operation
+      description: Start a filesystem Trim background operation on a mounted volume
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: portworx-openstoragefilesystemtrim.openstoragefilesystemtrimstart
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: status-filesystem-trim-background-operation
+      description: Status of a filesystem Trim background operation on a mounted
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: portworx-openstoragefilesystemtrim.openstoragefilesystemtrimstatus
+      with:
+        volume_id: tools.volume_id
+        mount_path: tools.mount_path
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: stop-filesystem-trim-background-operation
+      description: Stop a filesystem Trim background operation on a mounted volume, if any
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: portworx-openstoragefilesystemtrim.openstoragefilesystemtrimstop
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
