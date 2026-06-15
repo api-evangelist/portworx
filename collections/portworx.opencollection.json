@@ -1,0 +1,2436 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenStorage SDK",
+    "version": "0.186.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "OpenStorageAlerts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Delete alerts",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/alerts",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "#### Delete\nDelete allows 3 different types of queries as defined below:\n\n* Query that takes only resource type as input\n* Query that takes resource type and alert type as input and\n* Query that takes resource id, alert type and resource type as input.\n\n#### Input\nSdkAlertsDeleteRequest takes a list of such queries and all alerts\nthat match at least one of the queries are deleted."
+        },
+        {
+          "info": {
+            "name": "Allows querying alerts.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/alerts/filters",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "EnumerateWithFilters allows 3 different types of queries as defined below:\n\n* Query that takes only resource type as input\n* Query that takes resource type and alert type as input and\n* Query that takes resource id, alert type and resource type as input.\n\n#### Input\nSdkAlertsEnumerateRequest takes a list of such queries and the returned\noutput is a collective output from each of these queries. In that sense,\nthe filtering of these queries has a behavior of OR operation.\nEach query also has a lis"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "OpenStorageBucket",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "OpenStorageBucket_Create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/bucket",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "OpenStorageBucket_GrantAccess",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/bucket/access/:bucket_id",
+            "params": [
+              {
+                "name": "bucket_id",
+                "value": "",
+                "type": "path",
+                "description": "Id of the bucket"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "OpenStorageBucket_RevokeAccess",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/bucket/revoke/:bucket_id",
+            "params": [
+              {
+                "name": "bucket_id",
+                "value": "",
+                "type": "path",
+                "description": "Id of bucket to delete"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "OpenStorageBucket_Delete",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v1/bucket/:bucket_id",
+            "params": [
+              {
+                "name": "bucket_id",
+                "value": "",
+                "type": "path",
+                "description": "Id of bucket to delete"
+              },
+              {
+                "name": "region",
+                "value": "",
+                "type": "query",
+                "description": "Region in which bucket will be created."
+              },
+              {
+                "name": "endpoint",
+                "value": "",
+                "type": "query",
+                "description": "Endpoint to use when deleting the bucket."
+              },
+              {
+                "name": "clear_bucket",
+                "value": "",
+                "type": "query",
+                "description": "Flag to allow non empty bucket deletion."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "OpenStorageCloudBackup",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Creates a backup request for a specified volume. Use\nOpenStorageCloudBackup.Status() to get the current status of the\nbackup request.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/cloudbackups",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Requires access AccessType.Read of volume"
+        },
+        {
+          "info": {
+            "name": "Deletes a backup stored in the cloud. If the backup is an incremental\nbackup and other backups are dependent on it, it will not be able to be deleted.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v1/cloudbackups/backup/:backup_id",
+            "params": [
+              {
+                "name": "backup_id",
+                "value": "",
+                "type": "path",
+                "description": "ID is the ID of the cloud backup"
+              },
+              {
+                "name": "credential_id",
+                "value": "",
+                "type": "query",
+                "description": "Credential id is the credential for cloud to be used for the request."
+              },
+              {
+                "name": "force",
+                "value": "",
+                "type": "query",
+                "description": "Force Delete cloudbackup even if there are dependencies. This may be\nneeded if the backup is an incremental backup and subsequent backups\ndepend on this backup specified by `backup_id`."
+              },
+              {
+                "name": "bucket",
+                "value": "",
+                "type": "query",
+                "description": "Bucket name to which cloud backup belongs to."
+              }
+            ]
+          },
+          "docs": "Deletes a backup stored in the cloud. If the backup is an incremental\nbackup and other backups are dependent on it, it will not be able to be deleted."
+        },
+        {
+          "info": {
+            "name": "Catalog returns a list of the contents in the backup",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/cloudbackups/catalog",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Catalog returns a list of the contents in the backup"
+        },
+        {
+          "info": {
+            "name": "DeleteAll deletes all the backups in the cloud for the specified volume.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/cloudbackups/deleteall",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "DeleteAll deletes all the backups in the cloud for the specified volume."
+        },
+        {
+          "info": {
+            "name": "Return a list of backups for the specified volume",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/cloudbackups/enumerate/filters",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Return a list of backups for the specified volume"
+        },
+        {
+          "info": {
+            "name": "Creates a group backup request for a specified group. Use\nOpenStorageCloudBackup.Status() to get the current status of the\nbackup request.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/cloudbackups/group",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This will only backup volumes which the user has read_access to."
+        },
+        {
+          "info": {
+            "name": "History returns a list of backups for a specified volume",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/cloudbackups/history/:src_volume_id",
+            "params": [
+              {
+                "name": "src_volume_id",
+                "value": "",
+                "type": "path",
+                "description": "This optional value defines which history of backups is being\nrequested. If not provided, it will return the history for all volumes."
+              }
+            ]
+          },
+          "docs": "History returns a list of backups for a specified volume"
+        },
+        {
+          "info": {
+            "name": "Restore creates a new volume from a backup id. The newly created volume\nhas an ha_level (number of replicas) of only 1. To increase the number of\nreplicas, use OpenStorageVolume.Set() to change the ha_level.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/cloudbackups/restore",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Restore creates a new volume from a backup id. The newly created volume\nhas an ha_level (number of replicas) of only 1. To increase the number of\nreplicas, use OpenStorageVolume.Set() to change the ha_level."
+        },
+        {
+          "info": {
+            "name": "Enumerate cloud backup schedules",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/cloudbackups/schedules"
+          },
+          "docs": "Enumerate cloud backup schedules"
+        },
+        {
+          "info": {
+            "name": "Create cloud backup schedule",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/cloudbackups/schedules",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create cloud backup schedule"
+        },
+        {
+          "info": {
+            "name": "Update existing cloud backup schedule",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/v1/cloudbackups/schedules",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update existing cloud backup schedule"
+        },
+        {
+          "info": {
+            "name": "Delete cloud backup schedule",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v1/cloudbackups/schedules/:backup_schedule_id",
+            "params": [
+              {
+                "name": "backup_schedule_id",
+                "value": "",
+                "type": "path",
+                "description": "Id of cloud backup to delete"
+              }
+            ]
+          },
+          "docs": "Delete cloud backup schedule"
+        },
+        {
+          "info": {
+            "name": "Size returns the size of any cloud backups of a volume",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/cloudbackups/size",
+            "params": [
+              {
+                "name": "backup_id",
+                "value": "",
+                "type": "query",
+                "description": "BackupId is a value which is used to get information on the\nsize of the specified backup."
+              },
+              {
+                "name": "credential_id",
+                "value": "",
+                "type": "query",
+                "description": "Credential id describe the credentials for the cloud."
+              }
+            ]
+          },
+          "docs": "Size returns the size of any cloud backups of a volume"
+        },
+        {
+          "info": {
+            "name": "StateChange can be used to stop, pause, and restart a backup",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/cloudbackups/statechange",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "StateChange can be used to stop, pause, and restart a backup"
+        },
+        {
+          "info": {
+            "name": "Status returns the status of any cloud backups of a volume",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/cloudbackups/status",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Status returns the status of any cloud backups of a volume"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "OpenStorageClusterDomains",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Enumerate returns names of all the cluster domains in the cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/clusterdomains"
+          },
+          "docs": "Enumerate returns names of all the cluster domains in the cluster"
+        },
+        {
+          "info": {
+            "name": "Activates a cluster domain in the cluster.\nAll the nodes which are part of an active cluster domain\nwill participate in cluster quorum calculation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/clusterdomains/activate/:cluster_domain_name",
+            "params": [
+              {
+                "name": "cluster_domain_name",
+                "value": "",
+                "type": "path",
+                "description": "Name of the cluster domain to activate"
+              }
+            ]
+          },
+          "docs": "Activates a cluster domain in the cluster.\nAll the nodes which are part of an active cluster domain\nwill participate in cluster quorum calculation"
+        },
+        {
+          "info": {
+            "name": "Deactivates a cluster domain in the cluster.\nAll the nodes which are part of a deactivated cluster domain.\nwill not participate in cluster quorum calculation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/clusterdomains/deactivate/:cluster_domain_name",
+            "params": [
+              {
+                "name": "cluster_domain_name",
+                "value": "",
+                "type": "path",
+                "description": "Name of the cluster domain to deactivate"
+              }
+            ]
+          },
+          "docs": "Deactivates a cluster domain in the cluster.\nAll the nodes which are part of a deactivated cluster domain.\nwill not participate in cluster quorum calculation"
+        },
+        {
+          "info": {
+            "name": "Inspect returns information about a cluster domain and a\nstatus indicating whether the cluster domain is active",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/clusterdomains/inspect/:cluster_domain_name",
+            "params": [
+              {
+                "name": "cluster_domain_name",
+                "value": "",
+                "type": "path",
+                "description": "Name of the cluster domain to inspect"
+              }
+            ]
+          },
+          "docs": "Inspect returns information about a cluster domain and a\nstatus indicating whether the cluster domain is active"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "OpenStorageClusterPair",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Enumerate returns list of cluster pairs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/clusterpairs"
+          },
+          "docs": "Enumerate returns list of cluster pairs"
+        },
+        {
+          "info": {
+            "name": "Creates Pair with a remote cluster and returns details about the remote cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/clusterpairs",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "##### Example\n{% codetabs name=\"Golang\", type=\"go\" -%}\nid, err := client.Create(context.Background(), &api.SdkClusterPairCreateRequest {\n  Request : &api.ClusterPairCreateRequest {\n                 RemoteClusterIp: \"127.0.0.1\",\n                 RemoteClusterPort: 12345,\n                 RemoteClusterToken: \"<Auth-Token>\",\n                 SetDefault: true,\n             }\n       })\n{%- endcodetabs %}"
+        },
+        {
+          "info": {
+            "name": "Inspect information about a cluster pair",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/clusterpairs/inspect/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the cluster, if empty gets the default pair"
+              }
+            ]
+          },
+          "docs": "Inspect information about a cluster pair"
+        },
+        {
+          "info": {
+            "name": "GetToken returns a auth token",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/clusterpairs/token"
+          },
+          "docs": "GetToken returns a auth token"
+        },
+        {
+          "info": {
+            "name": "ResetToken returns a auth token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/clusterpairs/token",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "ResetToken returns a auth token"
+        },
+        {
+          "info": {
+            "name": "Delete a cluster pair",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v1/clusterpairs/:cluster_id",
+            "params": [
+              {
+                "name": "cluster_id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the cluster pair to be deleted"
+              }
+            ]
+          },
+          "docs": "Delete a cluster pair"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "OpenStorageCluster",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "InspectCurrent returns information about the current cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/clusters/inspectcurrent"
+          },
+          "docs": "InspectCurrent returns information about the current cluster"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "OpenStorageCredentials",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Enumerate returns a list of credential ids",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/credentials"
+          },
+          "docs": "Enumerate returns a list of credential ids"
+        },
+        {
+          "info": {
+            "name": "Create is used to submit cloud credentials. It will return an\nid of the credentials once they are verified to work.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/credentials",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "##### Example\n{% codetabs name=\"Golang\", type=\"go\" -%}\nid, err := client.Create(context.Background(), &api.SdkCredentialCreateRequest{\n    Name: \"awscred\",\n    UseProxy: false,\n    CredentialType: &api.SdkCredentialCreateRequest_AwsCredential{\n      AwsCredential: &api.SdkAwsCredentialRequest{\n      AccessKey: \"dummy-access\",\n      SecretKey: \"dummy-secret\",\n      Endpoint:  \"dummy-endpoint\",\n      Region:    \"dummy-region\",\n    },\n  },\n})\n{%- language name=\"Python\", type=\"py\" -%}\nen_resp = clie"
+        },
+        {
+          "info": {
+            "name": "Inspect returns the information about a credential, but does not return the secret key.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/credentials/inspect/:credential_id",
+            "params": [
+              {
+                "name": "credential_id",
+                "value": "",
+                "type": "path",
+                "description": "Id of the credential"
+              }
+            ]
+          },
+          "docs": "Inspect returns the information about a credential, but does not return the secret key."
+        },
+        {
+          "info": {
+            "name": "DeleteReferences is used to remove references to credentials",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v1/credentials/references/:credential_id",
+            "params": [
+              {
+                "name": "credential_id",
+                "value": "",
+                "type": "path",
+                "description": "Id of the credentials"
+              }
+            ]
+          },
+          "docs": "DeleteReferences is used to remove references to credentials"
+        },
+        {
+          "info": {
+            "name": "Validate is used to validate credentials",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/credentials/validate/:credential_id",
+            "params": [
+              {
+                "name": "credential_id",
+                "value": "",
+                "type": "path",
+                "description": "Id of the credentials"
+              }
+            ]
+          },
+          "docs": "Validate is used to validate credentials"
+        },
+        {
+          "info": {
+            "name": "input is very same as credential create",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/v1/credentials/:credential_id",
+            "params": [
+              {
+                "name": "credential_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "input is very same as credential create"
+        },
+        {
+          "info": {
+            "name": "Delete a specified credential",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v1/credentials/:credential_id",
+            "params": [
+              {
+                "name": "credential_id",
+                "value": "",
+                "type": "path",
+                "description": "Id for credentials"
+              }
+            ]
+          },
+          "docs": "Delete a specified credential"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "OpenStorageDiags",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Collect starts a job to collect diagnostics from set of nodes that are selected based on the selectors provided\nin the SdkDiagsCollectRequest. See SdkDiagsCollectRequest for more details on how to select the nodes\nReturns SdkDiagsCollectResponse which has the job that is responsible for collecting the diags.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/diags",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Collect starts a job to collect diagnostics from set of nodes that are selected based on the selectors provided\nin the SdkDiagsCollectRequest. See SdkDiagsCollectRequest for more details on how to select the nodes\nReturns SdkDiagsCollectResponse which has the job that is responsible for collecting the diags."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "OpenStorageFilesystemCheck",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Delete all fsck created snapshots on volume",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/filesystem-check/delete-snapshots",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Delete all fsck created snapshots on volume"
+        },
+        {
+          "info": {
+            "name": "List all fsck created snapshots on volume",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/filesystem-check/list-snapshots",
+            "params": [
+              {
+                "name": "volume_id",
+                "value": "",
+                "type": "query",
+                "description": "Id of the volume."
+              },
+              {
+                "name": "node_id",
+                "value": "",
+                "type": "query",
+                "description": "Node Id of the volume."
+              }
+            ]
+          },
+          "docs": "List all fsck created snapshots on volume"
+        },
+        {
+          "info": {
+            "name": "List of all volumes which require fsck check/fix to be run",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/filesystem-check/list-volumes",
+            "params": [
+              {
+                "name": "node_id",
+                "value": "",
+                "type": "query",
+                "description": "Node Id filter."
+              }
+            ]
+          },
+          "docs": "List of all volumes which require fsck check/fix to be run"
+        },
+        {
+          "info": {
+            "name": "Start a filesystem-check background operation on a unmounted volume.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/filesystem-check/start",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Start a filesystem-check background operation on a unmounted volume."
+        },
+        {
+          "info": {
+            "name": "Get Status of a filesystem-check background operation on an unmounted\nvolume, if any",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/filesystem-check/status",
+            "params": [
+              {
+                "name": "volume_id",
+                "value": "",
+                "type": "query",
+                "description": "Id of the volume."
+              }
+            ]
+          },
+          "docs": "Get Status of a filesystem-check background operation on an unmounted\nvolume, if any"
+        },
+        {
+          "info": {
+            "name": "Stop a filesystem check background operation on an unmounted volume, if any",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/filesystem-check/stop",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Stop a filesystem check background operation on an unmounted volume, if any"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "OpenStorageFilesystemDefrag",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a schedule to run defragmentation tasks periodically",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/filesystem-defrag/schedule",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a schedule to run defragmentation tasks periodically"
+        },
+        {
+          "info": {
+            "name": "Clean up all defrag schedules and stop all operations",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v1/filesystem-defrag/schedules"
+          },
+          "docs": "Clean up all defrag schedules and stop all operations"
+        },
+        {
+          "info": {
+            "name": "Enumerate all nodes, returning defrag status of the entire cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/filesystem-defrag/status"
+          },
+          "docs": "Enumerate all nodes, returning defrag status of the entire cluster"
+        },
+        {
+          "info": {
+            "name": "Get defrag status of a node",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/filesystem-defrag/status/:node_id",
+            "params": [
+              {
+                "name": "node_id",
+                "value": "",
+                "type": "path",
+                "description": "NodeId is uuid of the node"
+              }
+            ]
+          },
+          "docs": "Get defrag status of a node"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "OpenStorageFilesystemTrim",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Pop a auto filesystem Trim job from the queue",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/filesystem-trim/auto-fstrim-pop",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Pop a auto filesystem Trim job from the queue"
+        },
+        {
+          "info": {
+            "name": "Push a auto filesystem Trim job into the queue",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/filesystem-trim/auto-fstrim-push",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Push a auto filesystem Trim job into the queue"
+        },
+        {
+          "info": {
+            "name": "OpenStorageFilesystemTrim_AutoFSTrimStatus",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/filesystem-trim/auto-fstrim-status"
+          }
+        },
+        {
+          "info": {
+            "name": "Usage of a filesystem Trim background operation on all locally mounted\nvolume",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/filesystem-trim/auto-fstrim-usage"
+          },
+          "docs": "Usage of a filesystem Trim background operation on all locally mounted\nvolume"
+        },
+        {
+          "info": {
+            "name": "Start a filesystem Trim background operation on a mounted volume",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/filesystem-trim/start",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Start a filesystem Trim background operation on a mounted volume"
+        },
+        {
+          "info": {
+            "name": "Status of a filesystem Trim background operation on a mounted\nvolume, if any",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/filesystem-trim/status",
+            "params": [
+              {
+                "name": "volume_id",
+                "value": "",
+                "type": "query",
+                "description": "Id of the volume."
+              },
+              {
+                "name": "mount_path",
+                "value": "",
+                "type": "query",
+                "description": "Path where the volume is mounted."
+              }
+            ]
+          },
+          "docs": "Status of a filesystem Trim background operation on a mounted\nvolume, if any"
+        },
+        {
+          "info": {
+            "name": "Stop a filesystem Trim background operation on a mounted volume, if any",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/filesystem-trim/stop",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Stop a filesystem Trim background operation on a mounted volume, if any"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "OpenStorageIdentity",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Capabilities returns the supported services by the cluster.\nThis allows SDK implementations to advertise their supported\nservices as the API matures. With this information, clients\ncan determine supported services from storage clusters at\ndifferent versions.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/identities/capabilities"
+          },
+          "docs": "Capabilities returns the supported services by the cluster.\nThis allows SDK implementations to advertise their supported\nservices as the API matures. With this information, clients\ncan determine supported services from storage clusters at\ndifferent versions."
+        },
+        {
+          "info": {
+            "name": "Version returns version information about the system.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/identities/version"
+          },
+          "docs": "Version returns version information about the system."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "OpenStorageJob",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Enumerate returns all the jobs currently known to the system",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/jobs",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Type if specified will list the jobs of the provided type.\n\n - UNSPECIFIED_TYPE: Unspecified\n - NONE: None\n - DRAIN_ATTACHMENTS: Job for draining volume attachments\n - CLOUD_DRIVE_TRANSFER: Job for transferring cloud drives between nodes\n - COLLECT_DIAGS: Job for collecting diags from the cluster nodes\n - DEFRAG: Job for storage defragmentation on cluster nodes"
+              }
+            ]
+          },
+          "docs": "Enumerate returns all the jobs currently known to the system"
+        },
+        {
+          "info": {
+            "name": "GetStatus gets the status of a job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/jobs/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the job"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Type of the job.\n\n - UNSPECIFIED_TYPE: Unspecified\n - NONE: None\n - DRAIN_ATTACHMENTS: Job for draining volume attachments\n - CLOUD_DRIVE_TRANSFER: Job for transferring cloud drives between nodes\n - COLLECT_DIAGS: Job for collecting diags from the cluster nodes\n - DEFRAG: Job for storage defragmentation on cluster nodes"
+              }
+            ]
+          },
+          "docs": "GetStatus gets the status of a job"
+        },
+        {
+          "info": {
+            "name": "Update updates an existing job's state\nOnly acceptable state values are\nJobState_PAUSED - acceptable only from running state\nJobState_CANCELLED - acceptable only from running/pause state\nJobState_RUNNING - acceptable only from pause state",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/v1/jobs/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the job"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update updates an existing job's state\nOnly acceptable state values are\nJobState_PAUSED - acceptable only from running state\nJobState_CANCELLED - acceptable only from running/pause state\nJobState_RUNNING - acceptable only from pause state"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "OpenStorageMountAttach",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Attach attaches device to the host that the client is communicating with.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/mountattach/attach",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Requires access AccessType.Write of volume"
+        },
+        {
+          "info": {
+            "name": "Detaches a the volume from the host",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/mountattach/detach",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Requires access AccessType.Write of volume"
+        },
+        {
+          "info": {
+            "name": "Mount mounts an attached volume in the host that the client is communicating with",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/mountattach/mount",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Requires access AccessType.Write of volume"
+        },
+        {
+          "info": {
+            "name": "Unmount unmounts a mounted volume in the host that the client is communicating with",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/mountattach/unmount",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Requires access AccessType.Write of volume"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "OpenStorageNode",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Enumerate returns the ids of all the nodes in the current cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/nodes"
+          },
+          "docs": "Enumerate returns the ids of all the nodes in the current cluster"
+        },
+        {
+          "info": {
+            "name": "CordonAttachments disables any new volume attachments\nfrom the provided node in the cluster. Existing volume attachments\nwill stay on the node.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/v1/nodes/attachments/disable/:node_id",
+            "params": [
+              {
+                "name": "node_id",
+                "value": "",
+                "type": "path",
+                "description": "Node ID on which any further volume attachments will be disabled"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "CordonAttachments disables any new volume attachments\nfrom the provided node in the cluster. Existing volume attachments\nwill stay on the node."
+        },
+        {
+          "info": {
+            "name": "DrainAttachments creates a task to drain volume attachments\nfrom the provided node in the cluster.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/v1/nodes/attachments/drain/:node_id",
+            "params": [
+              {
+                "name": "node_id",
+                "value": "",
+                "type": "path",
+                "description": "Id of the node to drain"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "DrainAttachments creates a task to drain volume attachments\nfrom the provided node in the cluster."
+        },
+        {
+          "info": {
+            "name": "UncordonAttachments re-enables volume attachments\non the provided node in the cluster.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/v1/nodes/attachments/enable/:node_id",
+            "params": [
+              {
+                "name": "node_id",
+                "value": "",
+                "type": "path",
+                "description": "Node ID on which any further volume attachments will be enabled"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "UncordonAttachments re-enables volume attachments\non the provided node in the cluster."
+        },
+        {
+          "info": {
+            "name": "Returns bytes used of multiple volumes for a give node",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/nodes/bytesused",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns bytes used of multiple volumes for a give node"
+        },
+        {
+          "info": {
+            "name": "EnumerateWithFilters returns all the nodes in the current cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/nodes/filters"
+          },
+          "docs": "EnumerateWithFilters returns all the nodes in the current cluster"
+        },
+        {
+          "info": {
+            "name": "Inspect returns information about the specified node",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/nodes/inspect/:node_id",
+            "params": [
+              {
+                "name": "node_id",
+                "value": "",
+                "type": "path",
+                "description": "Id of node to inspect"
+              }
+            ]
+          },
+          "docs": "Inspect returns information about the specified node"
+        },
+        {
+          "info": {
+            "name": "InspectCurrent returns information about the storage node\nwhere the client is currently connected to.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/nodes/inspectcurrent"
+          },
+          "docs": "InspectCurrent returns information about the storage node\nwhere the client is currently connected to."
+        },
+        {
+          "info": {
+            "name": "Triggers RelaxedReclaim purge for a give node",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/nodes/usage/:node_id",
+            "params": [
+              {
+                "name": "node_id",
+                "value": "",
+                "type": "path",
+                "description": "Id of the node to trigger the purge"
+              }
+            ]
+          },
+          "docs": "Triggers RelaxedReclaim purge for a give node"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "OpenStorageObjectstore",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Creates creates an object store endpoint on specified volume",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/objectstores",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates creates an object store endpoint on specified volume"
+        },
+        {
+          "info": {
+            "name": "Inspect returns information about the object store endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/objectstores/inspect/:objectstore_id",
+            "params": [
+              {
+                "name": "objectstore_id",
+                "value": "",
+                "type": "path",
+                "description": "Id of the object store"
+              }
+            ]
+          },
+          "docs": "Inspect returns information about the object store endpoint"
+        },
+        {
+          "info": {
+            "name": "Updates provided objectstore status.\nThis call can be used to stop and start the server while maintaining the same\nobject storage id.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/v1/objectstores/:objectstore_id",
+            "params": [
+              {
+                "name": "objectstore_id",
+                "value": "",
+                "type": "path",
+                "description": "Objectstore Id to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates provided objectstore status.\nThis call can be used to stop and start the server while maintaining the same\nobject storage id."
+        },
+        {
+          "info": {
+            "name": "Delete destroys the object store endpoint on the volume",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v1/objectstores/:objectstore_id",
+            "params": [
+              {
+                "name": "objectstore_id",
+                "value": "",
+                "type": "path",
+                "description": "Id of the object store to delete"
+              }
+            ]
+          },
+          "docs": "Delete destroys the object store endpoint on the volume"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "OpenStorageRole",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all roles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/roles"
+          },
+          "docs": "List all roles"
+        },
+        {
+          "info": {
+            "name": "Create a role for users in the system",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/roles",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a role for users in the system"
+        },
+        {
+          "info": {
+            "name": "Update an existing role",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/v1/roles",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing role"
+        },
+        {
+          "info": {
+            "name": "Get information about a role",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/roles/inspect/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name of role"
+              }
+            ]
+          },
+          "docs": "Get information about a role"
+        },
+        {
+          "info": {
+            "name": "Delete an existing role",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v1/roles/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete an existing role"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "OpenStorageSchedulePolicy",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Enumerate returns a list of schedules",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/schedulepolicies"
+          },
+          "docs": "Enumerate returns a list of schedules"
+        },
+        {
+          "info": {
+            "name": "Create creates a new snapshot schedule. They can be setup daily,\nweekly, or monthly.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/schedulepolicies",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create creates a new snapshot schedule. They can be setup daily,\nweekly, or monthly."
+        },
+        {
+          "info": {
+            "name": "Update a snapshot schedule",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/v1/schedulepolicies",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a snapshot schedule"
+        },
+        {
+          "info": {
+            "name": "Inspect returns information about a specified schedule",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/schedulepolicies/inspect/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name of the schedule Policy"
+              }
+            ]
+          },
+          "docs": "Inspect returns information about a specified schedule"
+        },
+        {
+          "info": {
+            "name": "Delete removes a snapshot schedule",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v1/schedulepolicies/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name of the schedule policy"
+              }
+            ]
+          },
+          "docs": "Delete removes a snapshot schedule"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "OpenStorageSchedule",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Enumerate returns all the schedules",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/schedules/:type",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path",
+                "description": "Type is schedule type (cast to string from a Job.Type enum, as the version of\nprotoc-gen-grpc-gateway on release branch doesn't support enum type in REST API path parameter)"
+              }
+            ]
+          },
+          "docs": "Enumerate returns all the schedules"
+        },
+        {
+          "info": {
+            "name": "Inspect queries information of a schedule by type and ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/schedules/:type/:id",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path",
+                "description": "Type is schedule type (cast to string from a Job.Type enum, as the version of\nprotoc-gen-grpc-gateway on release branch doesn't support enum type in REST API path parameter)"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the schedule"
+              }
+            ]
+          },
+          "docs": "Inspect queries information of a schedule by type and ID"
+        },
+        {
+          "info": {
+            "name": "Delete deletes a schedule by type and ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v1/schedules/:type/:id",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path",
+                "description": "Type is schedule type (cast to string from a Job.Type enum, as the version of\nprotoc-gen-grpc-gateway on release branch doesn't support enum type in REST API path parameter)"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the schedule"
+              }
+            ]
+          },
+          "docs": "Delete deletes a schedule by type and ID"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "OpenStoragePolicy",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Enumerate returns a list of storage policies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/storagepolicies"
+          },
+          "docs": "Enumerate returns a list of storage policies"
+        },
+        {
+          "info": {
+            "name": "Creates a storage policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/storagepolicies",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a storage policy"
+        },
+        {
+          "info": {
+            "name": "Updates specified storage policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/v1/storagepolicies",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates specified storage policy"
+        },
+        {
+          "info": {
+            "name": "DefaultInspect return default storage policy if any, otherwise\nempty response",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/storagepolicies/default"
+          },
+          "docs": "DefaultInspect return default storage policy if any, otherwise\nempty response"
+        },
+        {
+          "info": {
+            "name": "Set specified storage policy as default policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/storagepolicies/default/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "name of policy to set as default storage policy\nfor volume creation\nThis policy will be used to validate/update volume configuration"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set specified storage policy as default policy"
+        },
+        {
+          "info": {
+            "name": "Inspect returns information about a specified storage policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/storagepolicies/inspect/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "name of storage policy to retrive"
+              }
+            ]
+          },
+          "docs": "Inspect returns information about a specified storage policy"
+        },
+        {
+          "info": {
+            "name": "Release specified storage policy constraint for volume\ncreation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/storagepolicies/release",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Release specified storage policy constraint for volume\ncreation"
+        },
+        {
+          "info": {
+            "name": "Deletes specified storage policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v1/storagepolicies/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "name of storage policy to delete"
+              }
+            ]
+          },
+          "docs": "Deletes specified storage policy"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "OpenStoragePool",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Rebalance creates a new rebalance task",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/v1/storagepools/rebalance"
+          },
+          "docs": "Rebalance creates a new rebalance task"
+        },
+        {
+          "info": {
+            "name": "EnumerateRebalanceJobs returns all rebalance jobs currently known to the system",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/storagepools/rebalance/job"
+          },
+          "docs": "EnumerateRebalanceJobs returns all rebalance jobs currently known to the system"
+        },
+        {
+          "info": {
+            "name": "GetRebalanceJobStatus returns rebalance status for specified job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/storagepools/rebalance/job/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the rebalance job"
+              }
+            ]
+          },
+          "docs": "GetRebalanceJobStatus returns rebalance status for specified job"
+        },
+        {
+          "info": {
+            "name": "UpdateRebalanceJobState updates existing rebalance task state.\nOnly acceptable values are\nStorageRebalanceJobState_PAUSED - acceptable only from running state\nStorageRebalanceJobState_CANCELLED - acceptable only from running/pause state\nStorageRebalanceJobState_RUNNING - acceptable only from pause state",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/v1/storagepools/rebalance/job/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the rebalance job"
+              }
+            ]
+          },
+          "docs": "UpdateRebalanceJobState updates existing rebalance task state.\nOnly acceptable values are\nStorageRebalanceJobState_PAUSED - acceptable only from running state\nStorageRebalanceJobState_CANCELLED - acceptable only from running/pause state\nStorageRebalanceJobState_RUNNING - acceptable only from pause state"
+        },
+        {
+          "info": {
+            "name": "GetRebalanceSchedule returns the information of rebalance schedule",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/storagepools/rebalance/schedule"
+          },
+          "docs": "GetRebalanceSchedule returns the information of rebalance schedule"
+        },
+        {
+          "info": {
+            "name": "CreateRebalanceSchedule creates a scheudle for the input rebalance requests",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/storagepools/rebalance/schedule"
+          },
+          "docs": "CreateRebalanceSchedule creates a scheudle for the input rebalance requests"
+        },
+        {
+          "info": {
+            "name": "DeleteRebalanceSchedule deletes the rebalance schedule",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v1/storagepools/rebalance/schedule"
+          },
+          "docs": "DeleteRebalanceSchedule deletes the rebalance schedule"
+        },
+        {
+          "info": {
+            "name": "Resize expands the specified storage pool based on the request parameters",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/v1/storagepools/resize/:uuid",
+            "params": [
+              {
+                "name": "uuid",
+                "value": "",
+                "type": "path",
+                "description": "UUID of the storage pool to inspect"
+              }
+            ]
+          },
+          "docs": "Resize expands the specified storage pool based on the request parameters"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "OpenStorageVerifyChecksum",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Start a verify checksum background operation on a volume.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/verify-checksum/start",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Start a verify checksum background operation on a volume."
+        },
+        {
+          "info": {
+            "name": "Get Status of a verify checksum background operation on a volume",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/verify-checksum/status",
+            "params": [
+              {
+                "name": "volume_id",
+                "value": "",
+                "type": "query",
+                "description": "Id of the volume."
+              }
+            ]
+          },
+          "docs": "Get Status of a verify checksum background operation on a volume"
+        },
+        {
+          "info": {
+            "name": "Stop a verify checksum background operation on a volume",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/verify-checksum/stop",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Stop a verify checksum background operation on a volume"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "OpenStorageVolume",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Gets the volume catalog of an attached and mounted volume.\nReturns the entire tree up to \"n\"  depth (default is all of it)\nTakes a path that can be used as the new root for the catalog request.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/volume/catalog",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Gets the volume catalog of an attached and mounted volume.\nReturns the entire tree up to \"n\"  depth (default is all of it)\nTakes a path that can be used as the new root for the catalog request."
+        },
+        {
+          "info": {
+            "name": "Enumerate returns a list of volume ids",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/volumes"
+          },
+          "docs": "Enumerate returns a list of volume ids"
+        },
+        {
+          "info": {
+            "name": "Create creates a volume according to the specification provided",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/volumes",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Requires access AccessType.Read when cloning from a parent volume.\n\n##### Example\n{% codetabs name=\"Golang\", type=\"go\" -%}\nid, err := client.Create(context.Background(), &api.SdkVolumeCreateRequest{\n  Name: \"volume-12345-east\",\n  Spec: &api.VolumeSpec {\n    Size: 1234567,\n  },\n})\n{%- language name=\"Python\", type=\"py\" -%}\nen_resp = client.Create(api_pb2.SdkVolumeCreateRequest(\n  name=\"volume-12345-east\",\n  spec=api_pb2.VolumeSpec(size=1234567)))\n{%- endcodetabs %}"
+        },
+        {
+          "info": {
+            "name": "Clone creates a new writable volume cloned from an existing volume",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/volumes/clone",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Requires access AccessType.Read of volume"
+        },
+        {
+          "info": {
+            "name": "Enumerate returns a list of volume ids that match the labels if any are provided.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/volumes/filters",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Enumerate returns a list of volume ids that match the labels if any are provided."
+        },
+        {
+          "info": {
+            "name": "Inspect returns information about a volume",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/volumes/inspect/:volume_id",
+            "params": [
+              {
+                "name": "volume_id",
+                "value": "",
+                "type": "path",
+                "description": "Id of volume to inspect"
+              },
+              {
+                "name": "options.deep",
+                "value": "",
+                "type": "query",
+                "description": "Deep inspection is used to collect more information about\nthe volume. Setting this value may delay the request."
+              }
+            ]
+          },
+          "docs": "Requires access AccessType.Read of volume"
+        },
+        {
+          "info": {
+            "name": "Returns information for a list of volumes that match a filter.\nThis call is a helper function like calling\n`OpenStorageVolume.EnumerateWithFilters` then having it\nreturn the contents of each of those volumes\n`OpenStorageVolume.Inspect()`. Take care in using this call\nwhen requesting large number of volumes because it will\nblock until it has all the information requested before\nreturning.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/volumes/inspectwithfilters",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns information for a list of volumes that match a filter.\nThis call is a helper function like calling\n`OpenStorageVolume.EnumerateWithFilters` then having it\nreturn the contents of each of those volumes\n`OpenStorageVolume.Inspect()`. Take care in using this call\nwhen requesting large number of volumes because it will\nblock until it has all the information requested before\nreturning."
+        },
+        {
+          "info": {
+            "name": "Sets the snapshot schedules. This information is saved in the VolumeSpec.snapshot_schedule\nas `policy=<name>,...`. This function will overwrite any policy values\nin the volume. To delete the policies in the volume send no policies.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/volumes/snapshot/schedules/:volume_id",
+            "params": [
+              {
+                "name": "volume_id",
+                "value": "",
+                "type": "path",
+                "description": "Id of volume"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Requires access AccessType.Write of volume"
+        },
+        {
+          "info": {
+            "name": "SnapshotEnumerate returns a list of snapshots for a specific volume",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/volumes/snapshots",
+            "params": [
+              {
+                "name": "volume_id",
+                "value": "",
+                "type": "query",
+                "description": "Get the snapshots for this volume id."
+              }
+            ]
+          },
+          "docs": "SnapshotEnumerate returns a list of snapshots for a specific volume"
+        },
+        {
+          "info": {
+            "name": "SnapshotCreate creates a snapshot of a volume. This creates an immutable (read-only),\npoint-in-time snapshot of a volume. To create a new writable volume from\na snapshot, please use OpenStorageVolume.Clone().",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/volumes/snapshots",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Requires access AccessType.Read of volume"
+        },
+        {
+          "info": {
+            "name": "SnapshotEnumerate returns a list of snapshots.\nTo filter all the snapshots for a specific volume which may no longer exist,\nspecify a volume id.\nLabels can also be used to filter the snapshot list.\nIf neither are provided all snapshots will be returned.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/volumes/snapshots/filters/:volume_id",
+            "params": [
+              {
+                "name": "volume_id",
+                "value": "",
+                "type": "path",
+                "description": "(optional) Get the snapshots for this volume id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "SnapshotEnumerate returns a list of snapshots.\nTo filter all the snapshots for a specific volume which may no longer exist,\nspecify a volume id.\nLabels can also be used to filter the snapshot list.\nIf neither are provided all snapshots will be returned."
+        },
+        {
+          "info": {
+            "name": "SnapshotRestore restores a volume to a specified snapshot",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/volumes/snapshots/restore",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Requires access AccessType.Write of volume"
+        },
+        {
+          "info": {
+            "name": "Stats returns the statistics for the requested volume",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/volumes/stats/:volume_id",
+            "params": [
+              {
+                "name": "volume_id",
+                "value": "",
+                "type": "path",
+                "description": "Id of the volume to get statistics"
+              },
+              {
+                "name": "not_cumulative",
+                "value": "",
+                "type": "query",
+                "description": "When set to false the stats are in /proc/diskstats style stats.\nWhen set to true the stats are stats for a specific duration."
+              }
+            ]
+          },
+          "docs": "Requires access AccessType.Read of volume"
+        },
+        {
+          "info": {
+            "name": "CapacityUsage returns volume/snapshot's capacity usage details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/volumes/usage/:volume_id",
+            "params": [
+              {
+                "name": "volume_id",
+                "value": "",
+                "type": "path",
+                "description": "Id of the snapshot/volume to get capacity usage details"
+              }
+            ]
+          },
+          "docs": "Requires access AccessType.Read of volume\n\n##### Error codes:\n\n* codes.Aborted : Command was aborted and only total_bytes field is valid\n* code.Unimmplemented : Command is not suported this kernel.Only total_bytes\nfield is valid;"
+        },
+        {
+          "info": {
+            "name": "Update provides a method for manipulating the specification and attributes of a volume.\nSet can be used to resize a volume, update labels, change replica count, and much more.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/v1/volumes/:volume_id",
+            "params": [
+              {
+                "name": "volume_id",
+                "value": "",
+                "type": "path",
+                "description": "Id of the volume to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Requires access AccessType.Write of volume"
+        },
+        {
+          "info": {
+            "name": "Delete deletes the provided volume",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v1/volumes/:volume_id",
+            "params": [
+              {
+                "name": "volume_id",
+                "value": "",
+                "type": "path",
+                "description": "Id of volume to delete"
+              }
+            ]
+          },
+          "docs": "Requires access AccessType.Admin of volume"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "OpenStorageMigrate",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Status for migration operation.\nIf status request is empty, status for all migration operation will be returned.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/volumemigrate",
+            "params": [
+              {
+                "name": "request.task_id",
+                "value": "",
+                "type": "query",
+                "description": "Task id for which to return status."
+              },
+              {
+                "name": "request.cluster_id",
+                "value": "",
+                "type": "query",
+                "description": "ID of the cluster for which to return migration statuses."
+              }
+            ]
+          },
+          "docs": "Status for migration operation.\nIf status request is empty, status for all migration operation will be returned."
+        },
+        {
+          "info": {
+            "name": "Start a migration operation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/volumemigrate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Start a migration operation"
+        },
+        {
+          "info": {
+            "name": "Cancel a migration operation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/volumemigrate/cancel",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Cancel a migration operation"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "OpenStorageWatch",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Watch on resources managed by the driver and receive them as a stream of events.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/watch",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Requires access AccessType.Read"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
