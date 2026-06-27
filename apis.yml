@@ -51,7 +51,7 @@ common:
     url: https://github.com/portworx
   - type: Pricing
     url: https://portworx.com/pricing/
-  - type: SignUp
+  - type: Signup
     url: https://central.portworx.com/
   - type: Support
     url: https://portworx.com/support/
