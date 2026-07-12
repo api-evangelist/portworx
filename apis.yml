@@ -39,6 +39,10 @@ apis:
       - type: OpenAPI
         url: openapi/portworx-openapi.yml
 common:
+  - type: DomainSecurity
+    url: security/portworx-domain-security.yml
+  - type: Authentication
+    url: authentication/portworx-authentication.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/portworx
   - type: Website
