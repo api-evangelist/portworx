@@ -1,0 +1,277 @@
+openapi: 3.0.0
+info:
+  title: OpenStorage SDK OpenStorageAlerts OpenStorageMigrate API
+  version: 0.186.0
+security:
+- bearerAuth: []
+tags:
+- name: OpenStorageMigrate
+paths:
+  /v1/volumemigrate:
+    get:
+      operationId: OpenStorageMigrate_Status
+      parameters:
+      - description: Task id for which to return status.
+        in: query
+        name: request.task_id
+        required: false
+        schema:
+          type: string
+      - description: ID of the cluster for which to return migration statuses.
+        in: query
+        name: request.cluster_id
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkCloudMigrateStatusResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: 'Status for migration operation.
+
+        If status request is empty, status for all migration operation will be returned.'
+      tags:
+      - OpenStorageMigrate
+    post:
+      operationId: OpenStorageMigrate_Start
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/apiSdkCloudMigrateStartRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkCloudMigrateStartResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: Start a migration operation
+      tags:
+      - OpenStorageMigrate
+  /v1/volumemigrate/cancel:
+    post:
+      operationId: OpenStorageMigrate_Cancel
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/apiSdkCloudMigrateCancelRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkCloudMigrateCancelResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: Cancel a migration operation
+      tags:
+      - OpenStorageMigrate
+components:
+  schemas:
+    CloudMigrateStage:
+      default: InvalidStage
+      enum:
+      - InvalidStage
+      - Backup
+      - Restore
+      - VolumeUpdate
+      - Done
+      type: string
+    protobufAny:
+      properties:
+        type_url:
+          type: string
+        value:
+          format: byte
+          type: string
+      type: object
+    SdkCloudMigrateStartRequestMigrateAllVolumes:
+      title: Defines a migration request for all volumes in a cluster
+      type: object
+    apiCloudMigrateStatusResponse:
+      properties:
+        info:
+          additionalProperties:
+            $ref: '#/components/schemas/apiCloudMigrateInfoList'
+          title: Map of cluster id to the status of volumes being migrated
+          type: object
+      title: Response with a status of the cloud migration operations
+      type: object
+    apiCloudMigrateCancelRequest:
+      properties:
+        task_id:
+          title: The id of the task to cancel
+          type: string
+      title: Request to stop a cloud migration
+      type: object
+    apiSdkCloudMigrateStartRequest:
+      properties:
+        all_volumes:
+          $ref: '#/components/schemas/SdkCloudMigrateStartRequestMigrateAllVolumes'
+        cluster_id:
+          title: ID of the cluster to which volumes are to be migrated
+          type: string
+        task_id:
+          title: 'Unique name assocaiated with this migration.
+
+            This is a Optional field for idempotency'
+          type: string
+        volume:
+          $ref: '#/components/schemas/SdkCloudMigrateStartRequestMigrateVolume'
+        volume_group:
+          $ref: '#/components/schemas/SdkCloudMigrateStartRequestMigrateVolumeGroup'
+      title: Defines a migration request
+      type: object
+    apiCloudMigrateInfoList:
+      properties:
+        list:
+          items:
+            $ref: '#/components/schemas/apiCloudMigrateInfo'
+          type: array
+      type: object
+    apiCloudMigrateInfo:
+      properties:
+        bytes_done:
+          format: uint64
+          title: BytesDone is the number of bytes already transferred
+          type: string
+        bytes_total:
+          format: uint64
+          title: BytesTotal is the number of bytes being transferred
+          type: string
+        cloudbackup_id:
+          title: ID of the cloudbackup used for the migration
+          type: string
+        cluster_id:
+          title: ID of the cluster where the volume is being migrated
+          type: string
+        completed_time:
+          format: date-time
+          title: CompletedTime indicates Op's completed time
+          type: string
+        current_stage:
+          $ref: '#/components/schemas/CloudMigrateStage'
+        error_reason:
+          title: Contains the reason for the migration error
+          type: string
+        eta_seconds:
+          format: int64
+          title: ETASeconds the time duration in seconds for cloud migration completion
+          type: string
+        last_update:
+          format: date-time
+          title: Last time the status was updated
+          type: string
+        local_volume_id:
+          title: ID of the volume on the local cluster
+          type: string
+        local_volume_name:
+          title: Name of the volume on the local cluster
+          type: string
+        remote_volume_id:
+          title: ID of the volume on the remote cluster
+          type: string
+        start_time:
+          format: date-time
+          title: StartTime indicates Op's start time
+          type: string
+        status:
+          $ref: '#/components/schemas/apiCloudMigrateStatus'
+        task_id:
+          title: Task id associated with this migration
+          type: string
+      type: object
+    apiSdkCloudMigrateStatusResponse:
+      properties:
+        result:
+          $ref: '#/components/schemas/apiCloudMigrateStatusResponse'
+      title: Defines a response for the status request
+      type: object
+    apiSdkCloudMigrateCancelResponse:
+      title: Empty Response
+      type: object
+    runtimeError:
+      properties:
+        code:
+          format: int32
+          type: integer
+        details:
+          items:
+            $ref: '#/components/schemas/protobufAny'
+          type: array
+        error:
+          type: string
+        message:
+          type: string
+      type: object
+    apiCloudMigrateStatus:
+      default: InvalidStatus
+      enum:
+      - InvalidStatus
+      - Queued
+      - Initialized
+      - InProgress
+      - Failed
+      - Complete
+      - Canceled
+      type: string
+    SdkCloudMigrateStartRequestMigrateVolumeGroup:
+      properties:
+        group_id:
+          type: string
+      title: Defines a migration request for a volume group
+      type: object
+    apiSdkCloudMigrateStartResponse:
+      properties:
+        result:
+          $ref: '#/components/schemas/apiCloudMigrateStartResponse'
+      title: Defines a response for the migration that was started
+      type: object
+    apiSdkCloudMigrateCancelRequest:
+      properties:
+        request:
+          $ref: '#/components/schemas/apiCloudMigrateCancelRequest'
+      title: Defines a request to stop a cloud migration
+      type: object
+    SdkCloudMigrateStartRequestMigrateVolume:
+      properties:
+        volume_id:
+          type: string
+      title: Defines a migration request for a volume
+      type: object
+    apiCloudMigrateStartResponse:
+      properties:
+        task_id:
+          title: TaskId assocaiated with the migration that was started
+          type: string
+      title: Response to start a cloud migration
+      type: object
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

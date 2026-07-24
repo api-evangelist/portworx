@@ -1,0 +1,96 @@
+openapi: 3.0.0
+info:
+  title: OpenStorage SDK OpenStorageAlerts OpenStorageCluster API
+  version: 0.186.0
+security:
+- bearerAuth: []
+tags:
+- name: OpenStorageCluster
+paths:
+  /v1/clusters/inspectcurrent:
+    get:
+      operationId: OpenStorageCluster_InspectCurrent
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkClusterInspectCurrentResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: InspectCurrent returns information about the current cluster
+      tags:
+      - OpenStorageCluster
+components:
+  schemas:
+    apiStorageCluster:
+      properties:
+        id:
+          title: Id of the cluster
+          type: string
+        name:
+          title: Name of the cluster
+          type: string
+        status:
+          $ref: '#/components/schemas/openstorageapiStatus'
+      title: StorageCluster represents the state and information about the cluster
+      type: object
+    protobufAny:
+      properties:
+        type_url:
+          type: string
+        value:
+          format: byte
+          type: string
+      type: object
+    apiSdkClusterInspectCurrentResponse:
+      properties:
+        cluster:
+          $ref: '#/components/schemas/apiStorageCluster'
+      title: Defines a response when inspecting the current cluster
+      type: object
+    runtimeError:
+      properties:
+        code:
+          format: int32
+          type: integer
+        details:
+          items:
+            $ref: '#/components/schemas/protobufAny'
+          type: array
+        error:
+          type: string
+        message:
+          type: string
+      type: object
+    openstorageapiStatus:
+      default: STATUS_NONE
+      enum:
+      - STATUS_NONE
+      - STATUS_INIT
+      - STATUS_OK
+      - STATUS_OFFLINE
+      - STATUS_ERROR
+      - STATUS_NOT_IN_QUORUM
+      - STATUS_DECOMMISSION
+      - STATUS_MAINTENANCE
+      - STATUS_STORAGE_DOWN
+      - STATUS_STORAGE_DEGRADED
+      - STATUS_NEEDS_REBOOT
+      - STATUS_STORAGE_REBALANCE
+      - STATUS_STORAGE_DRIVE_REPLACE
+      - STATUS_NOT_IN_QUORUM_NO_STORAGE
+      - STATUS_POOLMAINTENANCE
+      - STATUS_MAX
+      title: '- STATUS_MAX: Add statuses before MAX and update the number for MAX'
+      type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

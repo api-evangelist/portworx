@@ -1,0 +1,1982 @@
+openapi: 3.0.0
+info:
+  title: OpenStorage SDK OpenStorageAlerts OpenStorageVolume API
+  version: 0.186.0
+security:
+- bearerAuth: []
+tags:
+- name: OpenStorageVolume
+paths:
+  /v1/volume/catalog:
+    post:
+      operationId: OpenStorageVolume_VolumeCatalog
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/apiSdkVolumeCatalogRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkVolumeCatalogResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: 'Gets the volume catalog of an attached and mounted volume.
+
+        Returns the entire tree up to "n"  depth (default is all of it)
+
+        Takes a path that can be used as the new root for the catalog request.'
+      tags:
+      - OpenStorageVolume
+  /v1/volumes:
+    get:
+      operationId: OpenStorageVolume_Enumerate
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkVolumeEnumerateResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: Enumerate returns a list of volume ids
+      tags:
+      - OpenStorageVolume
+    post:
+      description: "Requires access AccessType.Read when cloning from a parent volume.\n\n##### Example\n{% codetabs name=\"Golang\", type=\"go\" -%}\nid, err := client.Create(context.Background(), &api.SdkVolumeCreateRequest{\n  Name: \"volume-12345-east\",\n  Spec: &api.VolumeSpec {\n    Size: 1234567,\n  },\n})\n{%- language name=\"Python\", type=\"py\" -%}\nen_resp = client.Create(api_pb2.SdkVolumeCreateRequest(\n  name=\"volume-12345-east\",\n  spec=api_pb2.VolumeSpec(size=1234567)))\n{%- endcodetabs %}"
+      operationId: OpenStorageVolume_Create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/apiSdkVolumeCreateRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkVolumeCreateResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: Create creates a volume according to the specification provided
+      tags:
+      - OpenStorageVolume
+  /v1/volumes/clone:
+    post:
+      description: Requires access AccessType.Read of volume
+      operationId: OpenStorageVolume_Clone
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/apiSdkVolumeCloneRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkVolumeCloneResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: Clone creates a new writable volume cloned from an existing volume
+      tags:
+      - OpenStorageVolume
+  /v1/volumes/filters:
+    post:
+      operationId: OpenStorageVolume_EnumerateWithFilters
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/apiSdkVolumeEnumerateWithFiltersRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkVolumeEnumerateWithFiltersResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: Enumerate returns a list of volume ids that match the labels if any are provided.
+      tags:
+      - OpenStorageVolume
+  /v1/volumes/inspect/{volume_id}:
+    get:
+      description: Requires access AccessType.Read of volume
+      operationId: OpenStorageVolume_Inspect
+      parameters:
+      - description: Id of volume to inspect
+        in: path
+        name: volume_id
+        required: true
+        schema:
+          type: string
+      - description: 'Deep inspection is used to collect more information about
+
+          the volume. Setting this value may delay the request.'
+        in: query
+        name: options.deep
+        required: false
+        schema:
+          type: boolean
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkVolumeInspectResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: Inspect returns information about a volume
+      tags:
+      - OpenStorageVolume
+  /v1/volumes/inspectwithfilters:
+    post:
+      operationId: OpenStorageVolume_InspectWithFilters
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/apiSdkVolumeInspectWithFiltersRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkVolumeInspectWithFiltersResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: 'Returns information for a list of volumes that match a filter.
+
+        This call is a helper function like calling
+
+        `OpenStorageVolume.EnumerateWithFilters` then having it
+
+        return the contents of each of those volumes
+
+        `OpenStorageVolume.Inspect()`. Take care in using this call
+
+        when requesting large number of volumes because it will
+
+        block until it has all the information requested before
+
+        returning.'
+      tags:
+      - OpenStorageVolume
+  /v1/volumes/snapshot/schedules/{volume_id}:
+    post:
+      description: Requires access AccessType.Write of volume
+      operationId: OpenStorageVolume_SnapshotScheduleUpdate
+      parameters:
+      - description: Id of volume
+        in: path
+        name: volume_id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/apiSdkVolumeSnapshotScheduleUpdateRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkVolumeSnapshotScheduleUpdateResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: 'Sets the snapshot schedules. This information is saved in the VolumeSpec.snapshot_schedule
+
+        as `policy=<name>,...`. This function will overwrite any policy values
+
+        in the volume. To delete the policies in the volume send no policies.'
+      tags:
+      - OpenStorageVolume
+  /v1/volumes/snapshots:
+    get:
+      operationId: OpenStorageVolume_SnapshotEnumerate
+      parameters:
+      - description: Get the snapshots for this volume id.
+        in: query
+        name: volume_id
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkVolumeSnapshotEnumerateResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: SnapshotEnumerate returns a list of snapshots for a specific volume
+      tags:
+      - OpenStorageVolume
+    post:
+      description: Requires access AccessType.Read of volume
+      operationId: OpenStorageVolume_SnapshotCreate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/apiSdkVolumeSnapshotCreateRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkVolumeSnapshotCreateResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: 'SnapshotCreate creates a snapshot of a volume. This creates an immutable (read-only),
+
+        point-in-time snapshot of a volume. To create a new writable volume from
+
+        a snapshot, please use OpenStorageVolume.Clone().'
+      tags:
+      - OpenStorageVolume
+  /v1/volumes/snapshots/filters/{volume_id}:
+    post:
+      operationId: OpenStorageVolume_SnapshotEnumerateWithFilters
+      parameters:
+      - description: (optional) Get the snapshots for this volume id
+        in: path
+        name: volume_id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/apiSdkVolumeSnapshotEnumerateWithFiltersRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkVolumeSnapshotEnumerateWithFiltersResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: 'SnapshotEnumerate returns a list of snapshots.
+
+        To filter all the snapshots for a specific volume which may no longer exist,
+
+        specify a volume id.
+
+        Labels can also be used to filter the snapshot list.
+
+        If neither are provided all snapshots will be returned.'
+      tags:
+      - OpenStorageVolume
+  /v1/volumes/snapshots/restore:
+    post:
+      description: Requires access AccessType.Write of volume
+      operationId: OpenStorageVolume_SnapshotRestore
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/apiSdkVolumeSnapshotRestoreRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkVolumeSnapshotRestoreResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: SnapshotRestore restores a volume to a specified snapshot
+      tags:
+      - OpenStorageVolume
+  /v1/volumes/stats/{volume_id}:
+    get:
+      description: Requires access AccessType.Read of volume
+      operationId: OpenStorageVolume_Stats
+      parameters:
+      - description: Id of the volume to get statistics
+        in: path
+        name: volume_id
+        required: true
+        schema:
+          type: string
+      - description: 'When set to false the stats are in /proc/diskstats style stats.
+
+          When set to true the stats are stats for a specific duration.'
+        in: query
+        name: not_cumulative
+        required: false
+        schema:
+          type: boolean
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkVolumeStatsResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: Stats returns the statistics for the requested volume
+      tags:
+      - OpenStorageVolume
+  /v1/volumes/usage/{volume_id}:
+    get:
+      description: 'Requires access AccessType.Read of volume
+
+
+        ##### Error codes:
+
+
+        * codes.Aborted : Command was aborted and only total_bytes field is valid
+
+        * code.Unimmplemented : Command is not suported this kernel.Only total_bytes
+
+        field is valid;'
+      operationId: OpenStorageVolume_CapacityUsage
+      parameters:
+      - description: Id of the snapshot/volume to get capacity usage details
+        in: path
+        name: volume_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkVolumeCapacityUsageResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: CapacityUsage returns volume/snapshot's capacity usage details
+      tags:
+      - OpenStorageVolume
+  /v1/volumes/{volume_id}:
+    delete:
+      description: Requires access AccessType.Admin of volume
+      operationId: OpenStorageVolume_Delete
+      parameters:
+      - description: Id of volume to delete
+        in: path
+        name: volume_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkVolumeDeleteResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: Delete deletes the provided volume
+      tags:
+      - OpenStorageVolume
+    put:
+      description: Requires access AccessType.Write of volume
+      operationId: OpenStorageVolume_Update
+      parameters:
+      - description: Id of the volume to update
+        in: path
+        name: volume_id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/apiSdkVolumeUpdateRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkVolumeUpdateResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: 'Update provides a method for manipulating the specification and attributes of a volume.
+
+        Set can be used to resize a volume, update labels, change replica count, and much more.'
+      tags:
+      - OpenStorageVolume
+components:
+  schemas:
+    apiStats:
+      properties:
+        bytes_used:
+          format: uint64
+          title: BytesUsed
+          type: string
+        discard_bytes:
+          format: uint64
+          title: Number of bytes discarded
+          type: string
+        discard_ms:
+          format: uint64
+          title: Time spent in discards in ms
+          type: string
+        discards:
+          format: uint64
+          title: Discards completed successfully
+          type: string
+        interval_ms:
+          format: uint64
+          title: Interval in ms during which stats were collected
+          type: string
+        io_ms:
+          format: uint64
+          title: Time spent doing IOs ms
+          type: string
+        io_progress:
+          format: uint64
+          title: IOs curently in progress
+          type: string
+        read_bytes:
+          format: uint64
+          title: Number of bytes read
+          type: string
+        read_ms:
+          format: uint64
+          title: Time spent in reads in ms
+          type: string
+        reads:
+          format: uint64
+          title: Reads completed successfully
+          type: string
+        unique_blocks:
+          format: uint64
+          title: Unique Blocks
+          type: string
+        write_bytes:
+          format: uint64
+          title: Number of bytes written
+          type: string
+        write_ms:
+          format: uint64
+          title: Time spent in writes in ms
+          type: string
+        writes:
+          format: uint64
+          title: Writes completed successfully
+          type: string
+      title: Stats is a structure that represents last collected stats for a volume
+      type: object
+    OwnershipPublicAccessControl:
+      properties:
+        type:
+          $ref: '#/components/schemas/OwnershipAccessType'
+      title: PublicAccessControl allows assigning public ownership
+      type: object
+    apiS3ProxySpec:
+      description: S3ProxySpec is the spec for proxying an external object store.
+      properties:
+        bucket_name:
+          title: BucketName is the name of the bucket from the object store
+          type: string
+      type: object
+    apiCatalogResponse:
+      properties:
+        report:
+          $ref: '#/components/schemas/apiReport'
+        root:
+          $ref: '#/components/schemas/apiCatalog'
+      type: object
+    Sharedv4ServiceSpecServiceType:
+      default: UNSPECIFIED
+      description: "Type of sharedv4 service. Values are governed by the different types\nof services supported by container orchestrators such as Kubernetes.\n\n - UNSPECIFIED: Unspecified\n - NODEPORT: Export the sharedv4 service on each Node's IP.\nIn this mode the sharedv4 volume can be accessed from outside the\ncluster using one of the node's IPs.\n - CLUSTERIP: Export the shared4 service on an internal cluster IP.\nIn this mode the sharedv4 volume will only be accessible\nwithin the cluster via this service.\n - LOADBALANCER: Expose the sharedv4 service on cloud provider's load balancer.\nApplicable when running in cloud. In this mode the sharedv4 volume\ncan be accessed from outside the cluster.\n - NONE: Do not use sharedv4 service feature. Use legacy sharedv4 volumes instead."
+      enum:
+      - UNSPECIFIED
+      - NODEPORT
+      - CLUSTERIP
+      - LOADBALANCER
+      - NONE
+      type: string
+    apiSdkVolumeInspectResponse:
+      properties:
+        labels:
+          additionalProperties:
+            type: string
+          title: Volume labels
+          type: object
+        name:
+          title: Name of volume
+          type: string
+        volume:
+          $ref: '#/components/schemas/apiVolume'
+      title: Defines the response when inspecting a volume
+      type: object
+    apiSharedv4Spec:
+      properties:
+        failover_strategy:
+          $ref: '#/components/schemas/apiSharedv4FailoverStrategyValue'
+      title: Sharedv4Spec specifies common properties of sharedv4 and sharedv4 service volumes
+      type: object
+    apiSdkVolumeSnapshotEnumerateWithFiltersResponse:
+      properties:
+        volume_snapshot_ids:
+          items:
+            type: string
+          title: List of immutable snapshots
+          type: array
+      title: Defines a response when listing snapshots
+      type: object
+    ScanPolicyScanTrigger:
+      default: SCAN_TRIGGER_NONE
+      enum:
+      - SCAN_TRIGGER_NONE
+      - SCAN_TRIGGER_ON_MOUNT
+      - SCAN_TRIGGER_ON_NEXT_MOUNT
+      type: string
+    apiSdkVolumeStatsResponse:
+      properties:
+        stats:
+          $ref: '#/components/schemas/apiStats'
+      title: Defines a response containing drive statistics
+      type: object
+    apiFastpathConfig:
+      properties:
+        coord_uuid:
+          title: fastpath coordinator node uuid to enhance reporting
+          type: string
+        dirty:
+          title: Dirty flag on volume - was attached in userspace
+          type: boolean
+        force_failover:
+          title: fastpath force failover, disable auto promote to fastpath
+          type: boolean
+        promote:
+          title: Fastpath temporary promotion during attach
+          type: boolean
+        replicas:
+          items:
+            $ref: '#/components/schemas/apiFastpathReplState'
+          title: Fastpath replica state for each replica in replica set
+          type: array
+        setup_on:
+          format: int32
+          title: fastpath setup on this node
+          type: integer
+        status:
+          $ref: '#/components/schemas/apiFastpathStatus'
+        verbose:
+          title: Verbose contains detailed info on fastpath status
+          type: string
+      title: FastpathConfig part of volume
+      type: object
+    apiFastpathReplState:
+      properties:
+        acl:
+          type: boolean
+        block:
+          type: boolean
+        dev_id:
+          format: uint64
+          type: string
+        devpath:
+          type: string
+        exported:
+          type: boolean
+        exported_device:
+          title: target info
+          type: string
+        imported:
+          title: initiator info
+          type: boolean
+        node_id:
+          format: int64
+          type: integer
+        node_uuid:
+          title: node_uuid added to enhance UI reporting
+          type: string
+        protocol:
+          $ref: '#/components/schemas/apiFastpathProtocol'
+        target:
+          type: string
+      type: object
+    apiAttachState:
+      default: ATTACH_STATE_EXTERNAL
+      enum:
+      - ATTACH_STATE_EXTERNAL
+      - ATTACH_STATE_INTERNAL
+      - ATTACH_STATE_INTERNAL_SWITCH
+      title: "- ATTACH_STATE_EXTERNAL: Attached and available externally\n - ATTACH_STATE_INTERNAL: Attached but only available internally\n - ATTACH_STATE_INTERNAL_SWITCH: Switching from External to Internal"
+      type: string
+    apiSdkVolumeSnapshotRestoreRequest:
+      properties:
+        snapshot_id:
+          title: Snapshot id to apply to `volume_id`
+          type: string
+        volume_id:
+          title: Id of volume
+          type: string
+      title: Defines a request to restore a volume to a snapshot
+      type: object
+    apiFastpathProtocol:
+      default: FASTPATH_PROTO_UNKNOWN
+      enum:
+      - FASTPATH_PROTO_UNKNOWN
+      - FASTPATH_PROTO_NVMEOF_TCP
+      - FASTPATH_PROTO_ISCSI
+      - FASTPATH_PROTO_LOCAL
+      type: string
+    apiVolumePlacementStrategy:
+      description: 'VolumePlacementStrategy defines a strategy for placing volumes in the cluster which will be a series of rules
+
+        All the rules specified will be applied for volume placement.
+
+        Rules that have enforcement as "required" are strictly enforced while "preferred" are best effort.
+
+        In situations, where 2 or more rules conflict, the weight of the rules will dictate which wins.'
+      properties:
+        replica_affinity:
+          items:
+            $ref: '#/components/schemas/apiReplicaPlacementSpec'
+          title: ReplicaAffinity defines affinity rules between replicas within a volume
+          type: array
+        replica_anti_affinity:
+          items:
+            $ref: '#/components/schemas/apiReplicaPlacementSpec'
+          title: ReplicaAntiAffinity defines anti-affinity rules between replicas within a volume
+          type: array
+        volume_affinity:
+          items:
+            $ref: '#/components/schemas/apiVolumePlacementSpec'
+          title: VolumeAffinity defines affinity rules between volumes
+          type: array
+        volume_anti_affinity:
+          items:
+            $ref: '#/components/schemas/apiVolumePlacementSpec'
+          title: VolumeAntiAffinity defines anti-affinity rules between volumes
+          type: array
+      type: object
+    apiVolume:
+      description: Volume represents an abstract storage volume.
+      properties:
+        attach_info:
+          additionalProperties:
+            type: string
+          description: AttachInfo is a list of name value mappings that provides attach information.
+          type: object
+        attach_path:
+          description: AttachPath is the mounted path in the host namespace.
+          items:
+            type: string
+          type: array
+        attach_time:
+          description: AttachTime time this device was last attached externally.
+          format: date-time
+          type: string
+        attached_on:
+          description: AttachedOn is the node instance identifier for clustered systems.
+          type: string
+        attached_state:
+          $ref: '#/components/schemas/apiAttachState'
+        ctime:
+          format: date-time
+          title: Volume creation time
+          type: string
+        derived_io_profile:
+          $ref: '#/components/schemas/apiIoProfile'
+        detach_time:
+          description: DetachTime time this device was detached.
+          format: date-time
+          type: string
+        device_path:
+          description: DevicePath is the device exported by block device implementations.
+          type: string
+        error:
+          description: Error is the Last recorded error.
+          type: string
+        format:
+          $ref: '#/components/schemas/apiFSType'
+        fpConfig:
+          $ref: '#/components/schemas/apiFastpathConfig'
+        fs_resize_required:
+          description: FsResizeRequired if an FS resize is required on the volume.
+          type: boolean
+        group:
+          $ref: '#/components/schemas/apiGroup'
+        id:
+          description: Self referential volume ID.
+          type: string
+        in_trashcan:
+          title: InTrashcan if the volume is in trashcan
+          type: boolean
+        last_scan:
+          description: LastScan is the time when an integrity check was run.
+          format: date-time
+          type: string
+        last_scan_fix:
+          format: date-time
+          title: LastScanFix is the time when an integrity check fixed errors in filesystem
+          type: string
+        last_scan_status:
+          $ref: '#/components/schemas/apiFilesystemHealthStatus'
+        locator:
+          $ref: '#/components/schemas/apiVolumeLocator'
+        mount_options:
+          $ref: '#/components/schemas/apiMountOptions'
+        readonly:
+          description: Readonly is true if this volume is to be mounted with readonly access.
+          type: boolean
+        replica_sets:
+          description: ReplicatSets storage for this volumefor clustered storage arrays.
+          items:
+            $ref: '#/components/schemas/apiReplicaSet'
+          type: array
+        runtime_state:
+          description: 'RuntimeState is a lst of name value mapping of driver specific runtime
+
+            information.'
+          items:
+            $ref: '#/components/schemas/apiRuntimeStateMap'
+          type: array
+        secure_device_path:
+          description: SecureDevicePath is the device path for an encrypted volume.
+          type: string
+        sharedv4_mount_options:
+          $ref: '#/components/schemas/apiMountOptions'
+        source:
+          $ref: '#/components/schemas/apiSource'
+        spec:
+          $ref: '#/components/schemas/apiVolumeSpec'
+        state:
+          $ref: '#/components/schemas/apiVolumeState'
+        status:
+          $ref: '#/components/schemas/apiVolumeStatus'
+        usage:
+          description: Usage is bytes consumed by this volume.
+          format: uint64
+          type: string
+        volume_consumers:
+          items:
+            $ref: '#/components/schemas/apiVolumeConsumer'
+          title: VolumeConsumers are entities that consume this volume
+          type: array
+      type: object
+    ScanPolicyScanAction:
+      default: SCAN_ACTION_NONE
+      enum:
+      - SCAN_ACTION_NONE
+      - SCAN_ACTION_SCAN_ONLY
+      - SCAN_ACTION_SCAN_REPAIR
+      type: string
+    apiProxySpec:
+      description: ProxySpec defines how this volume will reflect an external data source.
+      properties:
+        endpoint:
+          description: 'Endpoint is the external endpoint which can be used for accessing the
+
+            external data source.'
+          type: string
+        nfs_spec:
+          $ref: '#/components/schemas/apiNFSProxySpec'
+        proxy_protocol:
+          $ref: '#/components/schemas/apiProxyProtocol'
+        pure_block_spec:
+          $ref: '#/components/schemas/apiPureBlockSpec'
+        pure_file_spec:
+          $ref: '#/components/schemas/apiPureFileSpec'
+        pxd_spec:
+          $ref: '#/components/schemas/apiPXDProxySpec'
+        s3_spec:
+          $ref: '#/components/schemas/apiS3ProxySpec'
+      type: object
+    protobufAny:
+      properties:
+        type_url:
+          type: string
+        value:
+          format: byte
+          type: string
+      type: object
+    apiSource:
+      description: 'Source is a structure that can be given to a volume
+
+        to seed the volume with data.'
+      properties:
+        parent:
+          description: A volume id, if specified will create a clone of the parent.
+          type: string
+        seed:
+          title: 'Seed will seed the volume from the specified URI
+
+            Any additional config for the source comes from the labels in the spec'
+          type: string
+      type: object
+    apiVolumeConsumer:
+      properties:
+        name:
+          title: Name is the name of the volume consumer
+          type: string
+        namespace:
+          title: Namespace is the namespace of the volume consumer
+          type: string
+        node_id:
+          description: "NodeID is the identifier of the node on which the consumer is running. This\nidentifier would be from the perspective of the container runtime or\norchestrator under which the volume consumer resides. For example, NodeID\n can be name of a minion in Kubernetes."
+          type: string
+        owner_name:
+          title: OwnerName is the name of the entity who owns this volume consumer
+          type: string
+        owner_type:
+          description: 'OwnerType is the type of the entity who owns this volume consumer. The type would
+
+            be from the perspective of the container runtime or the orchestrator under which
+
+            the volume consumer resides. For e.g OwnerType can be a Deployment in Kubernetes.'
+          type: string
+        type:
+          title: Type is the type of the consumer. E.g a Kubernetes pod
+          type: string
+      title: 'VolumeConsumer identifies a consumer for a Volume. An example of a VolumeConsumer
+
+        would be a Pod in Kubernetes who has mounted the PersistentVolumeClaim for the
+
+        Volume'
+      type: object
+    apiSdkVolumeEnumerateWithFiltersRequest:
+      properties:
+        group:
+          $ref: '#/components/schemas/apiGroup'
+        labels:
+          additionalProperties:
+            type: string
+          title: (optional) Labels to search
+          type: object
+        name:
+          title: (optional) Name to search
+          type: string
+        ownership:
+          $ref: '#/components/schemas/apiOwnership'
+      title: Defines a request to list volumes
+      type: object
+    apiSdkVolumeCatalogRequest:
+      properties:
+        depth:
+          title: Depth of folders/files retrieved (default is all of it, 1 would only return 1 layer)
+          type: string
+        path:
+          title: Path which will be used as root (default is the actual root)
+          type: string
+        volume_id:
+          description: VolumeId of the volume that is getting it's catalog retrieved.
+          type: string
+      title: Request message to get the volume catalog
+      type: object
+    apiFSType:
+      default: FS_TYPE_NONE
+      enum:
+      - FS_TYPE_NONE
+      - FS_TYPE_BTRFS
+      - FS_TYPE_EXT4
+      - FS_TYPE_FUSE
+      - FS_TYPE_NFS
+      - FS_TYPE_VFS
+      - FS_TYPE_XFS
+      - FS_TYPE_ZFS
+      - FS_TYPE_XFSv2
+      type: string
+    apiSdkVolumeInspectWithFiltersRequest:
+      properties:
+        group:
+          $ref: '#/components/schemas/apiGroup'
+        labels:
+          additionalProperties:
+            type: string
+          title: (optional) Labels to search
+          type: object
+        name:
+          title: (optional) Name to search
+          type: string
+        options:
+          $ref: '#/components/schemas/apiVolumeInspectOptions'
+        ownership:
+          $ref: '#/components/schemas/apiOwnership'
+      title: Defines the request to inspect volumes using a filter
+      type: object
+    apiSdkVolumeCloneResponse:
+      properties:
+        volume_id:
+          title: Id of new volume
+          type: string
+      title: Defines the response when creating a clone from a volume or a snapshot
+      type: object
+    OwnershipAccessType:
+      default: Read
+      description: "Access types can be set by owner to have different levels of access to\na resource.\n\nIt is up to the resource to interpret what the types mean and are\nused for.\n\n - Read: Read access only and cannot affect the resource.\n - Write: Write access and can affect the resource.\nThis type automatically provides Read access also.\n - Admin: Administrator access.\nThis type automatically provides Read and Write access also."
+      enum:
+      - Read
+      - Write
+      - Admin
+      type: string
+    apiProxyProtocol:
+      default: PROXY_PROTOCOL_INVALID
+      description: "ProxyProtocol defines the protocol used for proxy.\n\n - PROXY_PROTOCOL_INVALID: Invalid uninitialized value\n - PROXY_PROTOCOL_NFS: NFS indicates that the external data source is NFS and the volume\nwill be reflected over NFS protocol\n - PROXY_PROTOCOL_S3: S3 indicates that the external data source is an object store.\n - PROXY_PROTOCOL_PXD: PXD indicates that the external data source is a Portworx block volume.\n - PROXY_PROTOCOL_PURE_BLOCK: PURE_BLOCK indicates that the external data source is a pure_block volume.\n - PROXY_PROTOCOL_PURE_FILE: PURE_FILE indicates that the external data source is a pure_file volume."
+      enum:
+      - PROXY_PROTOCOL_INVALID
+      - PROXY_PROTOCOL_NFS
+      - PROXY_PROTOCOL_S3
+      - PROXY_PROTOCOL_PXD
+      - PROXY_PROTOCOL_PURE_BLOCK
+      - PROXY_PROTOCOL_PURE_FILE
+      type: string
+    apiVolumeState:
+      default: VOLUME_STATE_NONE
+      description: "VolumeState represents the state of a volume.\n\n - VOLUME_STATE_PENDING: Volume is transitioning to new state\n - VOLUME_STATE_AVAILABLE: Volume is ready to be assigned to a container\n - VOLUME_STATE_ATTACHED: Volume is attached to container\n - VOLUME_STATE_DETACHED: Volume is detached but associated with a container\n - VOLUME_STATE_DETATCHING: Volume detach is in progress\n - VOLUME_STATE_ERROR: Volume is in error state\n - VOLUME_STATE_DELETED: Volume is deleted, it will remain in this state\nwhile resources are asynchronously reclaimed\n - VOLUME_STATE_TRY_DETACHING: Volume is trying to be detached\n - VOLUME_STATE_RESTORE: Volume is undergoing restore"
+      enum:
+      - VOLUME_STATE_NONE
+      - VOLUME_STATE_PENDING
+      - VOLUME_STATE_AVAILABLE
+      - VOLUME_STATE_ATTACHED
+      - VOLUME_STATE_DETACHED
+      - VOLUME_STATE_DETATCHING
+      - VOLUME_STATE_ERROR
+      - VOLUME_STATE_DELETED
+      - VOLUME_STATE_TRY_DETACHING
+      - VOLUME_STATE_RESTORE
+      type: string
+    apiSdkVolumeCreateResponse:
+      properties:
+        volume_id:
+          title: Id of new volume
+          type: string
+      title: Defines a response to the creation of a volume
+      type: object
+    apiSdkVolumeSnapshotRestoreResponse:
+      title: Empty response
+      type: object
+    apiXattrValue:
+      default: UNSPECIFIED
+      enum:
+      - UNSPECIFIED
+      - COW_ON_DEMAND
+      title: "- UNSPECIFIED: Value is uninitialized or unknown\n - COW_ON_DEMAND: Enable on-demand copy-on-write on the volume"
+      type: string
+    apiFilesystemHealthStatus:
+      default: FS_HEALTH_STATUS_UNKNOWN
+      enum:
+      - FS_HEALTH_STATUS_UNKNOWN
+      - FS_HEALTH_STATUS_HEALTHY
+      - FS_HEALTH_STATUS_SAFE_TO_FIX
+      - FS_HEALTH_STATUS_NEEDS_INSPECTION
+      title: "- FS_HEALTH_STATUS_UNKNOWN: filesystem health status is unknown\n - FS_HEALTH_STATUS_HEALTHY: filesystem is a healthy\n - FS_HEALTH_STATUS_SAFE_TO_FIX: filesystem has errors, but can be fixed safely\n - FS_HEALTH_STATUS_NEEDS_INSPECTION: filesystem has errors, these cannot be fixed automatically,\nuser needs to review the reported errors and take appropriate action"
+      type: string
+    apiReplicaPlacementSpec:
+      properties:
+        affected_replicas:
+          format: int32
+          title: 'AffectedReplicas defines the number of volume replicas affected by this rule. If not provided,
+
+            rule would affect all replicas
+
+            (optional)'
+          type: integer
+        enforcement:
+          $ref: '#/components/schemas/apiEnforcementType'
+        match_expressions:
+          description: MatchExpressions is a list of label selector requirements. The requirements are ANDed.
+          items:
+            $ref: '#/components/schemas/apiLabelSelectorRequirement'
+          type: array
+        topology_key:
+          title: 'TopologyKey key for the matching all segments of the cluster topology with the same key
+
+            e.g If the key is failure-domain.beta.kubernetes.io/zone, this should match all nodes with
+
+            the same value for this key (i.e in the same zone)'
+          type: string
+        weight:
+          format: int64
+          title: 'Weight defines the weight of the rule which allows to break the tie with other matching rules. A rule with
+
+            higher weight wins over a rule with lower weight.
+
+            (optional)'
+          type: string
+      type: object
+    apiEnforcementType:
+      default: required
+      description: "- required: This specifies that the rule is required and must be strictly enforced\n - preferred: This specifies that the rule is preferred and can be best effort"
+      enum:
+      - required
+      - preferred
+      title: Defines the types of enforcement on the given rules
+      type: string
+    apiVolumeInspectOptions:
+      properties:
+        deep:
+          description: 'Deep inspection is used to collect more information about
+
+            the volume. Setting this value may delay the request.'
+          type: boolean
+      title: Options used for volume inspection
+      type: object
+    runtimeError:
+      properties:
+        code:
+          format: int32
+          type: integer
+        details:
+          items:
+            $ref: '#/components/schemas/protobufAny'
+          type: array
+        error:
+          type: string
+        message:
+          type: string
+      type: object
+    LabelSelectorRequirementOperator:
+      default: In
+      description: "- In: In means the value for 'key' should be in one of the given value(s)\n - NotIn: NotIn means the value for 'key' should NOT be in one of the given value(s)\n - Exists: Exists means the 'key' should just exist regardless of the value\n - DoesNotExist: DoesNotExist means the 'key' should NOT exist\n - Gt: Gt means the 'key' should be greater than the value(s)\n - Lt: Lt means the 'key' should be less than the value(s)"
+      enum:
+      - In
+      - NotIn
+      - Exists
+      - DoesNotExist
+      - Gt
+      - Lt
+      title: This defines operator types used in a label matching rule
+      type: string
+    apiPXDProxySpec:
+      properties:
+        id:
+          title: ID of the remote portworx volume
+          type: string
+      title: PXDProxySpec is the spec for proxying a Portworx volume
+      type: object
+    apiSdkVolumeSnapshotScheduleUpdateRequest:
+      properties:
+        snapshot_schedule_names:
+          items:
+            type: string
+          title: Names of schedule policies
+          type: array
+        volume_id:
+          title: Id of volume
+          type: string
+      title: Defines a request to update the snapshot schedule of a volume
+      type: object
+    apiPureFileSpec:
+      properties:
+        export_rules:
+          type: string
+        full_vol_name:
+          type: string
+        nfs_endpoint:
+          type: string
+      title: PureFileSpec is the spec for proxying a volume on pure_file backends
+      type: object
+    apiSdkVolumeCatalogResponse:
+      properties:
+        catalog:
+          $ref: '#/components/schemas/apiCatalogResponse'
+      title: Response message to get volume catalog
+      type: object
+    apiCosType:
+      default: NONE
+      enum:
+      - NONE
+      - LOW
+      - MEDIUM
+      - HIGH
+      type: string
+    apiIoStrategy:
+      description: IoStrategy defines how I/O should be performed to backing storage media.
+      properties:
+        async_io:
+          description: AsyncIO enables kaio.
+          type: boolean
+        direct_io:
+          title: Enable direct I/O on the backing datastore
+          type: boolean
+        early_ack:
+          description: EarlyAck enables acks for async I/O at the source.
+          type: boolean
+      type: object
+    apiSdkVolumeInspectWithFiltersResponse:
+      properties:
+        volumes:
+          items:
+            $ref: '#/components/schemas/apiSdkVolumeInspectResponse'
+          title: List of `SdkVolumeInspectResponse` objects describing the volumes
+          type: array
+      title: Defines the response when inspecting volumes using a filter
+      type: object
+    apiRuntimeStateMap:
+      description: 'RuntimeStateMap is a list of name value mapping of driver specific runtime
+
+        information.'
+      properties:
+        runtime_state:
+          additionalProperties:
+            type: string
+          type: object
+      type: object
+    apiSdkVolumeSnapshotScheduleUpdateResponse:
+      title: Empty response
+      type: object
+    apiVolumeStatus:
+      default: VOLUME_STATUS_NONE
+      description: "VolumeStatus represents a health status for a volume.\n\n - VOLUME_STATUS_NOT_PRESENT: Volume is not present\n - VOLUME_STATUS_UP: Volume is healthy\n - VOLUME_STATUS_DOWN: Volume is in fail mode\n - VOLUME_STATUS_DEGRADED: Volume is up but with degraded performance\nIn a RAID group, this may indicate a problem with one or more drives"
+      enum:
+      - VOLUME_STATUS_NONE
+      - VOLUME_STATUS_NOT_PRESENT
+      - VOLUME_STATUS_UP
+      - VOLUME_STATUS_DOWN
+      - VOLUME_STATUS_DEGRADED
+      type: string
+    apiSdkVolumeSnapshotEnumerateResponse:
+      properties:
+        volume_snapshot_ids:
+          items:
+            type: string
+          title: List of immutable snapshots
+          type: array
+      title: Defines a response when listing snapshots
+      type: object
+    apiSdkVolumeSnapshotEnumerateWithFiltersRequest:
+      properties:
+        labels:
+          additionalProperties:
+            type: string
+          title: (optional) Get snapshots that match these labels
+          type: object
+        volume_id:
+          title: (optional) Get the snapshots for this volume id
+          type: string
+      title: Defines a request to list the snaphots
+      type: object
+    apiExportSpec:
+      description: ExportSpec defines how the volume is exported..
+      properties:
+        export_options:
+          description: ExportOptions options exporting the volume.
+          type: string
+        export_protocol:
+          $ref: '#/components/schemas/apiExportProtocol'
+      type: object
+    apiTopologyRequirement:
+      properties:
+        labels:
+          additionalProperties:
+            type: string
+          title: Key-value pairs defining the required topology for a volume
+          type: object
+      title: TopologyRequirement defines the topology requirement for a volume
+      type: object
+    apiIoThrottle:
+      properties:
+        read_bw_mbytes:
+          format: int64
+          type: integer
+        read_iops:
+          format: int64
+          type: integer
+        write_bw_mbytes:
+          format: int64
+          type: integer
+        write_iops:
+          format: int64
+          type: integer
+      title: 'IoThrottle defines IO throttle limits for a volume
+
+        read_iops : maximum read iops this volume is allowed
+
+        write_iops : maximum write iops this volume is allowed
+
+        read_bw_mbytes  : maximum read bandwidth this volume is allowed in MegaBytes
+
+        write_bw_mbytes : maximum write bandwidth this volume is allowed in MegaBytes'
+      type: object
+    apiSdkVolumeDeleteResponse:
+      title: Empty response
+      type: object
+    apiPureBlockSpec:
+      properties:
+        full_vol_name:
+          type: string
+        pod_name:
+          type: string
+        serial_num:
+          type: string
+      title: PureBlockSpec is the spec for proxying a volume on pure_block backends
+      type: object
+    apiSdkVolumeSnapshotCreateResponse:
+      properties:
+        snapshot_id:
+          title: Id of immutable snapshot
+          type: string
+      title: Defines a response after creating a snapshot of a volume
+      type: object
+    apiVolumeSpecUpdate:
+      properties:
+        auto_fstrim:
+          type: boolean
+        checksummed:
+          type: boolean
+        cos:
+          $ref: '#/components/schemas/apiCosType'
+        dedupe:
+          type: boolean
+        export_spec:
+          $ref: '#/components/schemas/apiExportSpec'
+        fastpath:
+          type: boolean
+        group:
+          $ref: '#/components/schemas/apiGroup'
+        ha_level:
+          format: int64
+          type: string
+        io_profile:
+          $ref: '#/components/schemas/apiIoProfile'
+        io_strategy:
+          $ref: '#/components/schemas/apiIoStrategy'
+        io_throttle:
+          $ref: '#/components/schemas/apiIoThrottle'
+        journal:
+          type: boolean
+        mount_opt_spec:
+          $ref: '#/components/schemas/apiMountOptions'
+        near_sync_replication_strategy:
+          $ref: '#/components/schemas/apiNearSyncReplicationStrategy'
+        nodiscard:
+          type: boolean
+        ownership:
+          $ref: '#/components/schemas/apiOwnership'
+        passphrase:
+          type: string
+        proxy_spec:
+          $ref: '#/components/schemas/apiProxySpec'
+        proxy_write:
+          type: boolean
+        pure_nfs_endpoint:
+          type: string
+        queue_depth:
+          format: int64
+          type: integer
+        readahead:
+          type: boolean
+        replica_set:
+          $ref: '#/components/schemas/apiReplicaSet'
+        scale:
+          format: int64
+          type: integer
+        scan_policy:
+          $ref: '#/components/schemas/apiScanPolicy'
+        shared:
+          type: boolean
+        sharedv4:
+          type: boolean
+        sharedv4_mount_opt_spec:
+          $ref: '#/components/schemas/apiMountOptions'
+        sharedv4_service_spec:
+          $ref: '#/components/schemas/apiSharedv4ServiceSpec'
+        sharedv4_spec:
+          $ref: '#/components/schemas/apiSharedv4Spec'
+        size:
+          format: uint64
+          type: string
+        snapshot_interval:
+          format: int64
+          type: integer
+        snapshot_schedule:
+          type: string
+        sticky:
+          type: boolean
+        winshare:
+          type: boolean
+        xattr:
+          $ref: '#/components/schemas/apiXattrValue'
+      title: VolumeSpecUpdate provides a method to set any of the VolumeSpec of an existing volume
+      type: object
+    apiScanPolicy:
+      description: 'ScanPolicy defines when a filesystem check is triggered and what action to take
+
+        User can specify *one* of the following valid policies
+
+        1. trigger=SCAN_TRIGGER_ON_MOUNT, action=SCAN_ACTION_SCAN_ONLY
+
+        2. trigger=SCAN_TRIGGER_ON_MOUNT, action=SCAN_ACTION_SCAN_REPAIR
+
+        3. trigger=SCAN_TRIGGER_ON_NEXT_MOUNT, action=SCAN_ACTION_SCAN_ONLY
+
+        4. trigger=SCAN_TRIGGER_ON_NEXT_MOUNT, action=SCAN_ACTION_SCAN_REPAIR
+
+        5. trigger=SCAN_TRIGGER_NONE, action=SCAN_ACTION_NONE
+
+        Note: When trigger == SCAN_TRIGGER_ON_NEXT_MOUNT, the associated action is
+
+        performed once on the next mount and the scanpolicy gets reset to
+
+        `trigger=SCAN_TRIGGER_NONE, action=SCAN_ACTION_NONE`, irrespective of the
+
+        output of the action.'
+      properties:
+        action:
+          $ref: '#/components/schemas/ScanPolicyScanAction'
+        trigger:
+          $ref: '#/components/schemas/ScanPolicyScanTrigger'
+      type: object
+    apiSdkVolumeSnapshotCreateRequest:
+      description: Defines the request when creating a snapshot from a volume.
+      properties:
+        labels:
+          additionalProperties:
+            type: string
+          title: Labels to apply to snapshot
+          type: object
+        name:
+          description: Name of the snapshot.
+          type: string
+        volume_id:
+          title: Id of volume to take the snapshot from
+          type: string
+      type: object
+    apiNFSProxySpec:
+      description: NFSProxySpec is the spec for proxying an NFS share.
+      properties:
+        export_path:
+          title: ExportPath is the NFS export path on the NFS server
+          type: string
+        sub_path:
+          description: SubPath is the sub-directory from an NFS share that should be reflected.
+          type: string
+      type: object
+    apiVolumeSpec:
+      description: VolumeSpec has the properties needed to create a volume.
+      properties:
+        aggregation_level:
+          description: Aggregation level Specifies the number of parts the volume can be aggregated from.
+          format: int64
+          type: integer
+        auto_fstrim:
+          title: Autofstrim indicates that fstrim would be run on this volume automatically, without user intervention
+          type: boolean
+        block_size:
+          description: BlockSize for the filesystem.
+          format: int64
+          type: string
+        cascaded:
+          description: Cascaded is true if this volume can be populated on any node from an external source.
+          type: boolean
+        checksum_clone_id:
+          title: clone created to trigger checksum verification
+          type: string
+        checksummed:
+          title: Checksummed indicates if volumed data is checksummed to provide data integrity
+          type: boolean
+        compressed:
+          description: Compressed is true if this volume is to be compressed.
+          type: boolean
+        cos:
+          $ref: '#/components/schemas/apiCosType'
+        dedupe:
+          description: Dedupe specifies if the volume data is to be de-duplicated.
+          type: boolean
+        encrypted:
+          description: Encrypted is true if this volume will be cryptographically secured.
+          type: boolean
+        ephemeral:
+          title: Ephemeral storage
+          type: boolean
+        export_spec:
+          $ref: '#/components/schemas/apiExportSpec'
+        fa_create_options:
+          description: Filesystem create options to be honored.
+          type: string
+        force_unsupported_fs_type:
+          description: 'Use to force a file system type which is not recommended.
+
+            The driver may still refuse to use the file system type.'
+          type: boolean
+        format:
+          $ref: '#/components/schemas/apiFSType'
+        fp_preference:
+          title: fastpath extensions
+          type: boolean
+        group:
+          $ref: '#/components/schemas/apiGroup'
+        group_enforced:
+          description: GroupEnforced is true if consistency group creation is enforced.
+          type: boolean
+        ha_level:
+          description: HaLevel specifies the number of copies of data.
+          format: int64
+          type: string
+        io_profile:
+          $ref: '#/components/schemas/apiIoProfile'
+        io_strategy:
+          $ref: '#/components/schemas/apiIoStrategy'
+        io_throttle:
+          $ref: '#/components/schemas/apiIoThrottle'
+        journal:
+          description: Journal is true if data for the volume goes into the journal.
+          type: boolean
+        mount_options:
+          $ref: '#/components/schemas/apiMountOptions'
+        near_sync:
+          title: NearSync specifies the volume has a near-sync replica
+          type: boolean
+        near_sync_replication_strategy:
+          $ref: '#/components/schemas/apiNearSyncReplicationStrategy'
+        nodiscard:
+          description: 'Nodiscard specifies if the volume will be mounted with discard support disabled.
+
+            i.e. FS will not release allocated blocks back to the backing storage pool.'
+          type: boolean
+        number_of_chunks:
+          format: int64
+          title: NumberOfChunks indicates how many chunks must be created, 0 and 1 both mean 1
+          type: integer
+        ownership:
+          $ref: '#/components/schemas/apiOwnership'
+        passphrase:
+          title: Passphrase for an encrypted volume
+          type: string
+        placement_strategy:
+          $ref: '#/components/schemas/apiVolumePlacementStrategy'
+        proxy_spec:
+          $ref: '#/components/schemas/apiProxySpec'
+        proxy_write:
+          title: Proxy_write if true, per volume proxy write replication enabled
+          type: boolean
+        queue_depth:
+          format: int64
+          title: QueueDepth defines the desired block device queue depth
+          type: integer
+        readahead:
+          title: Enable readahead for the volume
+          type: boolean
+        replica_set:
+          $ref: '#/components/schemas/apiReplicaSet'
+        scale:
+          description: Scale allows autocreation of volumes.
+          format: int64
+          type: integer
+        scan_policy:
+          $ref: '#/components/schemas/apiScanPolicy'
+        shared:
+          description: Shared is true if this volume can be concurrently accessed by multiple users.
+          type: boolean
+        sharedv4:
+          description: Sharedv4 is true if this volume can be accessed via sharedv4.
+          type: boolean
+        sharedv4_mount_options:
+          $ref: '#/components/schemas/apiMountOptions'
+        sharedv4_service_spec:
+          $ref: '#/components/schemas/apiSharedv4ServiceSpec'
+        sharedv4_spec:
+          $ref: '#/components/schemas/apiSharedv4Spec'
+        size:
+          format: uint64
+          title: Size specifies the thin provisioned volume size in bytes
+          type: string
+        snapshot_interval:
+          format: int64
+          title: SnapshotInterval in minutes, set to 0 to disable snapshots
+          type: integer
+        snapshot_schedule:
+          description: SnapshotSchedule a well known string that specifies when snapshots should be taken.
+          type: string
+        sticky:
+          description: Sticky volumes cannot be deleted until the flag is removed.
+          type: boolean
+        storage_policy:
+          title: StoragePolicy if applied/specified while creating volume
+          type: string
+        topology_requirement:
+          $ref: '#/components/schemas/apiTopologyRequirement'
+        volume_labels:
+          additionalProperties:
+            type: string
+          title: (deprecated, do not use) VolumeLabels configuration labels
+          type: object
+        winshare:
+          description: winshare is true if this volume can be accessed from windows pods.
+          type: boolean
+        xattr:
+          $ref: '#/components/schemas/apiXattrValue'
+      type: object
+    OwnershipAccessControl:
+      properties:
+        collaborators:
+          additionalProperties:
+            $ref: '#/components/schemas/OwnershipAccessType'
+          description: 'Collaborator access to resource gives access to other user.
+
+            Must be the username (unique id) set in the authorization token.
+
+            The owner or the administrator can set this value. Possible values are:
+
+            1. no collaborators: Means no users are given access.
+
+            2. `["*"]`: All users are allowed.
+
+            3. `["username1", "username2"]`: Only certain usernames are allowed. In this example only
+
+            _username1_ and _username2_ are allowed.'
+          type: object
+        groups:
+          additionalProperties:
+            $ref: '#/components/schemas/OwnershipAccessType'
+          description: 'Group access to resource which must match the group set in the
+
+            authorization token.
+
+            Can be set by the owner or the system administrator only.
+
+            Possible values are:
+
+            1. no groups: Means no groups are given access.
+
+            2. `["*"]`: All groups are allowed.
+
+            3. `["group1", "group2"]`: Only certain groups are allowed. In this example only
+
+            _group1_ and _group2_ are allowed.'
+          type: object
+        public:
+          $ref: '#/components/schemas/OwnershipPublicAccessControl'
+      type: object
+    apiSdkVolumeEnumerateWithFiltersResponse:
+      properties:
+        volume_ids:
+          items:
+            type: string
+          title: List of volumes matching label
+          type: array
+      title: Defines the response when listing volumes
+      type: object
+    apiSdkVolumeUpdateRequest:
+      properties:
+        labels:
+          additionalProperties:
+            type: string
+          description: 'Change label values. Some of these values may not be able to be changed.
+
+            New labels will be added to the current volume labels. To delete a label, set the
+
+            value of the label to an empty string.'
+          type: object
+        spec:
+          $ref: '#/components/schemas/apiVolumeSpecUpdate'
+        volume_id:
+          title: Id of the volume to update
+          type: string
+      title: This request is used to adjust or set new values in the volume
+      type: object
+    apiCapacityUsageInfo:
+      description: 'Provides details on exclusive and shared storage used by
+
+        snapshot/volume specifically for copy-on-write(COW) snapshots. Deletion
+
+        of snapshots and overwrite of volume will affect the exclusive storage
+
+        used by the other dependent snaps and parent volume.'
+      properties:
+        exclusive_bytes:
+          description: 'Storage consumed exclusively by this single snapshot. Deletion of this
+
+            snapshot may increase the free storage available by this amount.'
+          format: int64
+          type: string
+        shared_bytes:
+          format: int64
+          title: Storage consumed by this snapshot that is shared with parent and children
+          type: string
+        total_bytes:
+          format: int64
+          title: TotalBytes used by this volume
+          type: string
+      type: object
+    apiVolumeLocator:
+      description: 'VolumeLocator is a structure that is attached to a volume
+
+        and is used to carry opaque metadata.'
+      properties:
+        group:
+          $ref: '#/components/schemas/apiGroup'
+        name:
+          title: User friendly identifier
+          type: string
+        ownership:
+          $ref: '#/components/schemas/apiOwnership'
+        volume_ids:
+          items:
+            type: string
+          title: Volume Ids to match
+          type: array
+        volume_labels:
+          additionalProperties:
+            type: string
+          title: A set of name-value pairs that acts as search filters
+          type: object
+      type: object
+    apiGroup:
+      description: 'Group represents VolumeGroup / namespace
+
+        All volumes in the same group share this object.'
+      properties:
+        id:
+          description: Id common identifier across volumes that have the same group.
+          type: string
+      type: object
+    apiCatalog:
+      properties:
+        LastModified:
+          format: date-time
+          title: Last Modified
+          type: string
+        children:
+          items:
+            $ref: '#/components/schemas/apiCatalog'
+          title: Children
+          type: array
+        name:
+          title: Name of the Directory/File
+          type: string
+        path:
+          title: Full Path of the Directory/File
+          type: string
+        size:
+          format: uint64
+          title: File or Directory Size
+          type: string
+        type:
+          title: Type Directory or File
+          type: string
+      type: object
+    apiIoProfile:
+      default: IO_PROFILE_SEQUENTIAL
+      enum:
+      - IO_PROFILE_SEQUENTIAL
+      - IO_PROFILE_RANDOM
+      - IO_PROFILE_DB
+      - IO_PROFILE_DB_REMOTE
+      - IO_PROFILE_CMS
+      - IO_PROFILE_SYNC_SHARED
+      - IO_PROFILE_AUTO
+      - IO_PROFILE_NONE
+      - IO_PROFILE_JOURNAL
+      - IO_PROFILE_AUTO_JOURNAL
+      type: string
+    apiReplicaSet:
+      properties:
+        id:
+          format: int64
+          title: ID is the unique ID of this replica set
+          type: integer
+        nodes:
+          items:
+            type: string
+          type: array
+        pool_uuids:
+          items:
+            type: string
+          title: Unique IDs of the storage pools for this replica set
+          type: array
+      title: 'ReplicaSet set of machine IDs (nodes) to which part of this volume is erasure
+
+        coded - for clustered storage arrays'
+      type: object
+    apiNearSyncReplicationStrategy:
+      default: NEAR_SYNC_STRATEGY_NONE
+      enum:
+      - NEAR_SYNC_STRATEGY_NONE
+      - NEAR_SYNC_STRATEGY_AGGRESSIVE
+      - NEAR_SYNC_STRATEGY_OPTIMIZED
+      type: string
+    apiLabelSelectorRequirement:
+      description: 'LabelSelectorRequirement is a selector that contains values, a key, and an operator that
+
+        relates the key and values.'
+      properties:
+        key:
+          description: Key is the label key that the selector applies to.
+          type: string
+        operator:
+          $ref: '#/components/schemas/LabelSelectorRequirementOperator'
+        values:
+          description: 'Values is an array of string values. If the operator is In or NotIn,
+
+            the values array must be non-empty. If the operator is Exists or DoesNotExist,
+
+            the values array must be empty. This array is replaced during a strategic
+
+            merge patch.'
+          items:
+            type: string
+          type: array
+      type: object
+    apiFastpathStatus:
+      default: FASTPATH_UNKNOWN
+      description: "- FASTPATH_UNKNOWN: backward compatible state\n - FASTPATH_ACTIVE: fastpath activated and enabled\n - FASTPATH_INACTIVE: fastpath inactive\n - FASTPATH_UNSUPPORTED: fastpath unsupported, disabled\n - FASTPATH_PENDING: fastpath operation setup in progress\n - FASTPATH_ERRORED: fastpath error'd, possible stuck failure"
+      enum:
+      - FASTPATH_UNKNOWN
+      - FASTPATH_ACTIVE
+      - FASTPATH_INACTIVE
+      - FASTPATH_UNSUPPORTED
+      - FASTPATH_PENDING
+      - FASTPATH_ERRORED
+      title: fastpath extensions
+      type: string
+    apiSdkVolumeCreateRequest:
+      description: 'Defines a request to create a volume. Use OpenStorageVolume.Update()
+
+        to update any labels on the volume.'
+      properties:
+        labels:
+          additionalProperties:
+            type: string
+          title: Labels to apply to the volume
+          type: object
+        name:
+          description: Unique name of the volume. This will be used for idempotency.
+          type: string
+        spec:
+          $ref: '#/components/schemas/apiVolumeSpec'
+      type: object
+    apiSharedv4FailoverStrategyValue:
+      default: UNSPECIFIED
+      description: " - UNSPECIFIED: Unspecified\n - AGGRESSIVE: Fail over to the new NFS server quickly. This is appropriate for\nthe apps with sharedv4 service volumes. It can also be used\nfor the apps with sharedv4 volumes when such apps are able\nto restart quickly.\n - NORMAL: Give the old NFS server more time to come back up before\ntriggering the failover. This is appropriate for the apps\nwith sharedv4 volumes (non-service)."
+      enum:
+      - UNSPECIFIED
+      - AGGRESSIVE
+      - NORMAL
+      type: string
+    apiReport:
+      properties:
+        directories:
+          format: int64
+          title: Directory count
+          type: string
+        files:
+          format: int64
+          title: File count
+          type: string
+      type: object
+    apiSdkVolumeCloneRequest:
+      properties:
+        additional_labels:
+          additionalProperties:
+            type: string
+          description: 'Additional labels to be appended after cloning the volume. Note that clone will
+
+            issue a snapshot, which copies most labels except pvc and namespace. This map
+
+            allows you to pass additional labels that are not part of the parent volume.'
+          type: object
+        name:
+          description: Unique name of the volume. This will be used for idempotency.
+          type: string
+        parent_id:
+          description: Parent volume id or snapshot id will create a new volume as a clone of the parent.
+          type: string
+      title: Defines a request to clone a volume or create a volume from a snapshot
+      type: object
+    apiOwnership:
+      description: 'Ownership information for resource.
+
+        Administrators are users who belong to the group `*`, meaning, every group.'
+      properties:
+        acls:
+          $ref: '#/components/schemas/OwnershipAccessControl'
+        owner:
+          description: 'Username of owner.
+
+
+            The storage system uses the username taken from the security authorization
+
+            token and is saved on this field. Only users with system administration
+
+            can edit this value.'
+          type: string
+      type: object
+    apiMountOptions:
+      description: MountOptions defines the mount options with which a volume is mounted.
+      properties:
+        options:
+          additionalProperties:
+            type: string
+          title: 'Options are opaque key value pairs that are passed as mount options when
+
+            a volume is mounted.
+
+            If an empty value is provided only the key will be passed as an option
+
+            If both key and value are provided then ''key=value'' will be passed as an
+
+            option'
+          type: object
+      type: object
+    apiSdkVolumeUpdateResponse:
+      title: Empty response
+      type: object
+    apiSdkVolumeEnumerateResponse:
+      properties:
+        volume_ids:
+          items:
+            type: string
+          title: List of volumes matching label
+          type: array
+      title: Defines the response when listing volumes
+      type: object
+    apiExportProtocol:
+      default: INVALID
+      description: "ExportProtocol defines how the device is exported..\n\n - INVALID: Invalid uninitialized value\n - PXD: PXD the volume is exported over Portworx block interface.\n - ISCSI: ISCSI the volume is exported over ISCSI.\n - NFS: NFS the volume is exported over NFS.\n - CUSTOM: Custom the volume is exported over custom interface."
+      enum:
+      - INVALID
+      - PXD
+      - ISCSI
+      - NFS
+      - CUSTOM
+      type: string
+    apiSdkVolumeCapacityUsageResponse:
+      properties:
+        capacity_usage_info:
+          $ref: '#/components/schemas/apiCapacityUsageInfo'
+      title: Defines response containing volume/snapshot capacity usage details
+      type: object
+    apiSharedv4ServiceSpec:
+      description: 'Sharedv4ServiceSpec when set, creates a service endpoint for accessing
+
+        a sharedv4 volume.'
+      properties:
+        external_access:
+          title: Indicates whether the service needs to be accessed outside of the cluster
+          type: boolean
+        name:
+          title: 'Name of the service. If not provided the name of the volume will be
+
+            used for setting up a service'
+          type: string
+        type:
+          $ref: '#/components/schemas/Sharedv4ServiceSpecServiceType'
+      type: object
+    apiVolumePlacementSpec:
+      properties:
+        enforcement:
+          $ref: '#/components/schemas/apiEnforcementType'
+        match_expressions:
+          description: MatchExpressions is a list of label selector requirements. The requirements are ANDed.
+          items:
+            $ref: '#/components/schemas/apiLabelSelectorRequirement'
+          type: array
+        topology_key:
+          title: 'TopologyKey key for the matching all segments of the cluster topology with the same key
+
+            e.g If the key is failure-domain.beta.kubernetes.io/zone, this should match all nodes with
+
+            the same value for this key (i.e in the same zone)'
+          type: string
+        weight:
+          format: int64
+          title: 'Weight defines the weight of the rule which allows to break the tie with other matching rules. A rule with
+
+            higher weight wins over a rule with lower weight.
+
+            (optional)'
+          type: string
+      type: object
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

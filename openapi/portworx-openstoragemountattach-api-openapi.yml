@@ -1,0 +1,288 @@
+openapi: 3.0.0
+info:
+  title: OpenStorage SDK OpenStorageAlerts OpenStorageMountAttach API
+  version: 0.186.0
+security:
+- bearerAuth: []
+tags:
+- name: OpenStorageMountAttach
+paths:
+  /v1/mountattach/attach:
+    post:
+      description: Requires access AccessType.Write of volume
+      operationId: OpenStorageMountAttach_Attach
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/apiSdkVolumeAttachRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkVolumeAttachResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: Attach attaches device to the host that the client is communicating with.
+      tags:
+      - OpenStorageMountAttach
+  /v1/mountattach/detach:
+    post:
+      description: Requires access AccessType.Write of volume
+      operationId: OpenStorageMountAttach_Detach
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/apiSdkVolumeDetachRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkVolumeDetachResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: Detaches a the volume from the host
+      tags:
+      - OpenStorageMountAttach
+  /v1/mountattach/mount:
+    post:
+      description: Requires access AccessType.Write of volume
+      operationId: OpenStorageMountAttach_Mount
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/apiSdkVolumeMountRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkVolumeMountResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: Mount mounts an attached volume in the host that the client is communicating with
+      tags:
+      - OpenStorageMountAttach
+  /v1/mountattach/unmount:
+    post:
+      description: Requires access AccessType.Write of volume
+      operationId: OpenStorageMountAttach_Unmount
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/apiSdkVolumeUnmountRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkVolumeUnmountResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: Unmount unmounts a mounted volume in the host that the client is communicating with
+      tags:
+      - OpenStorageMountAttach
+components:
+  schemas:
+    apiSdkVolumeMountResponse:
+      title: Empty response
+      type: object
+    protobufAny:
+      properties:
+        type_url:
+          type: string
+        value:
+          format: byte
+          type: string
+      type: object
+    apiSdkVolumeUnmountResponse:
+      title: Empty response
+      type: object
+    apiSdkVolumeUnmountRequest:
+      properties:
+        driver_options:
+          additionalProperties:
+            type: string
+          description: 'The following options are private to the driver plugin running the
+
+            OpenStorage SDK. Contact your driver developer for any special
+
+            values that need to be provided here.'
+          type: object
+        mount_path:
+          title: MountPath for device
+          type: string
+        options:
+          $ref: '#/components/schemas/apiSdkVolumeUnmountOptions'
+        volume_id:
+          title: Id of volume
+          type: string
+      title: Defines a request to unmount a volume on the node receiving this request
+      type: object
+    apiSdkVolumeDetachOptions:
+      properties:
+        force:
+          title: Forcefully detach device from the kernel
+          type: boolean
+        redirect:
+          title: redirect the request to the attached node
+          type: boolean
+        unmount_before_detach:
+          title: Unmount the volume before detaching
+          type: boolean
+      type: object
+    apiSdkVolumeDetachResponse:
+      title: Empty response
+      type: object
+    apiSdkVolumeDetachRequest:
+      properties:
+        driver_options:
+          additionalProperties:
+            type: string
+          description: 'The following options are private to the driver plugin running the
+
+            OpenStorage SDK. Contact your driver developer for any special
+
+            values that need to be provided here.'
+          type: object
+        options:
+          $ref: '#/components/schemas/apiSdkVolumeDetachOptions'
+        volume_id:
+          title: Id of the volume
+          type: string
+      title: Defines a request to detach a volume
+      type: object
+    runtimeError:
+      properties:
+        code:
+          format: int32
+          type: integer
+        details:
+          items:
+            $ref: '#/components/schemas/protobufAny'
+          type: array
+        error:
+          type: string
+        message:
+          type: string
+      type: object
+    apiSdkVolumeAttachOptions:
+      properties:
+        fastpath:
+          title: Indicates whether fastpath needs to be enabled during attach
+          type: string
+        secret_context:
+          description: 'It indicates the additional context which could be used to retrieve the secret.
+
+            In case of Kubernetes, this is the namespace in which the secret is created.'
+          type: string
+        secret_key:
+          title: In case of Kubernetes, this will be the key stored in the Kubernetes secret
+          type: string
+        secret_name:
+          title: 'Indicates the name of the secret stored in a secret store
+
+            In case of Hashicorp''s Vault, it will be the key from the key-value pair stored in its kv backend.
+
+            In case of Kubernetes secret, it is the name of the secret object itself'
+          type: string
+      title: Options to attach device
+      type: object
+    apiSdkVolumeUnmountOptions:
+      properties:
+        delete_mount_path:
+          title: Delete the mount path on the node after unmounting
+          type: boolean
+        no_delay_before_deleting_mount_path:
+          description: 'Do not wait for a delay before deleting path.
+
+            Normally a storage driver may delay before deleting the mount path,
+
+            which may be necessary to reduce the risk of race conditions. This
+
+            choice will remove that delay. This value is only usable when
+
+            `delete_mount_path` is set.'
+          type: boolean
+      title: Options to unmount device
+      type: object
+    apiSdkVolumeAttachResponse:
+      properties:
+        device_path:
+          title: Device path where device is exported
+          type: string
+      title: Defines a response from the node which received the request to attach
+      type: object
+    apiSdkVolumeAttachRequest:
+      properties:
+        driver_options:
+          additionalProperties:
+            type: string
+          description: 'The following options are private to the driver plugin running the
+
+            OpenStorage SDK. Contact your driver developer for any special
+
+            values that need to be provided here.'
+          type: object
+        options:
+          $ref: '#/components/schemas/apiSdkVolumeAttachOptions'
+        volume_id:
+          title: Id of volume
+          type: string
+      title: Defines a request to attach a volume to the node receiving this request
+      type: object
+    apiSdkVolumeMountRequest:
+      properties:
+        driver_options:
+          additionalProperties:
+            type: string
+          description: 'The following options are private to the driver plugin running the
+
+            OpenStorage SDK. Contact your driver developer for any special
+
+            values that need to be provided here.'
+          type: object
+        mount_path:
+          description: Mount path for mounting the volume.
+          type: string
+        options:
+          $ref: '#/components/schemas/apiSdkVolumeAttachOptions'
+        volume_id:
+          title: Id of the volume
+          type: string
+      title: Defines a request to mount a volume to the node receiving this request
+      type: object
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

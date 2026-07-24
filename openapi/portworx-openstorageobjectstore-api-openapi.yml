@@ -1,0 +1,228 @@
+openapi: 3.0.0
+info:
+  title: OpenStorage SDK OpenStorageAlerts OpenStorageObjectstore API
+  version: 0.186.0
+security:
+- bearerAuth: []
+tags:
+- name: OpenStorageObjectstore
+paths:
+  /v1/objectstores:
+    post:
+      operationId: OpenStorageObjectstore_Create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/apiSdkObjectstoreCreateRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkObjectstoreCreateResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: Creates creates an object store endpoint on specified volume
+      tags:
+      - OpenStorageObjectstore
+  /v1/objectstores/inspect/{objectstore_id}:
+    get:
+      operationId: OpenStorageObjectstore_Inspect
+      parameters:
+      - description: Id of the object store
+        in: path
+        name: objectstore_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkObjectstoreInspectResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: Inspect returns information about the object store endpoint
+      tags:
+      - OpenStorageObjectstore
+  /v1/objectstores/{objectstore_id}:
+    delete:
+      operationId: OpenStorageObjectstore_Delete
+      parameters:
+      - description: Id of the object store to delete
+        in: path
+        name: objectstore_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkObjectstoreDeleteResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: Delete destroys the object store endpoint on the volume
+      tags:
+      - OpenStorageObjectstore
+    put:
+      operationId: OpenStorageObjectstore_Update
+      parameters:
+      - description: Objectstore Id to update
+        in: path
+        name: objectstore_id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/apiSdkObjectstoreUpdateRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkObjectstoreUpdateResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: 'Updates provided objectstore status.
+
+        This call can be used to stop and start the server while maintaining the same
+
+        object storage id.'
+      tags:
+      - OpenStorageObjectstore
+components:
+  schemas:
+    protobufAny:
+      properties:
+        type_url:
+          type: string
+        value:
+          format: byte
+          type: string
+      type: object
+    apiSdkObjectstoreDeleteResponse:
+      title: Empty response
+      type: object
+    apiSdkObjectstoreUpdateRequest:
+      properties:
+        enable:
+          title: enable/disable objectstore
+          type: boolean
+        objectstore_id:
+          title: Objectstore Id to update
+          type: string
+      title: Defines a request to update an object store
+      type: object
+    apiSdkObjectstoreCreateResponse:
+      properties:
+        objectstore_status:
+          $ref: '#/components/schemas/apiObjectstoreInfo'
+      title: 'Defines a response when an object store has been created for a
+
+        specified volume'
+      type: object
+    apiSdkObjectstoreInspectResponse:
+      properties:
+        objectstore_status:
+          $ref: '#/components/schemas/apiObjectstoreInfo'
+      title: Defines a response when inspecting an object store endpoint
+      type: object
+    apiSdkObjectstoreCreateRequest:
+      properties:
+        volume_id:
+          title: Volume on which objectstore will be running
+          type: string
+      title: Defines a request to create an object store
+      type: object
+    apiSdkObjectstoreUpdateResponse:
+      title: Empty response
+      type: object
+    runtimeError:
+      properties:
+        code:
+          format: int32
+          type: integer
+        details:
+          items:
+            $ref: '#/components/schemas/protobufAny'
+          type: array
+        error:
+          type: string
+        message:
+          type: string
+      type: object
+    apiObjectstoreInfo:
+      properties:
+        access_key:
+          title: AccessKey for login into objectstore
+          type: string
+        access_port:
+          format: int64
+          title: AccessPort is objectstore server port
+          type: string
+        action:
+          format: int64
+          title: Action being taken on this objectstore
+          type: string
+        current_endpoint:
+          title: CurrentEndpoint on which objectstore server is accessible
+          type: string
+        enabled:
+          title: Enable/Disable created objectstore
+          type: boolean
+        endpoints:
+          items:
+            type: string
+          title: Endpoints for accessing objectstore
+          type: array
+        region:
+          title: Region for this objectstore
+          type: string
+        secret_key:
+          title: SecretKey for login into objectstore
+          type: string
+        status:
+          title: Status of objectstore running/failed
+          type: string
+        uuid:
+          title: UUID of objectstore
+          type: string
+        volume_id:
+          title: VolumeID of volume used by object store
+          type: string
+      title: ObjectstoreInfo is a structure that has current objectstore info
+      type: object
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

@@ -1,0 +1,177 @@
+openapi: 3.0.0
+info:
+  title: OpenStorage SDK OpenStorageAlerts OpenStorageVerifyChecksum API
+  version: 0.186.0
+security:
+- bearerAuth: []
+tags:
+- name: OpenStorageVerifyChecksum
+paths:
+  /v1/verify-checksum/start:
+    post:
+      operationId: OpenStorageVerifyChecksum_Start
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/apiSdkVerifyChecksumStartRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkVerifyChecksumStartResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: Start a verify checksum background operation on a volume.
+      tags:
+      - OpenStorageVerifyChecksum
+  /v1/verify-checksum/status:
+    get:
+      operationId: OpenStorageVerifyChecksum_Status
+      parameters:
+      - description: Id of the volume.
+        in: query
+        name: volume_id
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkVerifyChecksumStatusResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: Get Status of a verify checksum background operation on a volume
+      tags:
+      - OpenStorageVerifyChecksum
+  /v1/verify-checksum/stop:
+    post:
+      operationId: OpenStorageVerifyChecksum_Stop
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/apiSdkVerifyChecksumStopRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkVerifyChecksumStopResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: Stop a verify checksum background operation on a volume
+      tags:
+      - OpenStorageVerifyChecksum
+components:
+  schemas:
+    protobufAny:
+      properties:
+        type_url:
+          type: string
+        value:
+          format: byte
+          type: string
+      type: object
+    apiSdkVerifyChecksumStartResponse:
+      description: 'SdkVerifyChecksumStartResponse defines the response for a
+
+        SdkVerifyChecksumStartRequest.'
+      properties:
+        message:
+          title: Text blob containing ASCII text providing details of the operation
+          type: string
+        status:
+          $ref: '#/components/schemas/VerifyChecksumVerifyChecksumStatus'
+      type: object
+    runtimeError:
+      properties:
+        code:
+          format: int32
+          type: integer
+        details:
+          items:
+            $ref: '#/components/schemas/protobufAny'
+          type: array
+        error:
+          type: string
+        message:
+          type: string
+      type: object
+    apiSdkVerifyChecksumStopRequest:
+      properties:
+        volume_id:
+          title: Id of the volume
+          type: string
+      title: 'SdkVerifyChecksumStopRequest defines a request to stop a background
+
+        filesystem check operation'
+      type: object
+    apiSdkVerifyChecksumStopResponse:
+      description: 'SdkVerifyChecksumStopResponse defines the response for a
+
+        SdkVerifyChecksumStopRequest.'
+      properties:
+        message:
+          title: Text blob containing ASCII text providing details of the operation
+          type: string
+      type: object
+    apiSdkVerifyChecksumStartRequest:
+      properties:
+        resume_from_saved_offset:
+          type: boolean
+        volume_id:
+          title: Id of the volume
+          type: string
+      title: SdkVerifyChecksumStartRequest defines a request to start a background verify checksum operation
+      type: object
+    VerifyChecksumVerifyChecksumStatus:
+      default: VERIFY_CHECKSUM_UNKNOWN
+      description: "- VERIFY_CHECKSUM_UNKNOWN: VerifyChecksum operation is an unknown state\n - VERIFY_CHECKSUM_NOT_RUNNING: VerifyChecksum operation is not running for the specified volume\n - VERIFY_CHECKSUM_STARTED: VerifyChecksum operation started for the specified volume\n - VERIFY_CHECKSUM_STOPPED: VerifyChecksum operation was stopped by the user for the specified volume\n - VERIFY_CHECKSUM_COMPLETED: VerifyChecksum operation completed successfully for the specified volume\n - VERIFY_CHECKSUM_FAILED: VerifyChecksum operation failed"
+      enum:
+      - VERIFY_CHECKSUM_UNKNOWN
+      - VERIFY_CHECKSUM_NOT_RUNNING
+      - VERIFY_CHECKSUM_STARTED
+      - VERIFY_CHECKSUM_STOPPED
+      - VERIFY_CHECKSUM_COMPLETED
+      - VERIFY_CHECKSUM_FAILED
+      title: 'VerifyChecksumStatus represents the status codes returned from
+
+        OpenStorageVerifyChecksum service APIs()'
+      type: string
+    apiSdkVerifyChecksumStatusResponse:
+      description: 'SdkVerifyChecksumStatusResponse defines the response for a
+
+        SdkVerifyChecksumStatusRequest.'
+      properties:
+        message:
+          title: Text blob containing ASCII text providing details of the operation
+          type: string
+        status:
+          $ref: '#/components/schemas/VerifyChecksumVerifyChecksumStatus'
+      type: object
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

@@ -1,0 +1,1671 @@
+openapi: 3.0.0
+info:
+  title: OpenStorage SDK OpenStorageAlerts OpenStorageCloudBackup API
+  version: 0.186.0
+security:
+- bearerAuth: []
+tags:
+- name: OpenStorageCloudBackup
+paths:
+  /v1/cloudbackups:
+    post:
+      description: Requires access AccessType.Read of volume
+      operationId: OpenStorageCloudBackup_Create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/apiSdkCloudBackupCreateRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkCloudBackupCreateResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: 'Creates a backup request for a specified volume. Use
+
+        OpenStorageCloudBackup.Status() to get the current status of the
+
+        backup request.'
+      tags:
+      - OpenStorageCloudBackup
+  /v1/cloudbackups/backup/{backup_id}:
+    delete:
+      operationId: OpenStorageCloudBackup_Delete
+      parameters:
+      - description: ID is the ID of the cloud backup
+        in: path
+        name: backup_id
+        required: true
+        schema:
+          type: string
+      - description: Credential id is the credential for cloud to be used for the request.
+        in: query
+        name: credential_id
+        required: false
+        schema:
+          type: string
+      - description: 'Force Delete cloudbackup even if there are dependencies. This may be
+
+          needed if the backup is an incremental backup and subsequent backups
+
+          depend on this backup specified by `backup_id`.'
+        in: query
+        name: force
+        required: false
+        schema:
+          type: boolean
+      - description: Bucket name to which cloud backup belongs to.
+        in: query
+        name: bucket
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkCloudBackupDeleteResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: 'Deletes a backup stored in the cloud. If the backup is an incremental
+
+        backup and other backups are dependent on it, it will not be able to be deleted.'
+      tags:
+      - OpenStorageCloudBackup
+  /v1/cloudbackups/catalog:
+    post:
+      operationId: OpenStorageCloudBackup_Catalog
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/apiSdkCloudBackupCatalogRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkCloudBackupCatalogResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: Catalog returns a list of the contents in the backup
+      tags:
+      - OpenStorageCloudBackup
+  /v1/cloudbackups/deleteall:
+    post:
+      operationId: OpenStorageCloudBackup_DeleteAll
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/apiSdkCloudBackupDeleteAllRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkCloudBackupDeleteAllResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: DeleteAll deletes all the backups in the cloud for the specified volume.
+      tags:
+      - OpenStorageCloudBackup
+  /v1/cloudbackups/enumerate/filters:
+    post:
+      operationId: OpenStorageCloudBackup_EnumerateWithFilters
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/apiSdkCloudBackupEnumerateWithFiltersRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkCloudBackupEnumerateWithFiltersResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: Return a list of backups for the specified volume
+      tags:
+      - OpenStorageCloudBackup
+  /v1/cloudbackups/group:
+    post:
+      description: This will only backup volumes which the user has read_access to.
+      operationId: OpenStorageCloudBackup_GroupCreate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/apiSdkCloudBackupGroupCreateRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkCloudBackupGroupCreateResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: 'Creates a group backup request for a specified group. Use
+
+        OpenStorageCloudBackup.Status() to get the current status of the
+
+        backup request.'
+      tags:
+      - OpenStorageCloudBackup
+  /v1/cloudbackups/history/{src_volume_id}:
+    get:
+      operationId: OpenStorageCloudBackup_History
+      parameters:
+      - description: 'This optional value defines which history of backups is being
+
+          requested. If not provided, it will return the history for all volumes.'
+        in: path
+        name: src_volume_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkCloudBackupHistoryResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: History returns a list of backups for a specified volume
+      tags:
+      - OpenStorageCloudBackup
+  /v1/cloudbackups/restore:
+    post:
+      operationId: OpenStorageCloudBackup_Restore
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/apiSdkCloudBackupRestoreRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkCloudBackupRestoreResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: 'Restore creates a new volume from a backup id. The newly created volume
+
+        has an ha_level (number of replicas) of only 1. To increase the number of
+
+        replicas, use OpenStorageVolume.Set() to change the ha_level.'
+      tags:
+      - OpenStorageCloudBackup
+  /v1/cloudbackups/schedules:
+    get:
+      operationId: OpenStorageCloudBackup_SchedEnumerate
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkCloudBackupSchedEnumerateResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: Enumerate cloud backup schedules
+      tags:
+      - OpenStorageCloudBackup
+    post:
+      operationId: OpenStorageCloudBackup_SchedCreate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/apiSdkCloudBackupSchedCreateRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkCloudBackupSchedCreateResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: Create cloud backup schedule
+      tags:
+      - OpenStorageCloudBackup
+    put:
+      operationId: OpenStorageCloudBackup_SchedUpdate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/apiSdkCloudBackupSchedUpdateRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkCloudBackupSchedUpdateResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: Update existing cloud backup schedule
+      tags:
+      - OpenStorageCloudBackup
+  /v1/cloudbackups/schedules/{backup_schedule_id}:
+    delete:
+      operationId: OpenStorageCloudBackup_SchedDelete
+      parameters:
+      - description: Id of cloud backup to delete
+        in: path
+        name: backup_schedule_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkCloudBackupSchedDeleteResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: Delete cloud backup schedule
+      tags:
+      - OpenStorageCloudBackup
+  /v1/cloudbackups/size:
+    get:
+      operationId: OpenStorageCloudBackup_Size
+      parameters:
+      - description: 'BackupId is a value which is used to get information on the
+
+          size of the specified backup.'
+        in: query
+        name: backup_id
+        required: false
+        schema:
+          type: string
+      - description: Credential id describe the credentials for the cloud.
+        in: query
+        name: credential_id
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkCloudBackupSizeResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: Size returns the size of any cloud backups of a volume
+      tags:
+      - OpenStorageCloudBackup
+  /v1/cloudbackups/statechange:
+    post:
+      operationId: OpenStorageCloudBackup_StateChange
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/apiSdkCloudBackupStateChangeRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkCloudBackupStateChangeResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: StateChange can be used to stop, pause, and restart a backup
+      tags:
+      - OpenStorageCloudBackup
+  /v1/cloudbackups/status:
+    post:
+      operationId: OpenStorageCloudBackup_Status
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/apiSdkCloudBackupStatusRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkCloudBackupStatusResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: Status returns the status of any cloud backups of a volume
+      tags:
+      - OpenStorageCloudBackup
+components:
+  schemas:
+    apiSdkCloudBackupHistoryResponse:
+      properties:
+        history_list:
+          items:
+            $ref: '#/components/schemas/apiSdkCloudBackupHistoryItem'
+          title: HistoryList is list of past backups on this volume
+          type: array
+      title: Defines a response containing a list of history of backups to a cloud provider
+      type: object
+    apiSdkCloudBackupRestoreRequest:
+      properties:
+        backup_id:
+          title: Backup ID being restored
+          type: string
+        credential_id:
+          title: The credential to be used for restore operation
+          type: string
+        locator:
+          $ref: '#/components/schemas/apiVolumeLocator'
+        node_id:
+          title: 'Optional for provisioning restore
+
+            volume (ResoreVolumeName should not be specified)'
+          type: string
+        restore_volume_name:
+          title: 'Optional volume Name of the new volume to be created
+
+            in the cluster for restoring the cloudbackup'
+          type: string
+        spec:
+          $ref: '#/components/schemas/apiRestoreVolumeSpec'
+        task_id:
+          title: TaskId of the task performing this restore
+          type: string
+      title: 'Defines a request to restore a volume from an existing backup stored by
+
+        a cloud provider'
+      type: object
+    apiProxyProtocol:
+      default: PROXY_PROTOCOL_INVALID
+      description: "ProxyProtocol defines the protocol used for proxy.\n\n - PROXY_PROTOCOL_INVALID: Invalid uninitialized value\n - PROXY_PROTOCOL_NFS: NFS indicates that the external data source is NFS and the volume\nwill be reflected over NFS protocol\n - PROXY_PROTOCOL_S3: S3 indicates that the external data source is an object store.\n - PROXY_PROTOCOL_PXD: PXD indicates that the external data source is a Portworx block volume.\n - PROXY_PROTOCOL_PURE_BLOCK: PURE_BLOCK indicates that the external data source is a pure_block volume.\n - PROXY_PROTOCOL_PURE_FILE: PURE_FILE indicates that the external data source is a pure_file volume."
+      enum:
+      - PROXY_PROTOCOL_INVALID
+      - PROXY_PROTOCOL_NFS
+      - PROXY_PROTOCOL_S3
+      - PROXY_PROTOCOL_PXD
+      - PROXY_PROTOCOL_PURE_BLOCK
+      - PROXY_PROTOCOL_PURE_FILE
+      type: string
+    OwnershipAccessType:
+      default: Read
+      description: "Access types can be set by owner to have different levels of access to\na resource.\n\nIt is up to the resource to interpret what the types mean and are\nused for.\n\n - Read: Read access only and cannot affect the resource.\n - Write: Write access and can affect the resource.\nThis type automatically provides Read access also.\n - Admin: Administrator access.\nThis type automatically provides Read and Write access also."
+      enum:
+      - Read
+      - Write
+      - Admin
+      type: string
+    apiSdkSchedulePolicyInterval:
+      properties:
+        daily:
+          $ref: '#/components/schemas/apiSdkSchedulePolicyIntervalDaily'
+        monthly:
+          $ref: '#/components/schemas/apiSdkSchedulePolicyIntervalMonthly'
+        periodic:
+          $ref: '#/components/schemas/apiSdkSchedulePolicyIntervalPeriodic'
+        retain:
+          format: int64
+          title: Number of instances to retain
+          type: string
+        weekly:
+          $ref: '#/components/schemas/apiSdkSchedulePolicyIntervalWeekly'
+      title: Defines a schedule policy interval
+      type: object
+    apiSdkCloudBackupSchedCreateResponse:
+      properties:
+        backup_schedule_id:
+          title: Id of newly created backup schedule
+          type: string
+      title: 'Defines a response containing the id of a schedule for a volume backup
+
+        to a cloud provider'
+      type: object
+    apiS3ProxySpec:
+      description: S3ProxySpec is the spec for proxying an external object store.
+      properties:
+        bucket_name:
+          title: BucketName is the name of the bucket from the object store
+          type: string
+      type: object
+    apiRestoreVolSnashotSchedule:
+      properties:
+        schedule:
+          type: string
+      type: object
+    apiSdkCloudBackupGroupCreateRequest:
+      properties:
+        credential_id:
+          title: Credential id refers to the cloud credentials needed to backup
+          type: string
+        delete_local:
+          title: 'DeleteLocal indicates if local snap created for backup must be deleted after
+
+            the backup is complete'
+          type: boolean
+        full:
+          title: Full indicates if full backup is desired even though incremental is possible
+          type: boolean
+        group_id:
+          title: GroupID of the volume for which cloudbackup is requested
+          type: string
+        labels:
+          additionalProperties:
+            type: string
+          description: 'Labels are list of key value pairs to tag the cloud backup. These labels
+
+            are stored in the metadata associated with the backup.'
+          type: object
+        volume_ids:
+          items:
+            type: string
+          title: 'VolumeIds are a list of volume IDs to use for the backup request.
+
+            If multiple of GroupID, Labels or VolumeIDs are specified, volumes matching
+
+            all of them are backed uup'
+          type: array
+      title: Defines a request to create a group backup of a group to the cloud
+      type: object
+    OwnershipPublicAccessControl:
+      properties:
+        type:
+          $ref: '#/components/schemas/OwnershipAccessType'
+      title: PublicAccessControl allows assigning public ownership
+      type: object
+    apiSdkCloudBackupClusterType:
+      default: SdkCloudBackupClusterUnknown
+      description: "- SdkCloudBackupClusterUnknown: Unknown\n - SdkCloudBackupClusterCurrent: Beongs to this cluster\n - SdkCloudBackupClusterOther: not this. other cluster"
+      enum:
+      - SdkCloudBackupClusterUnknown
+      - SdkCloudBackupClusterCurrent
+      - SdkCloudBackupClusterOther
+      title: CloudBackup operations types
+      type: string
+    apiSdkCloudBackupSchedCreateRequest:
+      properties:
+        cloud_sched_info:
+          $ref: '#/components/schemas/apiSdkCloudBackupScheduleInfo'
+      title: 'Defines a request to create a schedule for volume backups to a
+
+        cloud provider'
+      type: object
+    apiSdkSchedulePolicyIntervalWeekly:
+      properties:
+        day:
+          $ref: '#/components/schemas/apiSdkTimeWeekday'
+        hour:
+          format: int32
+          title: 'Range: 0-23'
+          type: integer
+        minute:
+          format: int32
+          title: 'Range: 0-59'
+          type: integer
+      title: Defines a weekly schedule
+      type: object
+    apiSdkCloudBackupHistoryItem:
+      properties:
+        src_volume_id:
+          title: SrcVolumeID is volume ID which was backedup
+          type: string
+        status:
+          $ref: '#/components/schemas/apiSdkCloudBackupStatusType'
+        timestamp:
+          format: date-time
+          title: TimeStamp is the time at which either backup completed/failed
+          type: string
+      title: 'SdkCloudBackupHistoryItem contains information about a backup for a
+
+        specific volume'
+      type: object
+    Sharedv4ServiceSpecServiceType:
+      default: UNSPECIFIED
+      description: "Type of sharedv4 service. Values are governed by the different types\nof services supported by container orchestrators such as Kubernetes.\n\n - UNSPECIFIED: Unspecified\n - NODEPORT: Export the sharedv4 service on each Node's IP.\nIn this mode the sharedv4 volume can be accessed from outside the\ncluster using one of the node's IPs.\n - CLUSTERIP: Export the shared4 service on an internal cluster IP.\nIn this mode the sharedv4 volume will only be accessible\nwithin the cluster via this service.\n - LOADBALANCER: Expose the sharedv4 service on cloud provider's load balancer.\nApplicable when running in cloud. In this mode the sharedv4 volume\ncan be accessed from outside the cluster.\n - NONE: Do not use sharedv4 service feature. Use legacy sharedv4 volumes instead."
+      enum:
+      - UNSPECIFIED
+      - NODEPORT
+      - CLUSTERIP
+      - LOADBALANCER
+      - NONE
+      type: string
+    apiCosType:
+      default: NONE
+      enum:
+      - NONE
+      - LOW
+      - MEDIUM
+      - HIGH
+      type: string
+    apiIoStrategy:
+      description: IoStrategy defines how I/O should be performed to backing storage media.
+      properties:
+        async_io:
+          description: AsyncIO enables kaio.
+          type: boolean
+        direct_io:
+          title: Enable direct I/O on the backing datastore
+          type: boolean
+        early_ack:
+          description: EarlyAck enables acks for async I/O at the source.
+          type: boolean
+      type: object
+    apiSdkCloudBackupSchedDeleteResponse:
+      title: Empty response
+      type: object
+    apiSdkSchedulePolicyIntervalPeriodic:
+      properties:
+        seconds:
+          format: int64
+          title: Specify the number of seconds between intervals
+          type: string
+      title: Defines a periodic schedule
+      type: object
+    apiSdkCloudBackupEnumerateWithFiltersRequest:
+      description: '* For a specific volume in current cluster: Set `src_volume_id` to your desired volume id
+
+        and do not provide `cluster_id` and `all`.
+
+        * For a specific volume in a specific cluster: Set `src_volume_id` to your desired volume id
+
+        and specify `cluster_id`.
+
+        * For a specific volume in all clusters: Set `src_volume_id` to your desired volume id
+
+        and set `all` to true, do not provide `cluster_id`.
+
+        * For all volumes in current cluster: do not provide `cluster_id`, `volume_id` and `all`.
+
+        * For all volumes in a specific cluster: Set `cluster_id` to your desired cluster id
+
+        and do not provide `volume_id` and `all`.
+
+        * For all volumes in all clusters: Set `all` to true do not provide `volume_id` and `cluster_id`.'
+      properties:
+        all:
+          description: (optional) All indicates if the request should show cloud backups for all clusters or the current cluster.
+          type: boolean
+        cloud_backup_id:
+          title: 'If one wants to enumerate known backup, set this field to the backup ID
+
+            naming format :clusteruuidORbicketname/srcVolId-snapId(-incr)'
+          type: string
+        cluster_id:
+          title: (optional) Cluster id specifies the cluster for the request
+          type: string
+        continuation_token:
+          description: 'Returned in the enumerate response if not all of the backups could be returned in the
+
+            response.'
+          type: string
+        credential_id:
+          title: Credential id is the credential for cloud to be used for the request
+          type: string
+        max_backups:
+          format: uint64
+          title: (optional) if caller wished to limit number of backups returned by enumerate
+          type: string
+        metadata_filter:
+          additionalProperties:
+            type: string
+          title: (optional) Enumerates backups that have tags of this type
+          type: object
+        missing_src_volumes:
+          title: 'To enumerate cloudbackups for which source volumes do not exist in this
+
+            cluster'
+          type: boolean
+        src_volume_id:
+          description: (optional) Source id of the volume for the request.
+          type: string
+        status_filter:
+          $ref: '#/components/schemas/apiSdkCloudBackupStatusType'
+      title: 'Defines a request to list the backups stored by a cloud provider.
+
+        The following combinations can be used to get cloud backup information:'
+      type: object
+    apiSdkCloudBackupDeleteAllResponse:
+      title: Empty response
+      type: object
+    apiReplicaSet:
+      properties:
+        id:
+          format: int64
+          title: ID is the unique ID of this replica set
+          type: integer
+        nodes:
+          items:
+            type: string
+          type: array
+        pool_uuids:
+          items:
+            type: string
+          title: Unique IDs of the storage pools for this replica set
+          type: array
+      title: 'ReplicaSet set of machine IDs (nodes) to which part of this volume is erasure
+
+        coded - for clustered storage arrays'
+      type: object
+    apiSdkTimeWeekday:
+      default: SdkTimeWeekdaySunday
+      description: "- SdkTimeWeekdaySunday: Sunday\n - SdkTimeWeekdayMonday: Monday\n - SdkTimeWeekdayTuesday: Tuesday\n - SdkTimeWeekdayWednesday: Wednesday\n - SdkTimeWeekdayThursday: Thursday\n - SdkTimeWeekdayFriday: Friday\n - SdkTimeWeekdaySaturday: Saturday"
+      enum:
+      - SdkTimeWeekdaySunday
+      - SdkTimeWeekdayMonday
+      - SdkTimeWeekdayTuesday
+      - SdkTimeWeekdayWednesday
+      - SdkTimeWeekdayThursday
+      - SdkTimeWeekdayFriday
+      - SdkTimeWeekdaySaturday
+      title: Defines times of day
+      type: string
+    apiSdkCloudBackupStatusRequest:
+      properties:
+        local:
+          title: 'Local indicates if only those backups/restores that are
+
+            active on current node must be returned'
+          type: boolean
+        near_sync_migrate:
+          title: Indicates if this is for nearsync migration
+          type: boolean
+        task_id:
+          description: 'TaskId of the backup/restore task, if this is specified,
+
+            volume_id is ignored.'
+          type: string
+        volume_id:
+          description: '(optional) VolumeId is a value which is used to get information on the
+
+            status of a backup for the specified volume. If no volume id and task_id
+
+            is provided, then status for all volumes is returned.'
+          type: string
+      title: 'Defines a request to retrieve the status of a backup or restore for a
+
+        specified volume'
+      type: object
+    apiSharedv4Spec:
+      properties:
+        failover_strategy:
+          $ref: '#/components/schemas/apiSharedv4FailoverStrategyValue'
+      title: Sharedv4Spec specifies common properties of sharedv4 and sharedv4 service volumes
+      type: object
+    apiLabelSelectorRequirement:
+      description: 'LabelSelectorRequirement is a selector that contains values, a key, and an operator that
+
+        relates the key and values.'
+      properties:
+        key:
+          description: Key is the label key that the selector applies to.
+          type: string
+        operator:
+          $ref: '#/components/schemas/LabelSelectorRequirementOperator'
+        values:
+          description: 'Values is an array of string values. If the operator is In or NotIn,
+
+            the values array must be non-empty. If the operator is Exists or DoesNotExist,
+
+            the values array must be empty. This array is replaced during a strategic
+
+            merge patch.'
+          items:
+            type: string
+          type: array
+      type: object
+    apiSdkCloudBackupStateChangeRequest:
+      properties:
+        requested_state:
+          $ref: '#/components/schemas/apiSdkCloudBackupRequestedState'
+        task_id:
+          title: 'Describes the backup/restore task
+
+            state change is being requested'
+          type: string
+      title: 'Defines a request to change the state of a backup or restore to or
+
+        from a cloud provider'
+      type: object
+    apiSdkCloudBackupSizeResponse:
+      properties:
+        capacity_required_for_restore:
+          format: uint64
+          title: Used size of the volume to be restored (in bytes)
+          type: string
+        compressed_object_bytes:
+          format: uint64
+          title: Size of the compressed individual backup in object-store or NFS
+          type: string
+        size:
+          format: uint64
+          title: Same value as total_download_bytes, will be deprecated
+          type: string
+        total_download_bytes:
+          format: uint64
+          title: Total download size of all the backups (full & incremental) required for a restore
+          type: string
+      title: Defines a response containing the size of the volume
+      type: object
+    apiRestoreParamBoolType:
+      default: PARAM_BKUPSRC
+      enum:
+      - PARAM_BKUPSRC
+      - PARAM_FALSE
+      - PARAM_TRUE
+      type: string
+    apiExportSpec:
+      description: ExportSpec defines how the volume is exported..
+      properties:
+        export_options:
+          description: ExportOptions options exporting the volume.
+          type: string
+        export_protocol:
+          $ref: '#/components/schemas/apiExportProtocol'
+      type: object
+    apiReplicaPlacementSpec:
+      properties:
+        affected_replicas:
+          format: int32
+          title: 'AffectedReplicas defines the number of volume replicas affected by this rule. If not provided,
+
+            rule would affect all replicas
+
+            (optional)'
+          type: integer
+        enforcement:
+          $ref: '#/components/schemas/apiEnforcementType'
+        match_expressions:
+          description: MatchExpressions is a list of label selector requirements. The requirements are ANDed.
+          items:
+            $ref: '#/components/schemas/apiLabelSelectorRequirement'
+          type: array
+        topology_key:
+          title: 'TopologyKey key for the matching all segments of the cluster topology with the same key
+
+            e.g If the key is failure-domain.beta.kubernetes.io/zone, this should match all nodes with
+
+            the same value for this key (i.e in the same zone)'
+          type: string
+        weight:
+          format: int64
+          title: 'Weight defines the weight of the rule which allows to break the tie with other matching rules. A rule with
+
+            higher weight wins over a rule with lower weight.
+
+            (optional)'
+          type: string
+      type: object
+    apiEnforcementType:
+      default: required
+      description: "- required: This specifies that the rule is required and must be strictly enforced\n - preferred: This specifies that the rule is preferred and can be best effort"
+      enum:
+      - required
+      - preferred
+      title: Defines the types of enforcement on the given rules
+      type: string
+    apiSdkCloudBackupCreateResponse:
+      properties:
+        task_id:
+          title: TaskId of the task performing the backup
+          type: string
+      title: Empty response
+      type: object
+    apiSdkSchedulePolicyIntervalDaily:
+      properties:
+        hour:
+          format: int32
+          title: 'Range: 0-23'
+          type: integer
+        minute:
+          format: int32
+          title: 'Range: 0-59'
+          type: integer
+      title: Defines a daily schedule
+      type: object
+    apiSharedv4FailoverStrategyValue:
+      default: UNSPECIFIED
+      description: " - UNSPECIFIED: Unspecified\n - AGGRESSIVE: Fail over to the new NFS server quickly. This is appropriate for\nthe apps with sharedv4 service volumes. It can also be used\nfor the apps with sharedv4 volumes when such apps are able\nto restart quickly.\n - NORMAL: Give the old NFS server more time to come back up before\ntriggering the failover. This is appropriate for the apps\nwith sharedv4 volumes (non-service)."
+      enum:
+      - UNSPECIFIED
+      - AGGRESSIVE
+      - NORMAL
+      type: string
+    apiIoThrottle:
+      properties:
+        read_bw_mbytes:
+          format: int64
+          type: integer
+        read_iops:
+          format: int64
+          type: integer
+        write_bw_mbytes:
+          format: int64
+          type: integer
+        write_iops:
+          format: int64
+          type: integer
+      title: 'IoThrottle defines IO throttle limits for a volume
+
+        read_iops : maximum read iops this volume is allowed
+
+        write_iops : maximum write iops this volume is allowed
+
+        read_bw_mbytes  : maximum read bandwidth this volume is allowed in MegaBytes
+
+        write_bw_mbytes : maximum write bandwidth this volume is allowed in MegaBytes'
+      type: object
+    apiSdkCloudBackupScheduleInfo:
+      properties:
+        credential_id:
+          title: The cloud credential used with this schedule
+          type: string
+        full:
+          description: Full indicates if scheduled backups should always be full and never incremental.
+          type: boolean
+        group_id:
+          title: GroupId indicates the group of volumes for which this schedule applies
+          type: string
+        labels:
+          additionalProperties:
+            type: string
+          title: labels indicates group of volumes with similar labels for which this schedule applies
+          type: object
+        max_backups:
+          format: uint64
+          title: 'MaxBackups indicates when to force full backup to cloud. If RetentionDays
+
+            is not specified or is 0 (older scheme), this is also the maximum number
+
+            of scheduled backups retained in the cloud. Older backups are deleted'
+          type: string
+        retention_days:
+          format: int64
+          title: 'Number of days that Scheduled CloudBackups will be kept after which they
+
+            are deleted'
+          type: integer
+        schedules:
+          items:
+            $ref: '#/components/schemas/apiSdkSchedulePolicyInterval'
+          title: Schedules are the frequencies of the backup
+          type: array
+        src_volume_id:
+          title: The schedule's source volume
+          type: string
+      title: 'SdkCloudBackupScheduleInfo describes a schedule for volume backups to
+
+        a cloud provider'
+      type: object
+    apiSdkCloudBackupStatusType:
+      default: SdkCloudBackupStatusTypeUnknown
+      description: "- SdkCloudBackupStatusTypeUnknown: Unknown\n - SdkCloudBackupStatusTypeNotStarted: Not started\n - SdkCloudBackupStatusTypeDone: Done\n - SdkCloudBackupStatusTypeAborted: Aborted\n - SdkCloudBackupStatusTypePaused: Paused\n - SdkCloudBackupStatusTypeStopped: Stopped\n - SdkCloudBackupStatusTypeActive: Active\n - SdkCloudBackupStatusTypeFailed: Failed\n - SdkCloudBackupStatusTypeQueued: Queued\n - SdkCloudBackupStatusTypeInvalid: Invalid, used by enumerate, includes failed,\nstopped and aborted\n - SdkNearSyncStatusTypeNotStarted: Near sync\nNot started\n - SdkNearSyncStatusTypeDone: Done\n - SdkNearSyncStatusTypePaused: Paused\n - SdkNearSyncStatusTypeStopped: Stopped\n - SdkNearSyncStatusTypeActive: Active\n - SdkNearSyncStatusTypeFailed: Failed\n - SdkNearSyncStatusTypeInvalid: Invalid"
+      enum:
+      - SdkCloudBackupStatusTypeUnknown
+      - SdkCloudBackupStatusTypeNotStarted
+      - SdkCloudBackupStatusTypeDone
+      - SdkCloudBackupStatusTypeAborted
+      - SdkCloudBackupStatusTypePaused
+      - SdkCloudBackupStatusTypeStopped
+      - SdkCloudBackupStatusTypeActive
+      - SdkCloudBackupStatusTypeFailed
+      - SdkCloudBackupStatusTypeQueued
+      - SdkCloudBackupStatusTypeInvalid
+      - SdkNearSyncStatusTypeNotStarted
+      - SdkNearSyncStatusTypeDone
+      - SdkNearSyncStatusTypePaused
+      - SdkNearSyncStatusTypeStopped
+      - SdkNearSyncStatusTypeActive
+      - SdkNearSyncStatusTypeFailed
+      - SdkNearSyncStatusTypeInvalid
+      title: CloudBackup status types
+      type: string
+    apiSdkCloudBackupEnumerateWithFiltersResponse:
+      properties:
+        backups:
+          items:
+            $ref: '#/components/schemas/apiSdkCloudBackupInfo'
+          type: array
+        continuation_token:
+          title: 'if this is not an empty string, callers must pass this to get next list of
+
+            backups'
+          type: string
+      title: Defines a response which lists all the backups stored by a cloud provider
+      type: object
+    apiSdkCloudBackupCatalogResponse:
+      properties:
+        contents:
+          items:
+            type: string
+          title: Contents is listing of backup contents
+          type: array
+      title: Defines a response containing the contents of a backup stored by a cloud provider
+      type: object
+    apiVolumePlacementStrategy:
+      description: 'VolumePlacementStrategy defines a strategy for placing volumes in the cluster which will be a series of rules
+
+        All the rules specified will be applied for volume placement.
+
+        Rules that have enforcement as "required" are strictly enforced while "preferred" are best effort.
+
+        In situations, where 2 or more rules conflict, the weight of the rules will dictate which wins.'
+      properties:
+        replica_affinity:
+          items:
+            $ref: '#/components/schemas/apiReplicaPlacementSpec'
+          title: ReplicaAffinity defines affinity rules between replicas within a volume
+          type: array
+        replica_anti_affinity:
+          items:
+            $ref: '#/components/schemas/apiReplicaPlacementSpec'
+          title: ReplicaAntiAffinity defines anti-affinity rules between replicas within a volume
+          type: array
+        volume_affinity:
+          items:
+            $ref: '#/components/schemas/apiVolumePlacementSpec'
+          title: VolumeAffinity defines affinity rules between volumes
+          type: array
+        volume_anti_affinity:
+          items:
+            $ref: '#/components/schemas/apiVolumePlacementSpec'
+          title: VolumeAntiAffinity defines anti-affinity rules between volumes
+          type: array
+      type: object
+    apiSdkCloudBackupRestoreResponse:
+      properties:
+        restore_volume_id:
+          title: VolumeID to which the backup is being restored
+          type: string
+        task_id:
+          title: TaskId of the task performing the restore
+          type: string
+      title: 'Defines a response when restoring a volume from a backup stored by
+
+        a cloud provider'
+      type: object
+    apiOwnership:
+      description: 'Ownership information for resource.
+
+        Administrators are users who belong to the group `*`, meaning, every group.'
+      properties:
+        acls:
+          $ref: '#/components/schemas/OwnershipAccessControl'
+        owner:
+          description: 'Username of owner.
+
+
+            The storage system uses the username taken from the security authorization
+
+            token and is saved on this field. Only users with system administration
+
+            can edit this value.'
+          type: string
+      type: object
+    apiSdkCloudBackupStatusResponse:
+      properties:
+        statuses:
+          additionalProperties:
+            $ref: '#/components/schemas/apiSdkCloudBackupStatus'
+          description: 'Statuses is list of currently active/failed/done backup/restores where
+
+            the key is the id of the task performing backup/restore.'
+          type: object
+      title: Defines a response containing the status of the backups for a specified volume
+      type: object
+    apiPureBlockSpec:
+      properties:
+        full_vol_name:
+          type: string
+        pod_name:
+          type: string
+        serial_num:
+          type: string
+      title: PureBlockSpec is the spec for proxying a volume on pure_block backends
+      type: object
+    apiSdkCloudBackupGroupCreateResponse:
+      properties:
+        group_cloud_backup_id:
+          title: ID for this group of backups
+          type: string
+        task_ids:
+          items:
+            type: string
+          title: TaskIds of the tasks performing the group backup
+          type: array
+      title: Empty response
+      type: object
+    runtimeError:
+      properties:
+        code:
+          format: int32
+          type: integer
+        details:
+          items:
+            $ref: '#/components/schemas/protobufAny'
+          type: array
+        error:
+          type: string
+        message:
+          type: string
+      type: object
+    apiMountOptions:
+      description: MountOptions defines the mount options with which a volume is mounted.
+      properties:
+        options:
+          additionalProperties:
+            type: string
+          title: 'Options are opaque key value pairs that are passed as mount options when
+
+            a volume is mounted.
+
+            If an empty value is provided only the key will be passed as an option
+
+            If both key and value are provided then ''key=value'' will be passed as an
+
+            option'
+          type: object
+      type: object
+    apiSdkCloudBackupSchedEnumerateResponse:
+      properties:
+        cloud_sched_list:
+          additionalProperties:
+            $ref: '#/components/schemas/apiSdkCloudBackupScheduleInfo'
+          title: Returns list of backup schedules
+          type: object
+      title: 'Defines a response containing a map listing the schedules for volume
+
+        backups to a cloud provider'
+      type: object
+    LabelSelectorRequirementOperator:
+      default: In
+      description: "- In: In means the value for 'key' should be in one of the given value(s)\n - NotIn: NotIn means the value for 'key' should NOT be in one of the given value(s)\n - Exists: Exists means the 'key' should just exist regardless of the value\n - DoesNotExist: DoesNotExist means the 'key' should NOT exist\n - Gt: Gt means the 'key' should be greater than the value(s)\n - Lt: Lt means the 'key' should be less than the value(s)"
+      enum:
+      - In
+      - NotIn
+      - Exists
+      - DoesNotExist
+      - Gt
+      - Lt
+      title: This defines operator types used in a label matching rule
+      type: string
+    apiPXDProxySpec:
+      properties:
+        id:
+          title: ID of the remote portworx volume
+          type: string
+      title: PXDProxySpec is the spec for proxying a Portworx volume
+      type: object
+    apiProxySpec:
+      description: ProxySpec defines how this volume will reflect an external data source.
+      properties:
+        endpoint:
+          description: 'Endpoint is the external endpoint which can be used for accessing the
+
+            external data source.'
+          type: string
+        nfs_spec:
+          $ref: '#/components/schemas/apiNFSProxySpec'
+        proxy_protocol:
+          $ref: '#/components/schemas/apiProxyProtocol'
+        pure_block_spec:
+          $ref: '#/components/schemas/apiPureBlockSpec'
+        pure_file_spec:
+          $ref: '#/components/schemas/apiPureFileSpec'
+        pxd_spec:
+          $ref: '#/components/schemas/apiPXDProxySpec'
+        s3_spec:
+          $ref: '#/components/schemas/apiS3ProxySpec'
+      type: object
+    apiSdkCloudBackupStateChangeResponse:
+      title: Empty response
+      type: object
+    apiExportProtocol:
+      default: INVALID
+      description: "ExportProtocol defines how the device is exported..\n\n - INVALID: Invalid uninitialized value\n - PXD: PXD the volume is exported over Portworx block interface.\n - ISCSI: ISCSI the volume is exported over ISCSI.\n - NFS: NFS the volume is exported over NFS.\n - CUSTOM: Custom the volume is exported over custom interface."
+      enum:
+      - INVALID
+      - PXD
+      - ISCSI
+      - NFS
+      - CUSTOM
+      type: string
+    apiSdkCloudBackupSchedUpdateRequest:
+      properties:
+        cloud_sched_info:
+          $ref: '#/components/schemas/apiSdkCloudBackupScheduleInfo'
+        sched_uuid:
+          type: string
+      title: 'Defines a request to update a schedule for volume backups to a
+
+        cloud provider'
+      type: object
+    apiNFSProxySpec:
+      description: NFSProxySpec is the spec for proxying an NFS share.
+      properties:
+        export_path:
+          title: ExportPath is the NFS export path on the NFS server
+          type: string
+        sub_path:
+          description: SubPath is the sub-directory from an NFS share that should be reflected.
+          type: string
+      type: object
+    apiSdkCloudBackupDeleteResponse:
+      title: Empty response
+      type: object
+    apiSdkCloudBackupCatalogRequest:
+      properties:
+        backup_id:
+          title: Id of the backup
+          type: string
+        credential_id:
+          title: Credential id describe the credentials for the cloud
+          type: string
+      title: Defines a request to get catalog of a backup stored by a cloud provider
+      type: object
+    protobufAny:
+      properties:
+        type_url:
+          type: string
+        value:
+          format: byte
+          type: string
+      type: object
+    apiSdkCloudBackupOpType:
+      default: SdkCloudBackupOpTypeUnknown
+      description: "- SdkCloudBackupOpTypeUnknown: Unknown\n - SdkCloudBackupOpTypeBackupOp: Backup\n - SdkCloudBackupOpTypeRestoreOp: Restore\n - SdkNearSyncOpTypeCloneOp: NearSync clone\n - SdkNearSyncOpTypeReplAddOp: NearSync replication add\n - SdkNearSyncOpTypeRestoreOp: NearSync restore"
+      enum:
+      - SdkCloudBackupOpTypeUnknown
+      - SdkCloudBackupOpTypeBackupOp
+      - SdkCloudBackupOpTypeRestoreOp
+      - SdkNearSyncOpTypeCloneOp
+      - SdkNearSyncOpTypeReplAddOp
+      - SdkNearSyncOpTypeRestoreOp
+      title: CloudBackup operations types
+      type: string
+    apiSdkSchedulePolicyIntervalMonthly:
+      properties:
+        day:
+          format: int32
+          title: 'Range: 1-28'
+          type: integer
+        hour:
+          format: int32
+          title: 'Range: 0-59'
+          type: integer
+        minute:
+          format: int32
+          title: 'Range: 0-59'
+          type: integer
+      title: Defines a monthly schedule
+      type: object
+    apiSdkCloudBackupRequestedState:
+      default: SdkCloudBackupRequestedStateUnknown
+      description: "- SdkCloudBackupRequestedStateUnknown: Unknown state\n - SdkCloudBackupRequestedStatePause: Pause the backup or restore\n - SdkCloudBackupRequestedStateResume: Resume the backup or restore\n - SdkCloudBackupRequestedStateStop: Stop a backup or restore\n - SdkNearSyncRequestedStatePause: Pause the near sync migrate\n - SdkNearSyncRequestedStateResume: Resume the near sync migrate\n - SdkNearSyncRequestedStateStop: Stop a near sync migrate"
+      enum:
+      - SdkCloudBackupRequestedStateUnknown
+      - SdkCloudBackupRequestedStatePause
+      - SdkCloudBackupRequestedStateResume
+      - SdkCloudBackupRequestedStateStop
+      - SdkNearSyncRequestedStatePause
+      - SdkNearSyncRequestedStateResume
+      - SdkNearSyncRequestedStateStop
+      title: 'SdkCloudBackupRequestedState defines states to set a specified backup or restore
+
+        to or from a cloud provider'
+      type: string
+    apiRestoreVolumeSpec:
+      description: 'RestoreSpec allows some of the restore volume properties of to be modified
+
+        while restoring the cloud baackup. All pointer fields with nil value will
+
+        inherit corresponding field value from backup''s spec.'
+      properties:
+        aggregation_level:
+          description: Aggregation level Specifies the number of parts the volume can be aggregated from.
+          format: int64
+          type: integer
+        auto_fstrim:
+          $ref: '#/components/schemas/apiRestoreParamBoolType'
+        cos:
+          $ref: '#/components/schemas/apiCosType'
+        export_spec:
+          $ref: '#/components/schemas/apiExportSpec'
+        fp_preference:
+          $ref: '#/components/schemas/apiRestoreParamBoolType'
+        group:
+          $ref: '#/components/schemas/apiGroup'
+        group_enforced:
+          description: GroupEnforced is true if consistency group creation is enforced.
+          type: boolean
+        ha_level:
+          description: HaLevel specifies the number of copies of data.
+          format: int64
+          type: string
+        io_profile:
+          $ref: '#/components/schemas/apiIoProfile'
+        io_profile_bkup_src:
+          title: IoProfileBkupSrc indicates to inherit IoProfile from cloudbackup
+          type: boolean
+        io_strategy:
+          $ref: '#/components/schemas/apiIoStrategy'
+        io_throttle:
+          $ref: '#/components/schemas/apiIoThrottle'
+        journal:
+          $ref: '#/components/schemas/apiRestoreParamBoolType'
+        mount_options:
+          $ref: '#/components/schemas/apiMountOptions'
+        nodiscard:
+          $ref: '#/components/schemas/apiRestoreParamBoolType'
+        ownership:
+          $ref: '#/components/schemas/apiOwnership'
+        placement_strategy:
+          $ref: '#/components/schemas/apiVolumePlacementStrategy'
+        proxy_spec:
+          $ref: '#/components/schemas/apiProxySpec'
+        proxy_write:
+          $ref: '#/components/schemas/apiRestoreParamBoolType'
+        queue_depth:
+          format: int64
+          title: QueueDepth defines the desired block device queue depth
+          type: integer
+        readahead:
+          $ref: '#/components/schemas/apiRestoreParamBoolType'
+        replica_set:
+          $ref: '#/components/schemas/apiReplicaSet'
+        shared:
+          $ref: '#/components/schemas/apiRestoreParamBoolType'
+        sharedv4:
+          $ref: '#/components/schemas/apiRestoreParamBoolType'
+        sharedv4_mount_options:
+          $ref: '#/components/schemas/apiMountOptions'
+        sharedv4_service_spec:
+          $ref: '#/components/schemas/apiSharedv4ServiceSpec'
+        sharedv4_spec:
+          $ref: '#/components/schemas/apiSharedv4Spec'
+        snapshot_interval:
+          format: int64
+          title: SnapshotInterval in minutes, set to 0 to disable snapshots
+          type: integer
+        snapshot_schedule:
+          $ref: '#/components/schemas/apiRestoreVolSnashotSchedule'
+        sticky:
+          $ref: '#/components/schemas/apiRestoreParamBoolType'
+        storage_policy:
+          $ref: '#/components/schemas/apiRestoreVolStoragePolicy'
+      type: object
+    apiSharedv4ServiceSpec:
+      description: 'Sharedv4ServiceSpec when set, creates a service endpoint for accessing
+
+        a sharedv4 volume.'
+      properties:
+        external_access:
+          title: Indicates whether the service needs to be accessed outside of the cluster
+          type: boolean
+        name:
+          title: 'Name of the service. If not provided the name of the volume will be
+
+            used for setting up a service'
+          type: string
+        type:
+          $ref: '#/components/schemas/Sharedv4ServiceSpecServiceType'
+      type: object
+    apiSdkCloudBackupSchedUpdateResponse:
+      title: Empty response
+      type: object
+    apiVolumePlacementSpec:
+      properties:
+        enforcement:
+          $ref: '#/components/schemas/apiEnforcementType'
+        match_expressions:
+          description: MatchExpressions is a list of label selector requirements. The requirements are ANDed.
+          items:
+            $ref: '#/components/schemas/apiLabelSelectorRequirement'
+          type: array
+        topology_key:
+          title: 'TopologyKey key for the matching all segments of the cluster topology with the same key
+
+            e.g If the key is failure-domain.beta.kubernetes.io/zone, this should match all nodes with
+
+            the same value for this key (i.e in the same zone)'
+          type: string
+        weight:
+          format: int64
+          title: 'Weight defines the weight of the rule which allows to break the tie with other matching rules. A rule with
+
+            higher weight wins over a rule with lower weight.
+
+            (optional)'
+          type: string
+      type: object
+    apiRestoreVolStoragePolicy:
+      properties:
+        policy:
+          type: string
+      type: object
+    OwnershipAccessControl:
+      properties:
+        collaborators:
+          additionalProperties:
+            $ref: '#/components/schemas/OwnershipAccessType'
+          description: 'Collaborator access to resource gives access to other user.
+
+            Must be the username (unique id) set in the authorization token.
+
+            The owner or the administrator can set this value. Possible values are:
+
+            1. no collaborators: Means no users are given access.
+
+            2. `["*"]`: All users are allowed.
+
+            3. `["username1", "username2"]`: Only certain usernames are allowed. In this example only
+
+            _username1_ and _username2_ are allowed.'
+          type: object
+        groups:
+          additionalProperties:
+            $ref: '#/components/schemas/OwnershipAccessType'
+          description: 'Group access to resource which must match the group set in the
+
+            authorization token.
+
+            Can be set by the owner or the system administrator only.
+
+            Possible values are:
+
+            1. no groups: Means no groups are given access.
+
+            2. `["*"]`: All groups are allowed.
+
+            3. `["group1", "group2"]`: Only certain groups are allowed. In this example only
+
+            _group1_ and _group2_ are allowed.'
+          type: object
+        public:
+          $ref: '#/components/schemas/OwnershipPublicAccessControl'
+      type: object
+    apiPureFileSpec:
+      properties:
+        export_rules:
+          type: string
+        full_vol_name:
+          type: string
+        nfs_endpoint:
+          type: string
+      title: PureFileSpec is the spec for proxying a volume on pure_file backends
+      type: object
+    apiSdkCloudBackupCreateRequest:
+      properties:
+        credential_id:
+          title: Credential id refers to the cloud credentials needed to backup
+          type: string
+        delete_local:
+          title: 'DeleteLocal indicates if local snap created for backup must be deleted after
+
+            the backup is complete'
+          type: boolean
+        full:
+          title: Full indicates if full backup is desired even though incremental is possible
+          type: boolean
+        full_backup_frequency:
+          description: 'FullBackupFrequency indicates number of incremental backup after which
+
+            a fullbackup must be created. This is to override the default value for
+
+            manual/user triggerred backups and not applicable for scheduled backups
+
+            Value of 0 retains the default behavior.'
+          format: int64
+          type: integer
+        labels:
+          additionalProperties:
+            type: string
+          description: 'Labels are list of key value pairs to tag the cloud backup. These labels
+
+            are stored in the metadata associated with the backup.'
+          type: object
+        near_sync_migrate:
+          title: Indicates if this is a near sync migrate
+          type: boolean
+        task_id:
+          description: 'TaskId of the task performing this backup. This value can be used for
+
+            idempotency.'
+          type: string
+        volume_id:
+          title: VolumeID of the volume for which cloudbackup is requested
+          type: string
+      title: Defines a request to create a backup of a volume to the cloud
+      type: object
+    apiSdkCloudBackupInfo:
+      properties:
+        cluster_type:
+          $ref: '#/components/schemas/apiSdkCloudBackupClusterType'
+        id:
+          title: This is the id as represented by the cloud provider
+          type: string
+        metadata:
+          additionalProperties:
+            type: string
+          title: Metadata associated with the backup
+          type: object
+        namespace:
+          title: k8s namespace to which this backup belongs to
+          type: string
+        src_volume_id:
+          title: Source volumeID of the backup
+          type: string
+        src_volume_name:
+          title: Name of the sourceVolume of the backup
+          type: string
+        status:
+          $ref: '#/components/schemas/apiSdkCloudBackupStatusType'
+        timestamp:
+          format: date-time
+          title: 'Timestamp is the timestamp at which the source volume
+
+            was backed up to cloud'
+          type: string
+      title: SdkCloudBackupInfo has information about a backup stored by a cloud provider
+      type: object
+    apiGroup:
+      description: 'Group represents VolumeGroup / namespace
+
+        All volumes in the same group share this object.'
+      properties:
+        id:
+          description: Id common identifier across volumes that have the same group.
+          type: string
+      type: object
+    apiSdkCloudBackupDeleteAllRequest:
+      properties:
+        credential_id:
+          title: Credential id is the credential for cloud to be used for the request
+          type: string
+        src_volume_id:
+          title: id of the volume for the request
+          type: string
+      title: 'Defines a request to delete all the backups stored by a cloud provider
+
+        for a specified volume'
+      type: object
+    apiVolumeLocator:
+      description: 'VolumeLocator is a structure that is attached to a volume
+
+        and is used to carry opaque metadata.'
+      properties:
+        group:
+          $ref: '#/components/schemas/apiGroup'
+        name:
+          title: User friendly identifier
+          type: string
+        ownership:
+          $ref: '#/components/schemas/apiOwnership'
+        volume_ids:
+          items:
+            type: string
+          title: Volume Ids to match
+          type: array
+        volume_labels:
+          additionalProperties:
+            type: string
+          title: A set of name-value pairs that acts as search filters
+          type: object
+      type: object
+    apiSdkCloudBackupStatus:
+      properties:
+        backup_id:
+          title: This is the id as represented by the cloud provider
+          type: string
+        bytes_done:
+          format: uint64
+          title: BytesDone indicates total Bytes uploaded/downloaded
+          type: string
+        bytes_total:
+          format: uint64
+          title: BytesTotal is the total number of bytes being transferred
+          type: string
+        completed_time:
+          format: date-time
+          title: CompletedTime indicates Op's completed time
+          type: string
+        credential_id:
+          title: CredentialId is the credential used for cloud with this backup/restore op
+          type: string
+        eta_seconds:
+          format: int64
+          title: ETASeconds is the number of seconds for cloud backup completion
+          type: string
+        group_id:
+          title: string group_id volume's group id if this was group cloud backup
+          type: string
+        info:
+          items:
+            type: string
+          title: Info currently indicates the failure cause for failed backup/restore
+          type: array
+        node_id:
+          title: NodeID is the ID of the node where this Op is active
+          type: string
+        optype:
+          $ref: '#/components/schemas/apiSdkCloudBackupOpType'
+        src_volume_id:
+          title: 'SourceVolumeID is the the volume that is either being backed up to cloud
+
+            or target volume to which a backup is being restored'
+          type: string
+        start_time:
+          format: date-time
+          title: StartTime indicates Op's start time
+          type: string
+        status:
+          $ref: '#/components/schemas/apiSdkCloudBackupStatusType'
+      title: SdkCloudBackupStatus defines the status of a backup stored by a cloud provider
+      type: object
+    apiIoProfile:
+      default: IO_PROFILE_SEQUENTIAL
+      enum:
+      - IO_PROFILE_SEQUENTIAL
+      - IO_PROFILE_RANDOM
+      - IO_PROFILE_DB
+      - IO_PROFILE_DB_REMOTE
+      - IO_PROFILE_CMS
+      - IO_PROFILE_SYNC_SHARED
+      - IO_PROFILE_AUTO
+      - IO_PROFILE_NONE
+      - IO_PROFILE_JOURNAL
+      - IO_PROFILE_AUTO_JOURNAL
+      type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

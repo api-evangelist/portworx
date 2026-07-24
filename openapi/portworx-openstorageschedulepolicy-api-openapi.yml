@@ -1,0 +1,286 @@
+openapi: 3.0.0
+info:
+  title: OpenStorage SDK OpenStorageAlerts OpenStorageSchedulePolicy API
+  version: 0.186.0
+security:
+- bearerAuth: []
+tags:
+- name: OpenStorageSchedulePolicy
+paths:
+  /v1/schedulepolicies:
+    get:
+      operationId: OpenStorageSchedulePolicy_Enumerate
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkSchedulePolicyEnumerateResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: Enumerate returns a list of schedules
+      tags:
+      - OpenStorageSchedulePolicy
+    post:
+      operationId: OpenStorageSchedulePolicy_Create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/apiSdkSchedulePolicyCreateRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkSchedulePolicyCreateResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: 'Create creates a new snapshot schedule. They can be setup daily,
+
+        weekly, or monthly.'
+      tags:
+      - OpenStorageSchedulePolicy
+    put:
+      operationId: OpenStorageSchedulePolicy_Update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/apiSdkSchedulePolicyUpdateRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkSchedulePolicyUpdateResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: Update a snapshot schedule
+      tags:
+      - OpenStorageSchedulePolicy
+  /v1/schedulepolicies/inspect/{name}:
+    get:
+      operationId: OpenStorageSchedulePolicy_Inspect
+      parameters:
+      - description: Name of the schedule Policy
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkSchedulePolicyInspectResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: Inspect returns information about a specified schedule
+      tags:
+      - OpenStorageSchedulePolicy
+  /v1/schedulepolicies/{name}:
+    delete:
+      operationId: OpenStorageSchedulePolicy_Delete
+      parameters:
+      - description: Name of the schedule policy
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkSchedulePolicyDeleteResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: Delete removes a snapshot schedule
+      tags:
+      - OpenStorageSchedulePolicy
+components:
+  schemas:
+    apiSdkSchedulePolicyUpdateRequest:
+      properties:
+        schedule_policy:
+          $ref: '#/components/schemas/apiSdkSchedulePolicy'
+      title: Define a request to update a schedule policy
+      type: object
+    protobufAny:
+      properties:
+        type_url:
+          type: string
+        value:
+          format: byte
+          type: string
+      type: object
+    apiSdkSchedulePolicyEnumerateResponse:
+      properties:
+        policies:
+          items:
+            $ref: '#/components/schemas/apiSdkSchedulePolicy'
+          title: List of Schedule Policy
+          type: array
+      title: Defines a schedule policy enumerate response
+      type: object
+    apiSdkSchedulePolicyIntervalMonthly:
+      properties:
+        day:
+          format: int32
+          title: 'Range: 1-28'
+          type: integer
+        hour:
+          format: int32
+          title: 'Range: 0-59'
+          type: integer
+        minute:
+          format: int32
+          title: 'Range: 0-59'
+          type: integer
+      title: Defines a monthly schedule
+      type: object
+    apiSdkTimeWeekday:
+      default: SdkTimeWeekdaySunday
+      description: "- SdkTimeWeekdaySunday: Sunday\n - SdkTimeWeekdayMonday: Monday\n - SdkTimeWeekdayTuesday: Tuesday\n - SdkTimeWeekdayWednesday: Wednesday\n - SdkTimeWeekdayThursday: Thursday\n - SdkTimeWeekdayFriday: Friday\n - SdkTimeWeekdaySaturday: Saturday"
+      enum:
+      - SdkTimeWeekdaySunday
+      - SdkTimeWeekdayMonday
+      - SdkTimeWeekdayTuesday
+      - SdkTimeWeekdayWednesday
+      - SdkTimeWeekdayThursday
+      - SdkTimeWeekdayFriday
+      - SdkTimeWeekdaySaturday
+      title: Defines times of day
+      type: string
+    apiSdkSchedulePolicy:
+      properties:
+        name:
+          title: Name of the schedule policy
+          type: string
+        schedules:
+          items:
+            $ref: '#/components/schemas/apiSdkSchedulePolicyInterval'
+          title: Schedule policies
+          type: array
+      title: Defines a schedule policy
+      type: object
+    apiSdkSchedulePolicyDeleteResponse:
+      title: Empty response
+      type: object
+    apiSdkSchedulePolicyInterval:
+      properties:
+        daily:
+          $ref: '#/components/schemas/apiSdkSchedulePolicyIntervalDaily'
+        monthly:
+          $ref: '#/components/schemas/apiSdkSchedulePolicyIntervalMonthly'
+        periodic:
+          $ref: '#/components/schemas/apiSdkSchedulePolicyIntervalPeriodic'
+        retain:
+          format: int64
+          title: Number of instances to retain
+          type: string
+        weekly:
+          $ref: '#/components/schemas/apiSdkSchedulePolicyIntervalWeekly'
+      title: Defines a schedule policy interval
+      type: object
+    apiSdkSchedulePolicyCreateResponse:
+      title: Empty response
+      type: object
+    apiSdkSchedulePolicyCreateRequest:
+      properties:
+        schedule_policy:
+          $ref: '#/components/schemas/apiSdkSchedulePolicy'
+      title: Define a schedule policy request
+      type: object
+    runtimeError:
+      properties:
+        code:
+          format: int32
+          type: integer
+        details:
+          items:
+            $ref: '#/components/schemas/protobufAny'
+          type: array
+        error:
+          type: string
+        message:
+          type: string
+      type: object
+    apiSdkSchedulePolicyIntervalWeekly:
+      properties:
+        day:
+          $ref: '#/components/schemas/apiSdkTimeWeekday'
+        hour:
+          format: int32
+          title: 'Range: 0-23'
+          type: integer
+        minute:
+          format: int32
+          title: 'Range: 0-59'
+          type: integer
+      title: Defines a weekly schedule
+      type: object
+    apiSdkSchedulePolicyUpdateResponse:
+      title: Empty response
+      type: object
+    apiSdkSchedulePolicyIntervalDaily:
+      properties:
+        hour:
+          format: int32
+          title: 'Range: 0-23'
+          type: integer
+        minute:
+          format: int32
+          title: 'Range: 0-59'
+          type: integer
+      title: Defines a daily schedule
+      type: object
+    apiSdkSchedulePolicyInspectResponse:
+      properties:
+        policy:
+          $ref: '#/components/schemas/apiSdkSchedulePolicy'
+      title: Defines a schedule policy inspection response
+      type: object
+    apiSdkSchedulePolicyIntervalPeriodic:
+      properties:
+        seconds:
+          format: int64
+          title: Specify the number of seconds between intervals
+          type: string
+      title: Defines a periodic schedule
+      type: object
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

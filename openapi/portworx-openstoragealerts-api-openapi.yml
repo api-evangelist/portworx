@@ -1,0 +1,369 @@
+openapi: 3.0.0
+info:
+  title: OpenStorage SDK OpenStorageAlerts API
+  version: 0.186.0
+security:
+- bearerAuth: []
+tags:
+- name: OpenStorageAlerts
+paths:
+  /v1/alerts:
+    post:
+      description: '#### Delete
+
+        Delete allows 3 different types of queries as defined below:
+
+
+        * Query that takes only resource type as input
+
+        * Query that takes resource type and alert type as input and
+
+        * Query that takes resource id, alert type and resource type as input.
+
+
+        #### Input
+
+        SdkAlertsDeleteRequest takes a list of such queries and all alerts
+
+        that match at least one of the queries are deleted.'
+      operationId: OpenStorageAlerts_Delete
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/apiSdkAlertsDeleteRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkAlertsDeleteResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: Delete alerts
+      tags:
+      - OpenStorageAlerts
+  /v1/alerts/filters:
+    post:
+      description: 'EnumerateWithFilters allows 3 different types of queries as defined below:
+
+
+        * Query that takes only resource type as input
+
+        * Query that takes resource type and alert type as input and
+
+        * Query that takes resource id, alert type and resource type as input.
+
+
+        #### Input
+
+        SdkAlertsEnumerateRequest takes a list of such queries and the returned
+
+        output is a collective output from each of these queries. In that sense,
+
+        the filtering of these queries has a behavior of OR operation.
+
+        Each query also has a list of optional options. These options allow
+
+        narrowing down the scope of alerts search. These options have a
+
+        behavior of an AND operation.
+
+
+        #### Examples
+
+        To search by a resource type in a given time window would require
+
+        initializing SdkAlertsResourceTypeQuery query and pass in
+
+        SdkAlertsTimeSpan option into SdkAlertsQuery struct and finally
+
+        packing any other such queries into SdkAlertsEnumerateRequest object.
+
+        Alternatively, to search by both resource type and alert type, use
+
+        SdkAlertsAlertTypeQuery as query builder.
+
+        Finally to search all alerts of a given resource type and some
+
+        alerts of another resource type but with specific alert type,
+
+        use two queries, first initialized with SdkAlertsResourceTypeQuery
+
+        and second initialized with SdkAlertsAlertTypeQuery and both
+
+        eventually packed as list in SdkAlertsEnumerateRequest.'
+      operationId: OpenStorageAlerts_EnumerateWithFilters
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/apiSdkAlertsEnumerateWithFiltersRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    $ref: '#/components/schemas/runtimeStreamError'
+                  result:
+                    $ref: '#/components/schemas/apiSdkAlertsEnumerateWithFiltersResponse'
+                title: Stream result of apiSdkAlertsEnumerateWithFiltersResponse
+                type: object
+          description: A successful response.(streaming responses)
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: Allows querying alerts.
+      tags:
+      - OpenStorageAlerts
+components:
+  schemas:
+    apiSdkAlertsTimeSpan:
+      description: SdkAlertsTimeSpan to store time window information.
+      properties:
+        end_time:
+          format: date-time
+          title: End timestamp when Alert occurred
+          type: string
+        start_time:
+          format: date-time
+          title: Start timestamp when Alert occurred
+          type: string
+      type: object
+    protobufAny:
+      properties:
+        type_url:
+          type: string
+        value:
+          format: byte
+          type: string
+      type: object
+    apiResourceType:
+      default: RESOURCE_TYPE_NONE
+      enum:
+      - RESOURCE_TYPE_NONE
+      - RESOURCE_TYPE_VOLUME
+      - RESOURCE_TYPE_NODE
+      - RESOURCE_TYPE_CLUSTER
+      - RESOURCE_TYPE_DRIVE
+      - RESOURCE_TYPE_POOL
+      type: string
+    apiSdkAlertsCountSpan:
+      description: SdkAlertsCountSpan to store count range information.
+      properties:
+        max_count:
+          description: Max count of such alerts raised so far.
+          format: int64
+          type: string
+        min_count:
+          description: Min count of such alerts raised so far.
+          format: int64
+          type: string
+      type: object
+    apiSdkAlertsOption:
+      description: SdkAlertsOption contains options for filtering alerts.
+      properties:
+        count_span:
+          $ref: '#/components/schemas/apiSdkAlertsCountSpan'
+        is_cleared:
+          description: Query using cleared flag.
+          type: boolean
+        min_severity_type:
+          $ref: '#/components/schemas/apiSeverityType'
+        time_span:
+          $ref: '#/components/schemas/apiSdkAlertsTimeSpan'
+      type: object
+    apiSdkAlertsResourceTypeQuery:
+      description: SdkAlertsResourceTypeQuery queries for alerts using only resource id.
+      properties:
+        resource_type:
+          $ref: '#/components/schemas/apiResourceType'
+      type: object
+    apiSdkAlertsAlertTypeQuery:
+      description: 'SdkAlertsAlertTypeQuery queries for alerts using alert type
+
+        and it requires that resource type be provided as well.'
+      properties:
+        alert_type:
+          description: Alert type used to build query.
+          format: int64
+          type: string
+        resource_type:
+          $ref: '#/components/schemas/apiResourceType'
+      type: object
+    runtimeStreamError:
+      properties:
+        details:
+          items:
+            $ref: '#/components/schemas/protobufAny'
+          type: array
+        grpc_code:
+          format: int32
+          type: integer
+        http_code:
+          format: int32
+          type: integer
+        http_status:
+          type: string
+        message:
+          type: string
+      type: object
+    apiSdkAlertsQuery:
+      description: 'SdkAlertsQuery is one of the query types and a list of options.
+
+        Each query object is one of the three query types and a list of
+
+        options.'
+      properties:
+        alert_type_query:
+          $ref: '#/components/schemas/apiSdkAlertsAlertTypeQuery'
+        opts:
+          description: Opts is a list of options associated with one of the queries.
+          items:
+            $ref: '#/components/schemas/apiSdkAlertsOption'
+          type: array
+        resource_id_query:
+          $ref: '#/components/schemas/apiSdkAlertsResourceIdQuery'
+        resource_type_query:
+          $ref: '#/components/schemas/apiSdkAlertsResourceTypeQuery'
+      type: object
+    apiSdkAlertsEnumerateWithFiltersRequest:
+      description: SdkAlertsEnumerateRequest is a request message to enumerate alerts.
+      properties:
+        queries:
+          description: 'It is a list of queries to find matching alerts.
+
+            Output of each of these queries is added to a global pool
+
+            and returned as output of an RPC call.
+
+            In that sense alerts are fetched if they match any of the
+
+            queries.'
+          items:
+            $ref: '#/components/schemas/apiSdkAlertsQuery'
+          type: array
+      type: object
+    apiAlert:
+      properties:
+        alert_type:
+          format: int64
+          title: AlertType user defined alert type
+          type: string
+        cleared:
+          title: Cleared Flag
+          type: boolean
+        count:
+          description: Count of such alerts raised so far.
+          format: int64
+          type: string
+        first_seen:
+          description: Timestamp when such alert was raised the very first time.
+          format: date-time
+          type: string
+        id:
+          format: int64
+          title: Id for Alert
+          type: string
+        message:
+          title: Message describing the Alert
+          type: string
+        resource:
+          $ref: '#/components/schemas/apiResourceType'
+        resource_id:
+          title: ResourceId where Alert occurred
+          type: string
+        severity:
+          $ref: '#/components/schemas/apiSeverityType'
+        timestamp:
+          format: date-time
+          title: Timestamp when Alert occurred
+          type: string
+        ttl:
+          format: uint64
+          title: Time-to-live in seconds for this Alert
+          type: string
+        unique_tag:
+          title: UniqueTag helps identify a unique alert for a given resouce
+          type: string
+      title: Alert is a structure that represents an alert object
+      type: object
+    apiSeverityType:
+      default: SEVERITY_TYPE_NONE
+      enum:
+      - SEVERITY_TYPE_NONE
+      - SEVERITY_TYPE_ALARM
+      - SEVERITY_TYPE_WARNING
+      - SEVERITY_TYPE_NOTIFY
+      type: string
+    apiSdkAlertsDeleteResponse:
+      description: SdkAlertsDeleteResponse is empty.
+      type: object
+    runtimeError:
+      properties:
+        code:
+          format: int32
+          type: integer
+        details:
+          items:
+            $ref: '#/components/schemas/protobufAny'
+          type: array
+        error:
+          type: string
+        message:
+          type: string
+      type: object
+    apiSdkAlertsResourceIdQuery:
+      description: 'SdkAlertsResourceIdQuery queries for alerts using resource id
+
+        and it requires that both alert type and resource type be provided
+
+        as well.'
+      properties:
+        alert_type:
+          description: Alert type used to build query.
+          format: int64
+          type: string
+        resource_id:
+          description: Resource ID used to build query.
+          type: string
+        resource_type:
+          $ref: '#/components/schemas/apiResourceType'
+      type: object
+    apiSdkAlertsDeleteRequest:
+      description: SdkAlertsDeleteRequest is a request message to delete alerts.
+      properties:
+        queries:
+          description: 'It takes a list of queries to find matching alerts.
+
+            Matching alerts are deleted.'
+          items:
+            $ref: '#/components/schemas/apiSdkAlertsQuery'
+          type: array
+      type: object
+    apiSdkAlertsEnumerateWithFiltersResponse:
+      description: SdkAlertsEnumerateResponse is a list of alerts.
+      properties:
+        alerts:
+          description: Response contains a list of alerts.
+          items:
+            $ref: '#/components/schemas/apiAlert'
+          type: array
+      type: object
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

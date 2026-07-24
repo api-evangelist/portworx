@@ -1,0 +1,319 @@
+openapi: 3.0.0
+info:
+  title: OpenStorage SDK OpenStorageAlerts OpenStorageClusterPair API
+  version: 0.186.0
+security:
+- bearerAuth: []
+tags:
+- name: OpenStorageClusterPair
+paths:
+  /v1/clusterpairs:
+    get:
+      operationId: OpenStorageClusterPair_Enumerate
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkClusterPairEnumerateResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: Enumerate returns list of cluster pairs
+      tags:
+      - OpenStorageClusterPair
+    post:
+      description: "##### Example\n{% codetabs name=\"Golang\", type=\"go\" -%}\nid, err := client.Create(context.Background(), &api.SdkClusterPairCreateRequest {\n  Request : &api.ClusterPairCreateRequest {\n                 RemoteClusterIp: \"127.0.0.1\",\n                 RemoteClusterPort: 12345,\n                 RemoteClusterToken: \"<Auth-Token>\",\n                 SetDefault: true,\n             }\n       })\n{%- endcodetabs %}"
+      operationId: OpenStorageClusterPair_Create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/apiSdkClusterPairCreateRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkClusterPairCreateResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: Creates Pair with a remote cluster and returns details about the remote cluster
+      tags:
+      - OpenStorageClusterPair
+  /v1/clusterpairs/inspect/{id}:
+    get:
+      operationId: OpenStorageClusterPair_Inspect
+      parameters:
+      - description: ID of the cluster, if empty gets the default pair
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkClusterPairInspectResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: Inspect information about a cluster pair
+      tags:
+      - OpenStorageClusterPair
+  /v1/clusterpairs/token:
+    get:
+      operationId: OpenStorageClusterPair_GetToken
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkClusterPairGetTokenResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: GetToken returns a auth token
+      tags:
+      - OpenStorageClusterPair
+    post:
+      operationId: OpenStorageClusterPair_ResetToken
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/apiSdkClusterPairResetTokenRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkClusterPairResetTokenResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: ResetToken returns a auth token
+      tags:
+      - OpenStorageClusterPair
+  /v1/clusterpairs/{cluster_id}:
+    delete:
+      operationId: OpenStorageClusterPair_Delete
+      parameters:
+      - description: ID of the cluster pair to be deleted
+        in: path
+        name: cluster_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkClusterPairDeleteResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: Delete a cluster pair
+      tags:
+      - OpenStorageClusterPair
+components:
+  schemas:
+    apiClusterPairModeMode:
+      default: Default
+      enum:
+      - Default
+      - DisasterRecovery
+      - OneTimeMigration
+      title: "- Default: Default pairing mode\n - DisasterRecovery: Paired for DisasterRecovery\n - OneTimeMigration: Paired for one-time migration"
+      type: string
+    apiClusterPairsEnumerateResponse:
+      properties:
+        default_id:
+          title: ID of the default cluster pair
+          type: string
+        pairs:
+          additionalProperties:
+            $ref: '#/components/schemas/apiClusterPairInfo'
+          title: Pairs Info about the cluster pairs
+          type: object
+      title: Response to enumerate all the cluster pairs
+      type: object
+    protobufAny:
+      properties:
+        type_url:
+          type: string
+        value:
+          format: byte
+          type: string
+      type: object
+    apiSdkClusterPairCreateRequest:
+      properties:
+        request:
+          $ref: '#/components/schemas/apiClusterPairCreateRequest'
+      title: Defines a request for creating a cluster pair
+      type: object
+    apiClusterPairCreateRequest:
+      properties:
+        credential_id:
+          title: 'Use for the cluster pairing, if given
+
+            credential id will be used in ClusterPairCreate service'
+          type: string
+        mode:
+          $ref: '#/components/schemas/apiClusterPairModeMode'
+        remote_cluster_ip:
+          title: IP of the remote cluster
+          type: string
+        remote_cluster_port:
+          format: int64
+          title: Port for the remote cluster
+          type: integer
+        remote_cluster_token:
+          title: Token used to authenticate with the remote cluster
+          type: string
+        set_default:
+          title: Set the new pair as the default
+          type: boolean
+      title: Used to send a request to create a cluster pair
+      type: object
+    apiSdkClusterPairResetTokenRequest:
+      title: Empty request
+      type: object
+    apiSdkClusterPairEnumerateResponse:
+      properties:
+        result:
+          $ref: '#/components/schemas/apiClusterPairsEnumerateResponse'
+      title: Defines a list of cluster pair
+      type: object
+    apiSdkClusterPairInspectResponse:
+      properties:
+        result:
+          $ref: '#/components/schemas/apiClusterPairGetResponse'
+      title: Defines a cluster pair inspect response
+      type: object
+    apiSdkClusterPairGetTokenResponse:
+      properties:
+        result:
+          $ref: '#/components/schemas/apiClusterPairTokenGetResponse'
+      title: Defines a response for the token request
+      type: object
+    runtimeError:
+      properties:
+        code:
+          format: int32
+          type: integer
+        details:
+          items:
+            $ref: '#/components/schemas/protobufAny'
+          type: array
+        error:
+          type: string
+        message:
+          type: string
+      type: object
+    apiClusterPairInfo:
+      properties:
+        current_endpoints:
+          items:
+            type: string
+          title: Current endpoints of the cluster
+          type: array
+        endpoint:
+          title: The endpoint used for creating the pair
+          type: string
+        id:
+          title: ID of the cluster
+          type: string
+        mode:
+          $ref: '#/components/schemas/apiClusterPairModeMode'
+        name:
+          title: Name of the cluster
+          type: string
+        options:
+          additionalProperties:
+            type: string
+          title: 'Key/value pair of options associated with the cluster
+
+            Opaque to openstorage and interpreted by the drivers'
+          type: object
+        secure:
+          title: Flag used to determine if communication is over a secure channel
+          type: boolean
+        token:
+          title: Token associated with cluster
+          type: string
+      title: Information about a cluster pair
+      type: object
+    apiSdkClusterPairResetTokenResponse:
+      properties:
+        result:
+          $ref: '#/components/schemas/apiClusterPairTokenGetResponse'
+      title: Defines a response for the token request
+      type: object
+    apiClusterPairGetResponse:
+      properties:
+        pair_info:
+          $ref: '#/components/schemas/apiClusterPairInfo'
+      title: Response to get a cluster pair
+      type: object
+    apiClusterPairCreateResponse:
+      properties:
+        remote_cluster_id:
+          title: ID of the remote cluster
+          type: string
+        remote_cluster_name:
+          title: Name of the remote cluster
+          type: string
+      title: Response for a pair request
+      type: object
+    apiSdkClusterPairCreateResponse:
+      properties:
+        result:
+          $ref: '#/components/schemas/apiClusterPairCreateResponse'
+      title: Defines a result of the cluster pair
+      type: object
+    apiClusterPairTokenGetResponse:
+      properties:
+        token:
+          title: Token used to authenticate clusters
+          type: string
+      title: Response to get the cluster token
+      type: object
+    apiSdkClusterPairDeleteResponse:
+      title: Empty response
+      type: object
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

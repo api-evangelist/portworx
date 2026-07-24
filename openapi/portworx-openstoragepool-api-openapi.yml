@@ -1,0 +1,518 @@
+openapi: 3.0.0
+info:
+  title: OpenStorage SDK OpenStorageAlerts OpenStoragePool API
+  version: 0.186.0
+security:
+- bearerAuth: []
+tags:
+- name: OpenStoragePool
+paths:
+  /v1/storagepools/rebalance:
+    put:
+      operationId: OpenStoragePool_Rebalance
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkStorageRebalanceResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: Rebalance creates a new rebalance task
+      tags:
+      - OpenStoragePool
+  /v1/storagepools/rebalance/job:
+    get:
+      operationId: OpenStoragePool_EnumerateRebalanceJobs
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkEnumerateRebalanceJobsResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: EnumerateRebalanceJobs returns all rebalance jobs currently known to the system
+      tags:
+      - OpenStoragePool
+  /v1/storagepools/rebalance/job/{id}:
+    get:
+      operationId: OpenStoragePool_GetRebalanceJobStatus
+      parameters:
+      - description: ID of the rebalance job
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkGetRebalanceJobStatusResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: GetRebalanceJobStatus returns rebalance status for specified job
+      tags:
+      - OpenStoragePool
+    put:
+      operationId: OpenStoragePool_UpdateRebalanceJobState
+      parameters:
+      - description: ID of the rebalance job
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkUpdateRebalanceJobResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: 'UpdateRebalanceJobState updates existing rebalance task state.
+
+        Only acceptable values are
+
+        StorageRebalanceJobState_PAUSED - acceptable only from running state
+
+        StorageRebalanceJobState_CANCELLED - acceptable only from running/pause state
+
+        StorageRebalanceJobState_RUNNING - acceptable only from pause state'
+      tags:
+      - OpenStoragePool
+  /v1/storagepools/rebalance/schedule:
+    delete:
+      operationId: OpenStoragePool_DeleteRebalanceSchedule
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkDeleteRebalanceScheduleResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: DeleteRebalanceSchedule deletes the rebalance schedule
+      tags:
+      - OpenStoragePool
+    get:
+      operationId: OpenStoragePool_GetRebalanceSchedule
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkGetRebalanceScheduleResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: GetRebalanceSchedule returns the information of rebalance schedule
+      tags:
+      - OpenStoragePool
+    post:
+      operationId: OpenStoragePool_CreateRebalanceSchedule
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkCreateRebalanceScheduleResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: CreateRebalanceSchedule creates a scheudle for the input rebalance requests
+      tags:
+      - OpenStoragePool
+  /v1/storagepools/resize/{uuid}:
+    put:
+      operationId: OpenStoragePool_Resize
+      parameters:
+      - description: UUID of the storage pool to inspect
+        in: path
+        name: uuid
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkStoragePoolResizeResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: Resize expands the specified storage pool based on the request parameters
+      tags:
+      - OpenStoragePool
+components:
+  schemas:
+    apiSdkUpdateRebalanceJobResponse:
+      type: object
+    apiSdkGetRebalanceScheduleResponse:
+      properties:
+        scheduleInfo:
+          $ref: '#/components/schemas/apiRebalanceScheduleInfo'
+      type: object
+    StorageRebalanceAuditStorageRebalanceAction:
+      default: ADD_REPLICA
+      description: "- ADD_REPLICA: Indicates new replica was added\n - REMOVE_REPLICA: Indicates existing replica was removed"
+      enum:
+      - ADD_REPLICA
+      - REMOVE_REPLICA
+      title: StorageRebalanceAction describes type of rebalance action
+      type: string
+    apiStorageRebalanceSummary:
+      properties:
+        total_run_time_seconds:
+          format: uint64
+          title: TotalRunTimeSeconds is the total time rebalance is running
+          type: string
+        work_summary:
+          items:
+            $ref: '#/components/schemas/apiStorageRebalanceWorkSummary'
+          title: WorkSummary summarizes the work done
+          type: array
+      title: StorageRebalanceSummary describes summary for the job
+      type: object
+    apiStorageRebalanceAudit:
+      properties:
+        action:
+          $ref: '#/components/schemas/StorageRebalanceAuditStorageRebalanceAction'
+        end_time:
+          format: date-time
+          title: EndTime is time time at which action ended
+          type: string
+        name:
+          title: Name is the name of the volumes which was rebalanced
+          type: string
+        node:
+          title: Node on which this action happened
+          type: string
+        pool:
+          title: Pool on which this action happened
+          type: string
+        replication_set_id:
+          format: uint64
+          title: ReplicationSetId is the ID of the replication set
+          type: string
+        start_time:
+          format: date-time
+          title: StartTime is the time at which action was started
+          type: string
+        state:
+          $ref: '#/components/schemas/apiStorageRebalanceJobState'
+        volume_id:
+          title: VolumeID is the id of the volume which was rebalanced
+          type: string
+        work_summary:
+          items:
+            $ref: '#/components/schemas/apiStorageRebalanceWorkSummary'
+          title: WorkSummary summarizes the work done
+          type: array
+      title: StorageRebalanceAudit describes the action taken during rebalance
+      type: object
+    apiSdkCreateRebalanceScheduleResponse:
+      properties:
+        scheduleInfo:
+          $ref: '#/components/schemas/apiRebalanceScheduleInfo'
+      type: object
+    apiSdkDeleteRebalanceScheduleResponse:
+      type: object
+    StorageRebalanceTriggerThresholdMetric:
+      default: PROVISION_SPACE
+      description: "- PROVISION_SPACE: ProvisionSpace indicates rebalance for provisioned space\n - USED_SPACE: UsedSpace indicates rebalance for used space"
+      enum:
+      - PROVISION_SPACE
+      - USED_SPACE
+      title: Metric is an enum that defines the metric to use for rebalance
+      type: string
+    apiSdkStoragePoolResizeResponse:
+      title: Defines a response when resizing a storage pool
+      type: object
+    apiStorageRebalanceJobState:
+      default: PENDING
+      description: "- PENDING: Pending indicates job is still pending and has not started work\n - RUNNING: Running indicates job is actively running\n - DONE: Done indicates job has finished processing\n - PAUSED: Paused indicates job is paused\n - CANCELLED: Cancelled indicates job is cancelled"
+      enum:
+      - PENDING
+      - RUNNING
+      - DONE
+      - PAUSED
+      - CANCELLED
+      title: StorageRebalanceJobState is an enum for state of the current rebalance operation
+      type: string
+    apiLabelSelectorRequirement:
+      description: 'LabelSelectorRequirement is a selector that contains values, a key, and an operator that
+
+        relates the key and values.'
+      properties:
+        key:
+          description: Key is the label key that the selector applies to.
+          type: string
+        operator:
+          $ref: '#/components/schemas/LabelSelectorRequirementOperator'
+        values:
+          description: 'Values is an array of string values. If the operator is In or NotIn,
+
+            the values array must be non-empty. If the operator is Exists or DoesNotExist,
+
+            the values array must be empty. This array is replaced during a strategic
+
+            merge patch.'
+          items:
+            type: string
+          type: array
+      type: object
+    apiStorageRebalanceTriggerThresholdType:
+      default: ABSOLUTE_PERCENT
+      description: "- ABSOLUTE_PERCENT: AbsolutePercent indicates absolute percent comparison.\nExample, 75 % used of capacity, or 50 % provisioned of capacity.\n - DELTA_MEAN_PERCENT: DeltaMeanPercent indicates mean percent comparison threshold.\nExample, 10 % more than mean for cluster."
+      enum:
+      - ABSOLUTE_PERCENT
+      - DELTA_MEAN_PERCENT
+      title: Type is an enum that defines the type fo the trigger threshold
+      type: string
+    apiRebalanceScheduleInfo:
+      properties:
+        create_time:
+          format: date-time
+          type: string
+        rebalance_requests:
+          items:
+            $ref: '#/components/schemas/apiSdkStorageRebalanceRequest'
+          type: array
+        schedule:
+          type: string
+      type: object
+    apiSdkStorageRebalanceResponse:
+      properties:
+        actions:
+          items:
+            $ref: '#/components/schemas/apiStorageRebalanceAudit'
+          title: Actions describe all the actions taken during this rebalance
+          type: array
+        job:
+          $ref: '#/components/schemas/apiStorageRebalanceJob'
+        summary:
+          $ref: '#/components/schemas/apiStorageRebalanceSummary'
+      title: SdkStorageRebalanceResponse is the response to a storage rebalance request
+      type: object
+    apiStorageRebalanceJob:
+      properties:
+        create_time:
+          format: date-time
+          title: CreateTime is the time the job was created
+          type: string
+        id:
+          title: ID of the rebalance job
+          type: string
+        last_update_time:
+          format: date-time
+          title: LastUpdateTime is the time the job was updated
+          type: string
+        parameters:
+          $ref: '#/components/schemas/apiSdkStorageRebalanceRequest'
+        state:
+          $ref: '#/components/schemas/apiStorageRebalanceJobState'
+        status:
+          title: Status describes status of pools after rebalance if rebalance did not finish successfully
+          type: string
+      title: StorageRebalanceJob describes job input and current status
+      type: object
+    apiStorageRebalanceTriggerThreshold:
+      properties:
+        metric:
+          $ref: '#/components/schemas/StorageRebalanceTriggerThresholdMetric'
+        over_load_trigger_threshold:
+          description: 'OverLoadTriggerThreshold will select entity which is over this
+
+            threshold. OverLoadTriggerThreshold threshold selects pools
+
+            which act as source for reduction of load defined by the metric.'
+          format: uint64
+          type: string
+        type:
+          $ref: '#/components/schemas/apiStorageRebalanceTriggerThresholdType'
+        under_load_trigger_threshold:
+          description: 'UnderLoadTriggerThreshold will select entity which is under this
+
+            threshold. UnderLoadTriggerThreshold selects pools which act as
+
+            targets for increasing load defined by metric.'
+          format: uint64
+          type: string
+      type: object
+    runtimeError:
+      properties:
+        code:
+          format: int32
+          type: integer
+        details:
+          items:
+            $ref: '#/components/schemas/protobufAny'
+          type: array
+        error:
+          type: string
+        message:
+          type: string
+      type: object
+    LabelSelectorRequirementOperator:
+      default: In
+      description: "- In: In means the value for 'key' should be in one of the given value(s)\n - NotIn: NotIn means the value for 'key' should NOT be in one of the given value(s)\n - Exists: Exists means the 'key' should just exist regardless of the value\n - DoesNotExist: DoesNotExist means the 'key' should NOT exist\n - Gt: Gt means the 'key' should be greater than the value(s)\n - Lt: Lt means the 'key' should be less than the value(s)"
+      enum:
+      - In
+      - NotIn
+      - Exists
+      - DoesNotExist
+      - Gt
+      - Lt
+      title: This defines operator types used in a label matching rule
+      type: string
+    apiSdkStorageRebalanceRequest:
+      properties:
+        max_duration_minutes:
+          format: uint64
+          title: 'MaxDurationMinutes defines how long operation should run when started at schedule.
+
+            0 values means no limit on duration'
+          type: string
+        mode:
+          $ref: '#/components/schemas/apiSdkStorageRebalanceRequestMode'
+        remove_repl_1_snapshots:
+          title: RemoveRepl1Snapshots if true will instruct rebalance job to remove repl-1 snapshots
+          type: boolean
+        source_pool_selector:
+          items:
+            $ref: '#/components/schemas/apiLabelSelectorRequirement'
+          title: SourcePoolSelector allows selecting pools to which trigger thresholds will apply as source
+          type: array
+        target_pool_selector:
+          items:
+            $ref: '#/components/schemas/apiLabelSelectorRequirement'
+          title: TargetPoolSelector allows selecting pools to which trigger thresholds will apply as target
+          type: array
+        trial_run:
+          title: TrialRun if true the job only produces steps that would be taken without making any changes
+          type: boolean
+        trigger_thresholds:
+          description: 'TriggerThresholds defines thresholds that would trigger rebalance.
+
+            For example, TriggerThreshold{ThresholdTypeAbsolutePercent, MetricTypeUsedSpace, 75, 10}
+
+            would trigger rebalance on pools where used space is more than 75% or less than 10%. Similarly,
+
+            TriggerThreshold{ThresholdTypeDeltaMeanPercent, MetricTypeUsedSpace, 15, 25} will
+
+            trigger rebalance for pools where used space is more than 15% from the mean
+
+            percent for used space for the entire cluster or less than 25% from the mean
+
+            percent for used space for the entire cluster.'
+          items:
+            $ref: '#/components/schemas/apiStorageRebalanceTriggerThreshold'
+          type: array
+      type: object
+    apiSdkEnumerateRebalanceJobsResponse:
+      properties:
+        jobs:
+          items:
+            $ref: '#/components/schemas/apiStorageRebalanceJob'
+          title: Jobs is the list of rebalance jobs in the response
+          type: array
+      type: object
+    protobufAny:
+      properties:
+        type_url:
+          type: string
+        value:
+          format: byte
+          type: string
+      type: object
+    apiSdkGetRebalanceJobStatusResponse:
+      properties:
+        actions:
+          items:
+            $ref: '#/components/schemas/apiStorageRebalanceAudit'
+          title: Actions describe all the actions taken during this rebalance
+          type: array
+        job:
+          $ref: '#/components/schemas/apiStorageRebalanceJob'
+        summary:
+          $ref: '#/components/schemas/apiStorageRebalanceSummary'
+      type: object
+    apiSdkStorageRebalanceRequestMode:
+      default: STORAGE_REBALANCE
+      description: "- STORAGE_REBALANCE: StorageRebalance mode: rebalance pools based on provisioned/used space (the default mode)\n - VOLUME_PLACEMENT_FIX: VolumePlacementFix mode: scan all volumes for incorrect placement and fix them\n - POOL_DRAIN: PoolDrain mode: drain all volumes & snapshots on the source pools (optionally to target pools)"
+      enum:
+      - STORAGE_REBALANCE
+      - VOLUME_PLACEMENT_FIX
+      - POOL_DRAIN
+      title: Mode is an enum that defines the mode of the volume reorg job
+      type: string
+    apiStorageRebalanceWorkSummary:
+      properties:
+        done:
+          format: uint64
+          title: Done is the amount of bytes/work done
+          type: string
+        pending:
+          format: uint64
+          title: Pending is the amount of bytes/work pending. Done + Pending == Total
+          type: string
+        type:
+          $ref: '#/components/schemas/apiStorageRebalanceWorkSummaryType'
+      type: object
+    apiStorageRebalanceWorkSummaryType:
+      default: UnbalancedPools
+      description: "- UnbalancedPools: summary for unbalanced pools\n - UnbalancedVolumes: summary for unbalanced volumes\n - UnbalancedProvisionedSpaceBytes: summary for unbalanced provisioned space\n - UnbalancedUsedSpaceBytes: summary for unbalanced used space"
+      enum:
+      - UnbalancedPools
+      - UnbalancedVolumes
+      - UnbalancedProvisionedSpaceBytes
+      - UnbalancedUsedSpaceBytes
+      title: Type is an enum to indicate the type of work summary
+      type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

@@ -1,0 +1,249 @@
+openapi: 3.0.0
+info:
+  title: OpenStorage SDK OpenStorageAlerts OpenStorageBucket API
+  version: 0.186.0
+security:
+- bearerAuth: []
+tags:
+- name: OpenStorageBucket
+paths:
+  /v1/bucket:
+    post:
+      operationId: OpenStorageBucket_Create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/apiBucketCreateRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiBucketCreateResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      tags:
+      - OpenStorageBucket
+  /v1/bucket/access/{bucket_id}:
+    post:
+      operationId: OpenStorageBucket_GrantAccess
+      parameters:
+      - description: Id of the bucket
+        in: path
+        name: bucket_id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/apiBucketGrantAccessRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiBucketGrantAccessResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      tags:
+      - OpenStorageBucket
+  /v1/bucket/revoke/{bucket_id}:
+    post:
+      operationId: OpenStorageBucket_RevokeAccess
+      parameters:
+      - description: Id of bucket to delete
+        in: path
+        name: bucket_id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/apiBucketRevokeAccessRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiBucketRevokeAccessResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      tags:
+      - OpenStorageBucket
+  /v1/bucket/{bucket_id}:
+    delete:
+      operationId: OpenStorageBucket_Delete
+      parameters:
+      - description: Id of bucket to delete
+        in: path
+        name: bucket_id
+        required: true
+        schema:
+          type: string
+      - description: Region in which bucket will be created.
+        in: query
+        name: region
+        required: false
+        schema:
+          type: string
+      - description: Endpoint to use when deleting the bucket.
+        in: query
+        name: endpoint
+        required: false
+        schema:
+          type: string
+      - description: Flag to allow non empty bucket deletion.
+        in: query
+        name: clear_bucket
+        required: false
+        schema:
+          type: boolean
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiBucketDeleteResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      tags:
+      - OpenStorageBucket
+components:
+  schemas:
+    protobufAny:
+      properties:
+        type_url:
+          type: string
+        value:
+          format: byte
+          type: string
+      type: object
+    apiBucketDeleteResponse:
+      title: Empty response
+      type: object
+    apiBucketRevokeAccessRequest:
+      properties:
+        account_id:
+          description: AccountId that is having its access revoked.
+          type: string
+        bucket_id:
+          title: Id of bucket to delete
+          type: string
+      title: Defines the request to revoke access to the bucket
+      type: object
+    apiBucketGrantAccessRequest:
+      properties:
+        access_policy:
+          title: Access policy to be applied for the account
+          type: string
+        account_name:
+          title: Name of the account to which access to be provided
+          type: string
+        bucket_id:
+          title: Id of the bucket
+          type: string
+      title: Defines a request to grant access to the bucket
+      type: object
+    apiBucketCreateResponse:
+      properties:
+        bucket_id:
+          title: Id of new bucket
+          type: string
+      title: Defines a response to the creation of a bucket
+      type: object
+    apiBucketAccessCredentials:
+      properties:
+        access_key_id:
+          title: Access key id
+          type: string
+        secret_access_key:
+          title: Secret access key
+          type: string
+      title: Defines the bucket access credential object
+      type: object
+    runtimeError:
+      properties:
+        code:
+          format: int32
+          type: integer
+        details:
+          items:
+            $ref: '#/components/schemas/protobufAny'
+          type: array
+        error:
+          type: string
+        message:
+          type: string
+      type: object
+    apiBucketRevokeAccessResponse:
+      title: Empty response
+      type: object
+    apiBucketGrantAccessResponse:
+      properties:
+        account_id:
+          description: 'This is the account_id that is being provided access. This will
+
+            This will be required later to revoke access.'
+          type: string
+        credentials:
+          $ref: '#/components/schemas/apiBucketAccessCredentials'
+      title: Defines a response to the creation of a bucket
+      type: object
+    apiBucketCreateRequest:
+      description: Defines a request to create a bucket.
+      properties:
+        anonymousBucketAccessMode:
+          $ref: '#/components/schemas/apiAnonymousBucketAccessMode'
+        endpoint:
+          title: Endpoint to use when creating the bucket
+          type: string
+        name:
+          description: Unique name of the bucket. This will be used for idempotency.
+          type: string
+        region:
+          description: Region in which bucket will be created.
+          type: string
+      type: object
+    apiAnonymousBucketAccessMode:
+      default: UnknownBucketAccessMode
+      description: " - Private: Default, disallow uncredentialed access to the backend storage.\n - ReadOnly: Read only, uncredentialed users can call ListBucket and GetObject.\n - WriteOnly: Write only, uncredentialed users can only call PutObject.\n - ReadWrite: Read/Write, uncredentialed users can read objects as well as PutObject."
+      enum:
+      - UnknownBucketAccessMode
+      - Private
+      - ReadOnly
+      - WriteOnly
+      - ReadWrite
+      type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

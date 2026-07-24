@@ -1,0 +1,786 @@
+openapi: 3.0.0
+info:
+  title: OpenStorage SDK OpenStorageAlerts OpenStoragePolicy API
+  version: 0.186.0
+security:
+- bearerAuth: []
+tags:
+- name: OpenStoragePolicy
+paths:
+  /v1/storagepolicies:
+    get:
+      operationId: OpenStoragePolicy_Enumerate
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkOpenStoragePolicyEnumerateResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: Enumerate returns a list of storage policies
+      tags:
+      - OpenStoragePolicy
+    post:
+      operationId: OpenStoragePolicy_Create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/apiSdkOpenStoragePolicyCreateRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkOpenStoragePolicyCreateResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: Creates a storage policy
+      tags:
+      - OpenStoragePolicy
+    put:
+      operationId: OpenStoragePolicy_Update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/apiSdkOpenStoragePolicyUpdateRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkOpenStoragePolicyUpdateResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: Updates specified storage policy
+      tags:
+      - OpenStoragePolicy
+  /v1/storagepolicies/default:
+    get:
+      operationId: OpenStoragePolicy_DefaultInspect
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkOpenStoragePolicyDefaultInspectResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: 'DefaultInspect return default storage policy if any, otherwise
+
+        empty response'
+      tags:
+      - OpenStoragePolicy
+  /v1/storagepolicies/default/{name}:
+    post:
+      operationId: OpenStoragePolicy_SetDefault
+      parameters:
+      - description: 'name of policy to set as default storage policy
+
+          for volume creation
+
+          This policy will be used to validate/update volume configuration'
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/apiSdkOpenStoragePolicySetDefaultRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkOpenStoragePolicySetDefaultResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: Set specified storage policy as default policy
+      tags:
+      - OpenStoragePolicy
+  /v1/storagepolicies/inspect/{name}:
+    get:
+      operationId: OpenStoragePolicy_Inspect
+      parameters:
+      - description: name of storage policy to retrive
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkOpenStoragePolicyInspectResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: Inspect returns information about a specified storage policy
+      tags:
+      - OpenStoragePolicy
+  /v1/storagepolicies/release:
+    post:
+      operationId: OpenStoragePolicy_Release
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/apiSdkOpenStoragePolicyReleaseRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkOpenStoragePolicyReleaseResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: 'Release specified storage policy constraint for volume
+
+        creation'
+      tags:
+      - OpenStoragePolicy
+  /v1/storagepolicies/{name}:
+    delete:
+      operationId: OpenStoragePolicy_Delete
+      parameters:
+      - description: name of storage policy to delete
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkOpenStoragePolicyDeleteResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: Deletes specified storage policy
+      tags:
+      - OpenStoragePolicy
+components:
+  schemas:
+    OwnershipAccessType:
+      default: Read
+      description: "Access types can be set by owner to have different levels of access to\na resource.\n\nIt is up to the resource to interpret what the types mean and are\nused for.\n\n - Read: Read access only and cannot affect the resource.\n - Write: Write access and can affect the resource.\nThis type automatically provides Read access also.\n - Admin: Administrator access.\nThis type automatically provides Read and Write access also."
+      enum:
+      - Read
+      - Write
+      - Admin
+      type: string
+    apiProxyProtocol:
+      default: PROXY_PROTOCOL_INVALID
+      description: "ProxyProtocol defines the protocol used for proxy.\n\n - PROXY_PROTOCOL_INVALID: Invalid uninitialized value\n - PROXY_PROTOCOL_NFS: NFS indicates that the external data source is NFS and the volume\nwill be reflected over NFS protocol\n - PROXY_PROTOCOL_S3: S3 indicates that the external data source is an object store.\n - PROXY_PROTOCOL_PXD: PXD indicates that the external data source is a Portworx block volume.\n - PROXY_PROTOCOL_PURE_BLOCK: PURE_BLOCK indicates that the external data source is a pure_block volume.\n - PROXY_PROTOCOL_PURE_FILE: PURE_FILE indicates that the external data source is a pure_file volume."
+      enum:
+      - PROXY_PROTOCOL_INVALID
+      - PROXY_PROTOCOL_NFS
+      - PROXY_PROTOCOL_S3
+      - PROXY_PROTOCOL_PXD
+      - PROXY_PROTOCOL_PURE_BLOCK
+      - PROXY_PROTOCOL_PURE_FILE
+      type: string
+    apiSdkOpenStoragePolicyDefaultInspectResponse:
+      properties:
+        storage_policy:
+          $ref: '#/components/schemas/apiSdkStoragePolicy'
+      title: Define default storage policy response
+      type: object
+    apiSdkOpenStoragePolicyInspectResponse:
+      properties:
+        storage_policy:
+          $ref: '#/components/schemas/apiSdkStoragePolicy'
+      title: Define a storage policy inspect response
+      type: object
+    OwnershipPublicAccessControl:
+      properties:
+        type:
+          $ref: '#/components/schemas/OwnershipAccessType'
+      title: PublicAccessControl allows assigning public ownership
+      type: object
+    apiS3ProxySpec:
+      description: S3ProxySpec is the spec for proxying an external object store.
+      properties:
+        bucket_name:
+          title: BucketName is the name of the bucket from the object store
+          type: string
+      type: object
+    Sharedv4ServiceSpecServiceType:
+      default: UNSPECIFIED
+      description: "Type of sharedv4 service. Values are governed by the different types\nof services supported by container orchestrators such as Kubernetes.\n\n - UNSPECIFIED: Unspecified\n - NODEPORT: Export the sharedv4 service on each Node's IP.\nIn this mode the sharedv4 volume can be accessed from outside the\ncluster using one of the node's IPs.\n - CLUSTERIP: Export the shared4 service on an internal cluster IP.\nIn this mode the sharedv4 volume will only be accessible\nwithin the cluster via this service.\n - LOADBALANCER: Expose the sharedv4 service on cloud provider's load balancer.\nApplicable when running in cloud. In this mode the sharedv4 volume\ncan be accessed from outside the cluster.\n - NONE: Do not use sharedv4 service feature. Use legacy sharedv4 volumes instead."
+      enum:
+      - UNSPECIFIED
+      - NODEPORT
+      - CLUSTERIP
+      - LOADBALANCER
+      - NONE
+      type: string
+    apiSdkOpenStoragePolicyCreateResponse:
+      title: Empty response
+      type: object
+    apiCosType:
+      default: NONE
+      enum:
+      - NONE
+      - LOW
+      - MEDIUM
+      - HIGH
+      type: string
+    apiIoStrategy:
+      description: IoStrategy defines how I/O should be performed to backing storage media.
+      properties:
+        async_io:
+          description: AsyncIO enables kaio.
+          type: boolean
+        direct_io:
+          title: Enable direct I/O on the backing datastore
+          type: boolean
+        early_ack:
+          description: EarlyAck enables acks for async I/O at the source.
+          type: boolean
+      type: object
+    apiReplicaSet:
+      properties:
+        id:
+          format: int64
+          title: ID is the unique ID of this replica set
+          type: integer
+        nodes:
+          items:
+            type: string
+          type: array
+        pool_uuids:
+          items:
+            type: string
+          title: Unique IDs of the storage pools for this replica set
+          type: array
+      title: 'ReplicaSet set of machine IDs (nodes) to which part of this volume is erasure
+
+        coded - for clustered storage arrays'
+      type: object
+    apiSdkOpenStoragePolicyUpdateResponse:
+      title: Empty Response
+      type: object
+    apiSharedv4Spec:
+      properties:
+        failover_strategy:
+          $ref: '#/components/schemas/apiSharedv4FailoverStrategyValue'
+      title: Sharedv4Spec specifies common properties of sharedv4 and sharedv4 service volumes
+      type: object
+    apiExportSpec:
+      description: ExportSpec defines how the volume is exported..
+      properties:
+        export_options:
+          description: ExportOptions options exporting the volume.
+          type: string
+        export_protocol:
+          $ref: '#/components/schemas/apiExportProtocol'
+      type: object
+    apiSdkOpenStoragePolicyCreateRequest:
+      properties:
+        storage_policy:
+          $ref: '#/components/schemas/apiSdkStoragePolicy'
+      title: Define a request to create storage policy
+      type: object
+    apiVolumeSpecPolicy:
+      properties:
+        aggregation_level:
+          format: int64
+          type: integer
+        auto_fstrim:
+          type: boolean
+        cos:
+          $ref: '#/components/schemas/apiCosType'
+        dedupe:
+          type: boolean
+        encrypted:
+          type: boolean
+        export_spec:
+          $ref: '#/components/schemas/apiExportSpec'
+        fastpath:
+          type: boolean
+        group:
+          $ref: '#/components/schemas/apiGroup'
+        ha_level:
+          format: int64
+          type: string
+        ha_level_operator:
+          $ref: '#/components/schemas/VolumeSpecPolicyPolicyOp'
+        io_profile:
+          $ref: '#/components/schemas/apiIoProfile'
+        io_strategy:
+          $ref: '#/components/schemas/apiIoStrategy'
+        io_throttle:
+          $ref: '#/components/schemas/apiIoThrottle'
+        journal:
+          type: boolean
+        mount_opt_spec:
+          $ref: '#/components/schemas/apiMountOptions'
+        nodiscard:
+          type: boolean
+        passphrase:
+          type: string
+        proxy_spec:
+          $ref: '#/components/schemas/apiProxySpec'
+        proxy_write:
+          type: boolean
+        queue_depth:
+          format: int64
+          type: integer
+        readahead:
+          type: boolean
+        replica_set:
+          $ref: '#/components/schemas/apiReplicaSet'
+        scale:
+          format: int64
+          type: integer
+        scale_operator:
+          $ref: '#/components/schemas/VolumeSpecPolicyPolicyOp'
+        scan_policy:
+          $ref: '#/components/schemas/apiScanPolicy'
+        shared:
+          type: boolean
+        sharedv4:
+          type: boolean
+        sharedv4_mount_opt_spec:
+          $ref: '#/components/schemas/apiMountOptions'
+        sharedv4_service_spec:
+          $ref: '#/components/schemas/apiSharedv4ServiceSpec'
+        sharedv4_spec:
+          $ref: '#/components/schemas/apiSharedv4Spec'
+        size:
+          format: uint64
+          type: string
+        size_operator:
+          $ref: '#/components/schemas/VolumeSpecPolicyPolicyOp'
+        snapshot_interval:
+          format: int64
+          type: integer
+        snapshot_interval_operator:
+          $ref: '#/components/schemas/VolumeSpecPolicyPolicyOp'
+        snapshot_schedule:
+          type: string
+        sticky:
+          type: boolean
+        volume_labels:
+          additionalProperties:
+            type: string
+          title: VolumeLabels configuration labels
+          type: object
+        winshare:
+          type: boolean
+      title: VolumeSpecPolicy provides a method to set volume storage policy
+      type: object
+    ScanPolicyScanTrigger:
+      default: SCAN_TRIGGER_NONE
+      enum:
+      - SCAN_TRIGGER_NONE
+      - SCAN_TRIGGER_ON_MOUNT
+      - SCAN_TRIGGER_ON_NEXT_MOUNT
+      type: string
+    apiSharedv4FailoverStrategyValue:
+      default: UNSPECIFIED
+      description: " - UNSPECIFIED: Unspecified\n - AGGRESSIVE: Fail over to the new NFS server quickly. This is appropriate for\nthe apps with sharedv4 service volumes. It can also be used\nfor the apps with sharedv4 volumes when such apps are able\nto restart quickly.\n - NORMAL: Give the old NFS server more time to come back up before\ntriggering the failover. This is appropriate for the apps\nwith sharedv4 volumes (non-service)."
+      enum:
+      - UNSPECIFIED
+      - AGGRESSIVE
+      - NORMAL
+      type: string
+    apiIoThrottle:
+      properties:
+        read_bw_mbytes:
+          format: int64
+          type: integer
+        read_iops:
+          format: int64
+          type: integer
+        write_bw_mbytes:
+          format: int64
+          type: integer
+        write_iops:
+          format: int64
+          type: integer
+      title: 'IoThrottle defines IO throttle limits for a volume
+
+        read_iops : maximum read iops this volume is allowed
+
+        write_iops : maximum write iops this volume is allowed
+
+        read_bw_mbytes  : maximum read bandwidth this volume is allowed in MegaBytes
+
+        write_bw_mbytes : maximum write bandwidth this volume is allowed in MegaBytes'
+      type: object
+    apiOwnership:
+      description: 'Ownership information for resource.
+
+        Administrators are users who belong to the group `*`, meaning, every group.'
+      properties:
+        acls:
+          $ref: '#/components/schemas/OwnershipAccessControl'
+        owner:
+          description: 'Username of owner.
+
+
+            The storage system uses the username taken from the security authorization
+
+            token and is saved on this field. Only users with system administration
+
+            can edit this value.'
+          type: string
+      type: object
+    apiSdkOpenStoragePolicyEnumerateResponse:
+      properties:
+        storage_policies:
+          items:
+            $ref: '#/components/schemas/apiSdkStoragePolicy'
+          title: List of storage policies
+          type: array
+      title: Define a storage policy enumerate response
+      type: object
+    apiPureBlockSpec:
+      properties:
+        full_vol_name:
+          type: string
+        pod_name:
+          type: string
+        serial_num:
+          type: string
+      title: PureBlockSpec is the spec for proxying a volume on pure_block backends
+      type: object
+    ScanPolicyScanAction:
+      default: SCAN_ACTION_NONE
+      enum:
+      - SCAN_ACTION_NONE
+      - SCAN_ACTION_SCAN_ONLY
+      - SCAN_ACTION_SCAN_REPAIR
+      type: string
+    apiSdkOpenStoragePolicySetDefaultRequest:
+      properties:
+        name:
+          title: 'name of policy to set as default storage policy
+
+            for volume creation
+
+            This policy will be used to validate/update volume configuration'
+          type: string
+      title: Define a request to set default storage policy
+      type: object
+    runtimeError:
+      properties:
+        code:
+          format: int32
+          type: integer
+        details:
+          items:
+            $ref: '#/components/schemas/protobufAny'
+          type: array
+        error:
+          type: string
+        message:
+          type: string
+      type: object
+    apiSdkOpenStoragePolicyReleaseRequest:
+      title: Empty Request
+      type: object
+    apiMountOptions:
+      description: MountOptions defines the mount options with which a volume is mounted.
+      properties:
+        options:
+          additionalProperties:
+            type: string
+          title: 'Options are opaque key value pairs that are passed as mount options when
+
+            a volume is mounted.
+
+            If an empty value is provided only the key will be passed as an option
+
+            If both key and value are provided then ''key=value'' will be passed as an
+
+            option'
+          type: object
+      type: object
+    VolumeSpecPolicyPolicyOp:
+      default: Equal
+      description: "- Equal: Policy will make sure the value must be equal\n - Minimum: Policy will make sure the requested value must be greater than or equal\n - Maximum: Policy will make sure the requested value must be less than or equal"
+      enum:
+      - Equal
+      - Minimum
+      - Maximum
+      title: This defines an operator for the policy comparisons
+      type: string
+    apiScanPolicy:
+      description: 'ScanPolicy defines when a filesystem check is triggered and what action to take
+
+        User can specify *one* of the following valid policies
+
+        1. trigger=SCAN_TRIGGER_ON_MOUNT, action=SCAN_ACTION_SCAN_ONLY
+
+        2. trigger=SCAN_TRIGGER_ON_MOUNT, action=SCAN_ACTION_SCAN_REPAIR
+
+        3. trigger=SCAN_TRIGGER_ON_NEXT_MOUNT, action=SCAN_ACTION_SCAN_ONLY
+
+        4. trigger=SCAN_TRIGGER_ON_NEXT_MOUNT, action=SCAN_ACTION_SCAN_REPAIR
+
+        5. trigger=SCAN_TRIGGER_NONE, action=SCAN_ACTION_NONE
+
+        Note: When trigger == SCAN_TRIGGER_ON_NEXT_MOUNT, the associated action is
+
+        performed once on the next mount and the scanpolicy gets reset to
+
+        `trigger=SCAN_TRIGGER_NONE, action=SCAN_ACTION_NONE`, irrespective of the
+
+        output of the action.'
+      properties:
+        action:
+          $ref: '#/components/schemas/ScanPolicyScanAction'
+        trigger:
+          $ref: '#/components/schemas/ScanPolicyScanTrigger'
+      type: object
+    apiPXDProxySpec:
+      properties:
+        id:
+          title: ID of the remote portworx volume
+          type: string
+      title: PXDProxySpec is the spec for proxying a Portworx volume
+      type: object
+    apiProxySpec:
+      description: ProxySpec defines how this volume will reflect an external data source.
+      properties:
+        endpoint:
+          description: 'Endpoint is the external endpoint which can be used for accessing the
+
+            external data source.'
+          type: string
+        nfs_spec:
+          $ref: '#/components/schemas/apiNFSProxySpec'
+        proxy_protocol:
+          $ref: '#/components/schemas/apiProxyProtocol'
+        pure_block_spec:
+          $ref: '#/components/schemas/apiPureBlockSpec'
+        pure_file_spec:
+          $ref: '#/components/schemas/apiPureFileSpec'
+        pxd_spec:
+          $ref: '#/components/schemas/apiPXDProxySpec'
+        s3_spec:
+          $ref: '#/components/schemas/apiS3ProxySpec'
+      type: object
+    apiExportProtocol:
+      default: INVALID
+      description: "ExportProtocol defines how the device is exported..\n\n - INVALID: Invalid uninitialized value\n - PXD: PXD the volume is exported over Portworx block interface.\n - ISCSI: ISCSI the volume is exported over ISCSI.\n - NFS: NFS the volume is exported over NFS.\n - CUSTOM: Custom the volume is exported over custom interface."
+      enum:
+      - INVALID
+      - PXD
+      - ISCSI
+      - NFS
+      - CUSTOM
+      type: string
+    apiNFSProxySpec:
+      description: NFSProxySpec is the spec for proxying an NFS share.
+      properties:
+        export_path:
+          title: ExportPath is the NFS export path on the NFS server
+          type: string
+        sub_path:
+          description: SubPath is the sub-directory from an NFS share that should be reflected.
+          type: string
+      type: object
+    apiSharedv4ServiceSpec:
+      description: 'Sharedv4ServiceSpec when set, creates a service endpoint for accessing
+
+        a sharedv4 volume.'
+      properties:
+        external_access:
+          title: Indicates whether the service needs to be accessed outside of the cluster
+          type: boolean
+        name:
+          title: 'Name of the service. If not provided the name of the volume will be
+
+            used for setting up a service'
+          type: string
+        type:
+          $ref: '#/components/schemas/Sharedv4ServiceSpecServiceType'
+      type: object
+    protobufAny:
+      properties:
+        type_url:
+          type: string
+        value:
+          format: byte
+          type: string
+      type: object
+    apiSdkOpenStoragePolicySetDefaultResponse:
+      title: Empty Response
+      type: object
+    apiSdkStoragePolicy:
+      properties:
+        allow_update:
+          title: 'If set a volume can be updated without storage Policy
+
+            restriction, otherwise volume update will be followed as per storage policy
+
+            specification'
+          type: boolean
+        force:
+          title: 'Force if set to true volume specs will be overwritten, otherwise
+
+            volume creation will fail if the volume specifications are not inline with storage policy'
+          type: boolean
+        name:
+          description: Name of storage policy.
+          type: string
+        ownership:
+          $ref: '#/components/schemas/apiOwnership'
+        policy:
+          $ref: '#/components/schemas/apiVolumeSpecPolicy'
+      title: 'A SdkStoragePolicy represents minimum set of volume specs to be
+
+        follow while creating volumes.
+
+        If storage policy is set default in OpenStoragePolicy service, VolumeSpecPolicy will be
+
+        used before creating volume to validate volume specs or ensure minimum volume creation
+
+        rules followed'
+      type: object
+    apiSdkOpenStoragePolicyDeleteResponse:
+      title: Empty Response
+      type: object
+    apiSdkOpenStoragePolicyUpdateRequest:
+      properties:
+        storage_policy:
+          $ref: '#/components/schemas/apiSdkStoragePolicy'
+      title: Define a request to update storage policy
+      type: object
+    OwnershipAccessControl:
+      properties:
+        collaborators:
+          additionalProperties:
+            $ref: '#/components/schemas/OwnershipAccessType'
+          description: 'Collaborator access to resource gives access to other user.
+
+            Must be the username (unique id) set in the authorization token.
+
+            The owner or the administrator can set this value. Possible values are:
+
+            1. no collaborators: Means no users are given access.
+
+            2. `["*"]`: All users are allowed.
+
+            3. `["username1", "username2"]`: Only certain usernames are allowed. In this example only
+
+            _username1_ and _username2_ are allowed.'
+          type: object
+        groups:
+          additionalProperties:
+            $ref: '#/components/schemas/OwnershipAccessType'
+          description: 'Group access to resource which must match the group set in the
+
+            authorization token.
+
+            Can be set by the owner or the system administrator only.
+
+            Possible values are:
+
+            1. no groups: Means no groups are given access.
+
+            2. `["*"]`: All groups are allowed.
+
+            3. `["group1", "group2"]`: Only certain groups are allowed. In this example only
+
+            _group1_ and _group2_ are allowed.'
+          type: object
+        public:
+          $ref: '#/components/schemas/OwnershipPublicAccessControl'
+      type: object
+    apiPureFileSpec:
+      properties:
+        export_rules:
+          type: string
+        full_vol_name:
+          type: string
+        nfs_endpoint:
+          type: string
+      title: PureFileSpec is the spec for proxying a volume on pure_file backends
+      type: object
+    apiGroup:
+      description: 'Group represents VolumeGroup / namespace
+
+        All volumes in the same group share this object.'
+      properties:
+        id:
+          description: Id common identifier across volumes that have the same group.
+          type: string
+      type: object
+    apiIoProfile:
+      default: IO_PROFILE_SEQUENTIAL
+      enum:
+      - IO_PROFILE_SEQUENTIAL
+      - IO_PROFILE_RANDOM
+      - IO_PROFILE_DB
+      - IO_PROFILE_DB_REMOTE
+      - IO_PROFILE_CMS
+      - IO_PROFILE_SYNC_SHARED
+      - IO_PROFILE_AUTO
+      - IO_PROFILE_NONE
+      - IO_PROFILE_JOURNAL
+      - IO_PROFILE_AUTO_JOURNAL
+      type: string
+    apiSdkOpenStoragePolicyReleaseResponse:
+      title: Empty Response
+      type: object
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

@@ -1,0 +1,359 @@
+openapi: 3.0.0
+info:
+  title: OpenStorage SDK OpenStorageAlerts OpenStorageFilesystemTrim API
+  version: 0.186.0
+security:
+- bearerAuth: []
+tags:
+- name: OpenStorageFilesystemTrim
+paths:
+  /v1/filesystem-trim/auto-fstrim-pop:
+    post:
+      operationId: OpenStorageFilesystemTrim_AutoFSTrimPop
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/apiSdkAutoFSTrimPopRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkAutoFSTrimPopResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: Pop a auto filesystem Trim job from the queue
+      tags:
+      - OpenStorageFilesystemTrim
+  /v1/filesystem-trim/auto-fstrim-push:
+    post:
+      operationId: OpenStorageFilesystemTrim_AutoFSTrimPush
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/apiSdkAutoFSTrimPushRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkAutoFSTrimPushResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: Push a auto filesystem Trim job into the queue
+      tags:
+      - OpenStorageFilesystemTrim
+  /v1/filesystem-trim/auto-fstrim-status:
+    get:
+      operationId: OpenStorageFilesystemTrim_AutoFSTrimStatus
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkAutoFSTrimStatusResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      tags:
+      - OpenStorageFilesystemTrim
+  /v1/filesystem-trim/auto-fstrim-usage:
+    get:
+      operationId: OpenStorageFilesystemTrim_AutoFSTrimUsage
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkAutoFSTrimUsageResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: 'Usage of a filesystem Trim background operation on all locally mounted
+
+        volume'
+      tags:
+      - OpenStorageFilesystemTrim
+  /v1/filesystem-trim/start:
+    post:
+      operationId: OpenStorageFilesystemTrim_Start
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/apiSdkFilesystemTrimStartRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkFilesystemTrimStartResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: Start a filesystem Trim background operation on a mounted volume
+      tags:
+      - OpenStorageFilesystemTrim
+  /v1/filesystem-trim/status:
+    get:
+      operationId: OpenStorageFilesystemTrim_Status
+      parameters:
+      - description: Id of the volume.
+        in: query
+        name: volume_id
+        required: false
+        schema:
+          type: string
+      - description: Path where the volume is mounted.
+        in: query
+        name: mount_path
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkFilesystemTrimStatusResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: 'Status of a filesystem Trim background operation on a mounted
+
+        volume, if any'
+      tags:
+      - OpenStorageFilesystemTrim
+  /v1/filesystem-trim/stop:
+    post:
+      operationId: OpenStorageFilesystemTrim_Stop
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/apiSdkFilesystemTrimStopRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiSdkFilesystemTrimStopResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+          description: An unexpected error response.
+      summary: Stop a filesystem Trim background operation on a mounted volume, if any
+      tags:
+      - OpenStorageFilesystemTrim
+components:
+  schemas:
+    apiFstrimVolumeUsageInfo:
+      properties:
+        du_usage:
+          format: uint64
+          title: Disk usage in bytes
+          type: string
+        perform_auto_fstrim:
+          title: If auto fstrim is performed to the volume, if not, why
+          type: string
+        px_usage:
+          format: uint64
+          title: Disk usage seen in Portworx in bytes
+          type: string
+        volume_name:
+          title: Volume name
+          type: string
+        volume_size:
+          format: uint64
+          title: Volume size
+          type: string
+      title: FstrimVolUsageInfo
+      type: object
+    protobufAny:
+      properties:
+        type_url:
+          type: string
+        value:
+          format: byte
+          type: string
+      type: object
+    apiSdkFilesystemTrimStatusResponse:
+      description: 'SdkFilesystemTrimStatusResponse defines the response for a
+
+        SdkFilesystemTrimStatusRequest.'
+      properties:
+        message:
+          title: Text blob containing ASCII text providing details of the operation
+          type: string
+        status:
+          $ref: '#/components/schemas/FilesystemTrimFilesystemTrimStatus'
+      type: object
+    apiSdkAutoFSTrimPopResponse:
+      properties:
+        message:
+          title: Text blob containing ASCII text providing details of the operation
+          type: string
+      title: 'SdkAutoFSTrimPopResponse defines the response to pop a volume to autofstrim
+
+        queue'
+      type: object
+    apiSdkAutoFSTrimUsageResponse:
+      description: 'SdkAutoFSTrimUsageResponse defines the response for a
+
+        SdkAutoFSTrimUsageRequest.'
+      properties:
+        message:
+          title: Text blob containing ASCII text providing details of the operation
+          type: string
+        usage:
+          additionalProperties:
+            $ref: '#/components/schemas/apiFstrimVolumeUsageInfo'
+          title: map of fstrim disk usage and volume name
+          type: object
+      type: object
+    apiSdkAutoFSTrimPopRequest:
+      properties:
+        volume_id:
+          title: Id of the volume
+          type: string
+      title: 'SdkAutoFSTrimPopRequest defines the request to pop a volume to autofstrim
+
+        queue'
+      type: object
+    apiSdkAutoFSTrimPushRequest:
+      properties:
+        volume_id:
+          title: Id of the volume
+          type: string
+      title: 'SdkAutoFSTrimPushRequest defines the request to push a volume to autofstrim
+
+        queue'
+      type: object
+    runtimeError:
+      properties:
+        code:
+          format: int32
+          type: integer
+        details:
+          items:
+            $ref: '#/components/schemas/protobufAny'
+          type: array
+        error:
+          type: string
+        message:
+          type: string
+      type: object
+    apiSdkFilesystemTrimStopRequest:
+      properties:
+        mount_path:
+          title: Path where the volume is mounted
+          type: string
+        volume_id:
+          title: Id of the volume
+          type: string
+      title: 'SdkFilesystemTrimStopRequest defines a request to stop a background
+
+        filesystem trim operation'
+      type: object
+    apiSdkFilesystemTrimStopResponse:
+      title: Empty response
+      type: object
+    apiSdkFilesystemTrimStartResponse:
+      description: 'SdkFilesystemTrimStartResponse defines the response for a
+
+        SdkFilesystemTrimStartRequest.'
+      properties:
+        message:
+          title: Text blob containing ASCII text providing details of the operation
+          type: string
+        status:
+          $ref: '#/components/schemas/FilesystemTrimFilesystemTrimStatus'
+      type: object
+    apiSdkAutoFSTrimPushResponse:
+      properties:
+        message:
+          title: Text blob containing ASCII text providing details of the operation
+          type: string
+      title: 'SdkAutoFSTrimPushResponse defines the response to push a volume to autofstrim
+
+        queue'
+      type: object
+    apiSdkAutoFSTrimStatusResponse:
+      description: 'SdkAutoFSTrimStatusResponse defines the response for a
+
+        SdkAutoFSTrimStatusRequest.'
+      properties:
+        message:
+          title: Text blob containing ASCII text providing details of the operation
+          type: string
+        trim_status:
+          additionalProperties:
+            $ref: '#/components/schemas/FilesystemTrimFilesystemTrimStatus'
+          title: map of volume id and the state of the filesystem trim operation
+          type: object
+      type: object
+    FilesystemTrimFilesystemTrimStatus:
+      default: FS_TRIM_UNKNOWN
+      description: "- FS_TRIM_UNKNOWN: Filesystem Trim operation is an unknown state\n - FS_TRIM_NOT_RUNNING: Filesystem Trim operation is not running for the specified volume\n - FS_TRIM_STARTED: Filesystem Trim operation started for the specified volume\n - FS_TRIM_INPROGRESS: Filesystem Trim operation is in progress for the specified volume\n - FS_TRIM_STOPPED: Filesystem Trim operation was stopped by the user for the specified volume\n - FS_TRIM_COMPLETED: Filesystem Trim operation completed successfully for the specified volume\n - FS_TRIM_FAILED: Filesystem Trim operation failed due to internal error for the specified\nvolume"
+      enum:
+      - FS_TRIM_UNKNOWN
+      - FS_TRIM_NOT_RUNNING
+      - FS_TRIM_STARTED
+      - FS_TRIM_INPROGRESS
+      - FS_TRIM_STOPPED
+      - FS_TRIM_COMPLETED
+      - FS_TRIM_FAILED
+      title: 'FilesystemTrimStatus represents the status codes returned from
+
+        OpenStorageFilesystemTrim service APIs()'
+      type: string
+    apiSdkFilesystemTrimStartRequest:
+      properties:
+        mount_path:
+          title: Path where the volume is mounted
+          type: string
+        volume_id:
+          title: Id of the volume
+          type: string
+      title: SdkFilesystemTrimStartRequest defines a request to start a background filesystem trim operation
+      type: object
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
