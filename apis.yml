@@ -4,7 +4,20 @@ description: >-
   Portworx by Pure Storage is a Kubernetes data services platform that provides persistent storage, data protection,
   disaster recovery, and security for containerized applications running in production.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/portworx.png
 tags:
   - Cloud Native
   - Containers
@@ -16,28 +29,417 @@ created: '2026-03-26'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
-  - aid: portworx:portworx
-    name: Portworx
-    description: >-
-      Portworx by Pure Storage is a Kubernetes data services platform that provides persistent storage, data protection,
-      disaster recovery, and security for containerized applications running in production. The OpenStorage SDK exposes
-      a REST API for volume, cluster, snapshot, backup, and credential management.
-    humanURL: https://portworx.com/
-    baseURL: https://libopenstorage.github.io/
-    tags:
-      - Containers
-      - Data Management
-      - Kubernetes
-      - Storage
-    properties:
-      - type: Documentation
-        url: https://docs.portworx.com/
-      - type: GettingStarted
-        url: https://docs.portworx.com/portworx-enterprise/get-started
-      - type: APIReference
-        url: https://libopenstorage.github.io/
-      - type: OpenAPI
-        url: openapi/portworx-openapi.yml
+- aid: portworx:portworx-openstoragealerts-api
+  name: Portworx OpenStorageAlerts API
+  description: The OpenStorageAlerts API from Portworx — 2 operation(s) for openstoragealerts.
+  humanURL: https://portworx.com/
+  baseURL: https://libopenstorage.github.io/
+  tags:
+  - OpenStorageAlerts
+  properties:
+  - type: OpenAPI
+    url: openapi/portworx-openstoragealerts-api-openapi.yml
+  - type: Documentation
+    url: https://docs.portworx.com/
+  - type: GettingStarted
+    url: https://docs.portworx.com/portworx-enterprise/get-started
+  - type: APIReference
+    url: https://libopenstorage.github.io/
+- aid: portworx:portworx-openstoragebucket-api
+  name: Portworx OpenStorageBucket API
+  description: The OpenStorageBucket API from Portworx — 4 operation(s) for openstoragebucket.
+  humanURL: https://portworx.com/
+  baseURL: https://libopenstorage.github.io/
+  tags:
+  - OpenStorageBucket
+  properties:
+  - type: OpenAPI
+    url: openapi/portworx-openstoragebucket-api-openapi.yml
+  - type: Documentation
+    url: https://docs.portworx.com/
+  - type: GettingStarted
+    url: https://docs.portworx.com/portworx-enterprise/get-started
+  - type: APIReference
+    url: https://libopenstorage.github.io/
+- aid: portworx:portworx-openstoragecloudbackup-api
+  name: Portworx OpenStorageCloudBackup API
+  description: >-
+    The OpenStorageCloudBackup API from Portworx — 13 operation(s) for openstoragecloudbackup.
+  humanURL: https://portworx.com/
+  baseURL: https://libopenstorage.github.io/
+  tags:
+  - OpenStorageCloudBackup
+  properties:
+  - type: OpenAPI
+    url: openapi/portworx-openstoragecloudbackup-api-openapi.yml
+  - type: Documentation
+    url: https://docs.portworx.com/
+  - type: GettingStarted
+    url: https://docs.portworx.com/portworx-enterprise/get-started
+  - type: APIReference
+    url: https://libopenstorage.github.io/
+- aid: portworx:portworx-openstoragecluster-api
+  name: Portworx OpenStorageCluster API
+  description: The OpenStorageCluster API from Portworx — 1 operation(s) for openstoragecluster.
+  humanURL: https://portworx.com/
+  baseURL: https://libopenstorage.github.io/
+  tags:
+  - OpenStorageCluster
+  properties:
+  - type: OpenAPI
+    url: openapi/portworx-openstoragecluster-api-openapi.yml
+  - type: Documentation
+    url: https://docs.portworx.com/
+  - type: GettingStarted
+    url: https://docs.portworx.com/portworx-enterprise/get-started
+  - type: APIReference
+    url: https://libopenstorage.github.io/
+- aid: portworx:portworx-openstorageclusterdomains-api
+  name: Portworx OpenStorageClusterDomains API
+  description: >-
+    The OpenStorageClusterDomains API from Portworx — 4 operation(s) for openstorageclusterdomains.
+  humanURL: https://portworx.com/
+  baseURL: https://libopenstorage.github.io/
+  tags:
+  - OpenStorageClusterDomains
+  properties:
+  - type: OpenAPI
+    url: openapi/portworx-openstorageclusterdomains-api-openapi.yml
+  - type: Documentation
+    url: https://docs.portworx.com/
+  - type: GettingStarted
+    url: https://docs.portworx.com/portworx-enterprise/get-started
+  - type: APIReference
+    url: https://libopenstorage.github.io/
+- aid: portworx:portworx-openstorageclusterpair-api
+  name: Portworx OpenStorageClusterPair API
+  description: >-
+    The OpenStorageClusterPair API from Portworx — 4 operation(s) for openstorageclusterpair.
+  humanURL: https://portworx.com/
+  baseURL: https://libopenstorage.github.io/
+  tags:
+  - OpenStorageClusterPair
+  properties:
+  - type: OpenAPI
+    url: openapi/portworx-openstorageclusterpair-api-openapi.yml
+  - type: Documentation
+    url: https://docs.portworx.com/
+  - type: GettingStarted
+    url: https://docs.portworx.com/portworx-enterprise/get-started
+  - type: APIReference
+    url: https://libopenstorage.github.io/
+- aid: portworx:portworx-openstoragecredentials-api
+  name: Portworx OpenStorageCredentials API
+  description: >-
+    The OpenStorageCredentials API from Portworx — 5 operation(s) for openstoragecredentials.
+  humanURL: https://portworx.com/
+  baseURL: https://libopenstorage.github.io/
+  tags:
+  - OpenStorageCredentials
+  properties:
+  - type: OpenAPI
+    url: openapi/portworx-openstoragecredentials-api-openapi.yml
+  - type: Documentation
+    url: https://docs.portworx.com/
+  - type: GettingStarted
+    url: https://docs.portworx.com/portworx-enterprise/get-started
+  - type: APIReference
+    url: https://libopenstorage.github.io/
+- aid: portworx:portworx-openstoragediags-api
+  name: Portworx OpenStorageDiags API
+  description: The OpenStorageDiags API from Portworx — 1 operation(s) for openstoragediags.
+  humanURL: https://portworx.com/
+  baseURL: https://libopenstorage.github.io/
+  tags:
+  - OpenStorageDiags
+  properties:
+  - type: OpenAPI
+    url: openapi/portworx-openstoragediags-api-openapi.yml
+  - type: Documentation
+    url: https://docs.portworx.com/
+  - type: GettingStarted
+    url: https://docs.portworx.com/portworx-enterprise/get-started
+  - type: APIReference
+    url: https://libopenstorage.github.io/
+- aid: portworx:portworx-openstoragefilesystemcheck-api
+  name: Portworx OpenStorageFilesystemCheck API
+  description: >-
+    The OpenStorageFilesystemCheck API from Portworx — 6 operation(s) for openstoragefilesystemcheck.
+  humanURL: https://portworx.com/
+  baseURL: https://libopenstorage.github.io/
+  tags:
+  - OpenStorageFilesystemCheck
+  properties:
+  - type: OpenAPI
+    url: openapi/portworx-openstoragefilesystemcheck-api-openapi.yml
+  - type: Documentation
+    url: https://docs.portworx.com/
+  - type: GettingStarted
+    url: https://docs.portworx.com/portworx-enterprise/get-started
+  - type: APIReference
+    url: https://libopenstorage.github.io/
+- aid: portworx:portworx-openstoragefilesystemdefrag-api
+  name: Portworx OpenStorageFilesystemDefrag API
+  description: >-
+    The OpenStorageFilesystemDefrag API from Portworx — 4 operation(s) for openstoragefilesystemdefrag.
+  humanURL: https://portworx.com/
+  baseURL: https://libopenstorage.github.io/
+  tags:
+  - OpenStorageFilesystemDefrag
+  properties:
+  - type: OpenAPI
+    url: openapi/portworx-openstoragefilesystemdefrag-api-openapi.yml
+  - type: Documentation
+    url: https://docs.portworx.com/
+  - type: GettingStarted
+    url: https://docs.portworx.com/portworx-enterprise/get-started
+  - type: APIReference
+    url: https://libopenstorage.github.io/
+- aid: portworx:portworx-openstoragefilesystemtrim-api
+  name: Portworx OpenStorageFilesystemTrim API
+  description: >-
+    The OpenStorageFilesystemTrim API from Portworx — 7 operation(s) for openstoragefilesystemtrim.
+  humanURL: https://portworx.com/
+  baseURL: https://libopenstorage.github.io/
+  tags:
+  - OpenStorageFilesystemTrim
+  properties:
+  - type: OpenAPI
+    url: openapi/portworx-openstoragefilesystemtrim-api-openapi.yml
+  - type: Documentation
+    url: https://docs.portworx.com/
+  - type: GettingStarted
+    url: https://docs.portworx.com/portworx-enterprise/get-started
+  - type: APIReference
+    url: https://libopenstorage.github.io/
+- aid: portworx:portworx-openstorageidentity-api
+  name: Portworx OpenStorageIdentity API
+  description: The OpenStorageIdentity API from Portworx — 2 operation(s) for openstorageidentity.
+  humanURL: https://portworx.com/
+  baseURL: https://libopenstorage.github.io/
+  tags:
+  - OpenStorageIdentity
+  properties:
+  - type: OpenAPI
+    url: openapi/portworx-openstorageidentity-api-openapi.yml
+  - type: Documentation
+    url: https://docs.portworx.com/
+  - type: GettingStarted
+    url: https://docs.portworx.com/portworx-enterprise/get-started
+  - type: APIReference
+    url: https://libopenstorage.github.io/
+- aid: portworx:portworx-openstoragejob-api
+  name: Portworx OpenStorageJob API
+  description: The OpenStorageJob API from Portworx — 2 operation(s) for openstoragejob.
+  humanURL: https://portworx.com/
+  baseURL: https://libopenstorage.github.io/
+  tags:
+  - OpenStorageJob
+  properties:
+  - type: OpenAPI
+    url: openapi/portworx-openstoragejob-api-openapi.yml
+  - type: Documentation
+    url: https://docs.portworx.com/
+  - type: GettingStarted
+    url: https://docs.portworx.com/portworx-enterprise/get-started
+  - type: APIReference
+    url: https://libopenstorage.github.io/
+- aid: portworx:portworx-openstoragemigrate-api
+  name: Portworx OpenStorageMigrate API
+  description: The OpenStorageMigrate API from Portworx — 2 operation(s) for openstoragemigrate.
+  humanURL: https://portworx.com/
+  baseURL: https://libopenstorage.github.io/
+  tags:
+  - OpenStorageMigrate
+  properties:
+  - type: OpenAPI
+    url: openapi/portworx-openstoragemigrate-api-openapi.yml
+  - type: Documentation
+    url: https://docs.portworx.com/
+  - type: GettingStarted
+    url: https://docs.portworx.com/portworx-enterprise/get-started
+  - type: APIReference
+    url: https://libopenstorage.github.io/
+- aid: portworx:portworx-openstoragemountattach-api
+  name: Portworx OpenStorageMountAttach API
+  description: >-
+    The OpenStorageMountAttach API from Portworx — 4 operation(s) for openstoragemountattach.
+  humanURL: https://portworx.com/
+  baseURL: https://libopenstorage.github.io/
+  tags:
+  - OpenStorageMountAttach
+  properties:
+  - type: OpenAPI
+    url: openapi/portworx-openstoragemountattach-api-openapi.yml
+  - type: Documentation
+    url: https://docs.portworx.com/
+  - type: GettingStarted
+    url: https://docs.portworx.com/portworx-enterprise/get-started
+  - type: APIReference
+    url: https://libopenstorage.github.io/
+- aid: portworx:portworx-openstoragenode-api
+  name: Portworx OpenStorageNode API
+  description: The OpenStorageNode API from Portworx — 9 operation(s) for openstoragenode.
+  humanURL: https://portworx.com/
+  baseURL: https://libopenstorage.github.io/
+  tags:
+  - OpenStorageNode
+  properties:
+  - type: OpenAPI
+    url: openapi/portworx-openstoragenode-api-openapi.yml
+  - type: Documentation
+    url: https://docs.portworx.com/
+  - type: GettingStarted
+    url: https://docs.portworx.com/portworx-enterprise/get-started
+  - type: APIReference
+    url: https://libopenstorage.github.io/
+- aid: portworx:portworx-openstorageobjectstore-api
+  name: Portworx OpenStorageObjectstore API
+  description: >-
+    The OpenStorageObjectstore API from Portworx — 3 operation(s) for openstorageobjectstore.
+  humanURL: https://portworx.com/
+  baseURL: https://libopenstorage.github.io/
+  tags:
+  - OpenStorageObjectstore
+  properties:
+  - type: OpenAPI
+    url: openapi/portworx-openstorageobjectstore-api-openapi.yml
+  - type: Documentation
+    url: https://docs.portworx.com/
+  - type: GettingStarted
+    url: https://docs.portworx.com/portworx-enterprise/get-started
+  - type: APIReference
+    url: https://libopenstorage.github.io/
+- aid: portworx:portworx-openstoragepolicy-api
+  name: Portworx OpenStoragePolicy API
+  description: The OpenStoragePolicy API from Portworx — 6 operation(s) for openstoragepolicy.
+  humanURL: https://portworx.com/
+  baseURL: https://libopenstorage.github.io/
+  tags:
+  - OpenStoragePolicy
+  properties:
+  - type: OpenAPI
+    url: openapi/portworx-openstoragepolicy-api-openapi.yml
+  - type: Documentation
+    url: https://docs.portworx.com/
+  - type: GettingStarted
+    url: https://docs.portworx.com/portworx-enterprise/get-started
+  - type: APIReference
+    url: https://libopenstorage.github.io/
+- aid: portworx:portworx-openstoragepool-api
+  name: Portworx OpenStoragePool API
+  description: The OpenStoragePool API from Portworx — 5 operation(s) for openstoragepool.
+  humanURL: https://portworx.com/
+  baseURL: https://libopenstorage.github.io/
+  tags:
+  - OpenStoragePool
+  properties:
+  - type: OpenAPI
+    url: openapi/portworx-openstoragepool-api-openapi.yml
+  - type: Documentation
+    url: https://docs.portworx.com/
+  - type: GettingStarted
+    url: https://docs.portworx.com/portworx-enterprise/get-started
+  - type: APIReference
+    url: https://libopenstorage.github.io/
+- aid: portworx:portworx-openstoragerole-api
+  name: Portworx OpenStorageRole API
+  description: The OpenStorageRole API from Portworx — 3 operation(s) for openstoragerole.
+  humanURL: https://portworx.com/
+  baseURL: https://libopenstorage.github.io/
+  tags:
+  - OpenStorageRole
+  properties:
+  - type: OpenAPI
+    url: openapi/portworx-openstoragerole-api-openapi.yml
+  - type: Documentation
+    url: https://docs.portworx.com/
+  - type: GettingStarted
+    url: https://docs.portworx.com/portworx-enterprise/get-started
+  - type: APIReference
+    url: https://libopenstorage.github.io/
+- aid: portworx:portworx-openstorageschedule-api
+  name: Portworx OpenStorageSchedule API
+  description: The OpenStorageSchedule API from Portworx — 2 operation(s) for openstorageschedule.
+  humanURL: https://portworx.com/
+  baseURL: https://libopenstorage.github.io/
+  tags:
+  - OpenStorageSchedule
+  properties:
+  - type: OpenAPI
+    url: openapi/portworx-openstorageschedule-api-openapi.yml
+  - type: Documentation
+    url: https://docs.portworx.com/
+  - type: GettingStarted
+    url: https://docs.portworx.com/portworx-enterprise/get-started
+  - type: APIReference
+    url: https://libopenstorage.github.io/
+- aid: portworx:portworx-openstorageschedulepolicy-api
+  name: Portworx OpenStorageSchedulePolicy API
+  description: >-
+    The OpenStorageSchedulePolicy API from Portworx — 3 operation(s) for openstorageschedulepolicy.
+  humanURL: https://portworx.com/
+  baseURL: https://libopenstorage.github.io/
+  tags:
+  - OpenStorageSchedulePolicy
+  properties:
+  - type: OpenAPI
+    url: openapi/portworx-openstorageschedulepolicy-api-openapi.yml
+  - type: Documentation
+    url: https://docs.portworx.com/
+  - type: GettingStarted
+    url: https://docs.portworx.com/portworx-enterprise/get-started
+  - type: APIReference
+    url: https://libopenstorage.github.io/
+- aid: portworx:portworx-openstorageverifychecksum-api
+  name: Portworx OpenStorageVerifyChecksum API
+  description: >-
+    The OpenStorageVerifyChecksum API from Portworx — 3 operation(s) for openstorageverifychecksum.
+  humanURL: https://portworx.com/
+  baseURL: https://libopenstorage.github.io/
+  tags:
+  - OpenStorageVerifyChecksum
+  properties:
+  - type: OpenAPI
+    url: openapi/portworx-openstorageverifychecksum-api-openapi.yml
+  - type: Documentation
+    url: https://docs.portworx.com/
+  - type: GettingStarted
+    url: https://docs.portworx.com/portworx-enterprise/get-started
+  - type: APIReference
+    url: https://libopenstorage.github.io/
+- aid: portworx:portworx-openstoragevolume-api
+  name: Portworx OpenStorageVolume API
+  description: The OpenStorageVolume API from Portworx — 13 operation(s) for openstoragevolume.
+  humanURL: https://portworx.com/
+  baseURL: https://libopenstorage.github.io/
+  tags:
+  - OpenStorageVolume
+  properties:
+  - type: OpenAPI
+    url: openapi/portworx-openstoragevolume-api-openapi.yml
+  - type: Documentation
+    url: https://docs.portworx.com/
+  - type: GettingStarted
+    url: https://docs.portworx.com/portworx-enterprise/get-started
+  - type: APIReference
+    url: https://libopenstorage.github.io/
+- aid: portworx:portworx-openstoragewatch-api
+  name: Portworx OpenStorageWatch API
+  description: The OpenStorageWatch API from Portworx — 1 operation(s) for openstoragewatch.
+  humanURL: https://portworx.com/
+  baseURL: https://libopenstorage.github.io/
+  tags:
+  - OpenStorageWatch
+  properties:
+  - type: OpenAPI
+    url: openapi/portworx-openstoragewatch-api-openapi.yml
+  - type: Documentation
+    url: https://docs.portworx.com/
+  - type: GettingStarted
+    url: https://docs.portworx.com/portworx-enterprise/get-started
+  - type: APIReference
+    url: https://libopenstorage.github.io/
 common:
   - type: AgenticAccess
     url: agentic-access/portworx-agentic-access.yml
