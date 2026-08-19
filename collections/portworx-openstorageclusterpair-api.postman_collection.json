@@ -1,0 +1,891 @@
+{
+  "item": [
+    {
+      "id": "8b37bd97-00cb-4525-8f87-fc69919c4e52",
+      "name": "OpenStorageClusterPair",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c41cb414-da54-4a0d-8bcb-6de20e61a27f",
+          "name": "Enumerate returns list of cluster pairs",
+          "request": {
+            "name": "Enumerate returns list of cluster pairs",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "clusterpairs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "eae018a2-38d0-4019-8ce3-9e32d21ae1bb",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "clusterpairs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"result\": {\n    \"default_id\": \"string\",\n    \"pairs\": {\n      \"key_0\": {\n        \"current_endpoints\": [\n          \"string\",\n          \"string\"\n        ],\n        \"endpoint\": \"string\",\n        \"id\": \"string\",\n        \"mode\": \"Default\",\n        \"name\": \"string\",\n        \"options\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\",\n          \"key_2\": \"string\"\n        },\n        \"secure\": true,\n        \"token\": \"string\"\n      },\n      \"key_1\": {\n        \"current_endpoints\": [\n          \"string\",\n          \"string\"\n        ],\n        \"endpoint\": \"string\",\n        \"id\": \"string\",\n        \"mode\": \"Default\",\n        \"name\": \"string\",\n        \"options\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\",\n          \"key_2\": \"string\"\n        },\n        \"secure\": false,\n        \"token\": \"string\"\n      },\n      \"key_2\": {\n        \"current_endpoints\": [\n          \"string\",\n          \"string\"\n        ],\n        \"endpoint\": \"string\",\n        \"id\": \"string\",\n        \"mode\": \"Default\",\n        \"name\": \"string\",\n        \"options\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        },\n        \"secure\": true,\n        \"token\": \"string\"\n      },\n      \"key_3\": {\n        \"current_endpoints\": [\n          \"string\",\n          \"string\"\n        ],\n        \"endpoint\": \"string\",\n        \"id\": \"string\",\n        \"mode\": \"Default\",\n        \"name\": \"string\",\n        \"options\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\",\n          \"key_2\": \"string\"\n        },\n        \"secure\": true,\n        \"token\": \"string\"\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fee9529b-bec7-47b7-9ccf-698175c4c05d",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "clusterpairs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7674,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "da088e10-9ebf-405f-8c3c-b7dfd2ba58a2",
+          "name": "Creates Pair with a remote cluster and returns details about the remote cluster",
+          "request": {
+            "name": "Creates Pair with a remote cluster and returns details about the remote cluster",
+            "description": {
+              "content": "##### Example\n{% codetabs name=\"Golang\", type=\"go\" -%}\nid, err := client.Create(context.Background(), &api.SdkClusterPairCreateRequest {\n  Request : &api.ClusterPairCreateRequest {\n                 RemoteClusterIp: \"127.0.0.1\",\n                 RemoteClusterPort: 12345,\n                 RemoteClusterToken: \"<Auth-Token>\",\n                 SetDefault: true,\n             }\n       })\n{%- endcodetabs %}",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "clusterpairs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"request\": {\n    \"credential_id\": \"<string>\",\n    \"mode\": \"Default\",\n    \"remote_cluster_ip\": \"<string>\",\n    \"remote_cluster_port\": \"<long>\",\n    \"remote_cluster_token\": \"<string>\",\n    \"set_default\": \"<boolean>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3c340671-2fbd-4c63-8551-abab107dfec7",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "clusterpairs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"request\": {\n    \"credential_id\": \"<string>\",\n    \"mode\": \"Default\",\n    \"remote_cluster_ip\": \"<string>\",\n    \"remote_cluster_port\": \"<long>\",\n    \"remote_cluster_token\": \"<string>\",\n    \"set_default\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"result\": {\n    \"remote_cluster_id\": \"string\",\n    \"remote_cluster_name\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a4751d00-2c3b-46aa-b4ba-fcf2a4ef90f1",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "clusterpairs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"request\": {\n    \"credential_id\": \"<string>\",\n    \"mode\": \"Default\",\n    \"remote_cluster_ip\": \"<string>\",\n    \"remote_cluster_port\": \"<long>\",\n    \"remote_cluster_token\": \"<string>\",\n    \"set_default\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5122,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "02ece4d1-2bbd-4fa1-b2cd-45bb7a938b4f",
+          "name": "Inspect information about a cluster pair",
+          "request": {
+            "name": "Inspect information about a cluster pair",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "clusterpairs",
+                "inspect",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) ID of the cluster, if empty gets the default pair"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4b848814-a2bd-4145-aa05-967b71f32549",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "clusterpairs",
+                    "inspect",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) ID of the cluster, if empty gets the default pair"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"result\": {\n    \"pair_info\": {\n      \"current_endpoints\": [\n        \"string\",\n        \"string\"\n      ],\n      \"endpoint\": \"string\",\n      \"id\": \"string\",\n      \"mode\": \"Default\",\n      \"name\": \"string\",\n      \"options\": {\n        \"key_0\": \"string\"\n      },\n      \"secure\": false,\n      \"token\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e8f2fae4-640c-4a75-9510-602af5b07337",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "clusterpairs",
+                    "inspect",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) ID of the cluster, if empty gets the default pair"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5122,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6bc1b915-ecfa-42c4-98b3-04f50bec799f",
+          "name": "GetToken returns a auth token",
+          "request": {
+            "name": "GetToken returns a auth token",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "clusterpairs",
+                "token"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a34b3718-b94b-4604-9279-51058b33a7d9",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "clusterpairs",
+                    "token"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"result\": {\n    \"token\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f69fb97b-879d-43ec-a01d-2d420e9889c0",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "clusterpairs",
+                    "token"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5122,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7bdb4730-ef9f-4799-bf9d-a8b41d1d18b0",
+          "name": "ResetToken returns a auth token",
+          "request": {
+            "name": "ResetToken returns a auth token",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "clusterpairs",
+                "token"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "40b4ced1-9ca3-4d83-a716-028c7c40afa7",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "clusterpairs",
+                    "token"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"result\": {\n    \"token\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8c849430-fe2f-4ff4-b5d9-d1a47043f4bc",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "clusterpairs",
+                    "token"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5122,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ac11167a-846d-4ecb-84a9-7e92d184aee7",
+          "name": "Delete a cluster pair",
+          "request": {
+            "name": "Delete a cluster pair",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "clusterpairs",
+                ":cluster_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "cluster_id",
+                  "description": "(Required) ID of the cluster pair to be deleted"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9f22b056-c375-479e-892e-c40bcc188492",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "clusterpairs",
+                    ":cluster_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cluster_id",
+                      "description": "(Required) ID of the cluster pair to be deleted"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "263f1e10-b47e-47f0-8247-fd62cb141262",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "clusterpairs",
+                    ":cluster_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cluster_id",
+                      "description": "(Required) ID of the cluster pair to be deleted"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5122,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "2ddecab5-50c1-45d5-aaf0-e20c74410b14",
+    "name": "OpenStorage SDK OpenStorageAlerts OpenStorageClusterPair API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

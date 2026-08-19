@@ -1,0 +1,194 @@
+{
+  "item": [
+    {
+      "id": "b9f01a27-1d31-4874-b19f-05e9af6a845e",
+      "name": "OpenStorageWatch",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2e0a3ec9-532d-4eb1-8726-c9aac94e5b23",
+          "name": "Watch on resources managed by the driver and receive them as a stream of events.",
+          "request": {
+            "name": "Watch on resources managed by the driver and receive them as a stream of events.",
+            "description": {
+              "content": "Requires access AccessType.Read",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "watch"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"volume_event\": {\n    \"labels\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "83402542-9f23-415c-87d4-5fcf85cd718c",
+              "name": "A successful response.(streaming responses)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "watch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"volume_event\": {\n    \"labels\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"details\": [\n      {\n        \"type_url\": \"string\",\n        \"value\": \"string\"\n      },\n      {\n        \"type_url\": \"string\",\n        \"value\": \"string\"\n      }\n    ],\n    \"grpc_code\": 6548,\n    \"http_code\": 8023,\n    \"http_status\": \"string\",\n    \"message\": \"string\"\n  },\n  \"result\": {\n    \"volume_event\": {\n      \"name\": \"string\",\n      \"volume\": {\n        \"attach_info\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        },\n        \"attach_path\": [\n          \"string\",\n          \"string\"\n        ],\n        \"attach_time\": \"1965-02-17T19:42:16.851Z\",\n        \"attached_on\": \"string\",\n        \"attached_state\": \"ATTACH_STATE_EXTERNAL\",\n        \"ctime\": \"1976-12-07T00:52:54.442Z\",\n        \"derived_io_profile\": \"IO_PROFILE_SEQUENTIAL\",\n        \"detach_time\": \"2013-01-10T18:09:17.253Z\",\n        \"device_path\": \"string\",\n        \"error\": \"string\",\n        \"format\": \"FS_TYPE_NONE\",\n        \"fpConfig\": {\n          \"coord_uuid\": \"string\",\n          \"dirty\": false,\n          \"force_failover\": false,\n          \"promote\": true,\n          \"replicas\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"setup_on\": 2413,\n          \"status\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"verbose\": \"string\"\n        },\n        \"fs_resize_required\": true,\n        \"group\": {\n          \"id\": \"string\"\n        },\n        \"id\": \"string\",\n        \"in_trashcan\": false,\n        \"last_scan\": \"1966-04-14T04:55:56.192Z\",\n        \"last_scan_fix\": \"2023-01-07T21:24:11.181Z\",\n        \"last_scan_status\": \"FS_HEALTH_STATUS_UNKNOWN\",\n        \"locator\": {\n          \"group\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"name\": \"string\",\n          \"ownership\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"volume_ids\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"volume_labels\": {\n            \"key_0\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"mount_options\": {\n          \"options\": {\n            \"key_0\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"key_1\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"key_2\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"readonly\": true,\n        \"replica_sets\": [\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"nodes\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"pool_uuids\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"nodes\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"pool_uuids\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"runtime_state\": [\n          {\n            \"runtime_state\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"runtime_state\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"secure_device_path\": \"string\",\n        \"sharedv4_mount_options\": {\n          \"options\": {\n            \"key_0\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"key_1\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"source\": {\n          \"parent\": \"string\",\n          \"seed\": \"string\"\n        },\n        \"spec\": {\n          \"aggregation_level\": 3369,\n          \"auto_fstrim\": false,\n          \"block_size\": \"string\",\n          \"cascaded\": true,\n          \"checksum_clone_id\": \"string\",\n          \"checksummed\": false,\n          \"compressed\": false,\n          \"cos\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"dedupe\": false,\n          \"encrypted\": true,\n          \"ephemeral\": false,\n          \"export_spec\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"fa_create_options\": \"string\",\n          \"force_unsupported_fs_type\": false,\n          \"format\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"fp_preference\": false,\n          \"group\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"group_enforced\": false,\n          \"ha_level\": \"string\",\n          \"io_profile\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"io_strategy\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"io_throttle\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"journal\": false,\n          \"mount_options\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"near_sync\": true,\n          \"near_sync_replication_strategy\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"nodiscard\": true,\n          \"number_of_chunks\": 8626,\n          \"ownership\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"passphrase\": \"string\",\n          \"placement_strategy\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"proxy_spec\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"proxy_write\": false,\n          \"queue_depth\": 2698,\n          \"readahead\": true,\n          \"replica_set\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"scale\": 3985,\n          \"scan_policy\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"shared\": true,\n          \"sharedv4\": false,\n          \"sharedv4_mount_options\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"sharedv4_service_spec\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"sharedv4_spec\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"size\": \"string\",\n          \"snapshot_interval\": 7199,\n          \"snapshot_schedule\": \"string\",\n          \"sticky\": false,\n          \"storage_policy\": \"string\",\n          \"topology_requirement\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"volume_labels\": {\n            \"key_0\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"key_1\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"key_2\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"winshare\": false,\n          \"xattr\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"state\": \"VOLUME_STATE_NONE\",\n        \"status\": \"VOLUME_STATUS_NONE\",\n        \"usage\": \"string\",\n        \"volume_consumers\": [\n          {\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"namespace\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"node_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"owner_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"owner_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"namespace\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"node_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"owner_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"owner_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f932576b-0a9f-4362-8321-d9895b17dd5a",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "watch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"volume_event\": {\n    \"labels\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1534,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "44a1387b-06a8-4521-9401-55228e6c7f01",
+    "name": "OpenStorage SDK OpenStorageAlerts OpenStorageWatch API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenStorage SDK OpenStorageAlerts OpenStorageMountAttach API",
+    "version": "0.186.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "OpenStorageMountAttach",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Attach attaches device to the host that the client is communicating with.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/mountattach/attach",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Requires access AccessType.Write of volume"
+        },
+        {
+          "info": {
+            "name": "Detaches a the volume from the host",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/mountattach/detach",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Requires access AccessType.Write of volume"
+        },
+        {
+          "info": {
+            "name": "Mount mounts an attached volume in the host that the client is communicating with",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/mountattach/mount",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Requires access AccessType.Write of volume"
+        },
+        {
+          "info": {
+            "name": "Unmount unmounts a mounted volume in the host that the client is communicating with",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/mountattach/unmount",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Requires access AccessType.Write of volume"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

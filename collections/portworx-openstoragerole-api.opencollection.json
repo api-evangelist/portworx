@@ -1,0 +1,102 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenStorage SDK OpenStorageAlerts OpenStorageRole API",
+    "version": "0.186.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "OpenStorageRole",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all roles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/roles"
+          },
+          "docs": "List all roles"
+        },
+        {
+          "info": {
+            "name": "Create a role for users in the system",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/roles",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a role for users in the system"
+        },
+        {
+          "info": {
+            "name": "Update an existing role",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/v1/roles",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing role"
+        },
+        {
+          "info": {
+            "name": "Get information about a role",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/roles/inspect/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name of role"
+              }
+            ]
+          },
+          "docs": "Get information about a role"
+        },
+        {
+          "info": {
+            "name": "Delete an existing role",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v1/roles/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete an existing role"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

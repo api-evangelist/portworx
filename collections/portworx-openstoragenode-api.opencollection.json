@@ -1,0 +1,179 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenStorage SDK OpenStorageAlerts OpenStorageNode API",
+    "version": "0.186.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "OpenStorageNode",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Enumerate returns the ids of all the nodes in the current cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/nodes"
+          },
+          "docs": "Enumerate returns the ids of all the nodes in the current cluster"
+        },
+        {
+          "info": {
+            "name": "CordonAttachments disables any new volume attachments\nfrom the provided node in the cluster. Existing volume attachments\nwill stay on the node.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/v1/nodes/attachments/disable/:node_id",
+            "params": [
+              {
+                "name": "node_id",
+                "value": "",
+                "type": "path",
+                "description": "Node ID on which any further volume attachments will be disabled"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "CordonAttachments disables any new volume attachments\nfrom the provided node in the cluster. Existing volume attachments\nwill stay on the node."
+        },
+        {
+          "info": {
+            "name": "DrainAttachments creates a task to drain volume attachments\nfrom the provided node in the cluster.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/v1/nodes/attachments/drain/:node_id",
+            "params": [
+              {
+                "name": "node_id",
+                "value": "",
+                "type": "path",
+                "description": "Id of the node to drain"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "DrainAttachments creates a task to drain volume attachments\nfrom the provided node in the cluster."
+        },
+        {
+          "info": {
+            "name": "UncordonAttachments re-enables volume attachments\non the provided node in the cluster.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/v1/nodes/attachments/enable/:node_id",
+            "params": [
+              {
+                "name": "node_id",
+                "value": "",
+                "type": "path",
+                "description": "Node ID on which any further volume attachments will be enabled"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "UncordonAttachments re-enables volume attachments\non the provided node in the cluster."
+        },
+        {
+          "info": {
+            "name": "Returns bytes used of multiple volumes for a give node",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/nodes/bytesused",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns bytes used of multiple volumes for a give node"
+        },
+        {
+          "info": {
+            "name": "EnumerateWithFilters returns all the nodes in the current cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/nodes/filters"
+          },
+          "docs": "EnumerateWithFilters returns all the nodes in the current cluster"
+        },
+        {
+          "info": {
+            "name": "Inspect returns information about the specified node",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/nodes/inspect/:node_id",
+            "params": [
+              {
+                "name": "node_id",
+                "value": "",
+                "type": "path",
+                "description": "Id of node to inspect"
+              }
+            ]
+          },
+          "docs": "Inspect returns information about the specified node"
+        },
+        {
+          "info": {
+            "name": "InspectCurrent returns information about the storage node\nwhere the client is currently connected to.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/nodes/inspectcurrent"
+          },
+          "docs": "InspectCurrent returns information about the storage node\nwhere the client is currently connected to."
+        },
+        {
+          "info": {
+            "name": "Triggers RelaxedReclaim purge for a give node",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/nodes/usage/:node_id",
+            "params": [
+              {
+                "name": "node_id",
+                "value": "",
+                "type": "path",
+                "description": "Id of the node to trigger the purge"
+              }
+            ]
+          },
+          "docs": "Triggers RelaxedReclaim purge for a give node"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

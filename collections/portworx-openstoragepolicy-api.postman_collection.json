@@ -1,0 +1,1218 @@
+{
+  "item": [
+    {
+      "id": "98a60b99-33b7-41ad-a168-7ef7f6389a0b",
+      "name": "OpenStoragePolicy",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fa25aea1-c007-44cb-af7c-5f6f02f74b50",
+          "name": "Enumerate returns a list of storage policies",
+          "request": {
+            "name": "Enumerate returns a list of storage policies",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "storagepolicies"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "29b53c9a-df33-4c39-bff8-f54c6220cc6f",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "storagepolicies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"storage_policies\": [\n    {\n      \"allow_update\": false,\n      \"force\": false,\n      \"name\": \"string\",\n      \"ownership\": {\n        \"acls\": {\n          \"collaborators\": {\n            \"key_0\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"groups\": {\n            \"key_0\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"key_1\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"public\": {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"owner\": \"string\"\n      },\n      \"policy\": {\n        \"aggregation_level\": 5745,\n        \"auto_fstrim\": false,\n        \"cos\": \"NONE\",\n        \"dedupe\": false,\n        \"encrypted\": false,\n        \"export_spec\": {\n          \"export_options\": \"string\",\n          \"export_protocol\": \"INVALID\"\n        },\n        \"fastpath\": false,\n        \"group\": {\n          \"id\": \"string\"\n        },\n        \"ha_level\": \"string\",\n        \"ha_level_operator\": \"Equal\",\n        \"io_profile\": \"IO_PROFILE_SEQUENTIAL\",\n        \"io_strategy\": {\n          \"async_io\": false,\n          \"direct_io\": false,\n          \"early_ack\": true\n        },\n        \"io_throttle\": {\n          \"read_bw_mbytes\": 4904,\n          \"read_iops\": 4049,\n          \"write_bw_mbytes\": 909,\n          \"write_iops\": 1360\n        },\n        \"journal\": false,\n        \"mount_opt_spec\": {\n          \"options\": {\n            \"key_0\": \"string\"\n          }\n        },\n        \"nodiscard\": false,\n        \"passphrase\": \"string\",\n        \"proxy_spec\": {\n          \"endpoint\": \"string\",\n          \"nfs_spec\": {\n            \"export_path\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"sub_path\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"proxy_protocol\": \"PROXY_PROTOCOL_INVALID\",\n          \"pure_block_spec\": {\n            \"full_vol_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"pod_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"serial_num\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"pure_file_spec\": {\n            \"export_rules\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"full_vol_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"nfs_endpoint\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"pxd_spec\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"s3_spec\": {\n            \"bucket_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"proxy_write\": true,\n        \"queue_depth\": 1335,\n        \"readahead\": false,\n        \"replica_set\": {\n          \"id\": 2998,\n          \"nodes\": [\n            \"string\",\n            \"string\"\n          ],\n          \"pool_uuids\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"scale\": 2300,\n        \"scale_operator\": \"Equal\",\n        \"scan_policy\": {\n          \"action\": \"SCAN_ACTION_NONE\",\n          \"trigger\": \"SCAN_TRIGGER_NONE\"\n        },\n        \"shared\": true,\n        \"sharedv4\": false,\n        \"sharedv4_mount_opt_spec\": {\n          \"options\": {\n            \"key_0\": \"string\"\n          }\n        },\n        \"sharedv4_service_spec\": {\n          \"external_access\": false,\n          \"name\": \"string\",\n          \"type\": \"UNSPECIFIED\"\n        },\n        \"sharedv4_spec\": {\n          \"failover_strategy\": \"UNSPECIFIED\"\n        },\n        \"size\": \"string\",\n        \"size_operator\": \"Equal\",\n        \"snapshot_interval\": 4100,\n        \"snapshot_interval_operator\": \"Equal\",\n        \"snapshot_schedule\": \"string\",\n        \"sticky\": true,\n        \"volume_labels\": {\n          \"key_0\": \"string\"\n        },\n        \"winshare\": true\n      }\n    },\n    {\n      \"allow_update\": false,\n      \"force\": true,\n      \"name\": \"string\",\n      \"ownership\": {\n        \"acls\": {\n          \"collaborators\": {\n            \"key_0\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"key_1\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"groups\": {\n            \"key_0\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"public\": {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"owner\": \"string\"\n      },\n      \"policy\": {\n        \"aggregation_level\": 6526,\n        \"auto_fstrim\": false,\n        \"cos\": \"NONE\",\n        \"dedupe\": false,\n        \"encrypted\": false,\n        \"export_spec\": {\n          \"export_options\": \"string\",\n          \"export_protocol\": \"INVALID\"\n        },\n        \"fastpath\": false,\n        \"group\": {\n          \"id\": \"string\"\n        },\n        \"ha_level\": \"string\",\n        \"ha_level_operator\": \"Equal\",\n        \"io_profile\": \"IO_PROFILE_SEQUENTIAL\",\n        \"io_strategy\": {\n          \"async_io\": true,\n          \"direct_io\": false,\n          \"early_ack\": false\n        },\n        \"io_throttle\": {\n          \"read_bw_mbytes\": 2219,\n          \"read_iops\": 9660,\n          \"write_bw_mbytes\": 9885,\n          \"write_iops\": 1337\n        },\n        \"journal\": false,\n        \"mount_opt_spec\": {\n          \"options\": {\n            \"key_0\": \"string\",\n            \"key_1\": \"string\",\n            \"key_2\": \"string\",\n            \"key_3\": \"string\"\n          }\n        },\n        \"nodiscard\": true,\n        \"passphrase\": \"string\",\n        \"proxy_spec\": {\n          \"endpoint\": \"string\",\n          \"nfs_spec\": {\n            \"export_path\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"sub_path\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"proxy_protocol\": \"PROXY_PROTOCOL_INVALID\",\n          \"pure_block_spec\": {\n            \"full_vol_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"pod_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"serial_num\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"pure_file_spec\": {\n            \"export_rules\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"full_vol_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"nfs_endpoint\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"pxd_spec\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"s3_spec\": {\n            \"bucket_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"proxy_write\": true,\n        \"queue_depth\": 5007,\n        \"readahead\": true,\n        \"replica_set\": {\n          \"id\": 9671,\n          \"nodes\": [\n            \"string\",\n            \"string\"\n          ],\n          \"pool_uuids\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"scale\": 2291,\n        \"scale_operator\": \"Equal\",\n        \"scan_policy\": {\n          \"action\": \"SCAN_ACTION_NONE\",\n          \"trigger\": \"SCAN_TRIGGER_NONE\"\n        },\n        \"shared\": false,\n        \"sharedv4\": false,\n        \"sharedv4_mount_opt_spec\": {\n          \"options\": {\n            \"key_0\": \"string\"\n          }\n        },\n        \"sharedv4_service_spec\": {\n          \"external_access\": false,\n          \"name\": \"string\",\n          \"type\": \"UNSPECIFIED\"\n        },\n        \"sharedv4_spec\": {\n          \"failover_strategy\": \"UNSPECIFIED\"\n        },\n        \"size\": \"string\",\n        \"size_operator\": \"Equal\",\n        \"snapshot_interval\": 2616,\n        \"snapshot_interval_operator\": \"Equal\",\n        \"snapshot_schedule\": \"string\",\n        \"sticky\": true,\n        \"volume_labels\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        },\n        \"winshare\": false\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f1b0ef0c-06b6-4309-bb57-dfcd3849a7d2",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "storagepolicies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 879,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b85a0e8e-6188-4b74-aa3e-74d417857336",
+          "name": "Creates a storage policy",
+          "request": {
+            "name": "Creates a storage policy",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "storagepolicies"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"storage_policy\": {\n    \"allow_update\": \"<boolean>\",\n    \"force\": \"<boolean>\",\n    \"name\": \"<string>\",\n    \"ownership\": {\n      \"acls\": {\n        \"collaborators\": {\n          \"key_0\": \"Read\",\n          \"key_1\": \"Read\"\n        },\n        \"groups\": {\n          \"key_0\": \"Read\",\n          \"key_1\": \"Read\"\n        },\n        \"public\": {\n          \"type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"owner\": \"<string>\"\n    },\n    \"policy\": {\n      \"aggregation_level\": \"<long>\",\n      \"auto_fstrim\": \"<boolean>\",\n      \"cos\": \"NONE\",\n      \"dedupe\": \"<boolean>\",\n      \"encrypted\": \"<boolean>\",\n      \"export_spec\": {\n        \"export_options\": \"<string>\",\n        \"export_protocol\": \"INVALID\"\n      },\n      \"fastpath\": \"<boolean>\",\n      \"group\": {\n        \"id\": \"<string>\"\n      },\n      \"ha_level\": \"<int64>\",\n      \"ha_level_operator\": \"Equal\",\n      \"io_profile\": \"IO_PROFILE_SEQUENTIAL\",\n      \"io_strategy\": {\n        \"async_io\": \"<boolean>\",\n        \"direct_io\": \"<boolean>\",\n        \"early_ack\": \"<boolean>\"\n      },\n      \"io_throttle\": {\n        \"read_bw_mbytes\": \"<long>\",\n        \"read_iops\": \"<long>\",\n        \"write_bw_mbytes\": \"<long>\",\n        \"write_iops\": \"<long>\"\n      },\n      \"journal\": \"<boolean>\",\n      \"mount_opt_spec\": {\n        \"options\": {\n          \"key_0\": \"<string>\"\n        }\n      },\n      \"nodiscard\": \"<boolean>\",\n      \"passphrase\": \"<string>\",\n      \"proxy_spec\": {\n        \"endpoint\": \"<string>\",\n        \"nfs_spec\": {\n          \"export_path\": \"<string>\",\n          \"sub_path\": \"<string>\"\n        },\n        \"proxy_protocol\": \"PROXY_PROTOCOL_INVALID\",\n        \"pure_block_spec\": {\n          \"full_vol_name\": \"<string>\",\n          \"pod_name\": \"<string>\",\n          \"serial_num\": \"<string>\"\n        },\n        \"pure_file_spec\": {\n          \"export_rules\": \"<string>\",\n          \"full_vol_name\": \"<string>\",\n          \"nfs_endpoint\": \"<string>\"\n        },\n        \"pxd_spec\": {\n          \"id\": \"<string>\"\n        },\n        \"s3_spec\": {\n          \"bucket_name\": \"<string>\"\n        }\n      },\n      \"proxy_write\": \"<boolean>\",\n      \"queue_depth\": \"<long>\",\n      \"readahead\": \"<boolean>\",\n      \"replica_set\": {\n        \"id\": \"<long>\",\n        \"nodes\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"pool_uuids\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"scale\": \"<long>\",\n      \"scale_operator\": \"Equal\",\n      \"scan_policy\": {\n        \"action\": \"SCAN_ACTION_NONE\",\n        \"trigger\": \"SCAN_TRIGGER_NONE\"\n      },\n      \"shared\": \"<boolean>\",\n      \"sharedv4\": \"<boolean>\",\n      \"sharedv4_mount_opt_spec\": {\n        \"options\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        }\n      },\n      \"sharedv4_service_spec\": {\n        \"external_access\": \"<boolean>\",\n        \"name\": \"<string>\",\n        \"type\": \"UNSPECIFIED\"\n      },\n      \"sharedv4_spec\": {\n        \"failover_strategy\": \"UNSPECIFIED\"\n      },\n      \"size\": \"<uint64>\",\n      \"size_operator\": \"Equal\",\n      \"snapshot_interval\": \"<long>\",\n      \"snapshot_interval_operator\": \"Equal\",\n      \"snapshot_schedule\": \"<string>\",\n      \"sticky\": \"<boolean>\",\n      \"volume_labels\": {\n        \"key_0\": \"<string>\"\n      },\n      \"winshare\": \"<boolean>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2e3a10c7-0abe-4caf-858f-7242ea4b54cc",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "storagepolicies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"storage_policy\": {\n    \"allow_update\": \"<boolean>\",\n    \"force\": \"<boolean>\",\n    \"name\": \"<string>\",\n    \"ownership\": {\n      \"acls\": {\n        \"collaborators\": {\n          \"key_0\": \"Read\"\n        },\n        \"groups\": {\n          \"key_0\": \"Read\",\n          \"key_1\": \"Read\"\n        },\n        \"public\": {\n          \"type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"owner\": \"<string>\"\n    },\n    \"policy\": {\n      \"aggregation_level\": \"<long>\",\n      \"auto_fstrim\": \"<boolean>\",\n      \"cos\": \"NONE\",\n      \"dedupe\": \"<boolean>\",\n      \"encrypted\": \"<boolean>\",\n      \"export_spec\": {\n        \"export_options\": \"<string>\",\n        \"export_protocol\": \"INVALID\"\n      },\n      \"fastpath\": \"<boolean>\",\n      \"group\": {\n        \"id\": \"<string>\"\n      },\n      \"ha_level\": \"<int64>\",\n      \"ha_level_operator\": \"Equal\",\n      \"io_profile\": \"IO_PROFILE_SEQUENTIAL\",\n      \"io_strategy\": {\n        \"async_io\": \"<boolean>\",\n        \"direct_io\": \"<boolean>\",\n        \"early_ack\": \"<boolean>\"\n      },\n      \"io_throttle\": {\n        \"read_bw_mbytes\": \"<long>\",\n        \"read_iops\": \"<long>\",\n        \"write_bw_mbytes\": \"<long>\",\n        \"write_iops\": \"<long>\"\n      },\n      \"journal\": \"<boolean>\",\n      \"mount_opt_spec\": {\n        \"options\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\",\n          \"key_2\": \"<string>\"\n        }\n      },\n      \"nodiscard\": \"<boolean>\",\n      \"passphrase\": \"<string>\",\n      \"proxy_spec\": {\n        \"endpoint\": \"<string>\",\n        \"nfs_spec\": {\n          \"export_path\": \"<string>\",\n          \"sub_path\": \"<string>\"\n        },\n        \"proxy_protocol\": \"PROXY_PROTOCOL_INVALID\",\n        \"pure_block_spec\": {\n          \"full_vol_name\": \"<string>\",\n          \"pod_name\": \"<string>\",\n          \"serial_num\": \"<string>\"\n        },\n        \"pure_file_spec\": {\n          \"export_rules\": \"<string>\",\n          \"full_vol_name\": \"<string>\",\n          \"nfs_endpoint\": \"<string>\"\n        },\n        \"pxd_spec\": {\n          \"id\": \"<string>\"\n        },\n        \"s3_spec\": {\n          \"bucket_name\": \"<string>\"\n        }\n      },\n      \"proxy_write\": \"<boolean>\",\n      \"queue_depth\": \"<long>\",\n      \"readahead\": \"<boolean>\",\n      \"replica_set\": {\n        \"id\": \"<long>\",\n        \"nodes\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"pool_uuids\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"scale\": \"<long>\",\n      \"scale_operator\": \"Equal\",\n      \"scan_policy\": {\n        \"action\": \"SCAN_ACTION_NONE\",\n        \"trigger\": \"SCAN_TRIGGER_NONE\"\n      },\n      \"shared\": \"<boolean>\",\n      \"sharedv4\": \"<boolean>\",\n      \"sharedv4_mount_opt_spec\": {\n        \"options\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\",\n          \"key_2\": \"<string>\",\n          \"key_3\": \"<string>\"\n        }\n      },\n      \"sharedv4_service_spec\": {\n        \"external_access\": \"<boolean>\",\n        \"name\": \"<string>\",\n        \"type\": \"UNSPECIFIED\"\n      },\n      \"sharedv4_spec\": {\n        \"failover_strategy\": \"UNSPECIFIED\"\n      },\n      \"size\": \"<uint64>\",\n      \"size_operator\": \"Equal\",\n      \"snapshot_interval\": \"<long>\",\n      \"snapshot_interval_operator\": \"Equal\",\n      \"snapshot_schedule\": \"<string>\",\n      \"sticky\": \"<boolean>\",\n      \"volume_labels\": {\n        \"key_0\": \"<string>\"\n      },\n      \"winshare\": \"<boolean>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1ebbc856-58e6-4224-8976-a29399dbdc9a",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "storagepolicies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"storage_policy\": {\n    \"allow_update\": \"<boolean>\",\n    \"force\": \"<boolean>\",\n    \"name\": \"<string>\",\n    \"ownership\": {\n      \"acls\": {\n        \"collaborators\": {\n          \"key_0\": \"Read\"\n        },\n        \"groups\": {\n          \"key_0\": \"Read\",\n          \"key_1\": \"Read\"\n        },\n        \"public\": {\n          \"type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"owner\": \"<string>\"\n    },\n    \"policy\": {\n      \"aggregation_level\": \"<long>\",\n      \"auto_fstrim\": \"<boolean>\",\n      \"cos\": \"NONE\",\n      \"dedupe\": \"<boolean>\",\n      \"encrypted\": \"<boolean>\",\n      \"export_spec\": {\n        \"export_options\": \"<string>\",\n        \"export_protocol\": \"INVALID\"\n      },\n      \"fastpath\": \"<boolean>\",\n      \"group\": {\n        \"id\": \"<string>\"\n      },\n      \"ha_level\": \"<int64>\",\n      \"ha_level_operator\": \"Equal\",\n      \"io_profile\": \"IO_PROFILE_SEQUENTIAL\",\n      \"io_strategy\": {\n        \"async_io\": \"<boolean>\",\n        \"direct_io\": \"<boolean>\",\n        \"early_ack\": \"<boolean>\"\n      },\n      \"io_throttle\": {\n        \"read_bw_mbytes\": \"<long>\",\n        \"read_iops\": \"<long>\",\n        \"write_bw_mbytes\": \"<long>\",\n        \"write_iops\": \"<long>\"\n      },\n      \"journal\": \"<boolean>\",\n      \"mount_opt_spec\": {\n        \"options\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\",\n          \"key_2\": \"<string>\"\n        }\n      },\n      \"nodiscard\": \"<boolean>\",\n      \"passphrase\": \"<string>\",\n      \"proxy_spec\": {\n        \"endpoint\": \"<string>\",\n        \"nfs_spec\": {\n          \"export_path\": \"<string>\",\n          \"sub_path\": \"<string>\"\n        },\n        \"proxy_protocol\": \"PROXY_PROTOCOL_INVALID\",\n        \"pure_block_spec\": {\n          \"full_vol_name\": \"<string>\",\n          \"pod_name\": \"<string>\",\n          \"serial_num\": \"<string>\"\n        },\n        \"pure_file_spec\": {\n          \"export_rules\": \"<string>\",\n          \"full_vol_name\": \"<string>\",\n          \"nfs_endpoint\": \"<string>\"\n        },\n        \"pxd_spec\": {\n          \"id\": \"<string>\"\n        },\n        \"s3_spec\": {\n          \"bucket_name\": \"<string>\"\n        }\n      },\n      \"proxy_write\": \"<boolean>\",\n      \"queue_depth\": \"<long>\",\n      \"readahead\": \"<boolean>\",\n      \"replica_set\": {\n        \"id\": \"<long>\",\n        \"nodes\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"pool_uuids\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"scale\": \"<long>\",\n      \"scale_operator\": \"Equal\",\n      \"scan_policy\": {\n        \"action\": \"SCAN_ACTION_NONE\",\n        \"trigger\": \"SCAN_TRIGGER_NONE\"\n      },\n      \"shared\": \"<boolean>\",\n      \"sharedv4\": \"<boolean>\",\n      \"sharedv4_mount_opt_spec\": {\n        \"options\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\",\n          \"key_2\": \"<string>\",\n          \"key_3\": \"<string>\"\n        }\n      },\n      \"sharedv4_service_spec\": {\n        \"external_access\": \"<boolean>\",\n        \"name\": \"<string>\",\n        \"type\": \"UNSPECIFIED\"\n      },\n      \"sharedv4_spec\": {\n        \"failover_strategy\": \"UNSPECIFIED\"\n      },\n      \"size\": \"<uint64>\",\n      \"size_operator\": \"Equal\",\n      \"snapshot_interval\": \"<long>\",\n      \"snapshot_interval_operator\": \"Equal\",\n      \"snapshot_schedule\": \"<string>\",\n      \"sticky\": \"<boolean>\",\n      \"volume_labels\": {\n        \"key_0\": \"<string>\"\n      },\n      \"winshare\": \"<boolean>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6761,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "87a360ce-cdac-498f-9234-2a51bb882703",
+          "name": "Updates specified storage policy",
+          "request": {
+            "name": "Updates specified storage policy",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "storagepolicies"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"storage_policy\": {\n    \"allow_update\": \"<boolean>\",\n    \"force\": \"<boolean>\",\n    \"name\": \"<string>\",\n    \"ownership\": {\n      \"acls\": {\n        \"collaborators\": {\n          \"key_0\": \"Read\",\n          \"key_1\": \"Read\"\n        },\n        \"groups\": {\n          \"key_0\": \"Read\"\n        },\n        \"public\": {\n          \"type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"owner\": \"<string>\"\n    },\n    \"policy\": {\n      \"aggregation_level\": \"<long>\",\n      \"auto_fstrim\": \"<boolean>\",\n      \"cos\": \"NONE\",\n      \"dedupe\": \"<boolean>\",\n      \"encrypted\": \"<boolean>\",\n      \"export_spec\": {\n        \"export_options\": \"<string>\",\n        \"export_protocol\": \"INVALID\"\n      },\n      \"fastpath\": \"<boolean>\",\n      \"group\": {\n        \"id\": \"<string>\"\n      },\n      \"ha_level\": \"<int64>\",\n      \"ha_level_operator\": \"Equal\",\n      \"io_profile\": \"IO_PROFILE_SEQUENTIAL\",\n      \"io_strategy\": {\n        \"async_io\": \"<boolean>\",\n        \"direct_io\": \"<boolean>\",\n        \"early_ack\": \"<boolean>\"\n      },\n      \"io_throttle\": {\n        \"read_bw_mbytes\": \"<long>\",\n        \"read_iops\": \"<long>\",\n        \"write_bw_mbytes\": \"<long>\",\n        \"write_iops\": \"<long>\"\n      },\n      \"journal\": \"<boolean>\",\n      \"mount_opt_spec\": {\n        \"options\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        }\n      },\n      \"nodiscard\": \"<boolean>\",\n      \"passphrase\": \"<string>\",\n      \"proxy_spec\": {\n        \"endpoint\": \"<string>\",\n        \"nfs_spec\": {\n          \"export_path\": \"<string>\",\n          \"sub_path\": \"<string>\"\n        },\n        \"proxy_protocol\": \"PROXY_PROTOCOL_INVALID\",\n        \"pure_block_spec\": {\n          \"full_vol_name\": \"<string>\",\n          \"pod_name\": \"<string>\",\n          \"serial_num\": \"<string>\"\n        },\n        \"pure_file_spec\": {\n          \"export_rules\": \"<string>\",\n          \"full_vol_name\": \"<string>\",\n          \"nfs_endpoint\": \"<string>\"\n        },\n        \"pxd_spec\": {\n          \"id\": \"<string>\"\n        },\n        \"s3_spec\": {\n          \"bucket_name\": \"<string>\"\n        }\n      },\n      \"proxy_write\": \"<boolean>\",\n      \"queue_depth\": \"<long>\",\n      \"readahead\": \"<boolean>\",\n      \"replica_set\": {\n        \"id\": \"<long>\",\n        \"nodes\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"pool_uuids\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"scale\": \"<long>\",\n      \"scale_operator\": \"Equal\",\n      \"scan_policy\": {\n        \"action\": \"SCAN_ACTION_NONE\",\n        \"trigger\": \"SCAN_TRIGGER_NONE\"\n      },\n      \"shared\": \"<boolean>\",\n      \"sharedv4\": \"<boolean>\",\n      \"sharedv4_mount_opt_spec\": {\n        \"options\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        }\n      },\n      \"sharedv4_service_spec\": {\n        \"external_access\": \"<boolean>\",\n        \"name\": \"<string>\",\n        \"type\": \"UNSPECIFIED\"\n      },\n      \"sharedv4_spec\": {\n        \"failover_strategy\": \"UNSPECIFIED\"\n      },\n      \"size\": \"<uint64>\",\n      \"size_operator\": \"Equal\",\n      \"snapshot_interval\": \"<long>\",\n      \"snapshot_interval_operator\": \"Equal\",\n      \"snapshot_schedule\": \"<string>\",\n      \"sticky\": \"<boolean>\",\n      \"volume_labels\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\"\n      },\n      \"winshare\": \"<boolean>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ba926220-2743-4d97-ad3d-477a3efad37a",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "storagepolicies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"storage_policy\": {\n    \"allow_update\": \"<boolean>\",\n    \"force\": \"<boolean>\",\n    \"name\": \"<string>\",\n    \"ownership\": {\n      \"acls\": {\n        \"collaborators\": {\n          \"key_0\": \"Read\"\n        },\n        \"groups\": {\n          \"key_0\": \"Read\",\n          \"key_1\": \"Read\",\n          \"key_2\": \"Read\"\n        },\n        \"public\": {\n          \"type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"owner\": \"<string>\"\n    },\n    \"policy\": {\n      \"aggregation_level\": \"<long>\",\n      \"auto_fstrim\": \"<boolean>\",\n      \"cos\": \"NONE\",\n      \"dedupe\": \"<boolean>\",\n      \"encrypted\": \"<boolean>\",\n      \"export_spec\": {\n        \"export_options\": \"<string>\",\n        \"export_protocol\": \"INVALID\"\n      },\n      \"fastpath\": \"<boolean>\",\n      \"group\": {\n        \"id\": \"<string>\"\n      },\n      \"ha_level\": \"<int64>\",\n      \"ha_level_operator\": \"Equal\",\n      \"io_profile\": \"IO_PROFILE_SEQUENTIAL\",\n      \"io_strategy\": {\n        \"async_io\": \"<boolean>\",\n        \"direct_io\": \"<boolean>\",\n        \"early_ack\": \"<boolean>\"\n      },\n      \"io_throttle\": {\n        \"read_bw_mbytes\": \"<long>\",\n        \"read_iops\": \"<long>\",\n        \"write_bw_mbytes\": \"<long>\",\n        \"write_iops\": \"<long>\"\n      },\n      \"journal\": \"<boolean>\",\n      \"mount_opt_spec\": {\n        \"options\": {\n          \"key_0\": \"<string>\"\n        }\n      },\n      \"nodiscard\": \"<boolean>\",\n      \"passphrase\": \"<string>\",\n      \"proxy_spec\": {\n        \"endpoint\": \"<string>\",\n        \"nfs_spec\": {\n          \"export_path\": \"<string>\",\n          \"sub_path\": \"<string>\"\n        },\n        \"proxy_protocol\": \"PROXY_PROTOCOL_INVALID\",\n        \"pure_block_spec\": {\n          \"full_vol_name\": \"<string>\",\n          \"pod_name\": \"<string>\",\n          \"serial_num\": \"<string>\"\n        },\n        \"pure_file_spec\": {\n          \"export_rules\": \"<string>\",\n          \"full_vol_name\": \"<string>\",\n          \"nfs_endpoint\": \"<string>\"\n        },\n        \"pxd_spec\": {\n          \"id\": \"<string>\"\n        },\n        \"s3_spec\": {\n          \"bucket_name\": \"<string>\"\n        }\n      },\n      \"proxy_write\": \"<boolean>\",\n      \"queue_depth\": \"<long>\",\n      \"readahead\": \"<boolean>\",\n      \"replica_set\": {\n        \"id\": \"<long>\",\n        \"nodes\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"pool_uuids\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"scale\": \"<long>\",\n      \"scale_operator\": \"Equal\",\n      \"scan_policy\": {\n        \"action\": \"SCAN_ACTION_NONE\",\n        \"trigger\": \"SCAN_TRIGGER_NONE\"\n      },\n      \"shared\": \"<boolean>\",\n      \"sharedv4\": \"<boolean>\",\n      \"sharedv4_mount_opt_spec\": {\n        \"options\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        }\n      },\n      \"sharedv4_service_spec\": {\n        \"external_access\": \"<boolean>\",\n        \"name\": \"<string>\",\n        \"type\": \"UNSPECIFIED\"\n      },\n      \"sharedv4_spec\": {\n        \"failover_strategy\": \"UNSPECIFIED\"\n      },\n      \"size\": \"<uint64>\",\n      \"size_operator\": \"Equal\",\n      \"snapshot_interval\": \"<long>\",\n      \"snapshot_interval_operator\": \"Equal\",\n      \"snapshot_schedule\": \"<string>\",\n      \"sticky\": \"<boolean>\",\n      \"volume_labels\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"winshare\": \"<boolean>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e4b1cb55-9ff3-4602-8dbe-923eab3aca1e",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "storagepolicies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"storage_policy\": {\n    \"allow_update\": \"<boolean>\",\n    \"force\": \"<boolean>\",\n    \"name\": \"<string>\",\n    \"ownership\": {\n      \"acls\": {\n        \"collaborators\": {\n          \"key_0\": \"Read\"\n        },\n        \"groups\": {\n          \"key_0\": \"Read\",\n          \"key_1\": \"Read\",\n          \"key_2\": \"Read\"\n        },\n        \"public\": {\n          \"type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"owner\": \"<string>\"\n    },\n    \"policy\": {\n      \"aggregation_level\": \"<long>\",\n      \"auto_fstrim\": \"<boolean>\",\n      \"cos\": \"NONE\",\n      \"dedupe\": \"<boolean>\",\n      \"encrypted\": \"<boolean>\",\n      \"export_spec\": {\n        \"export_options\": \"<string>\",\n        \"export_protocol\": \"INVALID\"\n      },\n      \"fastpath\": \"<boolean>\",\n      \"group\": {\n        \"id\": \"<string>\"\n      },\n      \"ha_level\": \"<int64>\",\n      \"ha_level_operator\": \"Equal\",\n      \"io_profile\": \"IO_PROFILE_SEQUENTIAL\",\n      \"io_strategy\": {\n        \"async_io\": \"<boolean>\",\n        \"direct_io\": \"<boolean>\",\n        \"early_ack\": \"<boolean>\"\n      },\n      \"io_throttle\": {\n        \"read_bw_mbytes\": \"<long>\",\n        \"read_iops\": \"<long>\",\n        \"write_bw_mbytes\": \"<long>\",\n        \"write_iops\": \"<long>\"\n      },\n      \"journal\": \"<boolean>\",\n      \"mount_opt_spec\": {\n        \"options\": {\n          \"key_0\": \"<string>\"\n        }\n      },\n      \"nodiscard\": \"<boolean>\",\n      \"passphrase\": \"<string>\",\n      \"proxy_spec\": {\n        \"endpoint\": \"<string>\",\n        \"nfs_spec\": {\n          \"export_path\": \"<string>\",\n          \"sub_path\": \"<string>\"\n        },\n        \"proxy_protocol\": \"PROXY_PROTOCOL_INVALID\",\n        \"pure_block_spec\": {\n          \"full_vol_name\": \"<string>\",\n          \"pod_name\": \"<string>\",\n          \"serial_num\": \"<string>\"\n        },\n        \"pure_file_spec\": {\n          \"export_rules\": \"<string>\",\n          \"full_vol_name\": \"<string>\",\n          \"nfs_endpoint\": \"<string>\"\n        },\n        \"pxd_spec\": {\n          \"id\": \"<string>\"\n        },\n        \"s3_spec\": {\n          \"bucket_name\": \"<string>\"\n        }\n      },\n      \"proxy_write\": \"<boolean>\",\n      \"queue_depth\": \"<long>\",\n      \"readahead\": \"<boolean>\",\n      \"replica_set\": {\n        \"id\": \"<long>\",\n        \"nodes\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"pool_uuids\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"scale\": \"<long>\",\n      \"scale_operator\": \"Equal\",\n      \"scan_policy\": {\n        \"action\": \"SCAN_ACTION_NONE\",\n        \"trigger\": \"SCAN_TRIGGER_NONE\"\n      },\n      \"shared\": \"<boolean>\",\n      \"sharedv4\": \"<boolean>\",\n      \"sharedv4_mount_opt_spec\": {\n        \"options\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        }\n      },\n      \"sharedv4_service_spec\": {\n        \"external_access\": \"<boolean>\",\n        \"name\": \"<string>\",\n        \"type\": \"UNSPECIFIED\"\n      },\n      \"sharedv4_spec\": {\n        \"failover_strategy\": \"UNSPECIFIED\"\n      },\n      \"size\": \"<uint64>\",\n      \"size_operator\": \"Equal\",\n      \"snapshot_interval\": \"<long>\",\n      \"snapshot_interval_operator\": \"Equal\",\n      \"snapshot_schedule\": \"<string>\",\n      \"sticky\": \"<boolean>\",\n      \"volume_labels\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"winshare\": \"<boolean>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6761,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e3a29468-5636-4f12-b111-e7ab57030b50",
+          "name": "DefaultInspect return default storage policy if any, otherwise\nempty response",
+          "request": {
+            "name": "DefaultInspect return default storage policy if any, otherwise\nempty response",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "storagepolicies",
+                "default"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "12cd3a39-c2ed-4525-8eaf-a05a9b81ffd9",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "storagepolicies",
+                    "default"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"storage_policy\": {\n    \"allow_update\": \"<boolean>\",\n    \"force\": \"<boolean>\",\n    \"name\": \"<string>\",\n    \"ownership\": {\n      \"acls\": {\n        \"collaborators\": {\n          \"key_0\": \"Read\"\n        },\n        \"groups\": {\n          \"key_0\": \"Read\",\n          \"key_1\": \"Read\"\n        },\n        \"public\": {\n          \"type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"owner\": \"<string>\"\n    },\n    \"policy\": {\n      \"aggregation_level\": \"<long>\",\n      \"auto_fstrim\": \"<boolean>\",\n      \"cos\": \"NONE\",\n      \"dedupe\": \"<boolean>\",\n      \"encrypted\": \"<boolean>\",\n      \"export_spec\": {\n        \"export_options\": \"<string>\",\n        \"export_protocol\": \"INVALID\"\n      },\n      \"fastpath\": \"<boolean>\",\n      \"group\": {\n        \"id\": \"<string>\"\n      },\n      \"ha_level\": \"<int64>\",\n      \"ha_level_operator\": \"Equal\",\n      \"io_profile\": \"IO_PROFILE_SEQUENTIAL\",\n      \"io_strategy\": {\n        \"async_io\": \"<boolean>\",\n        \"direct_io\": \"<boolean>\",\n        \"early_ack\": \"<boolean>\"\n      },\n      \"io_throttle\": {\n        \"read_bw_mbytes\": \"<long>\",\n        \"read_iops\": \"<long>\",\n        \"write_bw_mbytes\": \"<long>\",\n        \"write_iops\": \"<long>\"\n      },\n      \"journal\": \"<boolean>\",\n      \"mount_opt_spec\": {\n        \"options\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        }\n      },\n      \"nodiscard\": \"<boolean>\",\n      \"passphrase\": \"<string>\",\n      \"proxy_spec\": {\n        \"endpoint\": \"<string>\",\n        \"nfs_spec\": {\n          \"export_path\": \"<string>\",\n          \"sub_path\": \"<string>\"\n        },\n        \"proxy_protocol\": \"PROXY_PROTOCOL_INVALID\",\n        \"pure_block_spec\": {\n          \"full_vol_name\": \"<string>\",\n          \"pod_name\": \"<string>\",\n          \"serial_num\": \"<string>\"\n        },\n        \"pure_file_spec\": {\n          \"export_rules\": \"<string>\",\n          \"full_vol_name\": \"<string>\",\n          \"nfs_endpoint\": \"<string>\"\n        },\n        \"pxd_spec\": {\n          \"id\": \"<string>\"\n        },\n        \"s3_spec\": {\n          \"bucket_name\": \"<string>\"\n        }\n      },\n      \"proxy_write\": \"<boolean>\",\n      \"queue_depth\": \"<long>\",\n      \"readahead\": \"<boolean>\",\n      \"replica_set\": {\n        \"id\": \"<long>\",\n        \"nodes\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"pool_uuids\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"scale\": \"<long>\",\n      \"scale_operator\": \"Equal\",\n      \"scan_policy\": {\n        \"action\": \"SCAN_ACTION_NONE\",\n        \"trigger\": \"SCAN_TRIGGER_NONE\"\n      },\n      \"shared\": \"<boolean>\",\n      \"sharedv4\": \"<boolean>\",\n      \"sharedv4_mount_opt_spec\": {\n        \"options\": {\n          \"key_0\": \"<string>\"\n        }\n      },\n      \"sharedv4_service_spec\": {\n        \"external_access\": \"<boolean>\",\n        \"name\": \"<string>\",\n        \"type\": \"UNSPECIFIED\"\n      },\n      \"sharedv4_spec\": {\n        \"failover_strategy\": \"UNSPECIFIED\"\n      },\n      \"size\": \"<uint64>\",\n      \"size_operator\": \"Equal\",\n      \"snapshot_interval\": \"<long>\",\n      \"snapshot_interval_operator\": \"Equal\",\n      \"snapshot_schedule\": \"<string>\",\n      \"sticky\": \"<boolean>\",\n      \"volume_labels\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\"\n      },\n      \"winshare\": \"<boolean>\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "12875e4a-0096-41f6-95ed-1e585960a7b7",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "storagepolicies",
+                    "default"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6761,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1b079c08-b619-4340-9138-f99a5447486d",
+          "name": "Set specified storage policy as default policy",
+          "request": {
+            "name": "Set specified storage policy as default policy",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "storagepolicies",
+                "default",
+                ":name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) name of policy to set as default storage policy\nfor volume creation\nThis policy will be used to validate/update volume configuration"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c24916a8-3298-4102-877e-b0ef900ab392",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "storagepolicies",
+                    "default",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) name of policy to set as default storage policy\nfor volume creation\nThis policy will be used to validate/update volume configuration"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "30dfee39-6586-4a3c-a674-b60279de8ef8",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "storagepolicies",
+                    "default",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) name of policy to set as default storage policy\nfor volume creation\nThis policy will be used to validate/update volume configuration"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6761,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "55cfab13-a114-48a6-aa7c-84cbc4bb503e",
+          "name": "Inspect returns information about a specified storage policy",
+          "request": {
+            "name": "Inspect returns information about a specified storage policy",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "storagepolicies",
+                "inspect",
+                ":name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) name of storage policy to retrive"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2d63de68-b2ba-43f4-a5ec-c47939ed86cd",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "storagepolicies",
+                    "inspect",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) name of storage policy to retrive"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"storage_policy\": {\n    \"allow_update\": \"<boolean>\",\n    \"force\": \"<boolean>\",\n    \"name\": \"<string>\",\n    \"ownership\": {\n      \"acls\": {\n        \"collaborators\": {\n          \"key_0\": \"Read\",\n          \"key_1\": \"Read\"\n        },\n        \"groups\": {\n          \"key_0\": \"Read\"\n        },\n        \"public\": {\n          \"type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"owner\": \"<string>\"\n    },\n    \"policy\": {\n      \"aggregation_level\": \"<long>\",\n      \"auto_fstrim\": \"<boolean>\",\n      \"cos\": \"NONE\",\n      \"dedupe\": \"<boolean>\",\n      \"encrypted\": \"<boolean>\",\n      \"export_spec\": {\n        \"export_options\": \"<string>\",\n        \"export_protocol\": \"INVALID\"\n      },\n      \"fastpath\": \"<boolean>\",\n      \"group\": {\n        \"id\": \"<string>\"\n      },\n      \"ha_level\": \"<int64>\",\n      \"ha_level_operator\": \"Equal\",\n      \"io_profile\": \"IO_PROFILE_SEQUENTIAL\",\n      \"io_strategy\": {\n        \"async_io\": \"<boolean>\",\n        \"direct_io\": \"<boolean>\",\n        \"early_ack\": \"<boolean>\"\n      },\n      \"io_throttle\": {\n        \"read_bw_mbytes\": \"<long>\",\n        \"read_iops\": \"<long>\",\n        \"write_bw_mbytes\": \"<long>\",\n        \"write_iops\": \"<long>\"\n      },\n      \"journal\": \"<boolean>\",\n      \"mount_opt_spec\": {\n        \"options\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        }\n      },\n      \"nodiscard\": \"<boolean>\",\n      \"passphrase\": \"<string>\",\n      \"proxy_spec\": {\n        \"endpoint\": \"<string>\",\n        \"nfs_spec\": {\n          \"export_path\": \"<string>\",\n          \"sub_path\": \"<string>\"\n        },\n        \"proxy_protocol\": \"PROXY_PROTOCOL_INVALID\",\n        \"pure_block_spec\": {\n          \"full_vol_name\": \"<string>\",\n          \"pod_name\": \"<string>\",\n          \"serial_num\": \"<string>\"\n        },\n        \"pure_file_spec\": {\n          \"export_rules\": \"<string>\",\n          \"full_vol_name\": \"<string>\",\n          \"nfs_endpoint\": \"<string>\"\n        },\n        \"pxd_spec\": {\n          \"id\": \"<string>\"\n        },\n        \"s3_spec\": {\n          \"bucket_name\": \"<string>\"\n        }\n      },\n      \"proxy_write\": \"<boolean>\",\n      \"queue_depth\": \"<long>\",\n      \"readahead\": \"<boolean>\",\n      \"replica_set\": {\n        \"id\": \"<long>\",\n        \"nodes\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"pool_uuids\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"scale\": \"<long>\",\n      \"scale_operator\": \"Equal\",\n      \"scan_policy\": {\n        \"action\": \"SCAN_ACTION_NONE\",\n        \"trigger\": \"SCAN_TRIGGER_NONE\"\n      },\n      \"shared\": \"<boolean>\",\n      \"sharedv4\": \"<boolean>\",\n      \"sharedv4_mount_opt_spec\": {\n        \"options\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        }\n      },\n      \"sharedv4_service_spec\": {\n        \"external_access\": \"<boolean>\",\n        \"name\": \"<string>\",\n        \"type\": \"UNSPECIFIED\"\n      },\n      \"sharedv4_spec\": {\n        \"failover_strategy\": \"UNSPECIFIED\"\n      },\n      \"size\": \"<uint64>\",\n      \"size_operator\": \"Equal\",\n      \"snapshot_interval\": \"<long>\",\n      \"snapshot_interval_operator\": \"Equal\",\n      \"snapshot_schedule\": \"<string>\",\n      \"sticky\": \"<boolean>\",\n      \"volume_labels\": {\n        \"key_0\": \"<string>\"\n      },\n      \"winshare\": \"<boolean>\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "65a69f0c-316f-4b49-8669-a2a9bd3a9cf4",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "storagepolicies",
+                    "inspect",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) name of storage policy to retrive"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6761,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2b7e5918-fa51-4e52-b5a4-c65582554f1b",
+          "name": "Release specified storage policy constraint for volume\ncreation",
+          "request": {
+            "name": "Release specified storage policy constraint for volume\ncreation",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "storagepolicies",
+                "release"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7925b4fc-4fbd-4b39-bb27-16b683920af9",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "storagepolicies",
+                    "release"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "53345570-2a6d-43f5-8f4f-72273a762af5",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "storagepolicies",
+                    "release"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6761,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ec5bd5da-17fb-4d96-8ab6-6ab93fc794dd",
+          "name": "Deletes specified storage policy",
+          "request": {
+            "name": "Deletes specified storage policy",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "storagepolicies",
+                ":name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) name of storage policy to delete"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "61b3d31d-7611-4d02-9e55-dc9cd77c961d",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "storagepolicies",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) name of storage policy to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ae0523c3-8999-4ded-a1f5-e673dfa11aa3",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "storagepolicies",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) name of storage policy to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6761,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "caf18198-dc11-43f4-bdad-5990d023461a",
+    "name": "OpenStorage SDK OpenStorageAlerts OpenStoragePolicy API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

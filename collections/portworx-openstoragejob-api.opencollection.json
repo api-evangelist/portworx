@@ -1,0 +1,91 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenStorage SDK OpenStorageAlerts OpenStorageJob API",
+    "version": "0.186.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "OpenStorageJob",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Enumerate returns all the jobs currently known to the system",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/jobs",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Type if specified will list the jobs of the provided type.\n\n - UNSPECIFIED_TYPE: Unspecified\n - NONE: None\n - DRAIN_ATTACHMENTS: Job for draining volume attachments\n - CLOUD_DRIVE_TRANSFER: Job for transferring cloud drives between nodes\n - COLLECT_DIAGS: Job for collecting diags from the cluster nodes\n - DEFRAG: Job for storage defragmentation on cluster nodes"
+              }
+            ]
+          },
+          "docs": "Enumerate returns all the jobs currently known to the system"
+        },
+        {
+          "info": {
+            "name": "GetStatus gets the status of a job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/jobs/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the job"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Type of the job.\n\n - UNSPECIFIED_TYPE: Unspecified\n - NONE: None\n - DRAIN_ATTACHMENTS: Job for draining volume attachments\n - CLOUD_DRIVE_TRANSFER: Job for transferring cloud drives between nodes\n - COLLECT_DIAGS: Job for collecting diags from the cluster nodes\n - DEFRAG: Job for storage defragmentation on cluster nodes"
+              }
+            ]
+          },
+          "docs": "GetStatus gets the status of a job"
+        },
+        {
+          "info": {
+            "name": "Update updates an existing job's state\nOnly acceptable state values are\nJobState_PAUSED - acceptable only from running state\nJobState_CANCELLED - acceptable only from running/pause state\nJobState_RUNNING - acceptable only from pause state",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/v1/jobs/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the job"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update updates an existing job's state\nOnly acceptable state values are\nJobState_PAUSED - acceptable only from running state\nJobState_CANCELLED - acceptable only from running/pause state\nJobState_RUNNING - acceptable only from pause state"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

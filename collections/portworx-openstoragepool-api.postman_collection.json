@@ -1,0 +1,1132 @@
+{
+  "item": [
+    {
+      "id": "ba8640b4-d2e9-40d6-a036-ab401ca302bf",
+      "name": "OpenStoragePool",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8fc6cd07-a395-45df-bb96-34432187d5fb",
+          "name": "Rebalance creates a new rebalance task",
+          "request": {
+            "name": "Rebalance creates a new rebalance task",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "storagepools",
+                "rebalance"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "12fb0dae-2848-4a51-97f5-2032b237d63f",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "storagepools",
+                    "rebalance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"actions\": [\n    {\n      \"action\": \"ADD_REPLICA\",\n      \"end_time\": \"1969-04-02T00:44:42.586Z\",\n      \"name\": \"string\",\n      \"node\": \"string\",\n      \"pool\": \"string\",\n      \"replication_set_id\": \"string\",\n      \"start_time\": \"1954-10-08T16:16:52.387Z\",\n      \"state\": \"PENDING\",\n      \"volume_id\": \"string\",\n      \"work_summary\": [\n        {\n          \"done\": \"string\",\n          \"pending\": \"string\",\n          \"type\": \"UnbalancedPools\"\n        },\n        {\n          \"done\": \"string\",\n          \"pending\": \"string\",\n          \"type\": \"UnbalancedPools\"\n        }\n      ]\n    },\n    {\n      \"action\": \"ADD_REPLICA\",\n      \"end_time\": \"2005-12-20T05:03:42.033Z\",\n      \"name\": \"string\",\n      \"node\": \"string\",\n      \"pool\": \"string\",\n      \"replication_set_id\": \"string\",\n      \"start_time\": \"1946-10-14T18:37:58.195Z\",\n      \"state\": \"PENDING\",\n      \"volume_id\": \"string\",\n      \"work_summary\": [\n        {\n          \"done\": \"string\",\n          \"pending\": \"string\",\n          \"type\": \"UnbalancedPools\"\n        },\n        {\n          \"done\": \"string\",\n          \"pending\": \"string\",\n          \"type\": \"UnbalancedPools\"\n        }\n      ]\n    }\n  ],\n  \"job\": {\n    \"create_time\": \"2016-10-28T23:56:58.645Z\",\n    \"id\": \"string\",\n    \"last_update_time\": \"1986-11-03T13:00:08.982Z\",\n    \"parameters\": {\n      \"max_duration_minutes\": \"string\",\n      \"mode\": \"STORAGE_REBALANCE\",\n      \"remove_repl_1_snapshots\": false,\n      \"source_pool_selector\": [\n        {\n          \"key\": \"string\",\n          \"operator\": \"In\",\n          \"values\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"key\": \"string\",\n          \"operator\": \"In\",\n          \"values\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"target_pool_selector\": [\n        {\n          \"key\": \"string\",\n          \"operator\": \"In\",\n          \"values\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"key\": \"string\",\n          \"operator\": \"In\",\n          \"values\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"trial_run\": false,\n      \"trigger_thresholds\": [\n        {\n          \"metric\": \"PROVISION_SPACE\",\n          \"over_load_trigger_threshold\": \"string\",\n          \"type\": \"ABSOLUTE_PERCENT\",\n          \"under_load_trigger_threshold\": \"string\"\n        },\n        {\n          \"metric\": \"PROVISION_SPACE\",\n          \"over_load_trigger_threshold\": \"string\",\n          \"type\": \"ABSOLUTE_PERCENT\",\n          \"under_load_trigger_threshold\": \"string\"\n        }\n      ]\n    },\n    \"state\": \"PENDING\",\n    \"status\": \"string\"\n  },\n  \"summary\": {\n    \"total_run_time_seconds\": \"string\",\n    \"work_summary\": [\n      {\n        \"done\": \"string\",\n        \"pending\": \"string\",\n        \"type\": \"UnbalancedPools\"\n      },\n      {\n        \"done\": \"string\",\n        \"pending\": \"string\",\n        \"type\": \"UnbalancedPools\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "031e7365-172d-4e94-b3b7-d4686578b480",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "storagepools",
+                    "rebalance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8389,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b7a6b03a-b662-42f7-9d0f-7651aa1f950f",
+          "name": "EnumerateRebalanceJobs returns all rebalance jobs currently known to the system",
+          "request": {
+            "name": "EnumerateRebalanceJobs returns all rebalance jobs currently known to the system",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "storagepools",
+                "rebalance",
+                "job"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3038e134-2e13-473a-b3b7-b5878af2dce1",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "storagepools",
+                    "rebalance",
+                    "job"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"jobs\": [\n    {\n      \"create_time\": \"1966-04-20T09:03:06.114Z\",\n      \"id\": \"string\",\n      \"last_update_time\": \"2021-03-26T23:29:07.511Z\",\n      \"parameters\": {\n        \"max_duration_minutes\": \"string\",\n        \"mode\": \"STORAGE_REBALANCE\",\n        \"remove_repl_1_snapshots\": false,\n        \"source_pool_selector\": [\n          {\n            \"key\": \"string\",\n            \"operator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"values\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"key\": \"string\",\n            \"operator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"values\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ],\n        \"target_pool_selector\": [\n          {\n            \"key\": \"string\",\n            \"operator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"values\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"key\": \"string\",\n            \"operator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"values\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ],\n        \"trial_run\": true,\n        \"trigger_thresholds\": [\n          {\n            \"metric\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"over_load_trigger_threshold\": \"string\",\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"under_load_trigger_threshold\": \"string\"\n          },\n          {\n            \"metric\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"over_load_trigger_threshold\": \"string\",\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"under_load_trigger_threshold\": \"string\"\n          }\n        ]\n      },\n      \"state\": \"PENDING\",\n      \"status\": \"string\"\n    },\n    {\n      \"create_time\": \"1979-07-17T22:29:36.790Z\",\n      \"id\": \"string\",\n      \"last_update_time\": \"1948-08-09T13:47:14.718Z\",\n      \"parameters\": {\n        \"max_duration_minutes\": \"string\",\n        \"mode\": \"STORAGE_REBALANCE\",\n        \"remove_repl_1_snapshots\": false,\n        \"source_pool_selector\": [\n          {\n            \"key\": \"string\",\n            \"operator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"values\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"key\": \"string\",\n            \"operator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"values\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ],\n        \"target_pool_selector\": [\n          {\n            \"key\": \"string\",\n            \"operator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"values\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"key\": \"string\",\n            \"operator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"values\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ],\n        \"trial_run\": false,\n        \"trigger_thresholds\": [\n          {\n            \"metric\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"over_load_trigger_threshold\": \"string\",\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"under_load_trigger_threshold\": \"string\"\n          },\n          {\n            \"metric\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"over_load_trigger_threshold\": \"string\",\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"under_load_trigger_threshold\": \"string\"\n          }\n        ]\n      },\n      \"state\": \"PENDING\",\n      \"status\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c4274c9d-3b0c-40ce-a521-043bac4456ec",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "storagepools",
+                    "rebalance",
+                    "job"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5672,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "579c62d8-c6bc-41fb-b807-43697327d1e4",
+          "name": "GetRebalanceJobStatus returns rebalance status for specified job",
+          "request": {
+            "name": "GetRebalanceJobStatus returns rebalance status for specified job",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "storagepools",
+                "rebalance",
+                "job",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) ID of the rebalance job"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fb66f875-5236-4bb5-9df9-ade7d53183bb",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "storagepools",
+                    "rebalance",
+                    "job",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) ID of the rebalance job"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"actions\": [\n    {\n      \"action\": \"ADD_REPLICA\",\n      \"end_time\": \"2013-08-21T22:33:08.553Z\",\n      \"name\": \"string\",\n      \"node\": \"string\",\n      \"pool\": \"string\",\n      \"replication_set_id\": \"string\",\n      \"start_time\": \"2025-09-20T22:03:43.000Z\",\n      \"state\": \"PENDING\",\n      \"volume_id\": \"string\",\n      \"work_summary\": [\n        {\n          \"done\": \"string\",\n          \"pending\": \"string\",\n          \"type\": \"UnbalancedPools\"\n        },\n        {\n          \"done\": \"string\",\n          \"pending\": \"string\",\n          \"type\": \"UnbalancedPools\"\n        }\n      ]\n    },\n    {\n      \"action\": \"ADD_REPLICA\",\n      \"end_time\": \"2006-09-09T07:51:08.531Z\",\n      \"name\": \"string\",\n      \"node\": \"string\",\n      \"pool\": \"string\",\n      \"replication_set_id\": \"string\",\n      \"start_time\": \"1985-02-01T14:50:23.487Z\",\n      \"state\": \"PENDING\",\n      \"volume_id\": \"string\",\n      \"work_summary\": [\n        {\n          \"done\": \"string\",\n          \"pending\": \"string\",\n          \"type\": \"UnbalancedPools\"\n        },\n        {\n          \"done\": \"string\",\n          \"pending\": \"string\",\n          \"type\": \"UnbalancedPools\"\n        }\n      ]\n    }\n  ],\n  \"job\": {\n    \"create_time\": \"1982-01-26T09:34:56.688Z\",\n    \"id\": \"string\",\n    \"last_update_time\": \"1980-10-19T09:03:49.430Z\",\n    \"parameters\": {\n      \"max_duration_minutes\": \"string\",\n      \"mode\": \"STORAGE_REBALANCE\",\n      \"remove_repl_1_snapshots\": false,\n      \"source_pool_selector\": [\n        {\n          \"key\": \"string\",\n          \"operator\": \"In\",\n          \"values\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"key\": \"string\",\n          \"operator\": \"In\",\n          \"values\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"target_pool_selector\": [\n        {\n          \"key\": \"string\",\n          \"operator\": \"In\",\n          \"values\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"key\": \"string\",\n          \"operator\": \"In\",\n          \"values\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"trial_run\": true,\n      \"trigger_thresholds\": [\n        {\n          \"metric\": \"PROVISION_SPACE\",\n          \"over_load_trigger_threshold\": \"string\",\n          \"type\": \"ABSOLUTE_PERCENT\",\n          \"under_load_trigger_threshold\": \"string\"\n        },\n        {\n          \"metric\": \"PROVISION_SPACE\",\n          \"over_load_trigger_threshold\": \"string\",\n          \"type\": \"ABSOLUTE_PERCENT\",\n          \"under_load_trigger_threshold\": \"string\"\n        }\n      ]\n    },\n    \"state\": \"PENDING\",\n    \"status\": \"string\"\n  },\n  \"summary\": {\n    \"total_run_time_seconds\": \"string\",\n    \"work_summary\": [\n      {\n        \"done\": \"string\",\n        \"pending\": \"string\",\n        \"type\": \"UnbalancedPools\"\n      },\n      {\n        \"done\": \"string\",\n        \"pending\": \"string\",\n        \"type\": \"UnbalancedPools\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "98849a32-adef-47e0-ae94-09f454a903f1",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "storagepools",
+                    "rebalance",
+                    "job",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) ID of the rebalance job"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5672,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "353c809f-1795-4497-9da8-c80fea2540ca",
+          "name": "UpdateRebalanceJobState updates existing rebalance task state.\nOnly acceptable values are\nStorageRebalanceJobState_PAUSED - acceptable only from running state\nStorageRebalanceJobState_CANCELLED - acceptable only from running/pause state\nStorageRebalanceJobState_RUNNING - acceptable only from pause state",
+          "request": {
+            "name": "UpdateRebalanceJobState updates existing rebalance task state.\nOnly acceptable values are\nStorageRebalanceJobState_PAUSED - acceptable only from running state\nStorageRebalanceJobState_CANCELLED - acceptable only from running/pause state\nStorageRebalanceJobState_RUNNING - acceptable only from pause state",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "storagepools",
+                "rebalance",
+                "job",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) ID of the rebalance job"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "929d32a9-a1bd-466a-9b66-29610b06af46",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "storagepools",
+                    "rebalance",
+                    "job",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) ID of the rebalance job"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bc2a380a-224f-4349-b6bf-acf26e88c9eb",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "storagepools",
+                    "rebalance",
+                    "job",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) ID of the rebalance job"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5672,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f4ddc385-4682-42f9-84ec-5608f4e5918e",
+          "name": "DeleteRebalanceSchedule deletes the rebalance schedule",
+          "request": {
+            "name": "DeleteRebalanceSchedule deletes the rebalance schedule",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "storagepools",
+                "rebalance",
+                "schedule"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "51e805f4-5627-4162-93ee-22c15fd3c0f3",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "storagepools",
+                    "rebalance",
+                    "schedule"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4427848b-80ff-4e6a-99da-510ca1807471",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "storagepools",
+                    "rebalance",
+                    "schedule"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5672,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3b0dde5b-1b6c-45c5-9d11-5be30d208dd2",
+          "name": "GetRebalanceSchedule returns the information of rebalance schedule",
+          "request": {
+            "name": "GetRebalanceSchedule returns the information of rebalance schedule",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "storagepools",
+                "rebalance",
+                "schedule"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e739240b-b37b-4be0-a77e-9ae6be9940e8",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "storagepools",
+                    "rebalance",
+                    "schedule"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"scheduleInfo\": {\n    \"create_time\": \"1959-02-02T19:03:50.046Z\",\n    \"rebalance_requests\": [\n      {\n        \"max_duration_minutes\": \"string\",\n        \"mode\": \"STORAGE_REBALANCE\",\n        \"remove_repl_1_snapshots\": false,\n        \"source_pool_selector\": [\n          {\n            \"key\": \"string\",\n            \"operator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"values\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"key\": \"string\",\n            \"operator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"values\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ],\n        \"target_pool_selector\": [\n          {\n            \"key\": \"string\",\n            \"operator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"values\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"key\": \"string\",\n            \"operator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"values\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ],\n        \"trial_run\": false,\n        \"trigger_thresholds\": [\n          {\n            \"metric\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"over_load_trigger_threshold\": \"string\",\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"under_load_trigger_threshold\": \"string\"\n          },\n          {\n            \"metric\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"over_load_trigger_threshold\": \"string\",\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"under_load_trigger_threshold\": \"string\"\n          }\n        ]\n      },\n      {\n        \"max_duration_minutes\": \"string\",\n        \"mode\": \"STORAGE_REBALANCE\",\n        \"remove_repl_1_snapshots\": true,\n        \"source_pool_selector\": [\n          {\n            \"key\": \"string\",\n            \"operator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"values\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"key\": \"string\",\n            \"operator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"values\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ],\n        \"target_pool_selector\": [\n          {\n            \"key\": \"string\",\n            \"operator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"values\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"key\": \"string\",\n            \"operator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"values\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ],\n        \"trial_run\": true,\n        \"trigger_thresholds\": [\n          {\n            \"metric\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"over_load_trigger_threshold\": \"string\",\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"under_load_trigger_threshold\": \"string\"\n          },\n          {\n            \"metric\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"over_load_trigger_threshold\": \"string\",\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"under_load_trigger_threshold\": \"string\"\n          }\n        ]\n      }\n    ],\n    \"schedule\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "42e11878-2068-4194-9eae-5c25b38f09a6",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "storagepools",
+                    "rebalance",
+                    "schedule"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5672,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0bd51fb7-89e4-4c6f-b667-89ddcfe8a4fc",
+          "name": "CreateRebalanceSchedule creates a scheudle for the input rebalance requests",
+          "request": {
+            "name": "CreateRebalanceSchedule creates a scheudle for the input rebalance requests",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "storagepools",
+                "rebalance",
+                "schedule"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "73844f06-8e92-433a-afbe-7f23e9852351",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "storagepools",
+                    "rebalance",
+                    "schedule"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"scheduleInfo\": {\n    \"create_time\": \"1960-10-15T15:49:43.547Z\",\n    \"rebalance_requests\": [\n      {\n        \"max_duration_minutes\": \"string\",\n        \"mode\": \"STORAGE_REBALANCE\",\n        \"remove_repl_1_snapshots\": true,\n        \"source_pool_selector\": [\n          {\n            \"key\": \"string\",\n            \"operator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"values\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"key\": \"string\",\n            \"operator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"values\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ],\n        \"target_pool_selector\": [\n          {\n            \"key\": \"string\",\n            \"operator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"values\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"key\": \"string\",\n            \"operator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"values\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ],\n        \"trial_run\": false,\n        \"trigger_thresholds\": [\n          {\n            \"metric\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"over_load_trigger_threshold\": \"string\",\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"under_load_trigger_threshold\": \"string\"\n          },\n          {\n            \"metric\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"over_load_trigger_threshold\": \"string\",\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"under_load_trigger_threshold\": \"string\"\n          }\n        ]\n      },\n      {\n        \"max_duration_minutes\": \"string\",\n        \"mode\": \"STORAGE_REBALANCE\",\n        \"remove_repl_1_snapshots\": false,\n        \"source_pool_selector\": [\n          {\n            \"key\": \"string\",\n            \"operator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"values\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"key\": \"string\",\n            \"operator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"values\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ],\n        \"target_pool_selector\": [\n          {\n            \"key\": \"string\",\n            \"operator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"values\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"key\": \"string\",\n            \"operator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"values\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ],\n        \"trial_run\": true,\n        \"trigger_thresholds\": [\n          {\n            \"metric\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"over_load_trigger_threshold\": \"string\",\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"under_load_trigger_threshold\": \"string\"\n          },\n          {\n            \"metric\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"over_load_trigger_threshold\": \"string\",\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"under_load_trigger_threshold\": \"string\"\n          }\n        ]\n      }\n    ],\n    \"schedule\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b248cf3a-7763-49da-acad-4c828d8e4233",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "storagepools",
+                    "rebalance",
+                    "schedule"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5672,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0253a45b-c227-46a1-8efb-bd7756ce3def",
+          "name": "Resize expands the specified storage pool based on the request parameters",
+          "request": {
+            "name": "Resize expands the specified storage pool based on the request parameters",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "storagepools",
+                "resize",
+                ":uuid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "uuid",
+                  "description": "(Required) UUID of the storage pool to inspect"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cd8265e4-0b0f-4f37-b801-d6679f3612c5",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "storagepools",
+                    "resize",
+                    ":uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "uuid",
+                      "description": "(Required) UUID of the storage pool to inspect"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ac850bbe-0384-4603-bbdf-faead68a82c1",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "storagepools",
+                    "resize",
+                    ":uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "uuid",
+                      "description": "(Required) UUID of the storage pool to inspect"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5672,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "9f3c9166-4520-46b5-9e29-65b50c11455c",
+    "name": "OpenStorage SDK OpenStorageAlerts OpenStoragePool API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,132 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenStorage SDK OpenStorageAlerts OpenStorageFilesystemCheck API",
+    "version": "0.186.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "OpenStorageFilesystemCheck",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Delete all fsck created snapshots on volume",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/filesystem-check/delete-snapshots",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Delete all fsck created snapshots on volume"
+        },
+        {
+          "info": {
+            "name": "List all fsck created snapshots on volume",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/filesystem-check/list-snapshots",
+            "params": [
+              {
+                "name": "volume_id",
+                "value": "",
+                "type": "query",
+                "description": "Id of the volume."
+              },
+              {
+                "name": "node_id",
+                "value": "",
+                "type": "query",
+                "description": "Node Id of the volume."
+              }
+            ]
+          },
+          "docs": "List all fsck created snapshots on volume"
+        },
+        {
+          "info": {
+            "name": "List of all volumes which require fsck check/fix to be run",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/filesystem-check/list-volumes",
+            "params": [
+              {
+                "name": "node_id",
+                "value": "",
+                "type": "query",
+                "description": "Node Id filter."
+              }
+            ]
+          },
+          "docs": "List of all volumes which require fsck check/fix to be run"
+        },
+        {
+          "info": {
+            "name": "Start a filesystem-check background operation on a unmounted volume.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/filesystem-check/start",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Start a filesystem-check background operation on a unmounted volume."
+        },
+        {
+          "info": {
+            "name": "Get Status of a filesystem-check background operation on an unmounted\nvolume, if any",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/filesystem-check/status",
+            "params": [
+              {
+                "name": "volume_id",
+                "value": "",
+                "type": "query",
+                "description": "Id of the volume."
+              }
+            ]
+          },
+          "docs": "Get Status of a filesystem-check background operation on an unmounted\nvolume, if any"
+        },
+        {
+          "info": {
+            "name": "Stop a filesystem check background operation on an unmounted volume, if any",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/filesystem-check/stop",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Stop a filesystem check background operation on an unmounted volume, if any"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

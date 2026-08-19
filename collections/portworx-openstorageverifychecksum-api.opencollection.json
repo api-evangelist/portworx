@@ -1,0 +1,73 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenStorage SDK OpenStorageAlerts OpenStorageVerifyChecksum API",
+    "version": "0.186.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "OpenStorageVerifyChecksum",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Start a verify checksum background operation on a volume.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/verify-checksum/start",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Start a verify checksum background operation on a volume."
+        },
+        {
+          "info": {
+            "name": "Get Status of a verify checksum background operation on a volume",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/verify-checksum/status",
+            "params": [
+              {
+                "name": "volume_id",
+                "value": "",
+                "type": "query",
+                "description": "Id of the volume."
+              }
+            ]
+          },
+          "docs": "Get Status of a verify checksum background operation on a volume"
+        },
+        {
+          "info": {
+            "name": "Stop a verify checksum background operation on a volume",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/verify-checksum/stop",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Stop a verify checksum background operation on a volume"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

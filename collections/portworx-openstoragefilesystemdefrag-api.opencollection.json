@@ -1,0 +1,80 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenStorage SDK OpenStorageAlerts OpenStorageFilesystemDefrag API",
+    "version": "0.186.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "OpenStorageFilesystemDefrag",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a schedule to run defragmentation tasks periodically",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/filesystem-defrag/schedule",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a schedule to run defragmentation tasks periodically"
+        },
+        {
+          "info": {
+            "name": "Clean up all defrag schedules and stop all operations",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v1/filesystem-defrag/schedules"
+          },
+          "docs": "Clean up all defrag schedules and stop all operations"
+        },
+        {
+          "info": {
+            "name": "Enumerate all nodes, returning defrag status of the entire cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/filesystem-defrag/status"
+          },
+          "docs": "Enumerate all nodes, returning defrag status of the entire cluster"
+        },
+        {
+          "info": {
+            "name": "Get defrag status of a node",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/filesystem-defrag/status/:node_id",
+            "params": [
+              {
+                "name": "node_id",
+                "value": "",
+                "type": "path",
+                "description": "NodeId is uuid of the node"
+              }
+            ]
+          },
+          "docs": "Get defrag status of a node"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,93 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenStorage SDK OpenStorageAlerts OpenStorageSchedule API",
+    "version": "0.186.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "OpenStorageSchedule",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Enumerate returns all the schedules",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/schedules/:type",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path",
+                "description": "Type is schedule type (cast to string from a Job.Type enum, as the version of\nprotoc-gen-grpc-gateway on release branch doesn't support enum type in REST API path parameter)"
+              }
+            ]
+          },
+          "docs": "Enumerate returns all the schedules"
+        },
+        {
+          "info": {
+            "name": "Inspect queries information of a schedule by type and ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/schedules/:type/:id",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path",
+                "description": "Type is schedule type (cast to string from a Job.Type enum, as the version of\nprotoc-gen-grpc-gateway on release branch doesn't support enum type in REST API path parameter)"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the schedule"
+              }
+            ]
+          },
+          "docs": "Inspect queries information of a schedule by type and ID"
+        },
+        {
+          "info": {
+            "name": "Delete deletes a schedule by type and ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v1/schedules/:type/:id",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path",
+                "description": "Type is schedule type (cast to string from a Job.Type enum, as the version of\nprotoc-gen-grpc-gateway on release branch doesn't support enum type in REST API path parameter)"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the schedule"
+              }
+            ]
+          },
+          "docs": "Delete deletes a schedule by type and ID"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,761 @@
+{
+  "item": [
+    {
+      "id": "1e4feac4-5006-4d33-b95f-810dddc877cd",
+      "name": "OpenStorageSchedulePolicy",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9015dee3-3d6c-4f01-bc97-8297350ede42",
+          "name": "Enumerate returns a list of schedules",
+          "request": {
+            "name": "Enumerate returns a list of schedules",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "schedulepolicies"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f3a87e75-9813-4552-b4e0-598a5aa779b8",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "schedulepolicies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"policies\": [\n    {\n      \"name\": \"string\",\n      \"schedules\": [\n        {\n          \"daily\": {\n            \"hour\": 4045,\n            \"minute\": 131\n          },\n          \"monthly\": {\n            \"day\": 7800,\n            \"hour\": 5657,\n            \"minute\": 3798\n          },\n          \"periodic\": {\n            \"seconds\": \"string\"\n          },\n          \"retain\": \"string\",\n          \"weekly\": {\n            \"day\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"hour\": 965,\n            \"minute\": 586\n          }\n        },\n        {\n          \"daily\": {\n            \"hour\": 991,\n            \"minute\": 4966\n          },\n          \"monthly\": {\n            \"day\": 8756,\n            \"hour\": 2287,\n            \"minute\": 5485\n          },\n          \"periodic\": {\n            \"seconds\": \"string\"\n          },\n          \"retain\": \"string\",\n          \"weekly\": {\n            \"day\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"hour\": 3099,\n            \"minute\": 2030\n          }\n        }\n      ]\n    },\n    {\n      \"name\": \"string\",\n      \"schedules\": [\n        {\n          \"daily\": {\n            \"hour\": 4780,\n            \"minute\": 4818\n          },\n          \"monthly\": {\n            \"day\": 9701,\n            \"hour\": 3862,\n            \"minute\": 7403\n          },\n          \"periodic\": {\n            \"seconds\": \"string\"\n          },\n          \"retain\": \"string\",\n          \"weekly\": {\n            \"day\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"hour\": 4952,\n            \"minute\": 740\n          }\n        },\n        {\n          \"daily\": {\n            \"hour\": 7566,\n            \"minute\": 3859\n          },\n          \"monthly\": {\n            \"day\": 2494,\n            \"hour\": 240,\n            \"minute\": 6598\n          },\n          \"periodic\": {\n            \"seconds\": \"string\"\n          },\n          \"retain\": \"string\",\n          \"weekly\": {\n            \"day\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"hour\": 378,\n            \"minute\": 532\n          }\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "69622cc4-a22c-42bf-be0e-65284ac719ff",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "schedulepolicies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1371,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9a6ba0f7-106c-45f9-829a-14b9a6a679af",
+          "name": "Create creates a new snapshot schedule. They can be setup daily,\nweekly, or monthly.",
+          "request": {
+            "name": "Create creates a new snapshot schedule. They can be setup daily,\nweekly, or monthly.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "schedulepolicies"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"schedule_policy\": {\n    \"name\": \"<string>\",\n    \"schedules\": [\n      {\n        \"daily\": {\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        },\n        \"monthly\": {\n          \"day\": \"<integer>\",\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        },\n        \"periodic\": {\n          \"seconds\": \"<int64>\"\n        },\n        \"retain\": \"<int64>\",\n        \"weekly\": {\n          \"day\": \"SdkTimeWeekdaySunday\",\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        }\n      },\n      {\n        \"daily\": {\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        },\n        \"monthly\": {\n          \"day\": \"<integer>\",\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        },\n        \"periodic\": {\n          \"seconds\": \"<int64>\"\n        },\n        \"retain\": \"<int64>\",\n        \"weekly\": {\n          \"day\": \"SdkTimeWeekdaySunday\",\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        }\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1ca06950-1474-40c7-8412-7c66e2793a52",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "schedulepolicies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"schedule_policy\": {\n    \"name\": \"<string>\",\n    \"schedules\": [\n      {\n        \"daily\": {\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        },\n        \"monthly\": {\n          \"day\": \"<integer>\",\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        },\n        \"periodic\": {\n          \"seconds\": \"<int64>\"\n        },\n        \"retain\": \"<int64>\",\n        \"weekly\": {\n          \"day\": \"SdkTimeWeekdaySunday\",\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        }\n      },\n      {\n        \"daily\": {\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        },\n        \"monthly\": {\n          \"day\": \"<integer>\",\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        },\n        \"periodic\": {\n          \"seconds\": \"<int64>\"\n        },\n        \"retain\": \"<int64>\",\n        \"weekly\": {\n          \"day\": \"SdkTimeWeekdaySunday\",\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        }\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "839ad527-4755-4cfa-bda7-06be37208e19",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "schedulepolicies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"schedule_policy\": {\n    \"name\": \"<string>\",\n    \"schedules\": [\n      {\n        \"daily\": {\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        },\n        \"monthly\": {\n          \"day\": \"<integer>\",\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        },\n        \"periodic\": {\n          \"seconds\": \"<int64>\"\n        },\n        \"retain\": \"<int64>\",\n        \"weekly\": {\n          \"day\": \"SdkTimeWeekdaySunday\",\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        }\n      },\n      {\n        \"daily\": {\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        },\n        \"monthly\": {\n          \"day\": \"<integer>\",\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        },\n        \"periodic\": {\n          \"seconds\": \"<int64>\"\n        },\n        \"retain\": \"<int64>\",\n        \"weekly\": {\n          \"day\": \"SdkTimeWeekdaySunday\",\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        }\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 2980,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b66bfb70-8c62-4603-9b30-4d331e6f916d",
+          "name": "Update a snapshot schedule",
+          "request": {
+            "name": "Update a snapshot schedule",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "schedulepolicies"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"schedule_policy\": {\n    \"name\": \"<string>\",\n    \"schedules\": [\n      {\n        \"daily\": {\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        },\n        \"monthly\": {\n          \"day\": \"<integer>\",\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        },\n        \"periodic\": {\n          \"seconds\": \"<int64>\"\n        },\n        \"retain\": \"<int64>\",\n        \"weekly\": {\n          \"day\": \"SdkTimeWeekdaySunday\",\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        }\n      },\n      {\n        \"daily\": {\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        },\n        \"monthly\": {\n          \"day\": \"<integer>\",\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        },\n        \"periodic\": {\n          \"seconds\": \"<int64>\"\n        },\n        \"retain\": \"<int64>\",\n        \"weekly\": {\n          \"day\": \"SdkTimeWeekdaySunday\",\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        }\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6978ed92-74e0-4343-9dcb-06a5f4951aef",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "schedulepolicies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"schedule_policy\": {\n    \"name\": \"<string>\",\n    \"schedules\": [\n      {\n        \"daily\": {\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        },\n        \"monthly\": {\n          \"day\": \"<integer>\",\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        },\n        \"periodic\": {\n          \"seconds\": \"<int64>\"\n        },\n        \"retain\": \"<int64>\",\n        \"weekly\": {\n          \"day\": \"SdkTimeWeekdaySunday\",\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        }\n      },\n      {\n        \"daily\": {\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        },\n        \"monthly\": {\n          \"day\": \"<integer>\",\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        },\n        \"periodic\": {\n          \"seconds\": \"<int64>\"\n        },\n        \"retain\": \"<int64>\",\n        \"weekly\": {\n          \"day\": \"SdkTimeWeekdaySunday\",\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        }\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3e7e5ecb-a11b-4d0b-8cb0-759fc85c8a11",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "schedulepolicies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"schedule_policy\": {\n    \"name\": \"<string>\",\n    \"schedules\": [\n      {\n        \"daily\": {\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        },\n        \"monthly\": {\n          \"day\": \"<integer>\",\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        },\n        \"periodic\": {\n          \"seconds\": \"<int64>\"\n        },\n        \"retain\": \"<int64>\",\n        \"weekly\": {\n          \"day\": \"SdkTimeWeekdaySunday\",\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        }\n      },\n      {\n        \"daily\": {\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        },\n        \"monthly\": {\n          \"day\": \"<integer>\",\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        },\n        \"periodic\": {\n          \"seconds\": \"<int64>\"\n        },\n        \"retain\": \"<int64>\",\n        \"weekly\": {\n          \"day\": \"SdkTimeWeekdaySunday\",\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        }\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 2980,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "118bf7cc-3186-4c78-8c0e-e923bd81b7a5",
+          "name": "Inspect returns information about a specified schedule",
+          "request": {
+            "name": "Inspect returns information about a specified schedule",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "schedulepolicies",
+                "inspect",
+                ":name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) Name of the schedule Policy"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cb58c716-36cd-4a7b-95be-98150583fe4e",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "schedulepolicies",
+                    "inspect",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name of the schedule Policy"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"policy\": {\n    \"name\": \"<string>\",\n    \"schedules\": [\n      {\n        \"daily\": {\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        },\n        \"monthly\": {\n          \"day\": \"<integer>\",\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        },\n        \"periodic\": {\n          \"seconds\": \"<int64>\"\n        },\n        \"retain\": \"<int64>\",\n        \"weekly\": {\n          \"day\": \"SdkTimeWeekdaySunday\",\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        }\n      },\n      {\n        \"daily\": {\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        },\n        \"monthly\": {\n          \"day\": \"<integer>\",\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        },\n        \"periodic\": {\n          \"seconds\": \"<int64>\"\n        },\n        \"retain\": \"<int64>\",\n        \"weekly\": {\n          \"day\": \"SdkTimeWeekdaySunday\",\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f8a78cea-8c5c-4e7a-8fb7-2fdd9864c3d7",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "schedulepolicies",
+                    "inspect",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name of the schedule Policy"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 2980,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a2997a68-1a81-46fd-8fe4-12632aad1f54",
+          "name": "Delete removes a snapshot schedule",
+          "request": {
+            "name": "Delete removes a snapshot schedule",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "schedulepolicies",
+                ":name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) Name of the schedule policy"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "98493f7f-6aff-4ed8-a6e4-4e9dd01c4711",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "schedulepolicies",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name of the schedule policy"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cdfc2173-51a5-434d-b5bf-58ba2832c1c5",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "schedulepolicies",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name of the schedule policy"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 2980,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "68710290-f3fb-42ca-8559-47fbf7f05a82",
+    "name": "OpenStorage SDK OpenStorageAlerts OpenStorageSchedulePolicy API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

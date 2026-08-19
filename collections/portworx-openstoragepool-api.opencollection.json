@@ -1,0 +1,136 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenStorage SDK OpenStorageAlerts OpenStoragePool API",
+    "version": "0.186.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "OpenStoragePool",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Rebalance creates a new rebalance task",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/v1/storagepools/rebalance"
+          },
+          "docs": "Rebalance creates a new rebalance task"
+        },
+        {
+          "info": {
+            "name": "EnumerateRebalanceJobs returns all rebalance jobs currently known to the system",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/storagepools/rebalance/job"
+          },
+          "docs": "EnumerateRebalanceJobs returns all rebalance jobs currently known to the system"
+        },
+        {
+          "info": {
+            "name": "GetRebalanceJobStatus returns rebalance status for specified job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/storagepools/rebalance/job/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the rebalance job"
+              }
+            ]
+          },
+          "docs": "GetRebalanceJobStatus returns rebalance status for specified job"
+        },
+        {
+          "info": {
+            "name": "UpdateRebalanceJobState updates existing rebalance task state.\nOnly acceptable values are\nStorageRebalanceJobState_PAUSED - acceptable only from running state\nStorageRebalanceJobState_CANCELLED - acceptable only from running/pause state\nStorageRebalanceJobState_RUNNING - acceptable only from pause state",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/v1/storagepools/rebalance/job/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the rebalance job"
+              }
+            ]
+          },
+          "docs": "UpdateRebalanceJobState updates existing rebalance task state.\nOnly acceptable values are\nStorageRebalanceJobState_PAUSED - acceptable only from running state\nStorageRebalanceJobState_CANCELLED - acceptable only from running/pause state\nStorageRebalanceJobState_RUNNING - acceptable only from pause state"
+        },
+        {
+          "info": {
+            "name": "GetRebalanceSchedule returns the information of rebalance schedule",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/storagepools/rebalance/schedule"
+          },
+          "docs": "GetRebalanceSchedule returns the information of rebalance schedule"
+        },
+        {
+          "info": {
+            "name": "CreateRebalanceSchedule creates a scheudle for the input rebalance requests",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/storagepools/rebalance/schedule"
+          },
+          "docs": "CreateRebalanceSchedule creates a scheudle for the input rebalance requests"
+        },
+        {
+          "info": {
+            "name": "DeleteRebalanceSchedule deletes the rebalance schedule",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v1/storagepools/rebalance/schedule"
+          },
+          "docs": "DeleteRebalanceSchedule deletes the rebalance schedule"
+        },
+        {
+          "info": {
+            "name": "Resize expands the specified storage pool based on the request parameters",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/v1/storagepools/resize/:uuid",
+            "params": [
+              {
+                "name": "uuid",
+                "value": "",
+                "type": "path",
+                "description": "UUID of the storage pool to inspect"
+              }
+            ]
+          },
+          "docs": "Resize expands the specified storage pool based on the request parameters"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

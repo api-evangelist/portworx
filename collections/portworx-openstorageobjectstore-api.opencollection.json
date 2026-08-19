@@ -1,0 +1,100 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenStorage SDK OpenStorageAlerts OpenStorageObjectstore API",
+    "version": "0.186.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "OpenStorageObjectstore",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Creates creates an object store endpoint on specified volume",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/objectstores",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates creates an object store endpoint on specified volume"
+        },
+        {
+          "info": {
+            "name": "Inspect returns information about the object store endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/objectstores/inspect/:objectstore_id",
+            "params": [
+              {
+                "name": "objectstore_id",
+                "value": "",
+                "type": "path",
+                "description": "Id of the object store"
+              }
+            ]
+          },
+          "docs": "Inspect returns information about the object store endpoint"
+        },
+        {
+          "info": {
+            "name": "Updates provided objectstore status.\nThis call can be used to stop and start the server while maintaining the same\nobject storage id.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/v1/objectstores/:objectstore_id",
+            "params": [
+              {
+                "name": "objectstore_id",
+                "value": "",
+                "type": "path",
+                "description": "Objectstore Id to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates provided objectstore status.\nThis call can be used to stop and start the server while maintaining the same\nobject storage id."
+        },
+        {
+          "info": {
+            "name": "Delete destroys the object store endpoint on the volume",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v1/objectstores/:objectstore_id",
+            "params": [
+              {
+                "name": "objectstore_id",
+                "value": "",
+                "type": "path",
+                "description": "Id of the object store to delete"
+              }
+            ]
+          },
+          "docs": "Delete destroys the object store endpoint on the volume"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

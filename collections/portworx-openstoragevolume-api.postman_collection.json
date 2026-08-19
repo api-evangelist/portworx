@@ -1,0 +1,2582 @@
+{
+  "item": [
+    {
+      "id": "90dbf103-4a21-4f86-94eb-7be465d1aa40",
+      "name": "OpenStorageVolume",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f8cb7ffd-e8eb-494c-bfbd-61b7a96ab988",
+          "name": "Gets the volume catalog of an attached and mounted volume.\nReturns the entire tree up to \"n\"  depth (default is all of it)\nTakes a path that can be used as the new root for the catalog request.",
+          "request": {
+            "name": "Gets the volume catalog of an attached and mounted volume.\nReturns the entire tree up to \"n\"  depth (default is all of it)\nTakes a path that can be used as the new root for the catalog request.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "volume",
+                "catalog"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"depth\": \"<string>\",\n  \"path\": \"<string>\",\n  \"volume_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9d2f02ea-0841-4e1a-baf1-fd8b69797845",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "volume",
+                    "catalog"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"depth\": \"<string>\",\n  \"path\": \"<string>\",\n  \"volume_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"catalog\": {\n    \"report\": {\n      \"directories\": \"string\",\n      \"files\": \"string\"\n    },\n    \"root\": {\n      \"LastModified\": \"1982-05-25T05:30:30.069Z\",\n      \"children\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/apiCatalog detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/apiCatalog detected>\"\n        }\n      ],\n      \"name\": \"string\",\n      \"path\": \"string\",\n      \"size\": \"string\",\n      \"type\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e21bcf42-07e4-44d9-9160-43463e102bbc",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "volume",
+                    "catalog"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"depth\": \"<string>\",\n  \"path\": \"<string>\",\n  \"volume_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7349,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0bc2dc0d-5227-4668-98d0-37a211dff5fc",
+          "name": "Enumerate returns a list of volume ids",
+          "request": {
+            "name": "Enumerate returns a list of volume ids",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "volumes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5b540b9b-ff83-42da-a7f6-00052429f659",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "volumes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"volume_ids\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1a77aebd-d449-4d8e-9035-0bca7f37d7de",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "volumes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9734,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "994a4cc3-ea27-4a69-a8ea-8b0630bfc936",
+          "name": "Create creates a volume according to the specification provided",
+          "request": {
+            "name": "Create creates a volume according to the specification provided",
+            "description": {
+              "content": "Requires access AccessType.Read when cloning from a parent volume.\n\n##### Example\n{% codetabs name=\"Golang\", type=\"go\" -%}\nid, err := client.Create(context.Background(), &api.SdkVolumeCreateRequest{\n  Name: \"volume-12345-east\",\n  Spec: &api.VolumeSpec {\n    Size: 1234567,\n  },\n})\n{%- language name=\"Python\", type=\"py\" -%}\nen_resp = client.Create(api_pb2.SdkVolumeCreateRequest(\n  name=\"volume-12345-east\",\n  spec=api_pb2.VolumeSpec(size=1234567)))\n{%- endcodetabs %}",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "volumes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"labels\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"name\": \"<string>\",\n  \"spec\": {\n    \"aggregation_level\": \"<long>\",\n    \"auto_fstrim\": \"<boolean>\",\n    \"block_size\": \"<int64>\",\n    \"cascaded\": \"<boolean>\",\n    \"checksum_clone_id\": \"<string>\",\n    \"checksummed\": \"<boolean>\",\n    \"compressed\": \"<boolean>\",\n    \"cos\": \"NONE\",\n    \"dedupe\": \"<boolean>\",\n    \"encrypted\": \"<boolean>\",\n    \"ephemeral\": \"<boolean>\",\n    \"export_spec\": {\n      \"export_options\": \"<string>\",\n      \"export_protocol\": \"INVALID\"\n    },\n    \"fa_create_options\": \"<string>\",\n    \"force_unsupported_fs_type\": \"<boolean>\",\n    \"format\": \"FS_TYPE_NONE\",\n    \"fp_preference\": \"<boolean>\",\n    \"group\": {\n      \"id\": \"<string>\"\n    },\n    \"group_enforced\": \"<boolean>\",\n    \"ha_level\": \"<int64>\",\n    \"io_profile\": \"IO_PROFILE_SEQUENTIAL\",\n    \"io_strategy\": {\n      \"async_io\": \"<boolean>\",\n      \"direct_io\": \"<boolean>\",\n      \"early_ack\": \"<boolean>\"\n    },\n    \"io_throttle\": {\n      \"read_bw_mbytes\": \"<long>\",\n      \"read_iops\": \"<long>\",\n      \"write_bw_mbytes\": \"<long>\",\n      \"write_iops\": \"<long>\"\n    },\n    \"journal\": \"<boolean>\",\n    \"mount_options\": {\n      \"options\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      }\n    },\n    \"near_sync\": \"<boolean>\",\n    \"near_sync_replication_strategy\": \"NEAR_SYNC_STRATEGY_NONE\",\n    \"nodiscard\": \"<boolean>\",\n    \"number_of_chunks\": \"<long>\",\n    \"ownership\": {\n      \"acls\": {\n        \"collaborators\": {\n          \"key_0\": \"Read\"\n        },\n        \"groups\": {\n          \"key_0\": \"Read\"\n        },\n        \"public\": {\n          \"type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"owner\": \"<string>\"\n    },\n    \"passphrase\": \"<string>\",\n    \"placement_strategy\": {\n      \"replica_affinity\": [\n        {\n          \"affected_replicas\": \"<integer>\",\n          \"enforcement\": \"required\",\n          \"match_expressions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"topology_key\": \"<string>\",\n          \"weight\": \"<int64>\"\n        },\n        {\n          \"affected_replicas\": \"<integer>\",\n          \"enforcement\": \"required\",\n          \"match_expressions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"topology_key\": \"<string>\",\n          \"weight\": \"<int64>\"\n        }\n      ],\n      \"replica_anti_affinity\": [\n        {\n          \"affected_replicas\": \"<integer>\",\n          \"enforcement\": \"required\",\n          \"match_expressions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"topology_key\": \"<string>\",\n          \"weight\": \"<int64>\"\n        },\n        {\n          \"affected_replicas\": \"<integer>\",\n          \"enforcement\": \"required\",\n          \"match_expressions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"topology_key\": \"<string>\",\n          \"weight\": \"<int64>\"\n        }\n      ],\n      \"volume_affinity\": [\n        {\n          \"enforcement\": \"required\",\n          \"match_expressions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"topology_key\": \"<string>\",\n          \"weight\": \"<int64>\"\n        },\n        {\n          \"enforcement\": \"required\",\n          \"match_expressions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"topology_key\": \"<string>\",\n          \"weight\": \"<int64>\"\n        }\n      ],\n      \"volume_anti_affinity\": [\n        {\n          \"enforcement\": \"required\",\n          \"match_expressions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"topology_key\": \"<string>\",\n          \"weight\": \"<int64>\"\n        },\n        {\n          \"enforcement\": \"required\",\n          \"match_expressions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"topology_key\": \"<string>\",\n          \"weight\": \"<int64>\"\n        }\n      ]\n    },\n    \"proxy_spec\": {\n      \"endpoint\": \"<string>\",\n      \"nfs_spec\": {\n        \"export_path\": \"<string>\",\n        \"sub_path\": \"<string>\"\n      },\n      \"proxy_protocol\": \"PROXY_PROTOCOL_INVALID\",\n      \"pure_block_spec\": {\n        \"full_vol_name\": \"<string>\",\n        \"pod_name\": \"<string>\",\n        \"serial_num\": \"<string>\"\n      },\n      \"pure_file_spec\": {\n        \"export_rules\": \"<string>\",\n        \"full_vol_name\": \"<string>\",\n        \"nfs_endpoint\": \"<string>\"\n      },\n      \"pxd_spec\": {\n        \"id\": \"<string>\"\n      },\n      \"s3_spec\": {\n        \"bucket_name\": \"<string>\"\n      }\n    },\n    \"proxy_write\": \"<boolean>\",\n    \"queue_depth\": \"<long>\",\n    \"readahead\": \"<boolean>\",\n    \"replica_set\": {\n      \"id\": \"<long>\",\n      \"nodes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"pool_uuids\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"scale\": \"<long>\",\n    \"scan_policy\": {\n      \"action\": \"SCAN_ACTION_NONE\",\n      \"trigger\": \"SCAN_TRIGGER_NONE\"\n    },\n    \"shared\": \"<boolean>\",\n    \"sharedv4\": \"<boolean>\",\n    \"sharedv4_mount_options\": {\n      \"options\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\",\n        \"key_3\": \"<string>\"\n      }\n    },\n    \"sharedv4_service_spec\": {\n      \"external_access\": \"<boolean>\",\n      \"name\": \"<string>\",\n      \"type\": \"UNSPECIFIED\"\n    },\n    \"sharedv4_spec\": {\n      \"failover_strategy\": \"UNSPECIFIED\"\n    },\n    \"size\": \"<uint64>\",\n    \"snapshot_interval\": \"<long>\",\n    \"snapshot_schedule\": \"<string>\",\n    \"sticky\": \"<boolean>\",\n    \"storage_policy\": \"<string>\",\n    \"topology_requirement\": {\n      \"labels\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      }\n    },\n    \"volume_labels\": {\n      \"key_0\": \"<string>\"\n    },\n    \"winshare\": \"<boolean>\",\n    \"xattr\": \"UNSPECIFIED\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2f4e50b8-3e55-4d28-a8c0-c560f1b0ac66",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "volumes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"labels\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"name\": \"<string>\",\n  \"spec\": {\n    \"aggregation_level\": \"<long>\",\n    \"auto_fstrim\": \"<boolean>\",\n    \"block_size\": \"<int64>\",\n    \"cascaded\": \"<boolean>\",\n    \"checksum_clone_id\": \"<string>\",\n    \"checksummed\": \"<boolean>\",\n    \"compressed\": \"<boolean>\",\n    \"cos\": \"NONE\",\n    \"dedupe\": \"<boolean>\",\n    \"encrypted\": \"<boolean>\",\n    \"ephemeral\": \"<boolean>\",\n    \"export_spec\": {\n      \"export_options\": \"<string>\",\n      \"export_protocol\": \"INVALID\"\n    },\n    \"fa_create_options\": \"<string>\",\n    \"force_unsupported_fs_type\": \"<boolean>\",\n    \"format\": \"FS_TYPE_NONE\",\n    \"fp_preference\": \"<boolean>\",\n    \"group\": {\n      \"id\": \"<string>\"\n    },\n    \"group_enforced\": \"<boolean>\",\n    \"ha_level\": \"<int64>\",\n    \"io_profile\": \"IO_PROFILE_SEQUENTIAL\",\n    \"io_strategy\": {\n      \"async_io\": \"<boolean>\",\n      \"direct_io\": \"<boolean>\",\n      \"early_ack\": \"<boolean>\"\n    },\n    \"io_throttle\": {\n      \"read_bw_mbytes\": \"<long>\",\n      \"read_iops\": \"<long>\",\n      \"write_bw_mbytes\": \"<long>\",\n      \"write_iops\": \"<long>\"\n    },\n    \"journal\": \"<boolean>\",\n    \"mount_options\": {\n      \"options\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\"\n      }\n    },\n    \"near_sync\": \"<boolean>\",\n    \"near_sync_replication_strategy\": \"NEAR_SYNC_STRATEGY_NONE\",\n    \"nodiscard\": \"<boolean>\",\n    \"number_of_chunks\": \"<long>\",\n    \"ownership\": {\n      \"acls\": {\n        \"collaborators\": {\n          \"key_0\": \"Read\",\n          \"key_1\": \"Read\",\n          \"key_2\": \"Read\"\n        },\n        \"groups\": {\n          \"key_0\": \"Read\"\n        },\n        \"public\": {\n          \"type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"owner\": \"<string>\"\n    },\n    \"passphrase\": \"<string>\",\n    \"placement_strategy\": {\n      \"replica_affinity\": [\n        {\n          \"affected_replicas\": \"<integer>\",\n          \"enforcement\": \"required\",\n          \"match_expressions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"topology_key\": \"<string>\",\n          \"weight\": \"<int64>\"\n        },\n        {\n          \"affected_replicas\": \"<integer>\",\n          \"enforcement\": \"required\",\n          \"match_expressions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"topology_key\": \"<string>\",\n          \"weight\": \"<int64>\"\n        }\n      ],\n      \"replica_anti_affinity\": [\n        {\n          \"affected_replicas\": \"<integer>\",\n          \"enforcement\": \"required\",\n          \"match_expressions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"topology_key\": \"<string>\",\n          \"weight\": \"<int64>\"\n        },\n        {\n          \"affected_replicas\": \"<integer>\",\n          \"enforcement\": \"required\",\n          \"match_expressions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"topology_key\": \"<string>\",\n          \"weight\": \"<int64>\"\n        }\n      ],\n      \"volume_affinity\": [\n        {\n          \"enforcement\": \"required\",\n          \"match_expressions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"topology_key\": \"<string>\",\n          \"weight\": \"<int64>\"\n        },\n        {\n          \"enforcement\": \"required\",\n          \"match_expressions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"topology_key\": \"<string>\",\n          \"weight\": \"<int64>\"\n        }\n      ],\n      \"volume_anti_affinity\": [\n        {\n          \"enforcement\": \"required\",\n          \"match_expressions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"topology_key\": \"<string>\",\n          \"weight\": \"<int64>\"\n        },\n        {\n          \"enforcement\": \"required\",\n          \"match_expressions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"topology_key\": \"<string>\",\n          \"weight\": \"<int64>\"\n        }\n      ]\n    },\n    \"proxy_spec\": {\n      \"endpoint\": \"<string>\",\n      \"nfs_spec\": {\n        \"export_path\": \"<string>\",\n        \"sub_path\": \"<string>\"\n      },\n      \"proxy_protocol\": \"PROXY_PROTOCOL_INVALID\",\n      \"pure_block_spec\": {\n        \"full_vol_name\": \"<string>\",\n        \"pod_name\": \"<string>\",\n        \"serial_num\": \"<string>\"\n      },\n      \"pure_file_spec\": {\n        \"export_rules\": \"<string>\",\n        \"full_vol_name\": \"<string>\",\n        \"nfs_endpoint\": \"<string>\"\n      },\n      \"pxd_spec\": {\n        \"id\": \"<string>\"\n      },\n      \"s3_spec\": {\n        \"bucket_name\": \"<string>\"\n      }\n    },\n    \"proxy_write\": \"<boolean>\",\n    \"queue_depth\": \"<long>\",\n    \"readahead\": \"<boolean>\",\n    \"replica_set\": {\n      \"id\": \"<long>\",\n      \"nodes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"pool_uuids\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"scale\": \"<long>\",\n    \"scan_policy\": {\n      \"action\": \"SCAN_ACTION_NONE\",\n      \"trigger\": \"SCAN_TRIGGER_NONE\"\n    },\n    \"shared\": \"<boolean>\",\n    \"sharedv4\": \"<boolean>\",\n    \"sharedv4_mount_options\": {\n      \"options\": {\n        \"key_0\": \"<string>\"\n      }\n    },\n    \"sharedv4_service_spec\": {\n      \"external_access\": \"<boolean>\",\n      \"name\": \"<string>\",\n      \"type\": \"UNSPECIFIED\"\n    },\n    \"sharedv4_spec\": {\n      \"failover_strategy\": \"UNSPECIFIED\"\n    },\n    \"size\": \"<uint64>\",\n    \"snapshot_interval\": \"<long>\",\n    \"snapshot_schedule\": \"<string>\",\n    \"sticky\": \"<boolean>\",\n    \"storage_policy\": \"<string>\",\n    \"topology_requirement\": {\n      \"labels\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\"\n      }\n    },\n    \"volume_labels\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\",\n      \"key_2\": \"<string>\",\n      \"key_3\": \"<string>\"\n    },\n    \"winshare\": \"<boolean>\",\n    \"xattr\": \"UNSPECIFIED\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"volume_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ceb71949-e52c-43fe-a137-56aaa79fecf3",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "volumes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"labels\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"name\": \"<string>\",\n  \"spec\": {\n    \"aggregation_level\": \"<long>\",\n    \"auto_fstrim\": \"<boolean>\",\n    \"block_size\": \"<int64>\",\n    \"cascaded\": \"<boolean>\",\n    \"checksum_clone_id\": \"<string>\",\n    \"checksummed\": \"<boolean>\",\n    \"compressed\": \"<boolean>\",\n    \"cos\": \"NONE\",\n    \"dedupe\": \"<boolean>\",\n    \"encrypted\": \"<boolean>\",\n    \"ephemeral\": \"<boolean>\",\n    \"export_spec\": {\n      \"export_options\": \"<string>\",\n      \"export_protocol\": \"INVALID\"\n    },\n    \"fa_create_options\": \"<string>\",\n    \"force_unsupported_fs_type\": \"<boolean>\",\n    \"format\": \"FS_TYPE_NONE\",\n    \"fp_preference\": \"<boolean>\",\n    \"group\": {\n      \"id\": \"<string>\"\n    },\n    \"group_enforced\": \"<boolean>\",\n    \"ha_level\": \"<int64>\",\n    \"io_profile\": \"IO_PROFILE_SEQUENTIAL\",\n    \"io_strategy\": {\n      \"async_io\": \"<boolean>\",\n      \"direct_io\": \"<boolean>\",\n      \"early_ack\": \"<boolean>\"\n    },\n    \"io_throttle\": {\n      \"read_bw_mbytes\": \"<long>\",\n      \"read_iops\": \"<long>\",\n      \"write_bw_mbytes\": \"<long>\",\n      \"write_iops\": \"<long>\"\n    },\n    \"journal\": \"<boolean>\",\n    \"mount_options\": {\n      \"options\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\"\n      }\n    },\n    \"near_sync\": \"<boolean>\",\n    \"near_sync_replication_strategy\": \"NEAR_SYNC_STRATEGY_NONE\",\n    \"nodiscard\": \"<boolean>\",\n    \"number_of_chunks\": \"<long>\",\n    \"ownership\": {\n      \"acls\": {\n        \"collaborators\": {\n          \"key_0\": \"Read\",\n          \"key_1\": \"Read\",\n          \"key_2\": \"Read\"\n        },\n        \"groups\": {\n          \"key_0\": \"Read\"\n        },\n        \"public\": {\n          \"type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"owner\": \"<string>\"\n    },\n    \"passphrase\": \"<string>\",\n    \"placement_strategy\": {\n      \"replica_affinity\": [\n        {\n          \"affected_replicas\": \"<integer>\",\n          \"enforcement\": \"required\",\n          \"match_expressions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"topology_key\": \"<string>\",\n          \"weight\": \"<int64>\"\n        },\n        {\n          \"affected_replicas\": \"<integer>\",\n          \"enforcement\": \"required\",\n          \"match_expressions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"topology_key\": \"<string>\",\n          \"weight\": \"<int64>\"\n        }\n      ],\n      \"replica_anti_affinity\": [\n        {\n          \"affected_replicas\": \"<integer>\",\n          \"enforcement\": \"required\",\n          \"match_expressions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"topology_key\": \"<string>\",\n          \"weight\": \"<int64>\"\n        },\n        {\n          \"affected_replicas\": \"<integer>\",\n          \"enforcement\": \"required\",\n          \"match_expressions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"topology_key\": \"<string>\",\n          \"weight\": \"<int64>\"\n        }\n      ],\n      \"volume_affinity\": [\n        {\n          \"enforcement\": \"required\",\n          \"match_expressions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"topology_key\": \"<string>\",\n          \"weight\": \"<int64>\"\n        },\n        {\n          \"enforcement\": \"required\",\n          \"match_expressions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"topology_key\": \"<string>\",\n          \"weight\": \"<int64>\"\n        }\n      ],\n      \"volume_anti_affinity\": [\n        {\n          \"enforcement\": \"required\",\n          \"match_expressions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"topology_key\": \"<string>\",\n          \"weight\": \"<int64>\"\n        },\n        {\n          \"enforcement\": \"required\",\n          \"match_expressions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"topology_key\": \"<string>\",\n          \"weight\": \"<int64>\"\n        }\n      ]\n    },\n    \"proxy_spec\": {\n      \"endpoint\": \"<string>\",\n      \"nfs_spec\": {\n        \"export_path\": \"<string>\",\n        \"sub_path\": \"<string>\"\n      },\n      \"proxy_protocol\": \"PROXY_PROTOCOL_INVALID\",\n      \"pure_block_spec\": {\n        \"full_vol_name\": \"<string>\",\n        \"pod_name\": \"<string>\",\n        \"serial_num\": \"<string>\"\n      },\n      \"pure_file_spec\": {\n        \"export_rules\": \"<string>\",\n        \"full_vol_name\": \"<string>\",\n        \"nfs_endpoint\": \"<string>\"\n      },\n      \"pxd_spec\": {\n        \"id\": \"<string>\"\n      },\n      \"s3_spec\": {\n        \"bucket_name\": \"<string>\"\n      }\n    },\n    \"proxy_write\": \"<boolean>\",\n    \"queue_depth\": \"<long>\",\n    \"readahead\": \"<boolean>\",\n    \"replica_set\": {\n      \"id\": \"<long>\",\n      \"nodes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"pool_uuids\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"scale\": \"<long>\",\n    \"scan_policy\": {\n      \"action\": \"SCAN_ACTION_NONE\",\n      \"trigger\": \"SCAN_TRIGGER_NONE\"\n    },\n    \"shared\": \"<boolean>\",\n    \"sharedv4\": \"<boolean>\",\n    \"sharedv4_mount_options\": {\n      \"options\": {\n        \"key_0\": \"<string>\"\n      }\n    },\n    \"sharedv4_service_spec\": {\n      \"external_access\": \"<boolean>\",\n      \"name\": \"<string>\",\n      \"type\": \"UNSPECIFIED\"\n    },\n    \"sharedv4_spec\": {\n      \"failover_strategy\": \"UNSPECIFIED\"\n    },\n    \"size\": \"<uint64>\",\n    \"snapshot_interval\": \"<long>\",\n    \"snapshot_schedule\": \"<string>\",\n    \"sticky\": \"<boolean>\",\n    \"storage_policy\": \"<string>\",\n    \"topology_requirement\": {\n      \"labels\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\"\n      }\n    },\n    \"volume_labels\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\",\n      \"key_2\": \"<string>\",\n      \"key_3\": \"<string>\"\n    },\n    \"winshare\": \"<boolean>\",\n    \"xattr\": \"UNSPECIFIED\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9734,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "98b43f3b-9949-46d8-a020-5dc3e6a5da45",
+          "name": "Clone creates a new writable volume cloned from an existing volume",
+          "request": {
+            "name": "Clone creates a new writable volume cloned from an existing volume",
+            "description": {
+              "content": "Requires access AccessType.Read of volume",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "volumes",
+                "clone"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"additional_labels\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"name\": \"<string>\",\n  \"parent_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "68f80e30-9879-4a05-bf22-1c9b5f84c37c",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "volumes",
+                    "clone"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"additional_labels\": {\n    \"key_0\": \"<string>\"\n  },\n  \"name\": \"<string>\",\n  \"parent_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"volume_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "52458ecf-a367-4779-be28-7cc111bb1848",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "volumes",
+                    "clone"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"additional_labels\": {\n    \"key_0\": \"<string>\"\n  },\n  \"name\": \"<string>\",\n  \"parent_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9734,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e832bfcf-e60b-45e0-94d2-237cbd3d9411",
+          "name": "Enumerate returns a list of volume ids that match the labels if any are provided.",
+          "request": {
+            "name": "Enumerate returns a list of volume ids that match the labels if any are provided.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "volumes",
+                "filters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"group\": {\n    \"id\": \"<string>\"\n  },\n  \"labels\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"name\": \"<string>\",\n  \"ownership\": {\n    \"acls\": {\n      \"collaborators\": {\n        \"key_0\": \"Read\",\n        \"key_1\": \"Read\",\n        \"key_2\": \"Read\"\n      },\n      \"groups\": {\n        \"key_0\": \"Read\"\n      },\n      \"public\": {\n        \"type\": \"Read\"\n      }\n    },\n    \"owner\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "118f3aff-7d7a-4d67-9e0f-c2903543557d",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "volumes",
+                    "filters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"group\": {\n    \"id\": \"<string>\"\n  },\n  \"labels\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"name\": \"<string>\",\n  \"ownership\": {\n    \"acls\": {\n      \"collaborators\": {\n        \"key_0\": \"Read\"\n      },\n      \"groups\": {\n        \"key_0\": \"Read\"\n      },\n      \"public\": {\n        \"type\": \"Read\"\n      }\n    },\n    \"owner\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"volume_ids\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8a6921bb-b042-457b-8227-a404d0cd23fa",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "volumes",
+                    "filters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"group\": {\n    \"id\": \"<string>\"\n  },\n  \"labels\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"name\": \"<string>\",\n  \"ownership\": {\n    \"acls\": {\n      \"collaborators\": {\n        \"key_0\": \"Read\"\n      },\n      \"groups\": {\n        \"key_0\": \"Read\"\n      },\n      \"public\": {\n        \"type\": \"Read\"\n      }\n    },\n    \"owner\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9734,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "65936151-9247-4460-b156-adb54187178b",
+          "name": "Inspect returns information about a volume",
+          "request": {
+            "name": "Inspect returns information about a volume",
+            "description": {
+              "content": "Requires access AccessType.Read of volume",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "volumes",
+                "inspect",
+                ":volume_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "options.deep",
+                  "value": "<boolean>",
+                  "description": "Deep inspection is used to collect more information about\nthe volume. Setting this value may delay the request."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "volume_id",
+                  "description": "(Required) Id of volume to inspect"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ddbe5611-77c9-4638-832a-0583bc1c456a",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "volumes",
+                    "inspect",
+                    ":volume_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "options.deep",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "volume_id",
+                      "description": "(Required) Id of volume to inspect"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"labels\": {\n    \"key_0\": \"string\"\n  },\n  \"name\": \"string\",\n  \"volume\": {\n    \"attach_info\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    },\n    \"attach_path\": [\n      \"string\",\n      \"string\"\n    ],\n    \"attach_time\": \"1983-11-24T15:49:11.499Z\",\n    \"attached_on\": \"string\",\n    \"attached_state\": \"ATTACH_STATE_EXTERNAL\",\n    \"ctime\": \"1999-08-20T19:48:12.171Z\",\n    \"derived_io_profile\": \"IO_PROFILE_SEQUENTIAL\",\n    \"detach_time\": \"2016-01-21T07:29:18.672Z\",\n    \"device_path\": \"string\",\n    \"error\": \"string\",\n    \"format\": \"FS_TYPE_NONE\",\n    \"fpConfig\": {\n      \"coord_uuid\": \"string\",\n      \"dirty\": false,\n      \"force_failover\": true,\n      \"promote\": true,\n      \"replicas\": [\n        {\n          \"acl\": true,\n          \"block\": false,\n          \"dev_id\": \"string\",\n          \"devpath\": \"string\",\n          \"exported\": false,\n          \"exported_device\": \"string\",\n          \"imported\": true,\n          \"node_id\": 6327,\n          \"node_uuid\": \"string\",\n          \"protocol\": \"FASTPATH_PROTO_UNKNOWN\",\n          \"target\": \"string\"\n        },\n        {\n          \"acl\": false,\n          \"block\": true,\n          \"dev_id\": \"string\",\n          \"devpath\": \"string\",\n          \"exported\": true,\n          \"exported_device\": \"string\",\n          \"imported\": true,\n          \"node_id\": 8735,\n          \"node_uuid\": \"string\",\n          \"protocol\": \"FASTPATH_PROTO_UNKNOWN\",\n          \"target\": \"string\"\n        }\n      ],\n      \"setup_on\": 6665,\n      \"status\": \"FASTPATH_UNKNOWN\",\n      \"verbose\": \"string\"\n    },\n    \"fs_resize_required\": false,\n    \"group\": {\n      \"id\": \"<string>\"\n    },\n    \"id\": \"string\",\n    \"in_trashcan\": true,\n    \"last_scan\": \"2003-06-09T21:30:46.894Z\",\n    \"last_scan_fix\": \"1956-08-24T08:26:45.035Z\",\n    \"last_scan_status\": \"FS_HEALTH_STATUS_UNKNOWN\",\n    \"locator\": {\n      \"group\": {\n        \"id\": \"<string>\"\n      },\n      \"name\": \"string\",\n      \"ownership\": {\n        \"acls\": {\n          \"collaborators\": {\n            \"key_0\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"groups\": {\n            \"key_0\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"public\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"owner\": \"<string>\"\n      },\n      \"volume_ids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"volume_labels\": {\n        \"key_0\": \"string\"\n      }\n    },\n    \"mount_options\": {\n      \"options\": {\n        \"key_0\": \"<string>\"\n      }\n    },\n    \"readonly\": true,\n    \"replica_sets\": [\n      {\n        \"id\": \"<long>\",\n        \"nodes\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"pool_uuids\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"id\": \"<long>\",\n        \"nodes\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"pool_uuids\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ],\n    \"runtime_state\": [\n      {\n        \"runtime_state\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        }\n      },\n      {\n        \"runtime_state\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\",\n          \"key_2\": \"string\"\n        }\n      }\n    ],\n    \"secure_device_path\": \"string\",\n    \"sharedv4_mount_options\": {\n      \"options\": {\n        \"key_0\": \"<string>\"\n      }\n    },\n    \"source\": {\n      \"parent\": \"string\",\n      \"seed\": \"string\"\n    },\n    \"spec\": {\n      \"aggregation_level\": \"<long>\",\n      \"auto_fstrim\": \"<boolean>\",\n      \"block_size\": \"<int64>\",\n      \"cascaded\": \"<boolean>\",\n      \"checksum_clone_id\": \"<string>\",\n      \"checksummed\": \"<boolean>\",\n      \"compressed\": \"<boolean>\",\n      \"cos\": \"NONE\",\n      \"dedupe\": \"<boolean>\",\n      \"encrypted\": \"<boolean>\",\n      \"ephemeral\": \"<boolean>\",\n      \"export_spec\": {\n        \"export_options\": \"<string>\",\n        \"export_protocol\": \"INVALID\"\n      },\n      \"fa_create_options\": \"<string>\",\n      \"force_unsupported_fs_type\": \"<boolean>\",\n      \"format\": \"FS_TYPE_NONE\",\n      \"fp_preference\": \"<boolean>\",\n      \"group\": {\n        \"id\": \"<string>\"\n      },\n      \"group_enforced\": \"<boolean>\",\n      \"ha_level\": \"<int64>\",\n      \"io_profile\": \"IO_PROFILE_SEQUENTIAL\",\n      \"io_strategy\": {\n        \"async_io\": \"<boolean>\",\n        \"direct_io\": \"<boolean>\",\n        \"early_ack\": \"<boolean>\"\n      },\n      \"io_throttle\": {\n        \"read_bw_mbytes\": \"<long>\",\n        \"read_iops\": \"<long>\",\n        \"write_bw_mbytes\": \"<long>\",\n        \"write_iops\": \"<long>\"\n      },\n      \"journal\": \"<boolean>\",\n      \"mount_options\": {\n        \"options\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\",\n          \"key_2\": \"<string>\"\n        }\n      },\n      \"near_sync\": \"<boolean>\",\n      \"near_sync_replication_strategy\": \"NEAR_SYNC_STRATEGY_NONE\",\n      \"nodiscard\": \"<boolean>\",\n      \"number_of_chunks\": \"<long>\",\n      \"ownership\": {\n        \"acls\": {\n          \"collaborators\": {\n            \"key_0\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"groups\": {\n            \"key_0\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"key_1\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"key_2\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"public\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"owner\": \"<string>\"\n      },\n      \"passphrase\": \"<string>\",\n      \"placement_strategy\": {\n        \"replica_affinity\": [\n          {\n            \"affected_replicas\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"enforcement\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"match_expressions\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"topology_key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"weight\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"affected_replicas\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"enforcement\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"match_expressions\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"topology_key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"weight\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"replica_anti_affinity\": [\n          {\n            \"affected_replicas\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"enforcement\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"match_expressions\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"topology_key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"weight\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"affected_replicas\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"enforcement\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"match_expressions\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"topology_key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"weight\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"volume_affinity\": [\n          {\n            \"enforcement\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"match_expressions\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"topology_key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"weight\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"enforcement\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"match_expressions\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"topology_key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"weight\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"volume_anti_affinity\": [\n          {\n            \"enforcement\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"match_expressions\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"topology_key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"weight\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"enforcement\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"match_expressions\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"topology_key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"weight\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      \"proxy_spec\": {\n        \"endpoint\": \"<string>\",\n        \"nfs_spec\": {\n          \"export_path\": \"<string>\",\n          \"sub_path\": \"<string>\"\n        },\n        \"proxy_protocol\": \"PROXY_PROTOCOL_INVALID\",\n        \"pure_block_spec\": {\n          \"full_vol_name\": \"<string>\",\n          \"pod_name\": \"<string>\",\n          \"serial_num\": \"<string>\"\n        },\n        \"pure_file_spec\": {\n          \"export_rules\": \"<string>\",\n          \"full_vol_name\": \"<string>\",\n          \"nfs_endpoint\": \"<string>\"\n        },\n        \"pxd_spec\": {\n          \"id\": \"<string>\"\n        },\n        \"s3_spec\": {\n          \"bucket_name\": \"<string>\"\n        }\n      },\n      \"proxy_write\": \"<boolean>\",\n      \"queue_depth\": \"<long>\",\n      \"readahead\": \"<boolean>\",\n      \"replica_set\": {\n        \"id\": \"<long>\",\n        \"nodes\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"pool_uuids\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"scale\": \"<long>\",\n      \"scan_policy\": {\n        \"action\": \"SCAN_ACTION_NONE\",\n        \"trigger\": \"SCAN_TRIGGER_NONE\"\n      },\n      \"shared\": \"<boolean>\",\n      \"sharedv4\": \"<boolean>\",\n      \"sharedv4_mount_options\": {\n        \"options\": {\n          \"key_0\": \"<string>\"\n        }\n      },\n      \"sharedv4_service_spec\": {\n        \"external_access\": \"<boolean>\",\n        \"name\": \"<string>\",\n        \"type\": \"UNSPECIFIED\"\n      },\n      \"sharedv4_spec\": {\n        \"failover_strategy\": \"UNSPECIFIED\"\n      },\n      \"size\": \"<uint64>\",\n      \"snapshot_interval\": \"<long>\",\n      \"snapshot_schedule\": \"<string>\",\n      \"sticky\": \"<boolean>\",\n      \"storage_policy\": \"<string>\",\n      \"topology_requirement\": {\n        \"labels\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\",\n          \"key_2\": \"<string>\",\n          \"key_3\": \"<string>\",\n          \"key_4\": \"<string>\"\n        }\n      },\n      \"volume_labels\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\"\n      },\n      \"winshare\": \"<boolean>\",\n      \"xattr\": \"UNSPECIFIED\"\n    },\n    \"state\": \"VOLUME_STATE_NONE\",\n    \"status\": \"VOLUME_STATUS_NONE\",\n    \"usage\": \"string\",\n    \"volume_consumers\": [\n      {\n        \"name\": \"string\",\n        \"namespace\": \"string\",\n        \"node_id\": \"string\",\n        \"owner_name\": \"string\",\n        \"owner_type\": \"string\",\n        \"type\": \"string\"\n      },\n      {\n        \"name\": \"string\",\n        \"namespace\": \"string\",\n        \"node_id\": \"string\",\n        \"owner_name\": \"string\",\n        \"owner_type\": \"string\",\n        \"type\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "97f8e01f-6774-41d9-8021-eab9e6756cf2",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "volumes",
+                    "inspect",
+                    ":volume_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "options.deep",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "volume_id",
+                      "description": "(Required) Id of volume to inspect"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9734,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1be71595-144d-4efd-95d5-a4a01f3385c0",
+          "name": "Returns information for a list of volumes that match a filter.\nThis call is a helper function like calling\n`OpenStorageVolume.EnumerateWithFilters` then having it\nreturn the contents of each of those volumes\n`OpenStorageVolume.Inspect()`. Take care in using this call\nwhen requesting large number of volumes because it will\nblock until it has all the information requested before\nreturning.",
+          "request": {
+            "name": "Returns information for a list of volumes that match a filter.\nThis call is a helper function like calling\n`OpenStorageVolume.EnumerateWithFilters` then having it\nreturn the contents of each of those volumes\n`OpenStorageVolume.Inspect()`. Take care in using this call\nwhen requesting large number of volumes because it will\nblock until it has all the information requested before\nreturning.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "volumes",
+                "inspectwithfilters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"group\": {\n    \"id\": \"<string>\"\n  },\n  \"labels\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"name\": \"<string>\",\n  \"options\": {\n    \"deep\": \"<boolean>\"\n  },\n  \"ownership\": {\n    \"acls\": {\n      \"collaborators\": {\n        \"key_0\": \"Read\",\n        \"key_1\": \"Read\",\n        \"key_2\": \"Read\"\n      },\n      \"groups\": {\n        \"key_0\": \"Read\",\n        \"key_1\": \"Read\",\n        \"key_2\": \"Read\"\n      },\n      \"public\": {\n        \"type\": \"Read\"\n      }\n    },\n    \"owner\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b7c93da4-b463-479d-bfea-125d59212b96",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "volumes",
+                    "inspectwithfilters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"group\": {\n    \"id\": \"<string>\"\n  },\n  \"labels\": {\n    \"key_0\": \"<string>\"\n  },\n  \"name\": \"<string>\",\n  \"options\": {\n    \"deep\": \"<boolean>\"\n  },\n  \"ownership\": {\n    \"acls\": {\n      \"collaborators\": {\n        \"key_0\": \"Read\",\n        \"key_1\": \"Read\"\n      },\n      \"groups\": {\n        \"key_0\": \"Read\",\n        \"key_1\": \"Read\",\n        \"key_2\": \"Read\"\n      },\n      \"public\": {\n        \"type\": \"Read\"\n      }\n    },\n    \"owner\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"volumes\": [\n    {\n      \"labels\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"name\": \"string\",\n      \"volume\": {\n        \"attach_info\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\",\n          \"key_2\": \"string\",\n          \"key_3\": \"string\"\n        },\n        \"attach_path\": [\n          \"string\",\n          \"string\"\n        ],\n        \"attach_time\": \"1985-03-02T02:42:11.701Z\",\n        \"attached_on\": \"string\",\n        \"attached_state\": \"ATTACH_STATE_EXTERNAL\",\n        \"ctime\": \"1989-05-28T15:39:04.962Z\",\n        \"derived_io_profile\": \"IO_PROFILE_SEQUENTIAL\",\n        \"detach_time\": \"2025-08-19T12:17:29.890Z\",\n        \"device_path\": \"string\",\n        \"error\": \"string\",\n        \"format\": \"FS_TYPE_NONE\",\n        \"fpConfig\": {\n          \"coord_uuid\": \"string\",\n          \"dirty\": false,\n          \"force_failover\": false,\n          \"promote\": true,\n          \"replicas\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"setup_on\": 6952,\n          \"status\": \"FASTPATH_UNKNOWN\",\n          \"verbose\": \"string\"\n        },\n        \"fs_resize_required\": false,\n        \"group\": {\n          \"id\": \"<string>\"\n        },\n        \"id\": \"string\",\n        \"in_trashcan\": false,\n        \"last_scan\": \"1963-01-20T20:55:52.671Z\",\n        \"last_scan_fix\": \"2006-09-11T11:53:49.166Z\",\n        \"last_scan_status\": \"FS_HEALTH_STATUS_UNKNOWN\",\n        \"locator\": {\n          \"group\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"name\": \"string\",\n          \"ownership\": {\n            \"acls\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"owner\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"volume_ids\": [\n            \"string\",\n            \"string\"\n          ],\n          \"volume_labels\": {\n            \"key_0\": \"string\"\n          }\n        },\n        \"mount_options\": {\n          \"options\": {\n            \"key_0\": \"<string>\"\n          }\n        },\n        \"readonly\": false,\n        \"replica_sets\": [\n          {\n            \"id\": \"<long>\",\n            \"nodes\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"pool_uuids\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"id\": \"<long>\",\n            \"nodes\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"pool_uuids\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ],\n        \"runtime_state\": [\n          {\n            \"runtime_state\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"key_1\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          },\n          {\n            \"runtime_state\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          }\n        ],\n        \"secure_device_path\": \"string\",\n        \"sharedv4_mount_options\": {\n          \"options\": {\n            \"key_0\": \"<string>\",\n            \"key_1\": \"<string>\",\n            \"key_2\": \"<string>\"\n          }\n        },\n        \"source\": {\n          \"parent\": \"string\",\n          \"seed\": \"string\"\n        },\n        \"spec\": {\n          \"aggregation_level\": \"<long>\",\n          \"auto_fstrim\": \"<boolean>\",\n          \"block_size\": \"<int64>\",\n          \"cascaded\": \"<boolean>\",\n          \"checksum_clone_id\": \"<string>\",\n          \"checksummed\": \"<boolean>\",\n          \"compressed\": \"<boolean>\",\n          \"cos\": \"NONE\",\n          \"dedupe\": \"<boolean>\",\n          \"encrypted\": \"<boolean>\",\n          \"ephemeral\": \"<boolean>\",\n          \"export_spec\": {\n            \"export_options\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"export_protocol\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"fa_create_options\": \"<string>\",\n          \"force_unsupported_fs_type\": \"<boolean>\",\n          \"format\": \"FS_TYPE_NONE\",\n          \"fp_preference\": \"<boolean>\",\n          \"group\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"group_enforced\": \"<boolean>\",\n          \"ha_level\": \"<int64>\",\n          \"io_profile\": \"IO_PROFILE_SEQUENTIAL\",\n          \"io_strategy\": {\n            \"async_io\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"direct_io\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"early_ack\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"io_throttle\": {\n            \"read_bw_mbytes\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"read_iops\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"write_bw_mbytes\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"write_iops\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"journal\": \"<boolean>\",\n          \"mount_options\": {\n            \"options\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"near_sync\": \"<boolean>\",\n          \"near_sync_replication_strategy\": \"NEAR_SYNC_STRATEGY_NONE\",\n          \"nodiscard\": \"<boolean>\",\n          \"number_of_chunks\": \"<long>\",\n          \"ownership\": {\n            \"acls\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"owner\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"passphrase\": \"<string>\",\n          \"placement_strategy\": {\n            \"replica_affinity\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"replica_anti_affinity\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"volume_affinity\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"volume_anti_affinity\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"proxy_spec\": {\n            \"endpoint\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"nfs_spec\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"proxy_protocol\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"pure_block_spec\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"pure_file_spec\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"pxd_spec\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"s3_spec\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"proxy_write\": \"<boolean>\",\n          \"queue_depth\": \"<long>\",\n          \"readahead\": \"<boolean>\",\n          \"replica_set\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"nodes\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"pool_uuids\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"scale\": \"<long>\",\n          \"scan_policy\": {\n            \"action\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"trigger\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"shared\": \"<boolean>\",\n          \"sharedv4\": \"<boolean>\",\n          \"sharedv4_mount_options\": {\n            \"options\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"sharedv4_service_spec\": {\n            \"external_access\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"sharedv4_spec\": {\n            \"failover_strategy\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"size\": \"<uint64>\",\n          \"snapshot_interval\": \"<long>\",\n          \"snapshot_schedule\": \"<string>\",\n          \"sticky\": \"<boolean>\",\n          \"storage_policy\": \"<string>\",\n          \"topology_requirement\": {\n            \"labels\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"volume_labels\": {\n            \"key_0\": \"<string>\"\n          },\n          \"winshare\": \"<boolean>\",\n          \"xattr\": \"UNSPECIFIED\"\n        },\n        \"state\": \"VOLUME_STATE_NONE\",\n        \"status\": \"VOLUME_STATUS_NONE\",\n        \"usage\": \"string\",\n        \"volume_consumers\": [\n          {\n            \"name\": \"string\",\n            \"namespace\": \"string\",\n            \"node_id\": \"string\",\n            \"owner_name\": \"string\",\n            \"owner_type\": \"string\",\n            \"type\": \"string\"\n          },\n          {\n            \"name\": \"string\",\n            \"namespace\": \"string\",\n            \"node_id\": \"string\",\n            \"owner_name\": \"string\",\n            \"owner_type\": \"string\",\n            \"type\": \"string\"\n          }\n        ]\n      }\n    },\n    {\n      \"labels\": {\n        \"key_0\": \"string\"\n      },\n      \"name\": \"string\",\n      \"volume\": {\n        \"attach_info\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        },\n        \"attach_path\": [\n          \"string\",\n          \"string\"\n        ],\n        \"attach_time\": \"2002-01-25T21:28:18.120Z\",\n        \"attached_on\": \"string\",\n        \"attached_state\": \"ATTACH_STATE_EXTERNAL\",\n        \"ctime\": \"2005-10-28T18:41:43.162Z\",\n        \"derived_io_profile\": \"IO_PROFILE_SEQUENTIAL\",\n        \"detach_time\": \"2005-07-20T06:49:51.752Z\",\n        \"device_path\": \"string\",\n        \"error\": \"string\",\n        \"format\": \"FS_TYPE_NONE\",\n        \"fpConfig\": {\n          \"coord_uuid\": \"string\",\n          \"dirty\": true,\n          \"force_failover\": true,\n          \"promote\": false,\n          \"replicas\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"setup_on\": 2412,\n          \"status\": \"FASTPATH_UNKNOWN\",\n          \"verbose\": \"string\"\n        },\n        \"fs_resize_required\": false,\n        \"group\": {\n          \"id\": \"<string>\"\n        },\n        \"id\": \"string\",\n        \"in_trashcan\": false,\n        \"last_scan\": \"1947-01-22T05:29:53.362Z\",\n        \"last_scan_fix\": \"1961-07-25T01:30:48.006Z\",\n        \"last_scan_status\": \"FS_HEALTH_STATUS_UNKNOWN\",\n        \"locator\": {\n          \"group\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"name\": \"string\",\n          \"ownership\": {\n            \"acls\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"owner\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"volume_ids\": [\n            \"string\",\n            \"string\"\n          ],\n          \"volume_labels\": {\n            \"key_0\": \"string\",\n            \"key_1\": \"string\"\n          }\n        },\n        \"mount_options\": {\n          \"options\": {\n            \"key_0\": \"<string>\"\n          }\n        },\n        \"readonly\": false,\n        \"replica_sets\": [\n          {\n            \"id\": \"<long>\",\n            \"nodes\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"pool_uuids\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"id\": \"<long>\",\n            \"nodes\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"pool_uuids\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ],\n        \"runtime_state\": [\n          {\n            \"runtime_state\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"key_1\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"key_2\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"key_3\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"key_4\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          },\n          {\n            \"runtime_state\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          }\n        ],\n        \"secure_device_path\": \"string\",\n        \"sharedv4_mount_options\": {\n          \"options\": {\n            \"key_0\": \"<string>\"\n          }\n        },\n        \"source\": {\n          \"parent\": \"string\",\n          \"seed\": \"string\"\n        },\n        \"spec\": {\n          \"aggregation_level\": \"<long>\",\n          \"auto_fstrim\": \"<boolean>\",\n          \"block_size\": \"<int64>\",\n          \"cascaded\": \"<boolean>\",\n          \"checksum_clone_id\": \"<string>\",\n          \"checksummed\": \"<boolean>\",\n          \"compressed\": \"<boolean>\",\n          \"cos\": \"NONE\",\n          \"dedupe\": \"<boolean>\",\n          \"encrypted\": \"<boolean>\",\n          \"ephemeral\": \"<boolean>\",\n          \"export_spec\": {\n            \"export_options\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"export_protocol\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"fa_create_options\": \"<string>\",\n          \"force_unsupported_fs_type\": \"<boolean>\",\n          \"format\": \"FS_TYPE_NONE\",\n          \"fp_preference\": \"<boolean>\",\n          \"group\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"group_enforced\": \"<boolean>\",\n          \"ha_level\": \"<int64>\",\n          \"io_profile\": \"IO_PROFILE_SEQUENTIAL\",\n          \"io_strategy\": {\n            \"async_io\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"direct_io\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"early_ack\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"io_throttle\": {\n            \"read_bw_mbytes\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"read_iops\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"write_bw_mbytes\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"write_iops\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"journal\": \"<boolean>\",\n          \"mount_options\": {\n            \"options\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"near_sync\": \"<boolean>\",\n          \"near_sync_replication_strategy\": \"NEAR_SYNC_STRATEGY_NONE\",\n          \"nodiscard\": \"<boolean>\",\n          \"number_of_chunks\": \"<long>\",\n          \"ownership\": {\n            \"acls\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"owner\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"passphrase\": \"<string>\",\n          \"placement_strategy\": {\n            \"replica_affinity\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"replica_anti_affinity\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"volume_affinity\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"volume_anti_affinity\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"proxy_spec\": {\n            \"endpoint\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"nfs_spec\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"proxy_protocol\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"pure_block_spec\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"pure_file_spec\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"pxd_spec\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"s3_spec\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"proxy_write\": \"<boolean>\",\n          \"queue_depth\": \"<long>\",\n          \"readahead\": \"<boolean>\",\n          \"replica_set\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"nodes\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"pool_uuids\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"scale\": \"<long>\",\n          \"scan_policy\": {\n            \"action\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"trigger\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"shared\": \"<boolean>\",\n          \"sharedv4\": \"<boolean>\",\n          \"sharedv4_mount_options\": {\n            \"options\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"sharedv4_service_spec\": {\n            \"external_access\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"sharedv4_spec\": {\n            \"failover_strategy\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"size\": \"<uint64>\",\n          \"snapshot_interval\": \"<long>\",\n          \"snapshot_schedule\": \"<string>\",\n          \"sticky\": \"<boolean>\",\n          \"storage_policy\": \"<string>\",\n          \"topology_requirement\": {\n            \"labels\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"volume_labels\": {\n            \"key_0\": \"<string>\"\n          },\n          \"winshare\": \"<boolean>\",\n          \"xattr\": \"UNSPECIFIED\"\n        },\n        \"state\": \"VOLUME_STATE_NONE\",\n        \"status\": \"VOLUME_STATUS_NONE\",\n        \"usage\": \"string\",\n        \"volume_consumers\": [\n          {\n            \"name\": \"string\",\n            \"namespace\": \"string\",\n            \"node_id\": \"string\",\n            \"owner_name\": \"string\",\n            \"owner_type\": \"string\",\n            \"type\": \"string\"\n          },\n          {\n            \"name\": \"string\",\n            \"namespace\": \"string\",\n            \"node_id\": \"string\",\n            \"owner_name\": \"string\",\n            \"owner_type\": \"string\",\n            \"type\": \"string\"\n          }\n        ]\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8bdf262d-6ed0-4159-9ee4-fa08f4c3e065",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "volumes",
+                    "inspectwithfilters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"group\": {\n    \"id\": \"<string>\"\n  },\n  \"labels\": {\n    \"key_0\": \"<string>\"\n  },\n  \"name\": \"<string>\",\n  \"options\": {\n    \"deep\": \"<boolean>\"\n  },\n  \"ownership\": {\n    \"acls\": {\n      \"collaborators\": {\n        \"key_0\": \"Read\",\n        \"key_1\": \"Read\"\n      },\n      \"groups\": {\n        \"key_0\": \"Read\",\n        \"key_1\": \"Read\",\n        \"key_2\": \"Read\"\n      },\n      \"public\": {\n        \"type\": \"Read\"\n      }\n    },\n    \"owner\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9734,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "148d2307-83ab-4617-962e-e3c717631c9e",
+          "name": "Sets the snapshot schedules. This information is saved in the VolumeSpec.snapshot_schedule\nas `policy=<name>,...`. This function will overwrite any policy values\nin the volume. To delete the policies in the volume send no policies.",
+          "request": {
+            "name": "Sets the snapshot schedules. This information is saved in the VolumeSpec.snapshot_schedule\nas `policy=<name>,...`. This function will overwrite any policy values\nin the volume. To delete the policies in the volume send no policies.",
+            "description": {
+              "content": "Requires access AccessType.Write of volume",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "volumes",
+                "snapshot",
+                "schedules",
+                ":volume_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "volume_id",
+                  "description": "(Required) Id of volume"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"snapshot_schedule_names\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"volume_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "261f7e2b-de53-4f24-9694-18ef8ea4c34f",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "volumes",
+                    "snapshot",
+                    "schedules",
+                    ":volume_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "volume_id",
+                      "description": "(Required) Id of volume"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"snapshot_schedule_names\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"volume_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "94216777-9885-4db1-8e64-5e50238f4393",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "volumes",
+                    "snapshot",
+                    "schedules",
+                    ":volume_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "volume_id",
+                      "description": "(Required) Id of volume"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"snapshot_schedule_names\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"volume_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9734,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "be10750b-ec7c-4722-885f-efb9d5162f8e",
+          "name": "SnapshotEnumerate returns a list of snapshots for a specific volume",
+          "request": {
+            "name": "SnapshotEnumerate returns a list of snapshots for a specific volume",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "volumes",
+                "snapshots"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "volume_id",
+                  "value": "<string>",
+                  "description": "Get the snapshots for this volume id."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cc45607e-52b6-4025-a527-2596285f9203",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "volumes",
+                    "snapshots"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "volume_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"volume_snapshot_ids\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8d5b4ce8-69f8-4de6-b9c2-08198b6b8780",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "volumes",
+                    "snapshots"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "volume_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9734,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f619be89-2765-4ef1-ab2e-bca2a8b62eb2",
+          "name": "SnapshotCreate creates a snapshot of a volume. This creates an immutable (read-only),\npoint-in-time snapshot of a volume. To create a new writable volume from\na snapshot, please use OpenStorageVolume.Clone().",
+          "request": {
+            "name": "SnapshotCreate creates a snapshot of a volume. This creates an immutable (read-only),\npoint-in-time snapshot of a volume. To create a new writable volume from\na snapshot, please use OpenStorageVolume.Clone().",
+            "description": {
+              "content": "Requires access AccessType.Read of volume",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "volumes",
+                "snapshots"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"labels\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"name\": \"<string>\",\n  \"volume_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1b356aee-0158-4e23-a3bd-3f5bebc893e0",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "volumes",
+                    "snapshots"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"labels\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"name\": \"<string>\",\n  \"volume_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"snapshot_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "64dae3ef-d23c-4771-a9bc-6586a815bff9",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "volumes",
+                    "snapshots"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"labels\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"name\": \"<string>\",\n  \"volume_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9734,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b3ed6f35-86e7-4e82-af76-6c73bd578a88",
+          "name": "SnapshotEnumerate returns a list of snapshots.\nTo filter all the snapshots for a specific volume which may no longer exist,\nspecify a volume id.\nLabels can also be used to filter the snapshot list.\nIf neither are provided all snapshots will be returned.",
+          "request": {
+            "name": "SnapshotEnumerate returns a list of snapshots.\nTo filter all the snapshots for a specific volume which may no longer exist,\nspecify a volume id.\nLabels can also be used to filter the snapshot list.\nIf neither are provided all snapshots will be returned.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "volumes",
+                "snapshots",
+                "filters",
+                ":volume_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "volume_id",
+                  "description": "(Required) (optional) Get the snapshots for this volume id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"labels\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"volume_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "82e883e2-de70-4c6b-b7d5-f5a7ea368855",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "volumes",
+                    "snapshots",
+                    "filters",
+                    ":volume_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "volume_id",
+                      "description": "(Required) (optional) Get the snapshots for this volume id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"labels\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"volume_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"volume_snapshot_ids\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ec3df983-93ce-41f5-9ee0-675ee9b34a77",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "volumes",
+                    "snapshots",
+                    "filters",
+                    ":volume_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "volume_id",
+                      "description": "(Required) (optional) Get the snapshots for this volume id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"labels\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"volume_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9734,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e17393aa-6226-407b-b45b-e0a36c82d7d3",
+          "name": "SnapshotRestore restores a volume to a specified snapshot",
+          "request": {
+            "name": "SnapshotRestore restores a volume to a specified snapshot",
+            "description": {
+              "content": "Requires access AccessType.Write of volume",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "volumes",
+                "snapshots",
+                "restore"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"snapshot_id\": \"<string>\",\n  \"volume_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "970f7d89-6ba8-4ec1-87b5-9d32638d7ee4",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "volumes",
+                    "snapshots",
+                    "restore"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"snapshot_id\": \"<string>\",\n  \"volume_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6296f8f4-040d-4a97-89a0-3d23ae3b8b29",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "volumes",
+                    "snapshots",
+                    "restore"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"snapshot_id\": \"<string>\",\n  \"volume_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9734,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c0787962-e98d-4f0c-a3ec-778e468f81b7",
+          "name": "Stats returns the statistics for the requested volume",
+          "request": {
+            "name": "Stats returns the statistics for the requested volume",
+            "description": {
+              "content": "Requires access AccessType.Read of volume",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "volumes",
+                "stats",
+                ":volume_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "not_cumulative",
+                  "value": "<boolean>",
+                  "description": "When set to false the stats are in /proc/diskstats style stats.\nWhen set to true the stats are stats for a specific duration."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "volume_id",
+                  "description": "(Required) Id of the volume to get statistics"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a0589cd2-15f7-4f41-8872-5dfdbd16ebc5",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "volumes",
+                    "stats",
+                    ":volume_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "not_cumulative",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "volume_id",
+                      "description": "(Required) Id of the volume to get statistics"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"stats\": {\n    \"bytes_used\": \"string\",\n    \"discard_bytes\": \"string\",\n    \"discard_ms\": \"string\",\n    \"discards\": \"string\",\n    \"interval_ms\": \"string\",\n    \"io_ms\": \"string\",\n    \"io_progress\": \"string\",\n    \"read_bytes\": \"string\",\n    \"read_ms\": \"string\",\n    \"reads\": \"string\",\n    \"unique_blocks\": \"string\",\n    \"write_bytes\": \"string\",\n    \"write_ms\": \"string\",\n    \"writes\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bf3ee590-77d2-4924-b90e-5ae93bab06ba",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "volumes",
+                    "stats",
+                    ":volume_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "not_cumulative",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "volume_id",
+                      "description": "(Required) Id of the volume to get statistics"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9734,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8e875f47-bbab-43bd-9376-6b8af339f8f0",
+          "name": "CapacityUsage returns volume/snapshot's capacity usage details",
+          "request": {
+            "name": "CapacityUsage returns volume/snapshot's capacity usage details",
+            "description": {
+              "content": "Requires access AccessType.Read of volume\n\n##### Error codes:\n\n* codes.Aborted : Command was aborted and only total_bytes field is valid\n* code.Unimmplemented : Command is not suported this kernel.Only total_bytes\nfield is valid;",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "volumes",
+                "usage",
+                ":volume_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "volume_id",
+                  "description": "(Required) Id of the snapshot/volume to get capacity usage details"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "698bffd2-f464-4e9b-832e-f07fd4357556",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "volumes",
+                    "usage",
+                    ":volume_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "volume_id",
+                      "description": "(Required) Id of the snapshot/volume to get capacity usage details"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"capacity_usage_info\": {\n    \"exclusive_bytes\": \"string\",\n    \"shared_bytes\": \"string\",\n    \"total_bytes\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "94ab232a-0a4e-42d8-8cab-dc0fd223b8b2",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "volumes",
+                    "usage",
+                    ":volume_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "volume_id",
+                      "description": "(Required) Id of the snapshot/volume to get capacity usage details"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9734,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "070ae36d-f84b-4127-9deb-d733cda600be",
+          "name": "Delete deletes the provided volume",
+          "request": {
+            "name": "Delete deletes the provided volume",
+            "description": {
+              "content": "Requires access AccessType.Admin of volume",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "volumes",
+                ":volume_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "volume_id",
+                  "description": "(Required) Id of volume to delete"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "487210a6-c538-42a8-a3ae-0d02655a2c7c",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "volumes",
+                    ":volume_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "volume_id",
+                      "description": "(Required) Id of volume to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0bfcecaa-0cd8-4b0c-a626-b850fb2efb13",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "volumes",
+                    ":volume_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "volume_id",
+                      "description": "(Required) Id of volume to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9734,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5a773728-5165-4b0b-bf38-70ff2289ce62",
+          "name": "Update provides a method for manipulating the specification and attributes of a volume.\nSet can be used to resize a volume, update labels, change replica count, and much more.",
+          "request": {
+            "name": "Update provides a method for manipulating the specification and attributes of a volume.\nSet can be used to resize a volume, update labels, change replica count, and much more.",
+            "description": {
+              "content": "Requires access AccessType.Write of volume",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "volumes",
+                ":volume_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "volume_id",
+                  "description": "(Required) Id of the volume to update"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"labels\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"spec\": {\n    \"auto_fstrim\": \"<boolean>\",\n    \"checksummed\": \"<boolean>\",\n    \"cos\": \"NONE\",\n    \"dedupe\": \"<boolean>\",\n    \"export_spec\": {\n      \"export_options\": \"<string>\",\n      \"export_protocol\": \"INVALID\"\n    },\n    \"fastpath\": \"<boolean>\",\n    \"group\": {\n      \"id\": \"<string>\"\n    },\n    \"ha_level\": \"<int64>\",\n    \"io_profile\": \"IO_PROFILE_SEQUENTIAL\",\n    \"io_strategy\": {\n      \"async_io\": \"<boolean>\",\n      \"direct_io\": \"<boolean>\",\n      \"early_ack\": \"<boolean>\"\n    },\n    \"io_throttle\": {\n      \"read_bw_mbytes\": \"<long>\",\n      \"read_iops\": \"<long>\",\n      \"write_bw_mbytes\": \"<long>\",\n      \"write_iops\": \"<long>\"\n    },\n    \"journal\": \"<boolean>\",\n    \"mount_opt_spec\": {\n      \"options\": {\n        \"key_0\": \"<string>\"\n      }\n    },\n    \"near_sync_replication_strategy\": \"NEAR_SYNC_STRATEGY_NONE\",\n    \"nodiscard\": \"<boolean>\",\n    \"ownership\": {\n      \"acls\": {\n        \"collaborators\": {\n          \"key_0\": \"Read\",\n          \"key_1\": \"Read\",\n          \"key_2\": \"Read\"\n        },\n        \"groups\": {\n          \"key_0\": \"Read\"\n        },\n        \"public\": {\n          \"type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"owner\": \"<string>\"\n    },\n    \"passphrase\": \"<string>\",\n    \"proxy_spec\": {\n      \"endpoint\": \"<string>\",\n      \"nfs_spec\": {\n        \"export_path\": \"<string>\",\n        \"sub_path\": \"<string>\"\n      },\n      \"proxy_protocol\": \"PROXY_PROTOCOL_INVALID\",\n      \"pure_block_spec\": {\n        \"full_vol_name\": \"<string>\",\n        \"pod_name\": \"<string>\",\n        \"serial_num\": \"<string>\"\n      },\n      \"pure_file_spec\": {\n        \"export_rules\": \"<string>\",\n        \"full_vol_name\": \"<string>\",\n        \"nfs_endpoint\": \"<string>\"\n      },\n      \"pxd_spec\": {\n        \"id\": \"<string>\"\n      },\n      \"s3_spec\": {\n        \"bucket_name\": \"<string>\"\n      }\n    },\n    \"proxy_write\": \"<boolean>\",\n    \"pure_nfs_endpoint\": \"<string>\",\n    \"queue_depth\": \"<long>\",\n    \"readahead\": \"<boolean>\",\n    \"replica_set\": {\n      \"id\": \"<long>\",\n      \"nodes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"pool_uuids\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"scale\": \"<long>\",\n    \"scan_policy\": {\n      \"action\": \"SCAN_ACTION_NONE\",\n      \"trigger\": \"SCAN_TRIGGER_NONE\"\n    },\n    \"shared\": \"<boolean>\",\n    \"sharedv4\": \"<boolean>\",\n    \"sharedv4_mount_opt_spec\": {\n      \"options\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\",\n        \"key_3\": \"<string>\",\n        \"key_4\": \"<string>\"\n      }\n    },\n    \"sharedv4_service_spec\": {\n      \"external_access\": \"<boolean>\",\n      \"name\": \"<string>\",\n      \"type\": \"UNSPECIFIED\"\n    },\n    \"sharedv4_spec\": {\n      \"failover_strategy\": \"UNSPECIFIED\"\n    },\n    \"size\": \"<uint64>\",\n    \"snapshot_interval\": \"<long>\",\n    \"snapshot_schedule\": \"<string>\",\n    \"sticky\": \"<boolean>\",\n    \"winshare\": \"<boolean>\",\n    \"xattr\": \"UNSPECIFIED\"\n  },\n  \"volume_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "82978622-ba06-4150-9281-fa8a0342228c",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "volumes",
+                    ":volume_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "volume_id",
+                      "description": "(Required) Id of the volume to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"labels\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"spec\": {\n    \"auto_fstrim\": \"<boolean>\",\n    \"checksummed\": \"<boolean>\",\n    \"cos\": \"NONE\",\n    \"dedupe\": \"<boolean>\",\n    \"export_spec\": {\n      \"export_options\": \"<string>\",\n      \"export_protocol\": \"INVALID\"\n    },\n    \"fastpath\": \"<boolean>\",\n    \"group\": {\n      \"id\": \"<string>\"\n    },\n    \"ha_level\": \"<int64>\",\n    \"io_profile\": \"IO_PROFILE_SEQUENTIAL\",\n    \"io_strategy\": {\n      \"async_io\": \"<boolean>\",\n      \"direct_io\": \"<boolean>\",\n      \"early_ack\": \"<boolean>\"\n    },\n    \"io_throttle\": {\n      \"read_bw_mbytes\": \"<long>\",\n      \"read_iops\": \"<long>\",\n      \"write_bw_mbytes\": \"<long>\",\n      \"write_iops\": \"<long>\"\n    },\n    \"journal\": \"<boolean>\",\n    \"mount_opt_spec\": {\n      \"options\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\"\n      }\n    },\n    \"near_sync_replication_strategy\": \"NEAR_SYNC_STRATEGY_NONE\",\n    \"nodiscard\": \"<boolean>\",\n    \"ownership\": {\n      \"acls\": {\n        \"collaborators\": {\n          \"key_0\": \"Read\",\n          \"key_1\": \"Read\"\n        },\n        \"groups\": {\n          \"key_0\": \"Read\",\n          \"key_1\": \"Read\"\n        },\n        \"public\": {\n          \"type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"owner\": \"<string>\"\n    },\n    \"passphrase\": \"<string>\",\n    \"proxy_spec\": {\n      \"endpoint\": \"<string>\",\n      \"nfs_spec\": {\n        \"export_path\": \"<string>\",\n        \"sub_path\": \"<string>\"\n      },\n      \"proxy_protocol\": \"PROXY_PROTOCOL_INVALID\",\n      \"pure_block_spec\": {\n        \"full_vol_name\": \"<string>\",\n        \"pod_name\": \"<string>\",\n        \"serial_num\": \"<string>\"\n      },\n      \"pure_file_spec\": {\n        \"export_rules\": \"<string>\",\n        \"full_vol_name\": \"<string>\",\n        \"nfs_endpoint\": \"<string>\"\n      },\n      \"pxd_spec\": {\n        \"id\": \"<string>\"\n      },\n      \"s3_spec\": {\n        \"bucket_name\": \"<string>\"\n      }\n    },\n    \"proxy_write\": \"<boolean>\",\n    \"pure_nfs_endpoint\": \"<string>\",\n    \"queue_depth\": \"<long>\",\n    \"readahead\": \"<boolean>\",\n    \"replica_set\": {\n      \"id\": \"<long>\",\n      \"nodes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"pool_uuids\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"scale\": \"<long>\",\n    \"scan_policy\": {\n      \"action\": \"SCAN_ACTION_NONE\",\n      \"trigger\": \"SCAN_TRIGGER_NONE\"\n    },\n    \"shared\": \"<boolean>\",\n    \"sharedv4\": \"<boolean>\",\n    \"sharedv4_mount_opt_spec\": {\n      \"options\": {\n        \"key_0\": \"<string>\"\n      }\n    },\n    \"sharedv4_service_spec\": {\n      \"external_access\": \"<boolean>\",\n      \"name\": \"<string>\",\n      \"type\": \"UNSPECIFIED\"\n    },\n    \"sharedv4_spec\": {\n      \"failover_strategy\": \"UNSPECIFIED\"\n    },\n    \"size\": \"<uint64>\",\n    \"snapshot_interval\": \"<long>\",\n    \"snapshot_schedule\": \"<string>\",\n    \"sticky\": \"<boolean>\",\n    \"winshare\": \"<boolean>\",\n    \"xattr\": \"UNSPECIFIED\"\n  },\n  \"volume_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "194c07b2-2a6e-4cd3-b3fd-a1de1178fe3e",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "volumes",
+                    ":volume_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "volume_id",
+                      "description": "(Required) Id of the volume to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"labels\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"spec\": {\n    \"auto_fstrim\": \"<boolean>\",\n    \"checksummed\": \"<boolean>\",\n    \"cos\": \"NONE\",\n    \"dedupe\": \"<boolean>\",\n    \"export_spec\": {\n      \"export_options\": \"<string>\",\n      \"export_protocol\": \"INVALID\"\n    },\n    \"fastpath\": \"<boolean>\",\n    \"group\": {\n      \"id\": \"<string>\"\n    },\n    \"ha_level\": \"<int64>\",\n    \"io_profile\": \"IO_PROFILE_SEQUENTIAL\",\n    \"io_strategy\": {\n      \"async_io\": \"<boolean>\",\n      \"direct_io\": \"<boolean>\",\n      \"early_ack\": \"<boolean>\"\n    },\n    \"io_throttle\": {\n      \"read_bw_mbytes\": \"<long>\",\n      \"read_iops\": \"<long>\",\n      \"write_bw_mbytes\": \"<long>\",\n      \"write_iops\": \"<long>\"\n    },\n    \"journal\": \"<boolean>\",\n    \"mount_opt_spec\": {\n      \"options\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\"\n      }\n    },\n    \"near_sync_replication_strategy\": \"NEAR_SYNC_STRATEGY_NONE\",\n    \"nodiscard\": \"<boolean>\",\n    \"ownership\": {\n      \"acls\": {\n        \"collaborators\": {\n          \"key_0\": \"Read\",\n          \"key_1\": \"Read\"\n        },\n        \"groups\": {\n          \"key_0\": \"Read\",\n          \"key_1\": \"Read\"\n        },\n        \"public\": {\n          \"type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"owner\": \"<string>\"\n    },\n    \"passphrase\": \"<string>\",\n    \"proxy_spec\": {\n      \"endpoint\": \"<string>\",\n      \"nfs_spec\": {\n        \"export_path\": \"<string>\",\n        \"sub_path\": \"<string>\"\n      },\n      \"proxy_protocol\": \"PROXY_PROTOCOL_INVALID\",\n      \"pure_block_spec\": {\n        \"full_vol_name\": \"<string>\",\n        \"pod_name\": \"<string>\",\n        \"serial_num\": \"<string>\"\n      },\n      \"pure_file_spec\": {\n        \"export_rules\": \"<string>\",\n        \"full_vol_name\": \"<string>\",\n        \"nfs_endpoint\": \"<string>\"\n      },\n      \"pxd_spec\": {\n        \"id\": \"<string>\"\n      },\n      \"s3_spec\": {\n        \"bucket_name\": \"<string>\"\n      }\n    },\n    \"proxy_write\": \"<boolean>\",\n    \"pure_nfs_endpoint\": \"<string>\",\n    \"queue_depth\": \"<long>\",\n    \"readahead\": \"<boolean>\",\n    \"replica_set\": {\n      \"id\": \"<long>\",\n      \"nodes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"pool_uuids\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"scale\": \"<long>\",\n    \"scan_policy\": {\n      \"action\": \"SCAN_ACTION_NONE\",\n      \"trigger\": \"SCAN_TRIGGER_NONE\"\n    },\n    \"shared\": \"<boolean>\",\n    \"sharedv4\": \"<boolean>\",\n    \"sharedv4_mount_opt_spec\": {\n      \"options\": {\n        \"key_0\": \"<string>\"\n      }\n    },\n    \"sharedv4_service_spec\": {\n      \"external_access\": \"<boolean>\",\n      \"name\": \"<string>\",\n      \"type\": \"UNSPECIFIED\"\n    },\n    \"sharedv4_spec\": {\n      \"failover_strategy\": \"UNSPECIFIED\"\n    },\n    \"size\": \"<uint64>\",\n    \"snapshot_interval\": \"<long>\",\n    \"snapshot_schedule\": \"<string>\",\n    \"sticky\": \"<boolean>\",\n    \"winshare\": \"<boolean>\",\n    \"xattr\": \"UNSPECIFIED\"\n  },\n  \"volume_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9734,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "973ba744-c9e5-4c77-b973-c25f06d4cf1f",
+    "name": "OpenStorage SDK OpenStorageAlerts OpenStorageVolume API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenStorage SDK OpenStorageAlerts OpenStorageSchedulePolicy API",
+    "version": "0.186.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "OpenStorageSchedulePolicy",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Enumerate returns a list of schedules",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/schedulepolicies"
+          },
+          "docs": "Enumerate returns a list of schedules"
+        },
+        {
+          "info": {
+            "name": "Create creates a new snapshot schedule. They can be setup daily,\nweekly, or monthly.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/schedulepolicies",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create creates a new snapshot schedule. They can be setup daily,\nweekly, or monthly."
+        },
+        {
+          "info": {
+            "name": "Update a snapshot schedule",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/v1/schedulepolicies",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a snapshot schedule"
+        },
+        {
+          "info": {
+            "name": "Inspect returns information about a specified schedule",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/schedulepolicies/inspect/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name of the schedule Policy"
+              }
+            ]
+          },
+          "docs": "Inspect returns information about a specified schedule"
+        },
+        {
+          "info": {
+            "name": "Delete removes a snapshot schedule",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v1/schedulepolicies/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name of the schedule policy"
+              }
+            ]
+          },
+          "docs": "Delete removes a snapshot schedule"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

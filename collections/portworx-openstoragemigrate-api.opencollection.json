@@ -1,0 +1,79 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenStorage SDK OpenStorageAlerts OpenStorageMigrate API",
+    "version": "0.186.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "OpenStorageMigrate",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Status for migration operation.\nIf status request is empty, status for all migration operation will be returned.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/volumemigrate",
+            "params": [
+              {
+                "name": "request.task_id",
+                "value": "",
+                "type": "query",
+                "description": "Task id for which to return status."
+              },
+              {
+                "name": "request.cluster_id",
+                "value": "",
+                "type": "query",
+                "description": "ID of the cluster for which to return migration statuses."
+              }
+            ]
+          },
+          "docs": "Status for migration operation.\nIf status request is empty, status for all migration operation will be returned."
+        },
+        {
+          "info": {
+            "name": "Start a migration operation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/volumemigrate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Start a migration operation"
+        },
+        {
+          "info": {
+            "name": "Cancel a migration operation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/volumemigrate/cancel",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Cancel a migration operation"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,46 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenStorage SDK OpenStorageAlerts OpenStorageIdentity API",
+    "version": "0.186.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "OpenStorageIdentity",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Capabilities returns the supported services by the cluster.\nThis allows SDK implementations to advertise their supported\nservices as the API matures. With this information, clients\ncan determine supported services from storage clusters at\ndifferent versions.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/identities/capabilities"
+          },
+          "docs": "Capabilities returns the supported services by the cluster.\nThis allows SDK implementations to advertise their supported\nservices as the API matures. With this information, clients\ncan determine supported services from storage clusters at\ndifferent versions."
+        },
+        {
+          "info": {
+            "name": "Version returns version information about the system.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/identities/version"
+          },
+          "docs": "Version returns version information about the system."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

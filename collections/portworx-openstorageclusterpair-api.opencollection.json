@@ -1,0 +1,114 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenStorage SDK OpenStorageAlerts OpenStorageClusterPair API",
+    "version": "0.186.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "OpenStorageClusterPair",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Enumerate returns list of cluster pairs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/clusterpairs"
+          },
+          "docs": "Enumerate returns list of cluster pairs"
+        },
+        {
+          "info": {
+            "name": "Creates Pair with a remote cluster and returns details about the remote cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/clusterpairs",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "##### Example\n{% codetabs name=\"Golang\", type=\"go\" -%}\nid, err := client.Create(context.Background(), &api.SdkClusterPairCreateRequest {\n  Request : &api.ClusterPairCreateRequest {\n                 RemoteClusterIp: \"127.0.0.1\",\n                 RemoteClusterPort: 12345,\n                 RemoteClusterToken: \"<Auth-Token>\",\n                 SetDefault: true,\n             }\n       })\n{%- endcodetabs %}"
+        },
+        {
+          "info": {
+            "name": "Inspect information about a cluster pair",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/clusterpairs/inspect/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the cluster, if empty gets the default pair"
+              }
+            ]
+          },
+          "docs": "Inspect information about a cluster pair"
+        },
+        {
+          "info": {
+            "name": "GetToken returns a auth token",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/clusterpairs/token"
+          },
+          "docs": "GetToken returns a auth token"
+        },
+        {
+          "info": {
+            "name": "ResetToken returns a auth token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/clusterpairs/token",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "ResetToken returns a auth token"
+        },
+        {
+          "info": {
+            "name": "Delete a cluster pair",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v1/clusterpairs/:cluster_id",
+            "params": [
+              {
+                "name": "cluster_id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the cluster pair to be deleted"
+              }
+            ]
+          },
+          "docs": "Delete a cluster pair"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,2354 @@
+{
+  "item": [
+    {
+      "id": "69ca96a4-d67e-4dfc-8129-d6da05561c37",
+      "name": "OpenStorageCloudBackup",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e14b0cee-315d-4857-b14c-1f5e5ad476e1",
+          "name": "Creates a backup request for a specified volume. Use\nOpenStorageCloudBackup.Status() to get the current status of the\nbackup request.",
+          "request": {
+            "name": "Creates a backup request for a specified volume. Use\nOpenStorageCloudBackup.Status() to get the current status of the\nbackup request.",
+            "description": {
+              "content": "Requires access AccessType.Read of volume",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "cloudbackups"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"credential_id\": \"<string>\",\n  \"delete_local\": \"<boolean>\",\n  \"full\": \"<boolean>\",\n  \"full_backup_frequency\": \"<long>\",\n  \"labels\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"near_sync_migrate\": \"<boolean>\",\n  \"task_id\": \"<string>\",\n  \"volume_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "085ded4c-8a50-4f0a-b86c-ec8b7596c705",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "cloudbackups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"credential_id\": \"<string>\",\n  \"delete_local\": \"<boolean>\",\n  \"full\": \"<boolean>\",\n  \"full_backup_frequency\": \"<long>\",\n  \"labels\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\",\n    \"key_3\": \"<string>\"\n  },\n  \"near_sync_migrate\": \"<boolean>\",\n  \"task_id\": \"<string>\",\n  \"volume_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"task_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1774b635-08ee-40fc-82ab-36d32dd04a91",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "cloudbackups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"credential_id\": \"<string>\",\n  \"delete_local\": \"<boolean>\",\n  \"full\": \"<boolean>\",\n  \"full_backup_frequency\": \"<long>\",\n  \"labels\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\",\n    \"key_3\": \"<string>\"\n  },\n  \"near_sync_migrate\": \"<boolean>\",\n  \"task_id\": \"<string>\",\n  \"volume_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 3439,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7bd1a67f-e062-42bb-9b93-1bc9fa5a58ad",
+          "name": "Deletes a backup stored in the cloud. If the backup is an incremental\nbackup and other backups are dependent on it, it will not be able to be deleted.",
+          "request": {
+            "name": "Deletes a backup stored in the cloud. If the backup is an incremental\nbackup and other backups are dependent on it, it will not be able to be deleted.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "cloudbackups",
+                "backup",
+                ":backup_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "credential_id",
+                  "value": "<string>",
+                  "description": "Credential id is the credential for cloud to be used for the request."
+                },
+                {
+                  "disabled": false,
+                  "key": "force",
+                  "value": "<boolean>",
+                  "description": "Force Delete cloudbackup even if there are dependencies. This may be\nneeded if the backup is an incremental backup and subsequent backups\ndepend on this backup specified by `backup_id`."
+                },
+                {
+                  "disabled": false,
+                  "key": "bucket",
+                  "value": "<string>",
+                  "description": "Bucket name to which cloud backup belongs to."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "backup_id",
+                  "description": "(Required) ID is the ID of the cloud backup"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dd1c063e-239d-4372-b749-3546a39d0805",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "cloudbackups",
+                    "backup",
+                    ":backup_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "credential_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "force",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "bucket",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "backup_id",
+                      "description": "(Required) ID is the ID of the cloud backup"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "df3550f1-6a1f-4f81-b4e3-fa5e8b2eeae3",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "cloudbackups",
+                    "backup",
+                    ":backup_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "credential_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "force",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "bucket",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "backup_id",
+                      "description": "(Required) ID is the ID of the cloud backup"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 232,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c9de10a7-c812-4c68-afb2-af90fafe4e0d",
+          "name": "Catalog returns a list of the contents in the backup",
+          "request": {
+            "name": "Catalog returns a list of the contents in the backup",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "cloudbackups",
+                "catalog"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"backup_id\": \"<string>\",\n  \"credential_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c237ba16-f2b5-4bc5-8154-e75bf0e140d1",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "cloudbackups",
+                    "catalog"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"backup_id\": \"<string>\",\n  \"credential_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"contents\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0bd13a95-601e-4149-8464-86996436ef14",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "cloudbackups",
+                    "catalog"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"backup_id\": \"<string>\",\n  \"credential_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 232,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6b6f9bee-2555-4658-85f3-f9e5c1b95ed7",
+          "name": "DeleteAll deletes all the backups in the cloud for the specified volume.",
+          "request": {
+            "name": "DeleteAll deletes all the backups in the cloud for the specified volume.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "cloudbackups",
+                "deleteall"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"credential_id\": \"<string>\",\n  \"src_volume_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "22ea7059-5589-481e-8e25-301a7abf6e7d",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "cloudbackups",
+                    "deleteall"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"credential_id\": \"<string>\",\n  \"src_volume_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0570767c-d6c6-4cc3-8386-f88ee5ab699a",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "cloudbackups",
+                    "deleteall"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"credential_id\": \"<string>\",\n  \"src_volume_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 232,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2f2eb6f4-5d0b-4344-b143-23abed837c78",
+          "name": "Return a list of backups for the specified volume",
+          "request": {
+            "name": "Return a list of backups for the specified volume",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "cloudbackups",
+                "enumerate",
+                "filters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"all\": \"<boolean>\",\n  \"cloud_backup_id\": \"<string>\",\n  \"cluster_id\": \"<string>\",\n  \"continuation_token\": \"<string>\",\n  \"credential_id\": \"<string>\",\n  \"max_backups\": \"<uint64>\",\n  \"metadata_filter\": {\n    \"key_0\": \"<string>\"\n  },\n  \"missing_src_volumes\": \"<boolean>\",\n  \"src_volume_id\": \"<string>\",\n  \"status_filter\": \"SdkCloudBackupStatusTypeUnknown\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f6ddc287-ec1f-4520-bf95-f3944d182c95",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "cloudbackups",
+                    "enumerate",
+                    "filters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"all\": \"<boolean>\",\n  \"cloud_backup_id\": \"<string>\",\n  \"cluster_id\": \"<string>\",\n  \"continuation_token\": \"<string>\",\n  \"credential_id\": \"<string>\",\n  \"max_backups\": \"<uint64>\",\n  \"metadata_filter\": {\n    \"key_0\": \"<string>\"\n  },\n  \"missing_src_volumes\": \"<boolean>\",\n  \"src_volume_id\": \"<string>\",\n  \"status_filter\": \"SdkCloudBackupStatusTypeUnknown\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"backups\": [\n    {\n      \"cluster_type\": \"SdkCloudBackupClusterUnknown\",\n      \"id\": \"string\",\n      \"metadata\": {\n        \"key_0\": \"string\"\n      },\n      \"namespace\": \"string\",\n      \"src_volume_id\": \"string\",\n      \"src_volume_name\": \"string\",\n      \"status\": \"SdkCloudBackupStatusTypeUnknown\",\n      \"timestamp\": \"1970-05-28T12:20:08.083Z\"\n    },\n    {\n      \"cluster_type\": \"SdkCloudBackupClusterUnknown\",\n      \"id\": \"string\",\n      \"metadata\": {\n        \"key_0\": \"string\"\n      },\n      \"namespace\": \"string\",\n      \"src_volume_id\": \"string\",\n      \"src_volume_name\": \"string\",\n      \"status\": \"SdkCloudBackupStatusTypeUnknown\",\n      \"timestamp\": \"1970-07-20T18:37:09.390Z\"\n    }\n  ],\n  \"continuation_token\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "876dad1a-d1ab-4858-a17f-4bd718a100db",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "cloudbackups",
+                    "enumerate",
+                    "filters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"all\": \"<boolean>\",\n  \"cloud_backup_id\": \"<string>\",\n  \"cluster_id\": \"<string>\",\n  \"continuation_token\": \"<string>\",\n  \"credential_id\": \"<string>\",\n  \"max_backups\": \"<uint64>\",\n  \"metadata_filter\": {\n    \"key_0\": \"<string>\"\n  },\n  \"missing_src_volumes\": \"<boolean>\",\n  \"src_volume_id\": \"<string>\",\n  \"status_filter\": \"SdkCloudBackupStatusTypeUnknown\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 232,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "90a18843-b451-4c7a-8ff7-4c9fc3e0f67e",
+          "name": "Creates a group backup request for a specified group. Use\nOpenStorageCloudBackup.Status() to get the current status of the\nbackup request.",
+          "request": {
+            "name": "Creates a group backup request for a specified group. Use\nOpenStorageCloudBackup.Status() to get the current status of the\nbackup request.",
+            "description": {
+              "content": "This will only backup volumes which the user has read_access to.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "cloudbackups",
+                "group"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"credential_id\": \"<string>\",\n  \"delete_local\": \"<boolean>\",\n  \"full\": \"<boolean>\",\n  \"group_id\": \"<string>\",\n  \"labels\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"volume_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e17f49b6-9aad-4654-80a2-fe1f81577702",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "cloudbackups",
+                    "group"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"credential_id\": \"<string>\",\n  \"delete_local\": \"<boolean>\",\n  \"full\": \"<boolean>\",\n  \"group_id\": \"<string>\",\n  \"labels\": {\n    \"key_0\": \"<string>\"\n  },\n  \"volume_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"group_cloud_backup_id\": \"string\",\n  \"task_ids\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8f568a3f-c0d9-4730-bc46-b480e11449e3",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "cloudbackups",
+                    "group"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"credential_id\": \"<string>\",\n  \"delete_local\": \"<boolean>\",\n  \"full\": \"<boolean>\",\n  \"group_id\": \"<string>\",\n  \"labels\": {\n    \"key_0\": \"<string>\"\n  },\n  \"volume_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 232,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ea99f56d-46cf-490f-bcb1-0bb291603497",
+          "name": "History returns a list of backups for a specified volume",
+          "request": {
+            "name": "History returns a list of backups for a specified volume",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "cloudbackups",
+                "history",
+                ":src_volume_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "src_volume_id",
+                  "description": "(Required) This optional value defines which history of backups is being\nrequested. If not provided, it will return the history for all volumes."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "39f6a522-f0a8-4cb8-ba28-6b47f5bdcab1",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "cloudbackups",
+                    "history",
+                    ":src_volume_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "src_volume_id",
+                      "description": "(Required) This optional value defines which history of backups is being\nrequested. If not provided, it will return the history for all volumes."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"history_list\": [\n    {\n      \"src_volume_id\": \"string\",\n      \"status\": \"SdkCloudBackupStatusTypeUnknown\",\n      \"timestamp\": \"1966-05-19T14:22:10.813Z\"\n    },\n    {\n      \"src_volume_id\": \"string\",\n      \"status\": \"SdkCloudBackupStatusTypeUnknown\",\n      \"timestamp\": \"2022-10-10T07:35:50.391Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7d6bb669-b947-427f-bbc4-eefcafa89514",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "cloudbackups",
+                    "history",
+                    ":src_volume_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "src_volume_id",
+                      "description": "(Required) This optional value defines which history of backups is being\nrequested. If not provided, it will return the history for all volumes."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 232,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2ea62e28-8e71-40a4-912e-4ce8d5447a87",
+          "name": "Restore creates a new volume from a backup id. The newly created volume\nhas an ha_level (number of replicas) of only 1. To increase the number of\nreplicas, use OpenStorageVolume.Set() to change the ha_level.",
+          "request": {
+            "name": "Restore creates a new volume from a backup id. The newly created volume\nhas an ha_level (number of replicas) of only 1. To increase the number of\nreplicas, use OpenStorageVolume.Set() to change the ha_level.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "cloudbackups",
+                "restore"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"backup_id\": \"<string>\",\n  \"credential_id\": \"<string>\",\n  \"locator\": {\n    \"group\": {\n      \"id\": \"<string>\"\n    },\n    \"name\": \"<string>\",\n    \"ownership\": {\n      \"acls\": {\n        \"collaborators\": {\n          \"key_0\": \"Read\",\n          \"key_1\": \"Read\"\n        },\n        \"groups\": {\n          \"key_0\": \"Read\",\n          \"key_1\": \"Read\"\n        },\n        \"public\": {\n          \"type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"owner\": \"<string>\"\n    },\n    \"volume_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"volume_labels\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\"\n    }\n  },\n  \"node_id\": \"<string>\",\n  \"restore_volume_name\": \"<string>\",\n  \"spec\": {\n    \"aggregation_level\": \"<long>\",\n    \"auto_fstrim\": \"PARAM_BKUPSRC\",\n    \"cos\": \"NONE\",\n    \"export_spec\": {\n      \"export_options\": \"<string>\",\n      \"export_protocol\": \"INVALID\"\n    },\n    \"fp_preference\": \"PARAM_BKUPSRC\",\n    \"group\": {\n      \"id\": \"<string>\"\n    },\n    \"group_enforced\": \"<boolean>\",\n    \"ha_level\": \"<int64>\",\n    \"io_profile\": \"IO_PROFILE_SEQUENTIAL\",\n    \"io_profile_bkup_src\": \"<boolean>\",\n    \"io_strategy\": {\n      \"async_io\": \"<boolean>\",\n      \"direct_io\": \"<boolean>\",\n      \"early_ack\": \"<boolean>\"\n    },\n    \"io_throttle\": {\n      \"read_bw_mbytes\": \"<long>\",\n      \"read_iops\": \"<long>\",\n      \"write_bw_mbytes\": \"<long>\",\n      \"write_iops\": \"<long>\"\n    },\n    \"journal\": \"PARAM_BKUPSRC\",\n    \"mount_options\": {\n      \"options\": {\n        \"key_0\": \"<string>\"\n      }\n    },\n    \"nodiscard\": \"PARAM_BKUPSRC\",\n    \"ownership\": {\n      \"acls\": {\n        \"collaborators\": {\n          \"key_0\": \"Read\",\n          \"key_1\": \"Read\",\n          \"key_2\": \"Read\"\n        },\n        \"groups\": {\n          \"key_0\": \"Read\",\n          \"key_1\": \"Read\"\n        },\n        \"public\": {\n          \"type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"owner\": \"<string>\"\n    },\n    \"placement_strategy\": {\n      \"replica_affinity\": [\n        {\n          \"affected_replicas\": \"<integer>\",\n          \"enforcement\": \"required\",\n          \"match_expressions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"topology_key\": \"<string>\",\n          \"weight\": \"<int64>\"\n        },\n        {\n          \"affected_replicas\": \"<integer>\",\n          \"enforcement\": \"required\",\n          \"match_expressions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"topology_key\": \"<string>\",\n          \"weight\": \"<int64>\"\n        }\n      ],\n      \"replica_anti_affinity\": [\n        {\n          \"affected_replicas\": \"<integer>\",\n          \"enforcement\": \"required\",\n          \"match_expressions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"topology_key\": \"<string>\",\n          \"weight\": \"<int64>\"\n        },\n        {\n          \"affected_replicas\": \"<integer>\",\n          \"enforcement\": \"required\",\n          \"match_expressions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"topology_key\": \"<string>\",\n          \"weight\": \"<int64>\"\n        }\n      ],\n      \"volume_affinity\": [\n        {\n          \"enforcement\": \"required\",\n          \"match_expressions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"topology_key\": \"<string>\",\n          \"weight\": \"<int64>\"\n        },\n        {\n          \"enforcement\": \"required\",\n          \"match_expressions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"topology_key\": \"<string>\",\n          \"weight\": \"<int64>\"\n        }\n      ],\n      \"volume_anti_affinity\": [\n        {\n          \"enforcement\": \"required\",\n          \"match_expressions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"topology_key\": \"<string>\",\n          \"weight\": \"<int64>\"\n        },\n        {\n          \"enforcement\": \"required\",\n          \"match_expressions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"topology_key\": \"<string>\",\n          \"weight\": \"<int64>\"\n        }\n      ]\n    },\n    \"proxy_spec\": {\n      \"endpoint\": \"<string>\",\n      \"nfs_spec\": {\n        \"export_path\": \"<string>\",\n        \"sub_path\": \"<string>\"\n      },\n      \"proxy_protocol\": \"PROXY_PROTOCOL_INVALID\",\n      \"pure_block_spec\": {\n        \"full_vol_name\": \"<string>\",\n        \"pod_name\": \"<string>\",\n        \"serial_num\": \"<string>\"\n      },\n      \"pure_file_spec\": {\n        \"export_rules\": \"<string>\",\n        \"full_vol_name\": \"<string>\",\n        \"nfs_endpoint\": \"<string>\"\n      },\n      \"pxd_spec\": {\n        \"id\": \"<string>\"\n      },\n      \"s3_spec\": {\n        \"bucket_name\": \"<string>\"\n      }\n    },\n    \"proxy_write\": \"PARAM_BKUPSRC\",\n    \"queue_depth\": \"<long>\",\n    \"readahead\": \"PARAM_BKUPSRC\",\n    \"replica_set\": {\n      \"id\": \"<long>\",\n      \"nodes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"pool_uuids\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"shared\": \"PARAM_BKUPSRC\",\n    \"sharedv4\": \"PARAM_BKUPSRC\",\n    \"sharedv4_mount_options\": {\n      \"options\": {\n        \"key_0\": \"<string>\"\n      }\n    },\n    \"sharedv4_service_spec\": {\n      \"external_access\": \"<boolean>\",\n      \"name\": \"<string>\",\n      \"type\": \"UNSPECIFIED\"\n    },\n    \"sharedv4_spec\": {\n      \"failover_strategy\": \"UNSPECIFIED\"\n    },\n    \"snapshot_interval\": \"<long>\",\n    \"snapshot_schedule\": {\n      \"schedule\": \"<string>\"\n    },\n    \"sticky\": \"PARAM_BKUPSRC\",\n    \"storage_policy\": {\n      \"policy\": \"<string>\"\n    }\n  },\n  \"task_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "33706948-22e7-430a-8036-0b4e85d795fd",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "cloudbackups",
+                    "restore"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"backup_id\": \"<string>\",\n  \"credential_id\": \"<string>\",\n  \"locator\": {\n    \"group\": {\n      \"id\": \"<string>\"\n    },\n    \"name\": \"<string>\",\n    \"ownership\": {\n      \"acls\": {\n        \"collaborators\": {\n          \"key_0\": \"Read\",\n          \"key_1\": \"Read\"\n        },\n        \"groups\": {\n          \"key_0\": \"Read\"\n        },\n        \"public\": {\n          \"type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"owner\": \"<string>\"\n    },\n    \"volume_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"volume_labels\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\",\n      \"key_2\": \"<string>\"\n    }\n  },\n  \"node_id\": \"<string>\",\n  \"restore_volume_name\": \"<string>\",\n  \"spec\": {\n    \"aggregation_level\": \"<long>\",\n    \"auto_fstrim\": \"PARAM_BKUPSRC\",\n    \"cos\": \"NONE\",\n    \"export_spec\": {\n      \"export_options\": \"<string>\",\n      \"export_protocol\": \"INVALID\"\n    },\n    \"fp_preference\": \"PARAM_BKUPSRC\",\n    \"group\": {\n      \"id\": \"<string>\"\n    },\n    \"group_enforced\": \"<boolean>\",\n    \"ha_level\": \"<int64>\",\n    \"io_profile\": \"IO_PROFILE_SEQUENTIAL\",\n    \"io_profile_bkup_src\": \"<boolean>\",\n    \"io_strategy\": {\n      \"async_io\": \"<boolean>\",\n      \"direct_io\": \"<boolean>\",\n      \"early_ack\": \"<boolean>\"\n    },\n    \"io_throttle\": {\n      \"read_bw_mbytes\": \"<long>\",\n      \"read_iops\": \"<long>\",\n      \"write_bw_mbytes\": \"<long>\",\n      \"write_iops\": \"<long>\"\n    },\n    \"journal\": \"PARAM_BKUPSRC\",\n    \"mount_options\": {\n      \"options\": {\n        \"key_0\": \"<string>\"\n      }\n    },\n    \"nodiscard\": \"PARAM_BKUPSRC\",\n    \"ownership\": {\n      \"acls\": {\n        \"collaborators\": {\n          \"key_0\": \"Read\",\n          \"key_1\": \"Read\"\n        },\n        \"groups\": {\n          \"key_0\": \"Read\",\n          \"key_1\": \"Read\"\n        },\n        \"public\": {\n          \"type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"owner\": \"<string>\"\n    },\n    \"placement_strategy\": {\n      \"replica_affinity\": [\n        {\n          \"affected_replicas\": \"<integer>\",\n          \"enforcement\": \"required\",\n          \"match_expressions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"topology_key\": \"<string>\",\n          \"weight\": \"<int64>\"\n        },\n        {\n          \"affected_replicas\": \"<integer>\",\n          \"enforcement\": \"required\",\n          \"match_expressions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"topology_key\": \"<string>\",\n          \"weight\": \"<int64>\"\n        }\n      ],\n      \"replica_anti_affinity\": [\n        {\n          \"affected_replicas\": \"<integer>\",\n          \"enforcement\": \"required\",\n          \"match_expressions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"topology_key\": \"<string>\",\n          \"weight\": \"<int64>\"\n        },\n        {\n          \"affected_replicas\": \"<integer>\",\n          \"enforcement\": \"required\",\n          \"match_expressions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"topology_key\": \"<string>\",\n          \"weight\": \"<int64>\"\n        }\n      ],\n      \"volume_affinity\": [\n        {\n          \"enforcement\": \"required\",\n          \"match_expressions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"topology_key\": \"<string>\",\n          \"weight\": \"<int64>\"\n        },\n        {\n          \"enforcement\": \"required\",\n          \"match_expressions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"topology_key\": \"<string>\",\n          \"weight\": \"<int64>\"\n        }\n      ],\n      \"volume_anti_affinity\": [\n        {\n          \"enforcement\": \"required\",\n          \"match_expressions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"topology_key\": \"<string>\",\n          \"weight\": \"<int64>\"\n        },\n        {\n          \"enforcement\": \"required\",\n          \"match_expressions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"topology_key\": \"<string>\",\n          \"weight\": \"<int64>\"\n        }\n      ]\n    },\n    \"proxy_spec\": {\n      \"endpoint\": \"<string>\",\n      \"nfs_spec\": {\n        \"export_path\": \"<string>\",\n        \"sub_path\": \"<string>\"\n      },\n      \"proxy_protocol\": \"PROXY_PROTOCOL_INVALID\",\n      \"pure_block_spec\": {\n        \"full_vol_name\": \"<string>\",\n        \"pod_name\": \"<string>\",\n        \"serial_num\": \"<string>\"\n      },\n      \"pure_file_spec\": {\n        \"export_rules\": \"<string>\",\n        \"full_vol_name\": \"<string>\",\n        \"nfs_endpoint\": \"<string>\"\n      },\n      \"pxd_spec\": {\n        \"id\": \"<string>\"\n      },\n      \"s3_spec\": {\n        \"bucket_name\": \"<string>\"\n      }\n    },\n    \"proxy_write\": \"PARAM_BKUPSRC\",\n    \"queue_depth\": \"<long>\",\n    \"readahead\": \"PARAM_BKUPSRC\",\n    \"replica_set\": {\n      \"id\": \"<long>\",\n      \"nodes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"pool_uuids\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"shared\": \"PARAM_BKUPSRC\",\n    \"sharedv4\": \"PARAM_BKUPSRC\",\n    \"sharedv4_mount_options\": {\n      \"options\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      }\n    },\n    \"sharedv4_service_spec\": {\n      \"external_access\": \"<boolean>\",\n      \"name\": \"<string>\",\n      \"type\": \"UNSPECIFIED\"\n    },\n    \"sharedv4_spec\": {\n      \"failover_strategy\": \"UNSPECIFIED\"\n    },\n    \"snapshot_interval\": \"<long>\",\n    \"snapshot_schedule\": {\n      \"schedule\": \"<string>\"\n    },\n    \"sticky\": \"PARAM_BKUPSRC\",\n    \"storage_policy\": {\n      \"policy\": \"<string>\"\n    }\n  },\n  \"task_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"restore_volume_id\": \"string\",\n  \"task_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cb5e806b-a3db-42f6-a9d2-5e99e55700ef",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "cloudbackups",
+                    "restore"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"backup_id\": \"<string>\",\n  \"credential_id\": \"<string>\",\n  \"locator\": {\n    \"group\": {\n      \"id\": \"<string>\"\n    },\n    \"name\": \"<string>\",\n    \"ownership\": {\n      \"acls\": {\n        \"collaborators\": {\n          \"key_0\": \"Read\",\n          \"key_1\": \"Read\"\n        },\n        \"groups\": {\n          \"key_0\": \"Read\"\n        },\n        \"public\": {\n          \"type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"owner\": \"<string>\"\n    },\n    \"volume_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"volume_labels\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\",\n      \"key_2\": \"<string>\"\n    }\n  },\n  \"node_id\": \"<string>\",\n  \"restore_volume_name\": \"<string>\",\n  \"spec\": {\n    \"aggregation_level\": \"<long>\",\n    \"auto_fstrim\": \"PARAM_BKUPSRC\",\n    \"cos\": \"NONE\",\n    \"export_spec\": {\n      \"export_options\": \"<string>\",\n      \"export_protocol\": \"INVALID\"\n    },\n    \"fp_preference\": \"PARAM_BKUPSRC\",\n    \"group\": {\n      \"id\": \"<string>\"\n    },\n    \"group_enforced\": \"<boolean>\",\n    \"ha_level\": \"<int64>\",\n    \"io_profile\": \"IO_PROFILE_SEQUENTIAL\",\n    \"io_profile_bkup_src\": \"<boolean>\",\n    \"io_strategy\": {\n      \"async_io\": \"<boolean>\",\n      \"direct_io\": \"<boolean>\",\n      \"early_ack\": \"<boolean>\"\n    },\n    \"io_throttle\": {\n      \"read_bw_mbytes\": \"<long>\",\n      \"read_iops\": \"<long>\",\n      \"write_bw_mbytes\": \"<long>\",\n      \"write_iops\": \"<long>\"\n    },\n    \"journal\": \"PARAM_BKUPSRC\",\n    \"mount_options\": {\n      \"options\": {\n        \"key_0\": \"<string>\"\n      }\n    },\n    \"nodiscard\": \"PARAM_BKUPSRC\",\n    \"ownership\": {\n      \"acls\": {\n        \"collaborators\": {\n          \"key_0\": \"Read\",\n          \"key_1\": \"Read\"\n        },\n        \"groups\": {\n          \"key_0\": \"Read\",\n          \"key_1\": \"Read\"\n        },\n        \"public\": {\n          \"type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"owner\": \"<string>\"\n    },\n    \"placement_strategy\": {\n      \"replica_affinity\": [\n        {\n          \"affected_replicas\": \"<integer>\",\n          \"enforcement\": \"required\",\n          \"match_expressions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"topology_key\": \"<string>\",\n          \"weight\": \"<int64>\"\n        },\n        {\n          \"affected_replicas\": \"<integer>\",\n          \"enforcement\": \"required\",\n          \"match_expressions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"topology_key\": \"<string>\",\n          \"weight\": \"<int64>\"\n        }\n      ],\n      \"replica_anti_affinity\": [\n        {\n          \"affected_replicas\": \"<integer>\",\n          \"enforcement\": \"required\",\n          \"match_expressions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"topology_key\": \"<string>\",\n          \"weight\": \"<int64>\"\n        },\n        {\n          \"affected_replicas\": \"<integer>\",\n          \"enforcement\": \"required\",\n          \"match_expressions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"topology_key\": \"<string>\",\n          \"weight\": \"<int64>\"\n        }\n      ],\n      \"volume_affinity\": [\n        {\n          \"enforcement\": \"required\",\n          \"match_expressions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"topology_key\": \"<string>\",\n          \"weight\": \"<int64>\"\n        },\n        {\n          \"enforcement\": \"required\",\n          \"match_expressions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"topology_key\": \"<string>\",\n          \"weight\": \"<int64>\"\n        }\n      ],\n      \"volume_anti_affinity\": [\n        {\n          \"enforcement\": \"required\",\n          \"match_expressions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"topology_key\": \"<string>\",\n          \"weight\": \"<int64>\"\n        },\n        {\n          \"enforcement\": \"required\",\n          \"match_expressions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"topology_key\": \"<string>\",\n          \"weight\": \"<int64>\"\n        }\n      ]\n    },\n    \"proxy_spec\": {\n      \"endpoint\": \"<string>\",\n      \"nfs_spec\": {\n        \"export_path\": \"<string>\",\n        \"sub_path\": \"<string>\"\n      },\n      \"proxy_protocol\": \"PROXY_PROTOCOL_INVALID\",\n      \"pure_block_spec\": {\n        \"full_vol_name\": \"<string>\",\n        \"pod_name\": \"<string>\",\n        \"serial_num\": \"<string>\"\n      },\n      \"pure_file_spec\": {\n        \"export_rules\": \"<string>\",\n        \"full_vol_name\": \"<string>\",\n        \"nfs_endpoint\": \"<string>\"\n      },\n      \"pxd_spec\": {\n        \"id\": \"<string>\"\n      },\n      \"s3_spec\": {\n        \"bucket_name\": \"<string>\"\n      }\n    },\n    \"proxy_write\": \"PARAM_BKUPSRC\",\n    \"queue_depth\": \"<long>\",\n    \"readahead\": \"PARAM_BKUPSRC\",\n    \"replica_set\": {\n      \"id\": \"<long>\",\n      \"nodes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"pool_uuids\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"shared\": \"PARAM_BKUPSRC\",\n    \"sharedv4\": \"PARAM_BKUPSRC\",\n    \"sharedv4_mount_options\": {\n      \"options\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      }\n    },\n    \"sharedv4_service_spec\": {\n      \"external_access\": \"<boolean>\",\n      \"name\": \"<string>\",\n      \"type\": \"UNSPECIFIED\"\n    },\n    \"sharedv4_spec\": {\n      \"failover_strategy\": \"UNSPECIFIED\"\n    },\n    \"snapshot_interval\": \"<long>\",\n    \"snapshot_schedule\": {\n      \"schedule\": \"<string>\"\n    },\n    \"sticky\": \"PARAM_BKUPSRC\",\n    \"storage_policy\": {\n      \"policy\": \"<string>\"\n    }\n  },\n  \"task_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 232,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "31366044-1ae0-437f-8ffc-76a0eba14e28",
+          "name": "Enumerate cloud backup schedules",
+          "request": {
+            "name": "Enumerate cloud backup schedules",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "cloudbackups",
+                "schedules"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "03b969cd-1584-455e-898a-8d1a23c3707f",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "cloudbackups",
+                    "schedules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"cloud_sched_list\": {\n    \"key_0\": {\n      \"credential_id\": \"string\",\n      \"full\": true,\n      \"group_id\": \"string\",\n      \"labels\": {\n        \"key_0\": \"string\"\n      },\n      \"max_backups\": \"string\",\n      \"retention_days\": 9669,\n      \"schedules\": [\n        {\n          \"daily\": {\n            \"hour\": 3872,\n            \"minute\": 6022\n          },\n          \"monthly\": {\n            \"day\": 8861,\n            \"hour\": 7337,\n            \"minute\": 6436\n          },\n          \"periodic\": {\n            \"seconds\": \"string\"\n          },\n          \"retain\": \"string\",\n          \"weekly\": {\n            \"day\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"hour\": 4899,\n            \"minute\": 2353\n          }\n        },\n        {\n          \"daily\": {\n            \"hour\": 9441,\n            \"minute\": 623\n          },\n          \"monthly\": {\n            \"day\": 3921,\n            \"hour\": 5210,\n            \"minute\": 9236\n          },\n          \"periodic\": {\n            \"seconds\": \"string\"\n          },\n          \"retain\": \"string\",\n          \"weekly\": {\n            \"day\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"hour\": 7883,\n            \"minute\": 3096\n          }\n        }\n      ],\n      \"src_volume_id\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "957a804f-eee3-48a4-af3c-52bfa49a725a",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "cloudbackups",
+                    "schedules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 232,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0bcdf4c4-1356-4b95-928a-8434a8e1e747",
+          "name": "Create cloud backup schedule",
+          "request": {
+            "name": "Create cloud backup schedule",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "cloudbackups",
+                "schedules"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cloud_sched_info\": {\n    \"credential_id\": \"<string>\",\n    \"full\": \"<boolean>\",\n    \"group_id\": \"<string>\",\n    \"labels\": {\n      \"key_0\": \"<string>\"\n    },\n    \"max_backups\": \"<uint64>\",\n    \"retention_days\": \"<long>\",\n    \"schedules\": [\n      {\n        \"daily\": {\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        },\n        \"monthly\": {\n          \"day\": \"<integer>\",\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        },\n        \"periodic\": {\n          \"seconds\": \"<int64>\"\n        },\n        \"retain\": \"<int64>\",\n        \"weekly\": {\n          \"day\": \"SdkTimeWeekdaySunday\",\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        }\n      },\n      {\n        \"daily\": {\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        },\n        \"monthly\": {\n          \"day\": \"<integer>\",\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        },\n        \"periodic\": {\n          \"seconds\": \"<int64>\"\n        },\n        \"retain\": \"<int64>\",\n        \"weekly\": {\n          \"day\": \"SdkTimeWeekdaySunday\",\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        }\n      }\n    ],\n    \"src_volume_id\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "480fcbc9-5b01-40d5-a272-93a5989dbc1e",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "cloudbackups",
+                    "schedules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cloud_sched_info\": {\n    \"credential_id\": \"<string>\",\n    \"full\": \"<boolean>\",\n    \"group_id\": \"<string>\",\n    \"labels\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\",\n      \"key_2\": \"<string>\"\n    },\n    \"max_backups\": \"<uint64>\",\n    \"retention_days\": \"<long>\",\n    \"schedules\": [\n      {\n        \"daily\": {\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        },\n        \"monthly\": {\n          \"day\": \"<integer>\",\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        },\n        \"periodic\": {\n          \"seconds\": \"<int64>\"\n        },\n        \"retain\": \"<int64>\",\n        \"weekly\": {\n          \"day\": \"SdkTimeWeekdaySunday\",\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        }\n      },\n      {\n        \"daily\": {\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        },\n        \"monthly\": {\n          \"day\": \"<integer>\",\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        },\n        \"periodic\": {\n          \"seconds\": \"<int64>\"\n        },\n        \"retain\": \"<int64>\",\n        \"weekly\": {\n          \"day\": \"SdkTimeWeekdaySunday\",\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        }\n      }\n    ],\n    \"src_volume_id\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"backup_schedule_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cadb84f8-e6a0-43e0-8aeb-c2e646d430da",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "cloudbackups",
+                    "schedules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cloud_sched_info\": {\n    \"credential_id\": \"<string>\",\n    \"full\": \"<boolean>\",\n    \"group_id\": \"<string>\",\n    \"labels\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\",\n      \"key_2\": \"<string>\"\n    },\n    \"max_backups\": \"<uint64>\",\n    \"retention_days\": \"<long>\",\n    \"schedules\": [\n      {\n        \"daily\": {\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        },\n        \"monthly\": {\n          \"day\": \"<integer>\",\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        },\n        \"periodic\": {\n          \"seconds\": \"<int64>\"\n        },\n        \"retain\": \"<int64>\",\n        \"weekly\": {\n          \"day\": \"SdkTimeWeekdaySunday\",\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        }\n      },\n      {\n        \"daily\": {\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        },\n        \"monthly\": {\n          \"day\": \"<integer>\",\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        },\n        \"periodic\": {\n          \"seconds\": \"<int64>\"\n        },\n        \"retain\": \"<int64>\",\n        \"weekly\": {\n          \"day\": \"SdkTimeWeekdaySunday\",\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        }\n      }\n    ],\n    \"src_volume_id\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 232,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fd9cb93c-afa1-48de-a4b3-97d6c64e960d",
+          "name": "Update existing cloud backup schedule",
+          "request": {
+            "name": "Update existing cloud backup schedule",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "cloudbackups",
+                "schedules"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cloud_sched_info\": {\n    \"credential_id\": \"<string>\",\n    \"full\": \"<boolean>\",\n    \"group_id\": \"<string>\",\n    \"labels\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\",\n      \"key_2\": \"<string>\"\n    },\n    \"max_backups\": \"<uint64>\",\n    \"retention_days\": \"<long>\",\n    \"schedules\": [\n      {\n        \"daily\": {\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        },\n        \"monthly\": {\n          \"day\": \"<integer>\",\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        },\n        \"periodic\": {\n          \"seconds\": \"<int64>\"\n        },\n        \"retain\": \"<int64>\",\n        \"weekly\": {\n          \"day\": \"SdkTimeWeekdaySunday\",\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        }\n      },\n      {\n        \"daily\": {\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        },\n        \"monthly\": {\n          \"day\": \"<integer>\",\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        },\n        \"periodic\": {\n          \"seconds\": \"<int64>\"\n        },\n        \"retain\": \"<int64>\",\n        \"weekly\": {\n          \"day\": \"SdkTimeWeekdaySunday\",\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        }\n      }\n    ],\n    \"src_volume_id\": \"<string>\"\n  },\n  \"sched_uuid\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4ee0db90-dc45-4fa3-a01a-4001e1abc967",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "cloudbackups",
+                    "schedules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cloud_sched_info\": {\n    \"credential_id\": \"<string>\",\n    \"full\": \"<boolean>\",\n    \"group_id\": \"<string>\",\n    \"labels\": {\n      \"key_0\": \"<string>\"\n    },\n    \"max_backups\": \"<uint64>\",\n    \"retention_days\": \"<long>\",\n    \"schedules\": [\n      {\n        \"daily\": {\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        },\n        \"monthly\": {\n          \"day\": \"<integer>\",\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        },\n        \"periodic\": {\n          \"seconds\": \"<int64>\"\n        },\n        \"retain\": \"<int64>\",\n        \"weekly\": {\n          \"day\": \"SdkTimeWeekdaySunday\",\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        }\n      },\n      {\n        \"daily\": {\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        },\n        \"monthly\": {\n          \"day\": \"<integer>\",\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        },\n        \"periodic\": {\n          \"seconds\": \"<int64>\"\n        },\n        \"retain\": \"<int64>\",\n        \"weekly\": {\n          \"day\": \"SdkTimeWeekdaySunday\",\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        }\n      }\n    ],\n    \"src_volume_id\": \"<string>\"\n  },\n  \"sched_uuid\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "479060b1-8855-4c87-994a-d7dc90212a3a",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "cloudbackups",
+                    "schedules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cloud_sched_info\": {\n    \"credential_id\": \"<string>\",\n    \"full\": \"<boolean>\",\n    \"group_id\": \"<string>\",\n    \"labels\": {\n      \"key_0\": \"<string>\"\n    },\n    \"max_backups\": \"<uint64>\",\n    \"retention_days\": \"<long>\",\n    \"schedules\": [\n      {\n        \"daily\": {\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        },\n        \"monthly\": {\n          \"day\": \"<integer>\",\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        },\n        \"periodic\": {\n          \"seconds\": \"<int64>\"\n        },\n        \"retain\": \"<int64>\",\n        \"weekly\": {\n          \"day\": \"SdkTimeWeekdaySunday\",\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        }\n      },\n      {\n        \"daily\": {\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        },\n        \"monthly\": {\n          \"day\": \"<integer>\",\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        },\n        \"periodic\": {\n          \"seconds\": \"<int64>\"\n        },\n        \"retain\": \"<int64>\",\n        \"weekly\": {\n          \"day\": \"SdkTimeWeekdaySunday\",\n          \"hour\": \"<integer>\",\n          \"minute\": \"<integer>\"\n        }\n      }\n    ],\n    \"src_volume_id\": \"<string>\"\n  },\n  \"sched_uuid\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 232,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7445e408-ec35-4306-8370-b756bfc63e2e",
+          "name": "Delete cloud backup schedule",
+          "request": {
+            "name": "Delete cloud backup schedule",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "cloudbackups",
+                "schedules",
+                ":backup_schedule_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "backup_schedule_id",
+                  "description": "(Required) Id of cloud backup to delete"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0ed764ad-70b2-4f64-95ad-fb0f98a56cf3",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "cloudbackups",
+                    "schedules",
+                    ":backup_schedule_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "backup_schedule_id",
+                      "description": "(Required) Id of cloud backup to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cb6a3423-f729-4090-ad93-ee811a2bd864",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "cloudbackups",
+                    "schedules",
+                    ":backup_schedule_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "backup_schedule_id",
+                      "description": "(Required) Id of cloud backup to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 232,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f55bedec-4f29-4881-9100-866a1232de7f",
+          "name": "Size returns the size of any cloud backups of a volume",
+          "request": {
+            "name": "Size returns the size of any cloud backups of a volume",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "cloudbackups",
+                "size"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "backup_id",
+                  "value": "<string>",
+                  "description": "BackupId is a value which is used to get information on the\nsize of the specified backup."
+                },
+                {
+                  "disabled": false,
+                  "key": "credential_id",
+                  "value": "<string>",
+                  "description": "Credential id describe the credentials for the cloud."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cf441ad5-4e7c-4ac6-8265-7273fe7c9adf",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "cloudbackups",
+                    "size"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "backup_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "credential_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"capacity_required_for_restore\": \"string\",\n  \"compressed_object_bytes\": \"string\",\n  \"size\": \"string\",\n  \"total_download_bytes\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "39484dfe-f9ba-48ce-88a4-5f6f342bdf53",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "cloudbackups",
+                    "size"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "backup_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "credential_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 232,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4e7c786d-a2eb-46a2-bbff-7ad8a98adceb",
+          "name": "StateChange can be used to stop, pause, and restart a backup",
+          "request": {
+            "name": "StateChange can be used to stop, pause, and restart a backup",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "cloudbackups",
+                "statechange"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"requested_state\": \"SdkCloudBackupRequestedStateUnknown\",\n  \"task_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a2d768c7-ac0a-4f92-a9c0-471a04312780",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "cloudbackups",
+                    "statechange"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requested_state\": \"SdkCloudBackupRequestedStateUnknown\",\n  \"task_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1952a8f4-d49d-4386-8d07-bb2ac457c0ea",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "cloudbackups",
+                    "statechange"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requested_state\": \"SdkCloudBackupRequestedStateUnknown\",\n  \"task_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 232,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4b000ab2-26f5-4507-876c-dcb06f10169b",
+          "name": "Status returns the status of any cloud backups of a volume",
+          "request": {
+            "name": "Status returns the status of any cloud backups of a volume",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "cloudbackups",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"local\": \"<boolean>\",\n  \"near_sync_migrate\": \"<boolean>\",\n  \"task_id\": \"<string>\",\n  \"volume_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "af8b9c5f-2b9f-4ff3-9147-af410379388e",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "cloudbackups",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"local\": \"<boolean>\",\n  \"near_sync_migrate\": \"<boolean>\",\n  \"task_id\": \"<string>\",\n  \"volume_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statuses\": {\n    \"key_0\": {\n      \"backup_id\": \"string\",\n      \"bytes_done\": \"string\",\n      \"bytes_total\": \"string\",\n      \"completed_time\": \"1956-01-23T08:19:42.890Z\",\n      \"credential_id\": \"string\",\n      \"eta_seconds\": \"string\",\n      \"group_id\": \"string\",\n      \"info\": [\n        \"string\",\n        \"string\"\n      ],\n      \"node_id\": \"string\",\n      \"optype\": \"SdkCloudBackupOpTypeUnknown\",\n      \"src_volume_id\": \"string\",\n      \"start_time\": \"1998-04-06T08:34:37.922Z\",\n      \"status\": \"SdkCloudBackupStatusTypeUnknown\"\n    },\n    \"key_1\": {\n      \"backup_id\": \"string\",\n      \"bytes_done\": \"string\",\n      \"bytes_total\": \"string\",\n      \"completed_time\": \"1986-01-02T14:09:11.229Z\",\n      \"credential_id\": \"string\",\n      \"eta_seconds\": \"string\",\n      \"group_id\": \"string\",\n      \"info\": [\n        \"string\",\n        \"string\"\n      ],\n      \"node_id\": \"string\",\n      \"optype\": \"SdkCloudBackupOpTypeUnknown\",\n      \"src_volume_id\": \"string\",\n      \"start_time\": \"1982-05-12T12:32:14.037Z\",\n      \"status\": \"SdkCloudBackupStatusTypeUnknown\"\n    },\n    \"key_2\": {\n      \"backup_id\": \"string\",\n      \"bytes_done\": \"string\",\n      \"bytes_total\": \"string\",\n      \"completed_time\": \"1966-05-10T07:45:03.984Z\",\n      \"credential_id\": \"string\",\n      \"eta_seconds\": \"string\",\n      \"group_id\": \"string\",\n      \"info\": [\n        \"string\",\n        \"string\"\n      ],\n      \"node_id\": \"string\",\n      \"optype\": \"SdkCloudBackupOpTypeUnknown\",\n      \"src_volume_id\": \"string\",\n      \"start_time\": \"1982-12-24T22:04:49.917Z\",\n      \"status\": \"SdkCloudBackupStatusTypeUnknown\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3184b1a0-24f4-4aef-9afd-9abd476d0513",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "cloudbackups",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"local\": \"<boolean>\",\n  \"near_sync_migrate\": \"<boolean>\",\n  \"task_id\": \"<string>\",\n  \"volume_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 232,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c627124e-5652-44d8-aadd-11bf405331e1",
+    "name": "OpenStorage SDK OpenStorageAlerts OpenStorageCloudBackup API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

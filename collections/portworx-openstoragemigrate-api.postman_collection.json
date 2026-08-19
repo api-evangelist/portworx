@@ -1,0 +1,496 @@
+{
+  "item": [
+    {
+      "id": "21414b7b-adb1-455b-9909-60f03b5eb53e",
+      "name": "OpenStorageMigrate",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "39b9f37c-6cac-4af0-bf9e-e95aaf71554b",
+          "name": "Status for migration operation.\nIf status request is empty, status for all migration operation will be returned.",
+          "request": {
+            "name": "Status for migration operation.\nIf status request is empty, status for all migration operation will be returned.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "volumemigrate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "request.task_id",
+                  "value": "<string>",
+                  "description": "Task id for which to return status."
+                },
+                {
+                  "disabled": false,
+                  "key": "request.cluster_id",
+                  "value": "<string>",
+                  "description": "ID of the cluster for which to return migration statuses."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3c13663d-e729-455f-927c-d56873146d45",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "volumemigrate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "request.task_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "request.cluster_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"result\": {\n    \"info\": {\n      \"key_0\": {\n        \"list\": [\n          {\n            \"bytes_done\": \"string\",\n            \"bytes_total\": \"string\",\n            \"cloudbackup_id\": \"string\",\n            \"cluster_id\": \"string\",\n            \"completed_time\": \"1980-09-06T17:56:51.354Z\",\n            \"current_stage\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"error_reason\": \"string\",\n            \"eta_seconds\": \"string\",\n            \"last_update\": \"1993-04-01T23:24:57.592Z\",\n            \"local_volume_id\": \"string\",\n            \"local_volume_name\": \"string\",\n            \"remote_volume_id\": \"string\",\n            \"start_time\": \"1986-07-30T01:36:19.880Z\",\n            \"status\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"task_id\": \"string\"\n          },\n          {\n            \"bytes_done\": \"string\",\n            \"bytes_total\": \"string\",\n            \"cloudbackup_id\": \"string\",\n            \"cluster_id\": \"string\",\n            \"completed_time\": \"1984-01-29T04:14:07.960Z\",\n            \"current_stage\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"error_reason\": \"string\",\n            \"eta_seconds\": \"string\",\n            \"last_update\": \"1981-02-27T07:04:56.682Z\",\n            \"local_volume_id\": \"string\",\n            \"local_volume_name\": \"string\",\n            \"remote_volume_id\": \"string\",\n            \"start_time\": \"1951-11-06T05:51:18.835Z\",\n            \"status\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"task_id\": \"string\"\n          }\n        ]\n      },\n      \"key_1\": {\n        \"list\": [\n          {\n            \"bytes_done\": \"string\",\n            \"bytes_total\": \"string\",\n            \"cloudbackup_id\": \"string\",\n            \"cluster_id\": \"string\",\n            \"completed_time\": \"1947-12-15T22:47:36.420Z\",\n            \"current_stage\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"error_reason\": \"string\",\n            \"eta_seconds\": \"string\",\n            \"last_update\": \"1991-03-23T00:44:50.725Z\",\n            \"local_volume_id\": \"string\",\n            \"local_volume_name\": \"string\",\n            \"remote_volume_id\": \"string\",\n            \"start_time\": \"2002-01-20T11:51:31.109Z\",\n            \"status\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"task_id\": \"string\"\n          },\n          {\n            \"bytes_done\": \"string\",\n            \"bytes_total\": \"string\",\n            \"cloudbackup_id\": \"string\",\n            \"cluster_id\": \"string\",\n            \"completed_time\": \"2012-07-30T11:29:31.205Z\",\n            \"current_stage\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"error_reason\": \"string\",\n            \"eta_seconds\": \"string\",\n            \"last_update\": \"1960-09-23T09:22:29.472Z\",\n            \"local_volume_id\": \"string\",\n            \"local_volume_name\": \"string\",\n            \"remote_volume_id\": \"string\",\n            \"start_time\": \"1989-08-01T17:18:05.568Z\",\n            \"status\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"task_id\": \"string\"\n          }\n        ]\n      },\n      \"key_2\": {\n        \"list\": [\n          {\n            \"bytes_done\": \"string\",\n            \"bytes_total\": \"string\",\n            \"cloudbackup_id\": \"string\",\n            \"cluster_id\": \"string\",\n            \"completed_time\": \"1965-09-02T08:06:43.550Z\",\n            \"current_stage\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"error_reason\": \"string\",\n            \"eta_seconds\": \"string\",\n            \"last_update\": \"1980-07-21T01:26:44.284Z\",\n            \"local_volume_id\": \"string\",\n            \"local_volume_name\": \"string\",\n            \"remote_volume_id\": \"string\",\n            \"start_time\": \"1975-11-03T18:21:06.404Z\",\n            \"status\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"task_id\": \"string\"\n          },\n          {\n            \"bytes_done\": \"string\",\n            \"bytes_total\": \"string\",\n            \"cloudbackup_id\": \"string\",\n            \"cluster_id\": \"string\",\n            \"completed_time\": \"1965-02-28T02:48:21.517Z\",\n            \"current_stage\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"error_reason\": \"string\",\n            \"eta_seconds\": \"string\",\n            \"last_update\": \"1970-01-28T02:24:35.249Z\",\n            \"local_volume_id\": \"string\",\n            \"local_volume_name\": \"string\",\n            \"remote_volume_id\": \"string\",\n            \"start_time\": \"1981-06-24T17:33:47.762Z\",\n            \"status\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"task_id\": \"string\"\n          }\n        ]\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "423dffcf-8c34-4fb0-afb6-24af014ebbf3",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "volumemigrate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "request.task_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "request.cluster_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 4914,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "eba693f2-a825-4bf9-9e4b-15d64af59d2f",
+          "name": "Start a migration operation",
+          "request": {
+            "name": "Start a migration operation",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "volumemigrate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"all_volumes\": \"<object>\",\n  \"cluster_id\": \"<string>\",\n  \"task_id\": \"<string>\",\n  \"volume\": {\n    \"volume_id\": \"<string>\"\n  },\n  \"volume_group\": {\n    \"group_id\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cf7cd3cd-7f95-42be-a9be-fb492016a480",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "volumemigrate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"all_volumes\": \"<object>\",\n  \"cluster_id\": \"<string>\",\n  \"task_id\": \"<string>\",\n  \"volume\": {\n    \"volume_id\": \"<string>\"\n  },\n  \"volume_group\": {\n    \"group_id\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"result\": {\n    \"task_id\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1e0d6e34-0eb0-4300-8435-6e4ad610c97a",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "volumemigrate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"all_volumes\": \"<object>\",\n  \"cluster_id\": \"<string>\",\n  \"task_id\": \"<string>\",\n  \"volume\": {\n    \"volume_id\": \"<string>\"\n  },\n  \"volume_group\": {\n    \"group_id\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 2011,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1d5bd220-dc5f-4fb1-829b-dce4b95a2023",
+          "name": "Cancel a migration operation",
+          "request": {
+            "name": "Cancel a migration operation",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "volumemigrate",
+                "cancel"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"request\": {\n    \"task_id\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9cab2fff-4833-4366-a63b-40edc36fe2c6",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "volumemigrate",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"request\": {\n    \"task_id\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b5a55e00-a4c7-428b-a286-25e257d381ab",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "volumemigrate",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"request\": {\n    \"task_id\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 2011,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "37e391a0-c482-47e6-ad35-f716ae11195c",
+    "name": "OpenStorage SDK OpenStorageAlerts OpenStorageMigrate API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

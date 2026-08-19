@@ -1,0 +1,593 @@
+{
+  "item": [
+    {
+      "id": "342ff611-e014-4f07-8408-c696dce11d00",
+      "name": "OpenStorageFilesystemDefrag",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c5effa20-c6f8-48df-9fa1-d3637a15158e",
+          "name": "Create a schedule to run defragmentation tasks periodically",
+          "request": {
+            "name": "Create a schedule to run defragmentation tasks periodically",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "filesystem-defrag",
+                "schedule"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"defrag_task\": {\n    \"current_running_nodes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"exclude_nodes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"include_nodes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"max_duration_minutes\": \"<long>\",\n    \"max_nodes_in_parallel\": \"<long>\",\n    \"node_selector\": [\n      {\n        \"key\": \"<string>\",\n        \"operator\": \"In\",\n        \"values\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"key\": \"<string>\",\n        \"operator\": \"In\",\n        \"values\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ],\n    \"schedule_id\": \"<string>\",\n    \"schedule_one_iteration_only\": \"<boolean>\"\n  },\n  \"start_time\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c97e2425-fb09-440f-817f-7ab685beb45d",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "filesystem-defrag",
+                    "schedule"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"defrag_task\": {\n    \"current_running_nodes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"exclude_nodes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"include_nodes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"max_duration_minutes\": \"<long>\",\n    \"max_nodes_in_parallel\": \"<long>\",\n    \"node_selector\": [\n      {\n        \"key\": \"<string>\",\n        \"operator\": \"In\",\n        \"values\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"key\": \"<string>\",\n        \"operator\": \"In\",\n        \"values\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ],\n    \"schedule_id\": \"<string>\",\n    \"schedule_one_iteration_only\": \"<boolean>\"\n  },\n  \"start_time\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"schedule\": {\n    \"create_time\": \"2021-12-13T23:11:40.935Z\",\n    \"id\": \"string\",\n    \"last_update_time\": \"1989-10-04T19:16:53.256Z\",\n    \"max_duration_minutes\": 9408,\n    \"start_time\": \"string\",\n    \"tasks\": [\n      {\n        \"clouddrive_transfer\": {\n          \"destination_instance_id\": \"string\",\n          \"source_driveset_id\": \"string\",\n          \"status\": \"string\"\n        },\n        \"collect_diags\": {\n          \"request\": {\n            \"filename\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"issuer\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"live\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"node\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"profile_only\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"timeout_mins\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"volume\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"statuses\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"create_time\": \"2001-06-28T02:54:01.436Z\",\n        \"defrag\": {\n          \"current_running_nodes\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"exclude_nodes\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"include_nodes\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"max_duration_minutes\": \"<long>\",\n          \"max_nodes_in_parallel\": \"<long>\",\n          \"node_selector\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"schedule_id\": \"<string>\",\n          \"schedule_one_iteration_only\": \"<boolean>\"\n        },\n        \"drain_attachments\": {\n          \"Status\": \"string\",\n          \"create_time\": \"1965-11-19T08:17:24.254Z\",\n          \"issuer\": \"string\",\n          \"last_update_time\": \"1988-07-22T23:40:40.354Z\",\n          \"node_id\": \"string\",\n          \"parameters\": {\n            \"issuer\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"node_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"only_sharedv4\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"selector\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"id\": \"string\",\n        \"last_update_time\": \"1983-10-08T05:37:33.947Z\",\n        \"state\": \"UNSPECIFIED_STATE\",\n        \"type\": \"UNSPECIFIED_TYPE\"\n      },\n      {\n        \"clouddrive_transfer\": {\n          \"destination_instance_id\": \"string\",\n          \"source_driveset_id\": \"string\",\n          \"status\": \"string\"\n        },\n        \"collect_diags\": {\n          \"request\": {\n            \"filename\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"issuer\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"live\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"node\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"profile_only\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"timeout_mins\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"volume\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"statuses\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"create_time\": \"1946-11-08T04:37:42.944Z\",\n        \"defrag\": {\n          \"current_running_nodes\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"exclude_nodes\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"include_nodes\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"max_duration_minutes\": \"<long>\",\n          \"max_nodes_in_parallel\": \"<long>\",\n          \"node_selector\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"schedule_id\": \"<string>\",\n          \"schedule_one_iteration_only\": \"<boolean>\"\n        },\n        \"drain_attachments\": {\n          \"Status\": \"string\",\n          \"create_time\": \"2025-04-27T00:48:21.803Z\",\n          \"issuer\": \"string\",\n          \"last_update_time\": \"1979-09-22T12:05:00.111Z\",\n          \"node_id\": \"string\",\n          \"parameters\": {\n            \"issuer\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"node_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"only_sharedv4\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"selector\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"id\": \"string\",\n        \"last_update_time\": \"2022-12-14T22:37:52.935Z\",\n        \"state\": \"UNSPECIFIED_STATE\",\n        \"type\": \"UNSPECIFIED_TYPE\"\n      }\n    ],\n    \"type\": \"UNSPECIFIED_TYPE\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ed0b1277-0c03-4ad1-b28b-6506860eaacb",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "filesystem-defrag",
+                    "schedule"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"defrag_task\": {\n    \"current_running_nodes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"exclude_nodes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"include_nodes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"max_duration_minutes\": \"<long>\",\n    \"max_nodes_in_parallel\": \"<long>\",\n    \"node_selector\": [\n      {\n        \"key\": \"<string>\",\n        \"operator\": \"In\",\n        \"values\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"key\": \"<string>\",\n        \"operator\": \"In\",\n        \"values\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ],\n    \"schedule_id\": \"<string>\",\n    \"schedule_one_iteration_only\": \"<boolean>\"\n  },\n  \"start_time\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6183,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e79c3dd1-93e5-4a47-b5ee-47259d16976c",
+          "name": "Clean up all defrag schedules and stop all operations",
+          "request": {
+            "name": "Clean up all defrag schedules and stop all operations",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "filesystem-defrag",
+                "schedules"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "61b4deda-a906-4f00-bbe9-79c97191d1f6",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "filesystem-defrag",
+                    "schedules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "17b0e6b8-4dc4-4e22-92a6-75eee8e864ce",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "filesystem-defrag",
+                    "schedules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 105,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "31edbe54-fac8-48aa-81bd-976c58a1b201",
+          "name": "Enumerate all nodes, returning defrag status of the entire cluster",
+          "request": {
+            "name": "Enumerate all nodes, returning defrag status of the entire cluster",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "filesystem-defrag",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6fa212f9-b88a-4ee9-b644-0b32f17311c8",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "filesystem-defrag",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"key_0\": {\n      \"data_ip\": \"string\",\n      \"defrag_node_status\": {\n        \"last_update_time\": \"2014-12-09T17:17:48.140Z\",\n        \"pool_status\": {\n          \"key_0\": {\n            \"last_complete_time\": \"1980-10-06T09:59:02.212Z\",\n            \"last_offset\": \"string\",\n            \"last_start_time\": \"2001-02-17T11:21:51.624Z\",\n            \"last_success\": false,\n            \"last_volume_id\": \"string\",\n            \"num_iterations\": 6672,\n            \"progress_percentage\": 6526,\n            \"running\": false\n          }\n        },\n        \"running_schedule\": \"string\"\n      },\n      \"pool_usage\": {\n        \"key_0\": 839\n      },\n      \"scheduler_node_name\": \"string\"\n    },\n    \"key_1\": {\n      \"data_ip\": \"string\",\n      \"defrag_node_status\": {\n        \"last_update_time\": \"2000-04-24T10:24:22.685Z\",\n        \"pool_status\": {\n          \"key_0\": {\n            \"last_complete_time\": \"2024-12-30T19:56:00.400Z\",\n            \"last_offset\": \"string\",\n            \"last_start_time\": \"2011-03-21T01:45:56.144Z\",\n            \"last_success\": false,\n            \"last_volume_id\": \"string\",\n            \"num_iterations\": 8699,\n            \"progress_percentage\": 2552,\n            \"running\": false\n          },\n          \"key_1\": {\n            \"last_complete_time\": \"2025-04-04T20:37:03.661Z\",\n            \"last_offset\": \"string\",\n            \"last_start_time\": \"2009-02-19T04:33:27.031Z\",\n            \"last_success\": true,\n            \"last_volume_id\": \"string\",\n            \"num_iterations\": 4620,\n            \"progress_percentage\": 2305,\n            \"running\": true\n          },\n          \"key_2\": {\n            \"last_complete_time\": \"2011-08-03T09:14:32.816Z\",\n            \"last_offset\": \"string\",\n            \"last_start_time\": \"1963-06-18T01:32:49.812Z\",\n            \"last_success\": false,\n            \"last_volume_id\": \"string\",\n            \"num_iterations\": 8975,\n            \"progress_percentage\": 5834,\n            \"running\": false\n          }\n        },\n        \"running_schedule\": \"string\"\n      },\n      \"pool_usage\": {\n        \"key_0\": 2046,\n        \"key_1\": 7154,\n        \"key_2\": 8492,\n        \"key_3\": 947\n      },\n      \"scheduler_node_name\": \"string\"\n    },\n    \"key_2\": {\n      \"data_ip\": \"string\",\n      \"defrag_node_status\": {\n        \"last_update_time\": \"1991-07-29T09:25:34.528Z\",\n        \"pool_status\": {\n          \"key_0\": {\n            \"last_complete_time\": \"1992-01-23T00:52:51.344Z\",\n            \"last_offset\": \"string\",\n            \"last_start_time\": \"1957-12-13T03:45:45.378Z\",\n            \"last_success\": false,\n            \"last_volume_id\": \"string\",\n            \"num_iterations\": 8266,\n            \"progress_percentage\": 8403,\n            \"running\": false\n          }\n        },\n        \"running_schedule\": \"string\"\n      },\n      \"pool_usage\": {\n        \"key_0\": 4725\n      },\n      \"scheduler_node_name\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6f268c27-c780-46d5-bcda-b36ba94b7d67",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "filesystem-defrag",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 105,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a846efea-c19b-4b72-87ce-aa39811a394e",
+          "name": "Get defrag status of a node",
+          "request": {
+            "name": "Get defrag status of a node",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "filesystem-defrag",
+                "status",
+                ":node_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "node_id",
+                  "description": "(Required) NodeId is uuid of the node"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9762ea5c-4925-467f-8a25-ffa767924157",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "filesystem-defrag",
+                    "status",
+                    ":node_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "node_id",
+                      "description": "(Required) NodeId is uuid of the node"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data_ip\": \"string\",\n  \"defrag_node_status\": {\n    \"last_update_time\": \"1984-02-19T08:03:52.112Z\",\n    \"pool_status\": {\n      \"key_0\": {\n        \"last_complete_time\": \"1960-11-14T22:19:41.440Z\",\n        \"last_offset\": \"string\",\n        \"last_start_time\": \"1958-10-23T23:11:24.293Z\",\n        \"last_success\": true,\n        \"last_volume_id\": \"string\",\n        \"num_iterations\": 1703,\n        \"progress_percentage\": 8785,\n        \"running\": true\n      },\n      \"key_1\": {\n        \"last_complete_time\": \"2014-03-07T09:04:51.445Z\",\n        \"last_offset\": \"string\",\n        \"last_start_time\": \"1952-06-02T22:07:47.740Z\",\n        \"last_success\": true,\n        \"last_volume_id\": \"string\",\n        \"num_iterations\": 4142,\n        \"progress_percentage\": 8904,\n        \"running\": false\n      }\n    },\n    \"running_schedule\": \"string\"\n  },\n  \"pool_usage\": {\n    \"key_0\": 7184,\n    \"key_1\": 1901,\n    \"key_2\": 6571\n  },\n  \"scheduler_node_name\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "85061e1b-cab3-4a9a-873c-219b43a1bb47",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "filesystem-defrag",
+                    "status",
+                    ":node_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "node_id",
+                      "description": "(Required) NodeId is uuid of the node"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 105,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "354cda7e-3508-4807-8aaa-7a2d9e76f51a",
+    "name": "OpenStorage SDK OpenStorageAlerts OpenStorageFilesystemDefrag API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

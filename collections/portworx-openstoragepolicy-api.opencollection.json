@@ -1,0 +1,152 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenStorage SDK OpenStorageAlerts OpenStoragePolicy API",
+    "version": "0.186.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "OpenStoragePolicy",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Enumerate returns a list of storage policies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/storagepolicies"
+          },
+          "docs": "Enumerate returns a list of storage policies"
+        },
+        {
+          "info": {
+            "name": "Creates a storage policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/storagepolicies",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a storage policy"
+        },
+        {
+          "info": {
+            "name": "Updates specified storage policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/v1/storagepolicies",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates specified storage policy"
+        },
+        {
+          "info": {
+            "name": "DefaultInspect return default storage policy if any, otherwise\nempty response",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/storagepolicies/default"
+          },
+          "docs": "DefaultInspect return default storage policy if any, otherwise\nempty response"
+        },
+        {
+          "info": {
+            "name": "Set specified storage policy as default policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/storagepolicies/default/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "name of policy to set as default storage policy\nfor volume creation\nThis policy will be used to validate/update volume configuration"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set specified storage policy as default policy"
+        },
+        {
+          "info": {
+            "name": "Inspect returns information about a specified storage policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/storagepolicies/inspect/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "name of storage policy to retrive"
+              }
+            ]
+          },
+          "docs": "Inspect returns information about a specified storage policy"
+        },
+        {
+          "info": {
+            "name": "Release specified storage policy constraint for volume\ncreation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/storagepolicies/release",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Release specified storage policy constraint for volume\ncreation"
+        },
+        {
+          "info": {
+            "name": "Deletes specified storage policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v1/storagepolicies/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "name of storage policy to delete"
+              }
+            ]
+          },
+          "docs": "Deletes specified storage policy"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

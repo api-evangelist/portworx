@@ -1,0 +1,285 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenStorage SDK OpenStorageAlerts OpenStorageCloudBackup API",
+    "version": "0.186.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "OpenStorageCloudBackup",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Creates a backup request for a specified volume. Use\nOpenStorageCloudBackup.Status() to get the current status of the\nbackup request.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/cloudbackups",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Requires access AccessType.Read of volume"
+        },
+        {
+          "info": {
+            "name": "Deletes a backup stored in the cloud. If the backup is an incremental\nbackup and other backups are dependent on it, it will not be able to be deleted.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v1/cloudbackups/backup/:backup_id",
+            "params": [
+              {
+                "name": "backup_id",
+                "value": "",
+                "type": "path",
+                "description": "ID is the ID of the cloud backup"
+              },
+              {
+                "name": "credential_id",
+                "value": "",
+                "type": "query",
+                "description": "Credential id is the credential for cloud to be used for the request."
+              },
+              {
+                "name": "force",
+                "value": "",
+                "type": "query",
+                "description": "Force Delete cloudbackup even if there are dependencies. This may be\nneeded if the backup is an incremental backup and subsequent backups\ndepend on this backup specified by `backup_id`."
+              },
+              {
+                "name": "bucket",
+                "value": "",
+                "type": "query",
+                "description": "Bucket name to which cloud backup belongs to."
+              }
+            ]
+          },
+          "docs": "Deletes a backup stored in the cloud. If the backup is an incremental\nbackup and other backups are dependent on it, it will not be able to be deleted."
+        },
+        {
+          "info": {
+            "name": "Catalog returns a list of the contents in the backup",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/cloudbackups/catalog",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Catalog returns a list of the contents in the backup"
+        },
+        {
+          "info": {
+            "name": "DeleteAll deletes all the backups in the cloud for the specified volume.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/cloudbackups/deleteall",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "DeleteAll deletes all the backups in the cloud for the specified volume."
+        },
+        {
+          "info": {
+            "name": "Return a list of backups for the specified volume",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/cloudbackups/enumerate/filters",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Return a list of backups for the specified volume"
+        },
+        {
+          "info": {
+            "name": "Creates a group backup request for a specified group. Use\nOpenStorageCloudBackup.Status() to get the current status of the\nbackup request.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/cloudbackups/group",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This will only backup volumes which the user has read_access to."
+        },
+        {
+          "info": {
+            "name": "History returns a list of backups for a specified volume",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/cloudbackups/history/:src_volume_id",
+            "params": [
+              {
+                "name": "src_volume_id",
+                "value": "",
+                "type": "path",
+                "description": "This optional value defines which history of backups is being\nrequested. If not provided, it will return the history for all volumes."
+              }
+            ]
+          },
+          "docs": "History returns a list of backups for a specified volume"
+        },
+        {
+          "info": {
+            "name": "Restore creates a new volume from a backup id. The newly created volume\nhas an ha_level (number of replicas) of only 1. To increase the number of\nreplicas, use OpenStorageVolume.Set() to change the ha_level.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/cloudbackups/restore",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Restore creates a new volume from a backup id. The newly created volume\nhas an ha_level (number of replicas) of only 1. To increase the number of\nreplicas, use OpenStorageVolume.Set() to change the ha_level."
+        },
+        {
+          "info": {
+            "name": "Enumerate cloud backup schedules",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/cloudbackups/schedules"
+          },
+          "docs": "Enumerate cloud backup schedules"
+        },
+        {
+          "info": {
+            "name": "Create cloud backup schedule",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/cloudbackups/schedules",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create cloud backup schedule"
+        },
+        {
+          "info": {
+            "name": "Update existing cloud backup schedule",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/v1/cloudbackups/schedules",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update existing cloud backup schedule"
+        },
+        {
+          "info": {
+            "name": "Delete cloud backup schedule",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v1/cloudbackups/schedules/:backup_schedule_id",
+            "params": [
+              {
+                "name": "backup_schedule_id",
+                "value": "",
+                "type": "path",
+                "description": "Id of cloud backup to delete"
+              }
+            ]
+          },
+          "docs": "Delete cloud backup schedule"
+        },
+        {
+          "info": {
+            "name": "Size returns the size of any cloud backups of a volume",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/cloudbackups/size",
+            "params": [
+              {
+                "name": "backup_id",
+                "value": "",
+                "type": "query",
+                "description": "BackupId is a value which is used to get information on the\nsize of the specified backup."
+              },
+              {
+                "name": "credential_id",
+                "value": "",
+                "type": "query",
+                "description": "Credential id describe the credentials for the cloud."
+              }
+            ]
+          },
+          "docs": "Size returns the size of any cloud backups of a volume"
+        },
+        {
+          "info": {
+            "name": "StateChange can be used to stop, pause, and restart a backup",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/cloudbackups/statechange",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "StateChange can be used to stop, pause, and restart a backup"
+        },
+        {
+          "info": {
+            "name": "Status returns the status of any cloud backups of a volume",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/cloudbackups/status",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Status returns the status of any cloud backups of a volume"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenStorage SDK OpenStorageAlerts OpenStorageDiags API",
+    "version": "0.186.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "OpenStorageDiags",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Collect starts a job to collect diagnostics from set of nodes that are selected based on the selectors provided\nin the SdkDiagsCollectRequest. See SdkDiagsCollectRequest for more details on how to select the nodes\nReturns SdkDiagsCollectResponse which has the job that is responsible for collecting the diags.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/diags",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Collect starts a job to collect diagnostics from set of nodes that are selected based on the selectors provided\nin the SdkDiagsCollectRequest. See SdkDiagsCollectRequest for more details on how to select the nodes\nReturns SdkDiagsCollectResponse which has the job that is responsible for collecting the diags."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

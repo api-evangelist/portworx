@@ -1,0 +1,533 @@
+{
+  "item": [
+    {
+      "id": "301965b6-77d5-4493-a522-abd6fb1fe1e1",
+      "name": "OpenStorageSchedule",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "af6150b0-f6d5-4e8e-8137-7cc577fa515c",
+          "name": "Enumerate returns all the schedules",
+          "request": {
+            "name": "Enumerate returns all the schedules",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "schedules",
+                ":type"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "type",
+                  "description": "(Required) Type is schedule type (cast to string from a Job.Type enum, as the version of\nprotoc-gen-grpc-gateway on release branch doesn't support enum type in REST API path parameter)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0144c502-1420-4ad4-b7f9-9de7868b0c6b",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "schedules",
+                    ":type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "type",
+                      "description": "(Required) Type is schedule type (cast to string from a Job.Type enum, as the version of\nprotoc-gen-grpc-gateway on release branch doesn't support enum type in REST API path parameter)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"schedules\": [\n    {\n      \"create_time\": \"2011-05-18T09:44:44.416Z\",\n      \"id\": \"string\",\n      \"last_update_time\": \"1972-11-18T05:51:39.849Z\",\n      \"max_duration_minutes\": 250,\n      \"start_time\": \"string\",\n      \"tasks\": [\n        {\n          \"clouddrive_transfer\": {\n            \"destination_instance_id\": \"string\",\n            \"source_driveset_id\": \"string\",\n            \"status\": \"string\"\n          },\n          \"collect_diags\": {\n            \"request\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"statuses\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"create_time\": \"2015-01-13T02:19:23.719Z\",\n          \"defrag\": {\n            \"current_running_nodes\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"exclude_nodes\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"include_nodes\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"max_duration_minutes\": 6378,\n            \"max_nodes_in_parallel\": 2817,\n            \"node_selector\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"schedule_id\": \"string\",\n            \"schedule_one_iteration_only\": false\n          },\n          \"drain_attachments\": {\n            \"Status\": \"string\",\n            \"create_time\": \"1970-10-12T08:36:29.687Z\",\n            \"issuer\": \"string\",\n            \"last_update_time\": \"1947-09-26T19:05:08.058Z\",\n            \"node_id\": \"string\",\n            \"parameters\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"id\": \"string\",\n          \"last_update_time\": \"1980-12-20T05:19:51.701Z\",\n          \"state\": \"UNSPECIFIED_STATE\",\n          \"type\": \"UNSPECIFIED_TYPE\"\n        },\n        {\n          \"clouddrive_transfer\": {\n            \"destination_instance_id\": \"string\",\n            \"source_driveset_id\": \"string\",\n            \"status\": \"string\"\n          },\n          \"collect_diags\": {\n            \"request\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"statuses\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"create_time\": \"1983-11-01T06:50:22.239Z\",\n          \"defrag\": {\n            \"current_running_nodes\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"exclude_nodes\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"include_nodes\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"max_duration_minutes\": 5032,\n            \"max_nodes_in_parallel\": 187,\n            \"node_selector\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"schedule_id\": \"string\",\n            \"schedule_one_iteration_only\": false\n          },\n          \"drain_attachments\": {\n            \"Status\": \"string\",\n            \"create_time\": \"1991-10-25T01:39:02.543Z\",\n            \"issuer\": \"string\",\n            \"last_update_time\": \"1977-03-16T06:11:14.984Z\",\n            \"node_id\": \"string\",\n            \"parameters\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"id\": \"string\",\n          \"last_update_time\": \"1983-03-03T05:40:26.183Z\",\n          \"state\": \"UNSPECIFIED_STATE\",\n          \"type\": \"UNSPECIFIED_TYPE\"\n        }\n      ],\n      \"type\": \"UNSPECIFIED_TYPE\"\n    },\n    {\n      \"create_time\": \"1984-09-19T20:03:22.177Z\",\n      \"id\": \"string\",\n      \"last_update_time\": \"1950-06-08T12:52:40.491Z\",\n      \"max_duration_minutes\": 7206,\n      \"start_time\": \"string\",\n      \"tasks\": [\n        {\n          \"clouddrive_transfer\": {\n            \"destination_instance_id\": \"string\",\n            \"source_driveset_id\": \"string\",\n            \"status\": \"string\"\n          },\n          \"collect_diags\": {\n            \"request\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"statuses\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"create_time\": \"2001-10-06T21:50:53.724Z\",\n          \"defrag\": {\n            \"current_running_nodes\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"exclude_nodes\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"include_nodes\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"max_duration_minutes\": 5612,\n            \"max_nodes_in_parallel\": 7550,\n            \"node_selector\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"schedule_id\": \"string\",\n            \"schedule_one_iteration_only\": false\n          },\n          \"drain_attachments\": {\n            \"Status\": \"string\",\n            \"create_time\": \"2015-12-29T01:34:28.636Z\",\n            \"issuer\": \"string\",\n            \"last_update_time\": \"1960-12-05T15:30:53.883Z\",\n            \"node_id\": \"string\",\n            \"parameters\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"id\": \"string\",\n          \"last_update_time\": \"1975-06-19T08:15:29.805Z\",\n          \"state\": \"UNSPECIFIED_STATE\",\n          \"type\": \"UNSPECIFIED_TYPE\"\n        },\n        {\n          \"clouddrive_transfer\": {\n            \"destination_instance_id\": \"string\",\n            \"source_driveset_id\": \"string\",\n            \"status\": \"string\"\n          },\n          \"collect_diags\": {\n            \"request\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"statuses\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"create_time\": \"1962-05-17T14:41:36.197Z\",\n          \"defrag\": {\n            \"current_running_nodes\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"exclude_nodes\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"include_nodes\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"max_duration_minutes\": 1368,\n            \"max_nodes_in_parallel\": 8520,\n            \"node_selector\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"schedule_id\": \"string\",\n            \"schedule_one_iteration_only\": false\n          },\n          \"drain_attachments\": {\n            \"Status\": \"string\",\n            \"create_time\": \"1986-03-23T03:39:37.839Z\",\n            \"issuer\": \"string\",\n            \"last_update_time\": \"1953-12-16T04:37:41.854Z\",\n            \"node_id\": \"string\",\n            \"parameters\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"id\": \"string\",\n          \"last_update_time\": \"2015-08-17T07:17:25.499Z\",\n          \"state\": \"UNSPECIFIED_STATE\",\n          \"type\": \"UNSPECIFIED_TYPE\"\n        }\n      ],\n      \"type\": \"UNSPECIFIED_TYPE\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7cf1cceb-6085-44a2-9961-a6f623237027",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "schedules",
+                    ":type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "type",
+                      "description": "(Required) Type is schedule type (cast to string from a Job.Type enum, as the version of\nprotoc-gen-grpc-gateway on release branch doesn't support enum type in REST API path parameter)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7445,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "402ee619-55ed-41fb-9764-a2c6574f5af1",
+          "name": "Delete deletes a schedule by type and ID",
+          "request": {
+            "name": "Delete deletes a schedule by type and ID",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "schedules",
+                ":type",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "type",
+                  "description": "(Required) Type is schedule type (cast to string from a Job.Type enum, as the version of\nprotoc-gen-grpc-gateway on release branch doesn't support enum type in REST API path parameter)"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) ID of the schedule"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3b1153ff-e7bb-4e8f-8979-08ca15f89ad4",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "schedules",
+                    ":type",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "type",
+                      "description": "(Required) Type is schedule type (cast to string from a Job.Type enum, as the version of\nprotoc-gen-grpc-gateway on release branch doesn't support enum type in REST API path parameter)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) ID of the schedule"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "53f2b008-08ff-4812-aad1-beb1076149c2",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "schedules",
+                    ":type",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "type",
+                      "description": "(Required) Type is schedule type (cast to string from a Job.Type enum, as the version of\nprotoc-gen-grpc-gateway on release branch doesn't support enum type in REST API path parameter)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) ID of the schedule"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5452,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f3c5c923-757c-4409-a396-879bfc8d15b6",
+          "name": "Inspect queries information of a schedule by type and ID",
+          "request": {
+            "name": "Inspect queries information of a schedule by type and ID",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "schedules",
+                ":type",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "type",
+                  "description": "(Required) Type is schedule type (cast to string from a Job.Type enum, as the version of\nprotoc-gen-grpc-gateway on release branch doesn't support enum type in REST API path parameter)"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) ID of the schedule"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fc38573b-7c34-417e-be1d-cbb91d0dbead",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "schedules",
+                    ":type",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "type",
+                      "description": "(Required) Type is schedule type (cast to string from a Job.Type enum, as the version of\nprotoc-gen-grpc-gateway on release branch doesn't support enum type in REST API path parameter)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) ID of the schedule"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"schedule\": {\n    \"create_time\": \"1989-03-30T16:06:51.665Z\",\n    \"id\": \"string\",\n    \"last_update_time\": \"1993-08-20T14:32:54.338Z\",\n    \"max_duration_minutes\": 8530,\n    \"start_time\": \"string\",\n    \"tasks\": [\n      {\n        \"clouddrive_transfer\": {\n          \"destination_instance_id\": \"string\",\n          \"source_driveset_id\": \"string\",\n          \"status\": \"string\"\n        },\n        \"collect_diags\": {\n          \"request\": {\n            \"filename\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"issuer\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"live\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"node\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"profile_only\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"timeout_mins\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"volume\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"statuses\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"create_time\": \"2017-08-16T13:53:25.346Z\",\n        \"defrag\": {\n          \"current_running_nodes\": [\n            \"string\",\n            \"string\"\n          ],\n          \"exclude_nodes\": [\n            \"string\",\n            \"string\"\n          ],\n          \"include_nodes\": [\n            \"string\",\n            \"string\"\n          ],\n          \"max_duration_minutes\": 3698,\n          \"max_nodes_in_parallel\": 532,\n          \"node_selector\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"schedule_id\": \"string\",\n          \"schedule_one_iteration_only\": false\n        },\n        \"drain_attachments\": {\n          \"Status\": \"string\",\n          \"create_time\": \"1972-06-16T03:06:38.103Z\",\n          \"issuer\": \"string\",\n          \"last_update_time\": \"2026-04-03T06:57:35.190Z\",\n          \"node_id\": \"string\",\n          \"parameters\": {\n            \"issuer\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"node_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"only_sharedv4\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"selector\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"id\": \"string\",\n        \"last_update_time\": \"1975-06-18T14:15:01.746Z\",\n        \"state\": \"UNSPECIFIED_STATE\",\n        \"type\": \"UNSPECIFIED_TYPE\"\n      },\n      {\n        \"clouddrive_transfer\": {\n          \"destination_instance_id\": \"string\",\n          \"source_driveset_id\": \"string\",\n          \"status\": \"string\"\n        },\n        \"collect_diags\": {\n          \"request\": {\n            \"filename\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"issuer\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"live\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"node\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"profile_only\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"timeout_mins\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"volume\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"statuses\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"create_time\": \"1974-07-06T17:54:12.252Z\",\n        \"defrag\": {\n          \"current_running_nodes\": [\n            \"string\",\n            \"string\"\n          ],\n          \"exclude_nodes\": [\n            \"string\",\n            \"string\"\n          ],\n          \"include_nodes\": [\n            \"string\",\n            \"string\"\n          ],\n          \"max_duration_minutes\": 8476,\n          \"max_nodes_in_parallel\": 458,\n          \"node_selector\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"schedule_id\": \"string\",\n          \"schedule_one_iteration_only\": false\n        },\n        \"drain_attachments\": {\n          \"Status\": \"string\",\n          \"create_time\": \"2010-07-05T00:58:41.391Z\",\n          \"issuer\": \"string\",\n          \"last_update_time\": \"2012-07-05T00:30:17.764Z\",\n          \"node_id\": \"string\",\n          \"parameters\": {\n            \"issuer\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"node_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"only_sharedv4\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"selector\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"id\": \"string\",\n        \"last_update_time\": \"2024-11-25T11:07:29.201Z\",\n        \"state\": \"UNSPECIFIED_STATE\",\n        \"type\": \"UNSPECIFIED_TYPE\"\n      }\n    ],\n    \"type\": \"UNSPECIFIED_TYPE\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1f32726d-bf6c-418e-851b-aac43571f83f",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "schedules",
+                    ":type",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "type",
+                      "description": "(Required) Type is schedule type (cast to string from a Job.Type enum, as the version of\nprotoc-gen-grpc-gateway on release branch doesn't support enum type in REST API path parameter)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) ID of the schedule"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5452,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "022ed078-1ede-4f00-9c21-b461c9b618b7",
+    "name": "OpenStorage SDK OpenStorageAlerts OpenStorageSchedule API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

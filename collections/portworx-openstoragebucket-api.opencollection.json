@@ -1,0 +1,118 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenStorage SDK OpenStorageAlerts OpenStorageBucket API",
+    "version": "0.186.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "OpenStorageBucket",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "OpenStorageBucket_Create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/bucket",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "OpenStorageBucket_GrantAccess",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/bucket/access/:bucket_id",
+            "params": [
+              {
+                "name": "bucket_id",
+                "value": "",
+                "type": "path",
+                "description": "Id of the bucket"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "OpenStorageBucket_RevokeAccess",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/bucket/revoke/:bucket_id",
+            "params": [
+              {
+                "name": "bucket_id",
+                "value": "",
+                "type": "path",
+                "description": "Id of bucket to delete"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "OpenStorageBucket_Delete",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v1/bucket/:bucket_id",
+            "params": [
+              {
+                "name": "bucket_id",
+                "value": "",
+                "type": "path",
+                "description": "Id of bucket to delete"
+              },
+              {
+                "name": "region",
+                "value": "",
+                "type": "query",
+                "description": "Region in which bucket will be created."
+              },
+              {
+                "name": "endpoint",
+                "value": "",
+                "type": "query",
+                "description": "Endpoint to use when deleting the bucket."
+              },
+              {
+                "name": "clear_bucket",
+                "value": "",
+                "type": "query",
+                "description": "Flag to allow non empty bucket deletion."
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

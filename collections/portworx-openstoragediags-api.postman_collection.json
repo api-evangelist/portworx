@@ -1,0 +1,191 @@
+{
+  "item": [
+    {
+      "id": "a8703253-8889-4574-ad09-01ba1d50617e",
+      "name": "OpenStorageDiags",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "dc1fb4b0-5be3-4b27-afdb-4de3d0c39141",
+          "name": "Collect starts a job to collect diagnostics from set of nodes that are selected based on the selectors provided\nin the SdkDiagsCollectRequest. See SdkDiagsCollectRequest for more details on how to select the nodes\nReturns SdkDiagsCollectResponse which has the job that is responsible for collecting the diags.",
+          "request": {
+            "name": "Collect starts a job to collect diagnostics from set of nodes that are selected based on the selectors provided\nin the SdkDiagsCollectRequest. See SdkDiagsCollectRequest for more details on how to select the nodes\nReturns SdkDiagsCollectResponse which has the job that is responsible for collecting the diags.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "diags"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"filename\": \"<string>\",\n  \"issuer\": \"<string>\",\n  \"live\": \"<boolean>\",\n  \"node\": {\n    \"all\": \"<boolean>\",\n    \"node_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"node_label_selector\": [\n      {\n        \"key\": \"<string>\",\n        \"operator\": \"In\",\n        \"values\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"key\": \"<string>\",\n        \"operator\": \"In\",\n        \"values\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ]\n  },\n  \"profile_only\": \"<boolean>\",\n  \"timeout_mins\": \"<int64>\",\n  \"volume\": {\n    \"volume_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"volume_label_selector\": [\n      {\n        \"key\": \"<string>\",\n        \"operator\": \"In\",\n        \"values\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"key\": \"<string>\",\n        \"operator\": \"In\",\n        \"values\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "17084dab-6a72-44b9-a0e6-19a7f2fab7c2",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "diags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"filename\": \"<string>\",\n  \"issuer\": \"<string>\",\n  \"live\": \"<boolean>\",\n  \"node\": {\n    \"all\": \"<boolean>\",\n    \"node_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"node_label_selector\": [\n      {\n        \"key\": \"<string>\",\n        \"operator\": \"In\",\n        \"values\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"key\": \"<string>\",\n        \"operator\": \"In\",\n        \"values\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ]\n  },\n  \"profile_only\": \"<boolean>\",\n  \"timeout_mins\": \"<int64>\",\n  \"volume\": {\n    \"volume_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"volume_label_selector\": [\n      {\n        \"key\": \"<string>\",\n        \"operator\": \"In\",\n        \"values\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"key\": \"<string>\",\n        \"operator\": \"In\",\n        \"values\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"job\": {\n    \"clouddrive_transfer\": {\n      \"destination_instance_id\": \"string\",\n      \"source_driveset_id\": \"string\",\n      \"status\": \"string\"\n    },\n    \"collect_diags\": {\n      \"request\": {\n        \"filename\": \"<string>\",\n        \"issuer\": \"<string>\",\n        \"live\": \"<boolean>\",\n        \"node\": {\n          \"all\": \"<boolean>\",\n          \"node_ids\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"node_label_selector\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"profile_only\": \"<boolean>\",\n        \"timeout_mins\": \"<int64>\",\n        \"volume\": {\n          \"volume_ids\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"volume_label_selector\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      },\n      \"statuses\": [\n        {\n          \"message\": \"string\",\n          \"node\": \"string\",\n          \"state\": \"UNSPECIFIED\"\n        },\n        {\n          \"message\": \"string\",\n          \"node\": \"string\",\n          \"state\": \"UNSPECIFIED\"\n        }\n      ]\n    },\n    \"create_time\": \"1983-04-15T14:40:42.558Z\",\n    \"defrag\": {\n      \"current_running_nodes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"exclude_nodes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"include_nodes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"max_duration_minutes\": 5337,\n      \"max_nodes_in_parallel\": 3201,\n      \"node_selector\": [\n        {\n          \"key\": \"<string>\",\n          \"operator\": \"In\",\n          \"values\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"key\": \"<string>\",\n          \"operator\": \"In\",\n          \"values\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"schedule_id\": \"string\",\n      \"schedule_one_iteration_only\": false\n    },\n    \"drain_attachments\": {\n      \"Status\": \"string\",\n      \"create_time\": \"1970-10-28T16:42:03.450Z\",\n      \"issuer\": \"string\",\n      \"last_update_time\": \"2008-11-09T12:43:53.151Z\",\n      \"node_id\": \"string\",\n      \"parameters\": {\n        \"issuer\": \"string\",\n        \"node_id\": \"string\",\n        \"only_sharedv4\": false,\n        \"selector\": [\n          {\n            \"key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"operator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"operator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      }\n    },\n    \"id\": \"string\",\n    \"last_update_time\": \"1997-02-26T06:17:16.101Z\",\n    \"state\": \"UNSPECIFIED_STATE\",\n    \"type\": \"UNSPECIFIED_TYPE\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "23184f7c-00f7-4449-a200-42c59a212c5e",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "diags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"filename\": \"<string>\",\n  \"issuer\": \"<string>\",\n  \"live\": \"<boolean>\",\n  \"node\": {\n    \"all\": \"<boolean>\",\n    \"node_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"node_label_selector\": [\n      {\n        \"key\": \"<string>\",\n        \"operator\": \"In\",\n        \"values\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"key\": \"<string>\",\n        \"operator\": \"In\",\n        \"values\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ]\n  },\n  \"profile_only\": \"<boolean>\",\n  \"timeout_mins\": \"<int64>\",\n  \"volume\": {\n    \"volume_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"volume_label_selector\": [\n      {\n        \"key\": \"<string>\",\n        \"operator\": \"In\",\n        \"values\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"key\": \"<string>\",\n        \"operator\": \"In\",\n        \"values\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 3449,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "3573c6b8-1709-4c2c-b89a-e0e298de0629",
+    "name": "OpenStorage SDK OpenStorageAlerts OpenStorageDiags API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

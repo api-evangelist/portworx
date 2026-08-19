@@ -1,0 +1,521 @@
+{
+  "item": [
+    {
+      "id": "39fe311d-f397-4772-9364-ccb48d1510f4",
+      "name": "OpenStorageJob",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bbade5f4-d586-40c7-8666-6b81d63249fa",
+          "name": "Enumerate returns all the jobs currently known to the system",
+          "request": {
+            "name": "Enumerate returns all the jobs currently known to the system",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "jobs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "UNSPECIFIED_TYPE",
+                  "description": "Type if specified will list the jobs of the provided type.\n\n - UNSPECIFIED_TYPE: Unspecified\n - NONE: None\n - DRAIN_ATTACHMENTS: Job for draining volume attachments\n - CLOUD_DRIVE_TRANSFER: Job for transferring cloud drives between nodes\n - COLLECT_DIAGS: Job for collecting diags from the cluster nodes\n - DEFRAG: Job for storage defragmentation on cluster nodes"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "471e3f2c-f65e-44b8-bd08-bf146aac90d2",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "jobs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "type",
+                      "value": "UNSPECIFIED_TYPE"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"jobs\": [\n    {\n      \"clouddrive_transfer\": {\n        \"destination_instance_id\": \"string\",\n        \"source_driveset_id\": \"string\",\n        \"status\": \"string\"\n      },\n      \"collect_diags\": {\n        \"request\": {\n          \"filename\": \"string\",\n          \"issuer\": \"string\",\n          \"live\": true,\n          \"node\": {\n            \"all\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"node_ids\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"node_label_selector\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"profile_only\": false,\n          \"timeout_mins\": \"string\",\n          \"volume\": {\n            \"volume_ids\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"volume_label_selector\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"statuses\": [\n          {\n            \"message\": \"string\",\n            \"node\": \"string\",\n            \"state\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"message\": \"string\",\n            \"node\": \"string\",\n            \"state\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      \"create_time\": \"1951-02-01T15:59:03.120Z\",\n      \"defrag\": {\n        \"current_running_nodes\": [\n          \"string\",\n          \"string\"\n        ],\n        \"exclude_nodes\": [\n          \"string\",\n          \"string\"\n        ],\n        \"include_nodes\": [\n          \"string\",\n          \"string\"\n        ],\n        \"max_duration_minutes\": 244,\n        \"max_nodes_in_parallel\": 3916,\n        \"node_selector\": [\n          {\n            \"key\": \"string\",\n            \"operator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"values\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"key\": \"string\",\n            \"operator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"values\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ],\n        \"schedule_id\": \"string\",\n        \"schedule_one_iteration_only\": true\n      },\n      \"drain_attachments\": {\n        \"Status\": \"string\",\n        \"create_time\": \"2020-06-14T17:15:33.440Z\",\n        \"issuer\": \"string\",\n        \"last_update_time\": \"1949-01-05T15:41:47.173Z\",\n        \"node_id\": \"string\",\n        \"parameters\": {\n          \"issuer\": \"string\",\n          \"node_id\": \"string\",\n          \"only_sharedv4\": false,\n          \"selector\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      },\n      \"id\": \"string\",\n      \"last_update_time\": \"1982-06-30T09:39:48.022Z\",\n      \"state\": \"UNSPECIFIED_STATE\",\n      \"type\": \"UNSPECIFIED_TYPE\"\n    },\n    {\n      \"clouddrive_transfer\": {\n        \"destination_instance_id\": \"string\",\n        \"source_driveset_id\": \"string\",\n        \"status\": \"string\"\n      },\n      \"collect_diags\": {\n        \"request\": {\n          \"filename\": \"string\",\n          \"issuer\": \"string\",\n          \"live\": true,\n          \"node\": {\n            \"all\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"node_ids\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"node_label_selector\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"profile_only\": false,\n          \"timeout_mins\": \"string\",\n          \"volume\": {\n            \"volume_ids\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"volume_label_selector\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"statuses\": [\n          {\n            \"message\": \"string\",\n            \"node\": \"string\",\n            \"state\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"message\": \"string\",\n            \"node\": \"string\",\n            \"state\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      \"create_time\": \"2018-05-03T05:52:12.595Z\",\n      \"defrag\": {\n        \"current_running_nodes\": [\n          \"string\",\n          \"string\"\n        ],\n        \"exclude_nodes\": [\n          \"string\",\n          \"string\"\n        ],\n        \"include_nodes\": [\n          \"string\",\n          \"string\"\n        ],\n        \"max_duration_minutes\": 1098,\n        \"max_nodes_in_parallel\": 8987,\n        \"node_selector\": [\n          {\n            \"key\": \"string\",\n            \"operator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"values\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"key\": \"string\",\n            \"operator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"values\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ],\n        \"schedule_id\": \"string\",\n        \"schedule_one_iteration_only\": false\n      },\n      \"drain_attachments\": {\n        \"Status\": \"string\",\n        \"create_time\": \"2019-02-07T22:16:47.237Z\",\n        \"issuer\": \"string\",\n        \"last_update_time\": \"1953-05-27T01:35:23.369Z\",\n        \"node_id\": \"string\",\n        \"parameters\": {\n          \"issuer\": \"string\",\n          \"node_id\": \"string\",\n          \"only_sharedv4\": false,\n          \"selector\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      },\n      \"id\": \"string\",\n      \"last_update_time\": \"2018-11-14T23:19:04.249Z\",\n      \"state\": \"UNSPECIFIED_STATE\",\n      \"type\": \"UNSPECIFIED_TYPE\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "48d4b786-7a3e-4a58-8d44-b4e090398bc3",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "jobs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "type",
+                      "value": "UNSPECIFIED_TYPE"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9949,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "21828bd4-6ab6-4206-bfa2-3b1996ecfaed",
+          "name": "GetStatus gets the status of a job",
+          "request": {
+            "name": "GetStatus gets the status of a job",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "jobs",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "UNSPECIFIED_TYPE",
+                  "description": "Type of the job.\n\n - UNSPECIFIED_TYPE: Unspecified\n - NONE: None\n - DRAIN_ATTACHMENTS: Job for draining volume attachments\n - CLOUD_DRIVE_TRANSFER: Job for transferring cloud drives between nodes\n - COLLECT_DIAGS: Job for collecting diags from the cluster nodes\n - DEFRAG: Job for storage defragmentation on cluster nodes"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) ID of the job"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5f0347f2-3bc0-49f7-a403-2c0430201cc3",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "jobs",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "type",
+                      "value": "UNSPECIFIED_TYPE"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) ID of the job"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"job\": {\n    \"clouddrive_transfer\": {\n      \"destination_instance_id\": \"string\",\n      \"source_driveset_id\": \"string\",\n      \"status\": \"string\"\n    },\n    \"collect_diags\": {\n      \"request\": {\n        \"filename\": \"string\",\n        \"issuer\": \"string\",\n        \"live\": true,\n        \"node\": {\n          \"all\": false,\n          \"node_ids\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"node_label_selector\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"profile_only\": false,\n        \"timeout_mins\": \"string\",\n        \"volume\": {\n          \"volume_ids\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"volume_label_selector\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      },\n      \"statuses\": [\n        {\n          \"message\": \"string\",\n          \"node\": \"string\",\n          \"state\": \"UNSPECIFIED\"\n        },\n        {\n          \"message\": \"string\",\n          \"node\": \"string\",\n          \"state\": \"UNSPECIFIED\"\n        }\n      ]\n    },\n    \"create_time\": \"2020-07-19T08:30:54.709Z\",\n    \"defrag\": {\n      \"current_running_nodes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"exclude_nodes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"include_nodes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"max_duration_minutes\": 9733,\n      \"max_nodes_in_parallel\": 2963,\n      \"node_selector\": [\n        {\n          \"key\": \"string\",\n          \"operator\": \"In\",\n          \"values\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"key\": \"string\",\n          \"operator\": \"In\",\n          \"values\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"schedule_id\": \"string\",\n      \"schedule_one_iteration_only\": true\n    },\n    \"drain_attachments\": {\n      \"Status\": \"string\",\n      \"create_time\": \"1979-07-07T13:24:45.756Z\",\n      \"issuer\": \"string\",\n      \"last_update_time\": \"1950-06-28T11:04:55.700Z\",\n      \"node_id\": \"string\",\n      \"parameters\": {\n        \"issuer\": \"string\",\n        \"node_id\": \"string\",\n        \"only_sharedv4\": false,\n        \"selector\": [\n          {\n            \"key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"operator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"operator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      }\n    },\n    \"id\": \"string\",\n    \"last_update_time\": \"1950-09-04T22:14:12.370Z\",\n    \"state\": \"UNSPECIFIED_STATE\",\n    \"type\": \"UNSPECIFIED_TYPE\"\n  },\n  \"summary\": {\n    \"id\": \"string\",\n    \"total_runtime_seconds\": \"string\",\n    \"work_summaries\": [\n      {\n        \"drain_attachments_summary\": {\n          \"num_volumes_done\": \"string\",\n          \"num_volumes_pending\": \"string\",\n          \"num_volumes_total\": \"string\"\n        }\n      },\n      {\n        \"drain_attachments_summary\": {\n          \"num_volumes_done\": \"string\",\n          \"num_volumes_pending\": \"string\",\n          \"num_volumes_total\": \"string\"\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9030d7b5-1803-4d1c-97cd-ca42bf14fc4c",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "jobs",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "type",
+                      "value": "UNSPECIFIED_TYPE"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) ID of the job"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1664,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "38d8df3b-e8a6-448f-9cd0-cdc97d41febe",
+          "name": "Update updates an existing job's state\nOnly acceptable state values are\nJobState_PAUSED - acceptable only from running state\nJobState_CANCELLED - acceptable only from running/pause state\nJobState_RUNNING - acceptable only from pause state",
+          "request": {
+            "name": "Update updates an existing job's state\nOnly acceptable state values are\nJobState_PAUSED - acceptable only from running state\nJobState_CANCELLED - acceptable only from running/pause state\nJobState_RUNNING - acceptable only from pause state",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "jobs",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) ID of the job"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\",\n  \"state\": \"UNSPECIFIED_STATE\",\n  \"type\": \"UNSPECIFIED_TYPE\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c17ed652-ad2b-482a-ac6e-54436821c993",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "jobs",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) ID of the job"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"state\": \"UNSPECIFIED_STATE\",\n  \"type\": \"UNSPECIFIED_TYPE\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "513d4531-dd99-48bd-94f4-bcb142ee228a",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "jobs",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) ID of the job"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"state\": \"UNSPECIFIED_STATE\",\n  \"type\": \"UNSPECIFIED_TYPE\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1664,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "ad81be50-943f-4c87-b0c6-e21266ed7ad2",
+    "name": "OpenStorage SDK OpenStorageAlerts OpenStorageJob API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

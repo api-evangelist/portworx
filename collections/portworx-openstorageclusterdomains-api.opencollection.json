@@ -1,0 +1,92 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenStorage SDK OpenStorageAlerts OpenStorageClusterDomains API",
+    "version": "0.186.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "OpenStorageClusterDomains",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Enumerate returns names of all the cluster domains in the cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/clusterdomains"
+          },
+          "docs": "Enumerate returns names of all the cluster domains in the cluster"
+        },
+        {
+          "info": {
+            "name": "Activates a cluster domain in the cluster.\nAll the nodes which are part of an active cluster domain\nwill participate in cluster quorum calculation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/clusterdomains/activate/:cluster_domain_name",
+            "params": [
+              {
+                "name": "cluster_domain_name",
+                "value": "",
+                "type": "path",
+                "description": "Name of the cluster domain to activate"
+              }
+            ]
+          },
+          "docs": "Activates a cluster domain in the cluster.\nAll the nodes which are part of an active cluster domain\nwill participate in cluster quorum calculation"
+        },
+        {
+          "info": {
+            "name": "Deactivates a cluster domain in the cluster.\nAll the nodes which are part of a deactivated cluster domain.\nwill not participate in cluster quorum calculation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/clusterdomains/deactivate/:cluster_domain_name",
+            "params": [
+              {
+                "name": "cluster_domain_name",
+                "value": "",
+                "type": "path",
+                "description": "Name of the cluster domain to deactivate"
+              }
+            ]
+          },
+          "docs": "Deactivates a cluster domain in the cluster.\nAll the nodes which are part of a deactivated cluster domain.\nwill not participate in cluster quorum calculation"
+        },
+        {
+          "info": {
+            "name": "Inspect returns information about a cluster domain and a\nstatus indicating whether the cluster domain is active",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/clusterdomains/inspect/:cluster_domain_name",
+            "params": [
+              {
+                "name": "cluster_domain_name",
+                "value": "",
+                "type": "path",
+                "description": "Name of the cluster domain to inspect"
+              }
+            ]
+          },
+          "docs": "Inspect returns information about a cluster domain and a\nstatus indicating whether the cluster domain is active"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

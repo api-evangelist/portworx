@@ -1,0 +1,130 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenStorage SDK OpenStorageAlerts OpenStorageFilesystemTrim API",
+    "version": "0.186.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "OpenStorageFilesystemTrim",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Pop a auto filesystem Trim job from the queue",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/filesystem-trim/auto-fstrim-pop",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Pop a auto filesystem Trim job from the queue"
+        },
+        {
+          "info": {
+            "name": "Push a auto filesystem Trim job into the queue",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/filesystem-trim/auto-fstrim-push",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Push a auto filesystem Trim job into the queue"
+        },
+        {
+          "info": {
+            "name": "OpenStorageFilesystemTrim_AutoFSTrimStatus",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/filesystem-trim/auto-fstrim-status"
+          }
+        },
+        {
+          "info": {
+            "name": "Usage of a filesystem Trim background operation on all locally mounted\nvolume",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/filesystem-trim/auto-fstrim-usage"
+          },
+          "docs": "Usage of a filesystem Trim background operation on all locally mounted\nvolume"
+        },
+        {
+          "info": {
+            "name": "Start a filesystem Trim background operation on a mounted volume",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/filesystem-trim/start",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Start a filesystem Trim background operation on a mounted volume"
+        },
+        {
+          "info": {
+            "name": "Status of a filesystem Trim background operation on a mounted\nvolume, if any",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/filesystem-trim/status",
+            "params": [
+              {
+                "name": "volume_id",
+                "value": "",
+                "type": "query",
+                "description": "Id of the volume."
+              },
+              {
+                "name": "mount_path",
+                "value": "",
+                "type": "query",
+                "description": "Path where the volume is mounted."
+              }
+            ]
+          },
+          "docs": "Status of a filesystem Trim background operation on a mounted\nvolume, if any"
+        },
+        {
+          "info": {
+            "name": "Stop a filesystem Trim background operation on a mounted volume, if any",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/filesystem-trim/stop",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Stop a filesystem Trim background operation on a mounted volume, if any"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

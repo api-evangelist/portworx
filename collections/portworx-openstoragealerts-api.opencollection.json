@@ -1,0 +1,54 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenStorage SDK OpenStorageAlerts API",
+    "version": "0.186.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "OpenStorageAlerts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Delete alerts",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/alerts",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "#### Delete\nDelete allows 3 different types of queries as defined below:\n\n* Query that takes only resource type as input\n* Query that takes resource type and alert type as input and\n* Query that takes resource id, alert type and resource type as input.\n\n#### Input\nSdkAlertsDeleteRequest takes a list of such queries and all alerts\nthat match at least one of the queries are deleted."
+        },
+        {
+          "info": {
+            "name": "Allows querying alerts.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/alerts/filters",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "EnumerateWithFilters allows 3 different types of queries as defined below:\n\n* Query that takes only resource type as input\n* Query that takes resource type and alert type as input and\n* Query that takes resource id, alert type and resource type as input.\n\n#### Input\nSdkAlertsEnumerateRequest takes a list of such queries and the returned\noutput is a collective output from each of these queries. In that sense,\nthe filtering of these queries has a behavior of OR operation.\nEach query also has a lis"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

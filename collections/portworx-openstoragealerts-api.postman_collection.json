@@ -1,0 +1,350 @@
+{
+  "item": [
+    {
+      "id": "1c891769-bbc5-4eee-b3a2-a9c0dde5d372",
+      "name": "OpenStorageAlerts",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7a640f3c-2293-4db7-8b02-524a8f3e9d4b",
+          "name": "Delete alerts",
+          "request": {
+            "name": "Delete alerts",
+            "description": {
+              "content": "#### Delete\nDelete allows 3 different types of queries as defined below:\n\n* Query that takes only resource type as input\n* Query that takes resource type and alert type as input and\n* Query that takes resource id, alert type and resource type as input.\n\n#### Input\nSdkAlertsDeleteRequest takes a list of such queries and all alerts\nthat match at least one of the queries are deleted.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "alerts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"queries\": [\n    {\n      \"alert_type_query\": {\n        \"alert_type\": \"<int64>\",\n        \"resource_type\": \"RESOURCE_TYPE_NONE\"\n      },\n      \"opts\": [\n        {\n          \"count_span\": {\n            \"max_count\": \"<int64>\",\n            \"min_count\": \"<int64>\"\n          },\n          \"is_cleared\": \"<boolean>\",\n          \"min_severity_type\": \"SEVERITY_TYPE_NONE\",\n          \"time_span\": {\n            \"end_time\": \"<dateTime>\",\n            \"start_time\": \"<dateTime>\"\n          }\n        },\n        {\n          \"count_span\": {\n            \"max_count\": \"<int64>\",\n            \"min_count\": \"<int64>\"\n          },\n          \"is_cleared\": \"<boolean>\",\n          \"min_severity_type\": \"SEVERITY_TYPE_NONE\",\n          \"time_span\": {\n            \"end_time\": \"<dateTime>\",\n            \"start_time\": \"<dateTime>\"\n          }\n        }\n      ],\n      \"resource_id_query\": {\n        \"alert_type\": \"<int64>\",\n        \"resource_id\": \"<string>\",\n        \"resource_type\": \"RESOURCE_TYPE_NONE\"\n      },\n      \"resource_type_query\": {\n        \"resource_type\": \"RESOURCE_TYPE_NONE\"\n      }\n    },\n    {\n      \"alert_type_query\": {\n        \"alert_type\": \"<int64>\",\n        \"resource_type\": \"RESOURCE_TYPE_NONE\"\n      },\n      \"opts\": [\n        {\n          \"count_span\": {\n            \"max_count\": \"<int64>\",\n            \"min_count\": \"<int64>\"\n          },\n          \"is_cleared\": \"<boolean>\",\n          \"min_severity_type\": \"SEVERITY_TYPE_NONE\",\n          \"time_span\": {\n            \"end_time\": \"<dateTime>\",\n            \"start_time\": \"<dateTime>\"\n          }\n        },\n        {\n          \"count_span\": {\n            \"max_count\": \"<int64>\",\n            \"min_count\": \"<int64>\"\n          },\n          \"is_cleared\": \"<boolean>\",\n          \"min_severity_type\": \"SEVERITY_TYPE_NONE\",\n          \"time_span\": {\n            \"end_time\": \"<dateTime>\",\n            \"start_time\": \"<dateTime>\"\n          }\n        }\n      ],\n      \"resource_id_query\": {\n        \"alert_type\": \"<int64>\",\n        \"resource_id\": \"<string>\",\n        \"resource_type\": \"RESOURCE_TYPE_NONE\"\n      },\n      \"resource_type_query\": {\n        \"resource_type\": \"RESOURCE_TYPE_NONE\"\n      }\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6076f983-ccc4-4dcf-93df-bd9764e78c28",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "alerts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"queries\": [\n    {\n      \"alert_type_query\": {\n        \"alert_type\": \"<int64>\",\n        \"resource_type\": \"RESOURCE_TYPE_NONE\"\n      },\n      \"opts\": [\n        {\n          \"count_span\": {\n            \"max_count\": \"<int64>\",\n            \"min_count\": \"<int64>\"\n          },\n          \"is_cleared\": \"<boolean>\",\n          \"min_severity_type\": \"SEVERITY_TYPE_NONE\",\n          \"time_span\": {\n            \"end_time\": \"<dateTime>\",\n            \"start_time\": \"<dateTime>\"\n          }\n        },\n        {\n          \"count_span\": {\n            \"max_count\": \"<int64>\",\n            \"min_count\": \"<int64>\"\n          },\n          \"is_cleared\": \"<boolean>\",\n          \"min_severity_type\": \"SEVERITY_TYPE_NONE\",\n          \"time_span\": {\n            \"end_time\": \"<dateTime>\",\n            \"start_time\": \"<dateTime>\"\n          }\n        }\n      ],\n      \"resource_id_query\": {\n        \"alert_type\": \"<int64>\",\n        \"resource_id\": \"<string>\",\n        \"resource_type\": \"RESOURCE_TYPE_NONE\"\n      },\n      \"resource_type_query\": {\n        \"resource_type\": \"RESOURCE_TYPE_NONE\"\n      }\n    },\n    {\n      \"alert_type_query\": {\n        \"alert_type\": \"<int64>\",\n        \"resource_type\": \"RESOURCE_TYPE_NONE\"\n      },\n      \"opts\": [\n        {\n          \"count_span\": {\n            \"max_count\": \"<int64>\",\n            \"min_count\": \"<int64>\"\n          },\n          \"is_cleared\": \"<boolean>\",\n          \"min_severity_type\": \"SEVERITY_TYPE_NONE\",\n          \"time_span\": {\n            \"end_time\": \"<dateTime>\",\n            \"start_time\": \"<dateTime>\"\n          }\n        },\n        {\n          \"count_span\": {\n            \"max_count\": \"<int64>\",\n            \"min_count\": \"<int64>\"\n          },\n          \"is_cleared\": \"<boolean>\",\n          \"min_severity_type\": \"SEVERITY_TYPE_NONE\",\n          \"time_span\": {\n            \"end_time\": \"<dateTime>\",\n            \"start_time\": \"<dateTime>\"\n          }\n        }\n      ],\n      \"resource_id_query\": {\n        \"alert_type\": \"<int64>\",\n        \"resource_id\": \"<string>\",\n        \"resource_type\": \"RESOURCE_TYPE_NONE\"\n      },\n      \"resource_type_query\": {\n        \"resource_type\": \"RESOURCE_TYPE_NONE\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0a0e965a-2845-4a2f-8521-32bcaf6b9161",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "alerts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"queries\": [\n    {\n      \"alert_type_query\": {\n        \"alert_type\": \"<int64>\",\n        \"resource_type\": \"RESOURCE_TYPE_NONE\"\n      },\n      \"opts\": [\n        {\n          \"count_span\": {\n            \"max_count\": \"<int64>\",\n            \"min_count\": \"<int64>\"\n          },\n          \"is_cleared\": \"<boolean>\",\n          \"min_severity_type\": \"SEVERITY_TYPE_NONE\",\n          \"time_span\": {\n            \"end_time\": \"<dateTime>\",\n            \"start_time\": \"<dateTime>\"\n          }\n        },\n        {\n          \"count_span\": {\n            \"max_count\": \"<int64>\",\n            \"min_count\": \"<int64>\"\n          },\n          \"is_cleared\": \"<boolean>\",\n          \"min_severity_type\": \"SEVERITY_TYPE_NONE\",\n          \"time_span\": {\n            \"end_time\": \"<dateTime>\",\n            \"start_time\": \"<dateTime>\"\n          }\n        }\n      ],\n      \"resource_id_query\": {\n        \"alert_type\": \"<int64>\",\n        \"resource_id\": \"<string>\",\n        \"resource_type\": \"RESOURCE_TYPE_NONE\"\n      },\n      \"resource_type_query\": {\n        \"resource_type\": \"RESOURCE_TYPE_NONE\"\n      }\n    },\n    {\n      \"alert_type_query\": {\n        \"alert_type\": \"<int64>\",\n        \"resource_type\": \"RESOURCE_TYPE_NONE\"\n      },\n      \"opts\": [\n        {\n          \"count_span\": {\n            \"max_count\": \"<int64>\",\n            \"min_count\": \"<int64>\"\n          },\n          \"is_cleared\": \"<boolean>\",\n          \"min_severity_type\": \"SEVERITY_TYPE_NONE\",\n          \"time_span\": {\n            \"end_time\": \"<dateTime>\",\n            \"start_time\": \"<dateTime>\"\n          }\n        },\n        {\n          \"count_span\": {\n            \"max_count\": \"<int64>\",\n            \"min_count\": \"<int64>\"\n          },\n          \"is_cleared\": \"<boolean>\",\n          \"min_severity_type\": \"SEVERITY_TYPE_NONE\",\n          \"time_span\": {\n            \"end_time\": \"<dateTime>\",\n            \"start_time\": \"<dateTime>\"\n          }\n        }\n      ],\n      \"resource_id_query\": {\n        \"alert_type\": \"<int64>\",\n        \"resource_id\": \"<string>\",\n        \"resource_type\": \"RESOURCE_TYPE_NONE\"\n      },\n      \"resource_type_query\": {\n        \"resource_type\": \"RESOURCE_TYPE_NONE\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 190,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "219dcd51-69c3-4b70-aa33-c9fa80a8fd3e",
+          "name": "Allows querying alerts.",
+          "request": {
+            "name": "Allows querying alerts.",
+            "description": {
+              "content": "EnumerateWithFilters allows 3 different types of queries as defined below:\n\n* Query that takes only resource type as input\n* Query that takes resource type and alert type as input and\n* Query that takes resource id, alert type and resource type as input.\n\n#### Input\nSdkAlertsEnumerateRequest takes a list of such queries and the returned\noutput is a collective output from each of these queries. In that sense,\nthe filtering of these queries has a behavior of OR operation.\nEach query also has a list of optional options. These options allow\nnarrowing down the scope of alerts search. These options have a\nbehavior of an AND operation.\n\n#### Examples\nTo search by a resource type in a given time window would require\ninitializing SdkAlertsResourceTypeQuery query and pass in\nSdkAlertsTimeSpan option into SdkAlertsQuery struct and finally\npacking any other such queries into SdkAlertsEnumerateRequest object.\nAlternatively, to search by both resource type and alert type, use\nSdkAlertsAlertTypeQuery as query builder.\nFinally to search all alerts of a given resource type and some\nalerts of another resource type but with specific alert type,\nuse two queries, first initialized with SdkAlertsResourceTypeQuery\nand second initialized with SdkAlertsAlertTypeQuery and both\neventually packed as list in SdkAlertsEnumerateRequest.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "alerts",
+                "filters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"queries\": [\n    {\n      \"alert_type_query\": {\n        \"alert_type\": \"<int64>\",\n        \"resource_type\": \"RESOURCE_TYPE_NONE\"\n      },\n      \"opts\": [\n        {\n          \"count_span\": {\n            \"max_count\": \"<int64>\",\n            \"min_count\": \"<int64>\"\n          },\n          \"is_cleared\": \"<boolean>\",\n          \"min_severity_type\": \"SEVERITY_TYPE_NONE\",\n          \"time_span\": {\n            \"end_time\": \"<dateTime>\",\n            \"start_time\": \"<dateTime>\"\n          }\n        },\n        {\n          \"count_span\": {\n            \"max_count\": \"<int64>\",\n            \"min_count\": \"<int64>\"\n          },\n          \"is_cleared\": \"<boolean>\",\n          \"min_severity_type\": \"SEVERITY_TYPE_NONE\",\n          \"time_span\": {\n            \"end_time\": \"<dateTime>\",\n            \"start_time\": \"<dateTime>\"\n          }\n        }\n      ],\n      \"resource_id_query\": {\n        \"alert_type\": \"<int64>\",\n        \"resource_id\": \"<string>\",\n        \"resource_type\": \"RESOURCE_TYPE_NONE\"\n      },\n      \"resource_type_query\": {\n        \"resource_type\": \"RESOURCE_TYPE_NONE\"\n      }\n    },\n    {\n      \"alert_type_query\": {\n        \"alert_type\": \"<int64>\",\n        \"resource_type\": \"RESOURCE_TYPE_NONE\"\n      },\n      \"opts\": [\n        {\n          \"count_span\": {\n            \"max_count\": \"<int64>\",\n            \"min_count\": \"<int64>\"\n          },\n          \"is_cleared\": \"<boolean>\",\n          \"min_severity_type\": \"SEVERITY_TYPE_NONE\",\n          \"time_span\": {\n            \"end_time\": \"<dateTime>\",\n            \"start_time\": \"<dateTime>\"\n          }\n        },\n        {\n          \"count_span\": {\n            \"max_count\": \"<int64>\",\n            \"min_count\": \"<int64>\"\n          },\n          \"is_cleared\": \"<boolean>\",\n          \"min_severity_type\": \"SEVERITY_TYPE_NONE\",\n          \"time_span\": {\n            \"end_time\": \"<dateTime>\",\n            \"start_time\": \"<dateTime>\"\n          }\n        }\n      ],\n      \"resource_id_query\": {\n        \"alert_type\": \"<int64>\",\n        \"resource_id\": \"<string>\",\n        \"resource_type\": \"RESOURCE_TYPE_NONE\"\n      },\n      \"resource_type_query\": {\n        \"resource_type\": \"RESOURCE_TYPE_NONE\"\n      }\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "79ada142-14c7-403e-a03b-88c5594638ff",
+              "name": "A successful response.(streaming responses)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "alerts",
+                    "filters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"queries\": [\n    {\n      \"alert_type_query\": {\n        \"alert_type\": \"<int64>\",\n        \"resource_type\": \"RESOURCE_TYPE_NONE\"\n      },\n      \"opts\": [\n        {\n          \"count_span\": {\n            \"max_count\": \"<int64>\",\n            \"min_count\": \"<int64>\"\n          },\n          \"is_cleared\": \"<boolean>\",\n          \"min_severity_type\": \"SEVERITY_TYPE_NONE\",\n          \"time_span\": {\n            \"end_time\": \"<dateTime>\",\n            \"start_time\": \"<dateTime>\"\n          }\n        },\n        {\n          \"count_span\": {\n            \"max_count\": \"<int64>\",\n            \"min_count\": \"<int64>\"\n          },\n          \"is_cleared\": \"<boolean>\",\n          \"min_severity_type\": \"SEVERITY_TYPE_NONE\",\n          \"time_span\": {\n            \"end_time\": \"<dateTime>\",\n            \"start_time\": \"<dateTime>\"\n          }\n        }\n      ],\n      \"resource_id_query\": {\n        \"alert_type\": \"<int64>\",\n        \"resource_id\": \"<string>\",\n        \"resource_type\": \"RESOURCE_TYPE_NONE\"\n      },\n      \"resource_type_query\": {\n        \"resource_type\": \"RESOURCE_TYPE_NONE\"\n      }\n    },\n    {\n      \"alert_type_query\": {\n        \"alert_type\": \"<int64>\",\n        \"resource_type\": \"RESOURCE_TYPE_NONE\"\n      },\n      \"opts\": [\n        {\n          \"count_span\": {\n            \"max_count\": \"<int64>\",\n            \"min_count\": \"<int64>\"\n          },\n          \"is_cleared\": \"<boolean>\",\n          \"min_severity_type\": \"SEVERITY_TYPE_NONE\",\n          \"time_span\": {\n            \"end_time\": \"<dateTime>\",\n            \"start_time\": \"<dateTime>\"\n          }\n        },\n        {\n          \"count_span\": {\n            \"max_count\": \"<int64>\",\n            \"min_count\": \"<int64>\"\n          },\n          \"is_cleared\": \"<boolean>\",\n          \"min_severity_type\": \"SEVERITY_TYPE_NONE\",\n          \"time_span\": {\n            \"end_time\": \"<dateTime>\",\n            \"start_time\": \"<dateTime>\"\n          }\n        }\n      ],\n      \"resource_id_query\": {\n        \"alert_type\": \"<int64>\",\n        \"resource_id\": \"<string>\",\n        \"resource_type\": \"RESOURCE_TYPE_NONE\"\n      },\n      \"resource_type_query\": {\n        \"resource_type\": \"RESOURCE_TYPE_NONE\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"details\": [\n      {\n        \"type_url\": \"string\",\n        \"value\": \"string\"\n      },\n      {\n        \"type_url\": \"string\",\n        \"value\": \"string\"\n      }\n    ],\n    \"grpc_code\": 2406,\n    \"http_code\": 9167,\n    \"http_status\": \"string\",\n    \"message\": \"string\"\n  },\n  \"result\": {\n    \"alerts\": [\n      {\n        \"alert_type\": \"string\",\n        \"cleared\": false,\n        \"count\": \"string\",\n        \"first_seen\": \"1959-07-01T22:51:10.287Z\",\n        \"id\": \"string\",\n        \"message\": \"string\",\n        \"resource\": \"RESOURCE_TYPE_NONE\",\n        \"resource_id\": \"string\",\n        \"severity\": \"SEVERITY_TYPE_NONE\",\n        \"timestamp\": \"1984-11-10T18:22:25.356Z\",\n        \"ttl\": \"string\",\n        \"unique_tag\": \"string\"\n      },\n      {\n        \"alert_type\": \"string\",\n        \"cleared\": false,\n        \"count\": \"string\",\n        \"first_seen\": \"2022-04-11T17:26:26.196Z\",\n        \"id\": \"string\",\n        \"message\": \"string\",\n        \"resource\": \"RESOURCE_TYPE_NONE\",\n        \"resource_id\": \"string\",\n        \"severity\": \"SEVERITY_TYPE_NONE\",\n        \"timestamp\": \"1951-03-21T11:02:45.710Z\",\n        \"ttl\": \"string\",\n        \"unique_tag\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b7e6f7bf-66cf-4349-af00-d1c6ae38aafe",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "alerts",
+                    "filters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"queries\": [\n    {\n      \"alert_type_query\": {\n        \"alert_type\": \"<int64>\",\n        \"resource_type\": \"RESOURCE_TYPE_NONE\"\n      },\n      \"opts\": [\n        {\n          \"count_span\": {\n            \"max_count\": \"<int64>\",\n            \"min_count\": \"<int64>\"\n          },\n          \"is_cleared\": \"<boolean>\",\n          \"min_severity_type\": \"SEVERITY_TYPE_NONE\",\n          \"time_span\": {\n            \"end_time\": \"<dateTime>\",\n            \"start_time\": \"<dateTime>\"\n          }\n        },\n        {\n          \"count_span\": {\n            \"max_count\": \"<int64>\",\n            \"min_count\": \"<int64>\"\n          },\n          \"is_cleared\": \"<boolean>\",\n          \"min_severity_type\": \"SEVERITY_TYPE_NONE\",\n          \"time_span\": {\n            \"end_time\": \"<dateTime>\",\n            \"start_time\": \"<dateTime>\"\n          }\n        }\n      ],\n      \"resource_id_query\": {\n        \"alert_type\": \"<int64>\",\n        \"resource_id\": \"<string>\",\n        \"resource_type\": \"RESOURCE_TYPE_NONE\"\n      },\n      \"resource_type_query\": {\n        \"resource_type\": \"RESOURCE_TYPE_NONE\"\n      }\n    },\n    {\n      \"alert_type_query\": {\n        \"alert_type\": \"<int64>\",\n        \"resource_type\": \"RESOURCE_TYPE_NONE\"\n      },\n      \"opts\": [\n        {\n          \"count_span\": {\n            \"max_count\": \"<int64>\",\n            \"min_count\": \"<int64>\"\n          },\n          \"is_cleared\": \"<boolean>\",\n          \"min_severity_type\": \"SEVERITY_TYPE_NONE\",\n          \"time_span\": {\n            \"end_time\": \"<dateTime>\",\n            \"start_time\": \"<dateTime>\"\n          }\n        },\n        {\n          \"count_span\": {\n            \"max_count\": \"<int64>\",\n            \"min_count\": \"<int64>\"\n          },\n          \"is_cleared\": \"<boolean>\",\n          \"min_severity_type\": \"SEVERITY_TYPE_NONE\",\n          \"time_span\": {\n            \"end_time\": \"<dateTime>\",\n            \"start_time\": \"<dateTime>\"\n          }\n        }\n      ],\n      \"resource_id_query\": {\n        \"alert_type\": \"<int64>\",\n        \"resource_id\": \"<string>\",\n        \"resource_type\": \"RESOURCE_TYPE_NONE\"\n      },\n      \"resource_type_query\": {\n        \"resource_type\": \"RESOURCE_TYPE_NONE\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9768,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "32bfa327-c782-487c-935c-1f5cd6a26bec",
+    "name": "OpenStorage SDK OpenStorageAlerts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

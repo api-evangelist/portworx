@@ -1,0 +1,1414 @@
+{
+  "item": [
+    {
+      "id": "d8266c79-151c-487f-97fa-00c1c4141b6f",
+      "name": "OpenStorageNode",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ff81878b-9dee-41fd-b96e-3188029be89f",
+          "name": "Enumerate returns the ids of all the nodes in the current cluster",
+          "request": {
+            "name": "Enumerate returns the ids of all the nodes in the current cluster",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "nodes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ea4f4a47-af24-4ca2-aab0-5a38d8a25e56",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "nodes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"node_ids\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5f63786e-8e97-4c90-ac2b-110b36dbc907",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "nodes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7974,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b867d5cb-13a7-4007-9924-fcbda20bd982",
+          "name": "CordonAttachments disables any new volume attachments\nfrom the provided node in the cluster. Existing volume attachments\nwill stay on the node.",
+          "request": {
+            "name": "CordonAttachments disables any new volume attachments\nfrom the provided node in the cluster. Existing volume attachments\nwill stay on the node.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "nodes",
+                "attachments",
+                "disable",
+                ":node_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "node_id",
+                  "description": "(Required) Node ID on which any further volume attachments will be disabled"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"node_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "133409ef-1745-45de-b3cf-695284176e77",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "nodes",
+                    "attachments",
+                    "disable",
+                    ":node_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "node_id",
+                      "description": "(Required) Node ID on which any further volume attachments will be disabled"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"node_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "beaaa23b-e200-4eb4-8654-0cbe917aa599",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "nodes",
+                    "attachments",
+                    "disable",
+                    ":node_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "node_id",
+                      "description": "(Required) Node ID on which any further volume attachments will be disabled"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"node_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1493,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bd867b2d-c878-4e75-b9a5-c91521f25f9d",
+          "name": "DrainAttachments creates a task to drain volume attachments\nfrom the provided node in the cluster.",
+          "request": {
+            "name": "DrainAttachments creates a task to drain volume attachments\nfrom the provided node in the cluster.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "nodes",
+                "attachments",
+                "drain",
+                ":node_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "node_id",
+                  "description": "(Required) Id of the node to drain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"issuer\": \"<string>\",\n  \"node_id\": \"<string>\",\n  \"only_sharedv4\": \"<boolean>\",\n  \"selector\": [\n    {\n      \"key\": \"<string>\",\n      \"operator\": \"In\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"key\": \"<string>\",\n      \"operator\": \"In\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "66f132c6-e628-4819-b9cd-ef0724aa7896",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "nodes",
+                    "attachments",
+                    "drain",
+                    ":node_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "node_id",
+                      "description": "(Required) Id of the node to drain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"issuer\": \"<string>\",\n  \"node_id\": \"<string>\",\n  \"only_sharedv4\": \"<boolean>\",\n  \"selector\": [\n    {\n      \"key\": \"<string>\",\n      \"operator\": \"In\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"key\": \"<string>\",\n      \"operator\": \"In\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"job\": {\n    \"clouddrive_transfer\": {\n      \"destination_instance_id\": \"string\",\n      \"source_driveset_id\": \"string\",\n      \"status\": \"string\"\n    },\n    \"collect_diags\": {\n      \"request\": {\n        \"filename\": \"string\",\n        \"issuer\": \"string\",\n        \"live\": false,\n        \"node\": {\n          \"all\": true,\n          \"node_ids\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"node_label_selector\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"profile_only\": true,\n        \"timeout_mins\": \"string\",\n        \"volume\": {\n          \"volume_ids\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"volume_label_selector\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      },\n      \"statuses\": [\n        {\n          \"message\": \"string\",\n          \"node\": \"string\",\n          \"state\": \"UNSPECIFIED\"\n        },\n        {\n          \"message\": \"string\",\n          \"node\": \"string\",\n          \"state\": \"UNSPECIFIED\"\n        }\n      ]\n    },\n    \"create_time\": \"1956-08-14T13:02:58.213Z\",\n    \"defrag\": {\n      \"current_running_nodes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"exclude_nodes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"include_nodes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"max_duration_minutes\": 6350,\n      \"max_nodes_in_parallel\": 9409,\n      \"node_selector\": [\n        {\n          \"key\": \"<string>\",\n          \"operator\": \"In\",\n          \"values\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"key\": \"<string>\",\n          \"operator\": \"In\",\n          \"values\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"schedule_id\": \"string\",\n      \"schedule_one_iteration_only\": false\n    },\n    \"drain_attachments\": {\n      \"Status\": \"string\",\n      \"create_time\": \"1959-06-28T20:44:32.719Z\",\n      \"issuer\": \"string\",\n      \"last_update_time\": \"1960-03-05T00:30:48.308Z\",\n      \"node_id\": \"string\",\n      \"parameters\": {\n        \"issuer\": \"<string>\",\n        \"node_id\": \"<string>\",\n        \"only_sharedv4\": \"<boolean>\",\n        \"selector\": [\n          {\n            \"key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"operator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"operator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      }\n    },\n    \"id\": \"string\",\n    \"last_update_time\": \"1993-04-15T06:10:46.403Z\",\n    \"state\": \"UNSPECIFIED_STATE\",\n    \"type\": \"UNSPECIFIED_TYPE\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d193d465-8c66-466e-908a-9b819ff41be3",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "nodes",
+                    "attachments",
+                    "drain",
+                    ":node_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "node_id",
+                      "description": "(Required) Id of the node to drain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"issuer\": \"<string>\",\n  \"node_id\": \"<string>\",\n  \"only_sharedv4\": \"<boolean>\",\n  \"selector\": [\n    {\n      \"key\": \"<string>\",\n      \"operator\": \"In\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"key\": \"<string>\",\n      \"operator\": \"In\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1493,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2f114a7f-4a0a-45f5-96fc-d16e1b88dfd9",
+          "name": "UncordonAttachments re-enables volume attachments\non the provided node in the cluster.",
+          "request": {
+            "name": "UncordonAttachments re-enables volume attachments\non the provided node in the cluster.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "nodes",
+                "attachments",
+                "enable",
+                ":node_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "node_id",
+                  "description": "(Required) Node ID on which any further volume attachments will be enabled"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"node_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c744a33c-5e65-4b22-bf7f-a24ae8cbe081",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "nodes",
+                    "attachments",
+                    "enable",
+                    ":node_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "node_id",
+                      "description": "(Required) Node ID on which any further volume attachments will be enabled"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"node_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f77dcdca-8e11-4d0a-8023-9c3f6f96630e",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "nodes",
+                    "attachments",
+                    "enable",
+                    ":node_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "node_id",
+                      "description": "(Required) Node ID on which any further volume attachments will be enabled"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"node_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1493,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5dfd4d5e-c8a5-4a3e-b503-1c1cab0188fd",
+          "name": "Returns bytes used of multiple volumes for a give node",
+          "request": {
+            "name": "Returns bytes used of multiple volumes for a give node",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "nodes",
+                "bytesused"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ids\": [\n    \"<uint64>\",\n    \"<uint64>\"\n  ],\n  \"node_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6d165c36-1603-47bf-b673-aeef02719d3f",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "nodes",
+                    "bytesused"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ids\": [\n    \"<uint64>\",\n    \"<uint64>\"\n  ],\n  \"node_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"vol_util_info\": {\n    \"node_id\": \"string\",\n    \"vol_usage\": [\n      {\n        \"total_bytes\": \"string\",\n        \"volume_id\": \"string\"\n      },\n      {\n        \"total_bytes\": \"string\",\n        \"volume_id\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "724ac91b-3286-46dc-9288-13966778571c",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "nodes",
+                    "bytesused"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ids\": [\n    \"<uint64>\",\n    \"<uint64>\"\n  ],\n  \"node_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1493,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "64a9de89-a59c-4310-aa94-4bca1753f452",
+          "name": "EnumerateWithFilters returns all the nodes in the current cluster",
+          "request": {
+            "name": "EnumerateWithFilters returns all the nodes in the current cluster",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "nodes",
+                "filters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5933397a-a4d6-41eb-a0bd-1e45b54573e0",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "nodes",
+                    "filters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"nodes\": [\n    {\n      \"HWType\": \"UnknownMachine\",\n      \"avg_load\": \"string\",\n      \"cluster_domain\": \"string\",\n      \"cpu\": 1698.4669691328536,\n      \"cpu_cores\": \"string\",\n      \"data_ip\": \"string\",\n      \"disks\": {\n        \"key_0\": {\n          \"cache\": true,\n          \"cloud_drive_type\": \"string\",\n          \"id\": \"string\",\n          \"iops\": \"string\",\n          \"last_scan\": \"2004-01-21T01:00:15.963Z\",\n          \"medium\": \"STORAGE_MEDIUM_MAGNETIC\",\n          \"metadata\": false,\n          \"online\": false,\n          \"path\": \"string\",\n          \"pool_metadata_dev\": false,\n          \"randRW\": 407.1882590412312,\n          \"rotation_speed\": \"string\",\n          \"seq_read\": 3441.1475835431083,\n          \"seq_write\": 1906.024809029241,\n          \"size\": \"string\",\n          \"used\": \"string\",\n          \"volume_spec\": \"string\"\n        }\n      },\n      \"hostname\": \"string\",\n      \"id\": \"string\",\n      \"mem_free\": \"string\",\n      \"mem_total\": \"string\",\n      \"mem_used\": \"string\",\n      \"mgmt_ip\": \"string\",\n      \"node_labels\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"non_quorum_member\": true,\n      \"pools\": [\n        {\n          \"Cos\": \"NONE\",\n          \"ID\": 9393,\n          \"Medium\": \"STORAGE_MEDIUM_MAGNETIC\",\n          \"RaidLevel\": \"string\",\n          \"TotalSize\": \"string\",\n          \"Used\": \"string\",\n          \"labels\": {\n            \"key_0\": \"string\"\n          },\n          \"last_operation\": {\n            \"msg\": \"string\",\n            \"params\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"status\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"uuid\": \"string\"\n        },\n        {\n          \"Cos\": \"NONE\",\n          \"ID\": 3883,\n          \"Medium\": \"STORAGE_MEDIUM_MAGNETIC\",\n          \"RaidLevel\": \"string\",\n          \"TotalSize\": \"string\",\n          \"Used\": \"string\",\n          \"labels\": {\n            \"key_0\": \"string\"\n          },\n          \"last_operation\": {\n            \"msg\": \"string\",\n            \"params\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"status\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"uuid\": \"string\"\n        }\n      ],\n      \"scheduler_node_name\": \"string\",\n      \"scheduler_topology\": {\n        \"labels\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\",\n          \"key_2\": \"string\",\n          \"key_3\": \"string\"\n        }\n      },\n      \"security_status\": \"UNSPECIFIED\",\n      \"status\": \"STATUS_NONE\"\n    },\n    {\n      \"HWType\": \"UnknownMachine\",\n      \"avg_load\": \"string\",\n      \"cluster_domain\": \"string\",\n      \"cpu\": 2790.212471323922,\n      \"cpu_cores\": \"string\",\n      \"data_ip\": \"string\",\n      \"disks\": {\n        \"key_0\": {\n          \"cache\": false,\n          \"cloud_drive_type\": \"string\",\n          \"id\": \"string\",\n          \"iops\": \"string\",\n          \"last_scan\": \"1964-07-30T01:16:31.522Z\",\n          \"medium\": \"STORAGE_MEDIUM_MAGNETIC\",\n          \"metadata\": true,\n          \"online\": false,\n          \"path\": \"string\",\n          \"pool_metadata_dev\": false,\n          \"randRW\": 9264.543805688938,\n          \"rotation_speed\": \"string\",\n          \"seq_read\": 8428.740467330543,\n          \"seq_write\": 5063.82920788928,\n          \"size\": \"string\",\n          \"used\": \"string\",\n          \"volume_spec\": \"string\"\n        }\n      },\n      \"hostname\": \"string\",\n      \"id\": \"string\",\n      \"mem_free\": \"string\",\n      \"mem_total\": \"string\",\n      \"mem_used\": \"string\",\n      \"mgmt_ip\": \"string\",\n      \"node_labels\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\",\n        \"key_2\": \"string\"\n      },\n      \"non_quorum_member\": true,\n      \"pools\": [\n        {\n          \"Cos\": \"NONE\",\n          \"ID\": 5731,\n          \"Medium\": \"STORAGE_MEDIUM_MAGNETIC\",\n          \"RaidLevel\": \"string\",\n          \"TotalSize\": \"string\",\n          \"Used\": \"string\",\n          \"labels\": {\n            \"key_0\": \"string\"\n          },\n          \"last_operation\": {\n            \"msg\": \"string\",\n            \"params\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"key_1\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"status\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"uuid\": \"string\"\n        },\n        {\n          \"Cos\": \"NONE\",\n          \"ID\": 9300,\n          \"Medium\": \"STORAGE_MEDIUM_MAGNETIC\",\n          \"RaidLevel\": \"string\",\n          \"TotalSize\": \"string\",\n          \"Used\": \"string\",\n          \"labels\": {\n            \"key_0\": \"string\",\n            \"key_1\": \"string\",\n            \"key_2\": \"string\"\n          },\n          \"last_operation\": {\n            \"msg\": \"string\",\n            \"params\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"key_1\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"key_2\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"status\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"uuid\": \"string\"\n        }\n      ],\n      \"scheduler_node_name\": \"string\",\n      \"scheduler_topology\": {\n        \"labels\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\",\n          \"key_2\": \"string\"\n        }\n      },\n      \"security_status\": \"UNSPECIFIED\",\n      \"status\": \"STATUS_NONE\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "23696154-f3c6-4358-a340-c5beefde6940",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "nodes",
+                    "filters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1493,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a2b9ba27-387c-4e9d-811b-d4d1e27b195b",
+          "name": "Inspect returns information about the specified node",
+          "request": {
+            "name": "Inspect returns information about the specified node",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "nodes",
+                "inspect",
+                ":node_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "node_id",
+                  "description": "(Required) Id of node to inspect"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "754a7a3f-0d24-4d5c-b360-48e19fb7f42f",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "nodes",
+                    "inspect",
+                    ":node_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "node_id",
+                      "description": "(Required) Id of node to inspect"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"node\": {\n    \"HWType\": \"UnknownMachine\",\n    \"avg_load\": \"string\",\n    \"cluster_domain\": \"string\",\n    \"cpu\": 3529.7667173763994,\n    \"cpu_cores\": \"string\",\n    \"data_ip\": \"string\",\n    \"disks\": {\n      \"key_0\": {\n        \"cache\": true,\n        \"cloud_drive_type\": \"string\",\n        \"id\": \"string\",\n        \"iops\": \"string\",\n        \"last_scan\": \"1978-09-18T17:37:33.706Z\",\n        \"medium\": \"STORAGE_MEDIUM_MAGNETIC\",\n        \"metadata\": true,\n        \"online\": false,\n        \"path\": \"string\",\n        \"pool_metadata_dev\": false,\n        \"randRW\": 193.7980787161264,\n        \"rotation_speed\": \"string\",\n        \"seq_read\": 4245.815085505228,\n        \"seq_write\": 768.1421935543186,\n        \"size\": \"string\",\n        \"used\": \"string\",\n        \"volume_spec\": \"string\"\n      }\n    },\n    \"hostname\": \"string\",\n    \"id\": \"string\",\n    \"mem_free\": \"string\",\n    \"mem_total\": \"string\",\n    \"mem_used\": \"string\",\n    \"mgmt_ip\": \"string\",\n    \"node_labels\": {\n      \"key_0\": \"string\"\n    },\n    \"non_quorum_member\": true,\n    \"pools\": [\n      {\n        \"Cos\": \"NONE\",\n        \"ID\": 5167,\n        \"Medium\": \"STORAGE_MEDIUM_MAGNETIC\",\n        \"RaidLevel\": \"string\",\n        \"TotalSize\": \"string\",\n        \"Used\": \"string\",\n        \"labels\": {\n          \"key_0\": \"string\"\n        },\n        \"last_operation\": {\n          \"msg\": \"string\",\n          \"params\": {\n            \"key_0\": \"string\",\n            \"key_1\": \"string\"\n          },\n          \"status\": \"OPERATION_PENDING\",\n          \"type\": \"OPERATION_RESIZE\"\n        },\n        \"uuid\": \"string\"\n      },\n      {\n        \"Cos\": \"NONE\",\n        \"ID\": 5995,\n        \"Medium\": \"STORAGE_MEDIUM_MAGNETIC\",\n        \"RaidLevel\": \"string\",\n        \"TotalSize\": \"string\",\n        \"Used\": \"string\",\n        \"labels\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        },\n        \"last_operation\": {\n          \"msg\": \"string\",\n          \"params\": {\n            \"key_0\": \"string\",\n            \"key_1\": \"string\",\n            \"key_2\": \"string\"\n          },\n          \"status\": \"OPERATION_PENDING\",\n          \"type\": \"OPERATION_RESIZE\"\n        },\n        \"uuid\": \"string\"\n      }\n    ],\n    \"scheduler_node_name\": \"string\",\n    \"scheduler_topology\": {\n      \"labels\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      }\n    },\n    \"security_status\": \"UNSPECIFIED\",\n    \"status\": \"STATUS_NONE\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9c145e8b-7051-4d88-9475-8b81dced3dff",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "nodes",
+                    "inspect",
+                    ":node_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "node_id",
+                      "description": "(Required) Id of node to inspect"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1493,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b517e7d7-4183-44ac-a14d-dd0d360340c0",
+          "name": "InspectCurrent returns information about the storage node\nwhere the client is currently connected to.",
+          "request": {
+            "name": "InspectCurrent returns information about the storage node\nwhere the client is currently connected to.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "nodes",
+                "inspectcurrent"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0c848c61-e975-458a-b019-53a79ded299e",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "nodes",
+                    "inspectcurrent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"node\": {\n    \"HWType\": \"UnknownMachine\",\n    \"avg_load\": \"string\",\n    \"cluster_domain\": \"string\",\n    \"cpu\": 3529.7667173763994,\n    \"cpu_cores\": \"string\",\n    \"data_ip\": \"string\",\n    \"disks\": {\n      \"key_0\": {\n        \"cache\": true,\n        \"cloud_drive_type\": \"string\",\n        \"id\": \"string\",\n        \"iops\": \"string\",\n        \"last_scan\": \"1978-09-18T17:37:33.706Z\",\n        \"medium\": \"STORAGE_MEDIUM_MAGNETIC\",\n        \"metadata\": true,\n        \"online\": false,\n        \"path\": \"string\",\n        \"pool_metadata_dev\": false,\n        \"randRW\": 193.7980787161264,\n        \"rotation_speed\": \"string\",\n        \"seq_read\": 4245.815085505228,\n        \"seq_write\": 768.1421935543186,\n        \"size\": \"string\",\n        \"used\": \"string\",\n        \"volume_spec\": \"string\"\n      }\n    },\n    \"hostname\": \"string\",\n    \"id\": \"string\",\n    \"mem_free\": \"string\",\n    \"mem_total\": \"string\",\n    \"mem_used\": \"string\",\n    \"mgmt_ip\": \"string\",\n    \"node_labels\": {\n      \"key_0\": \"string\"\n    },\n    \"non_quorum_member\": true,\n    \"pools\": [\n      {\n        \"Cos\": \"NONE\",\n        \"ID\": 5167,\n        \"Medium\": \"STORAGE_MEDIUM_MAGNETIC\",\n        \"RaidLevel\": \"string\",\n        \"TotalSize\": \"string\",\n        \"Used\": \"string\",\n        \"labels\": {\n          \"key_0\": \"string\"\n        },\n        \"last_operation\": {\n          \"msg\": \"string\",\n          \"params\": {\n            \"key_0\": \"string\",\n            \"key_1\": \"string\"\n          },\n          \"status\": \"OPERATION_PENDING\",\n          \"type\": \"OPERATION_RESIZE\"\n        },\n        \"uuid\": \"string\"\n      },\n      {\n        \"Cos\": \"NONE\",\n        \"ID\": 5995,\n        \"Medium\": \"STORAGE_MEDIUM_MAGNETIC\",\n        \"RaidLevel\": \"string\",\n        \"TotalSize\": \"string\",\n        \"Used\": \"string\",\n        \"labels\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        },\n        \"last_operation\": {\n          \"msg\": \"string\",\n          \"params\": {\n            \"key_0\": \"string\",\n            \"key_1\": \"string\",\n            \"key_2\": \"string\"\n          },\n          \"status\": \"OPERATION_PENDING\",\n          \"type\": \"OPERATION_RESIZE\"\n        },\n        \"uuid\": \"string\"\n      }\n    ],\n    \"scheduler_node_name\": \"string\",\n    \"scheduler_topology\": {\n      \"labels\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      }\n    },\n    \"security_status\": \"UNSPECIFIED\",\n    \"status\": \"STATUS_NONE\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d16f3fec-4e8f-4cfd-9deb-95a1b7a52301",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "nodes",
+                    "inspectcurrent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1493,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "306c0f2d-ac71-4a84-938f-ef6088b01512",
+          "name": "Triggers RelaxedReclaim purge for a give node",
+          "request": {
+            "name": "Triggers RelaxedReclaim purge for a give node",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "nodes",
+                "usage",
+                ":node_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "node_id",
+                  "description": "(Required) Id of the node to trigger the purge"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ffb5c7e9-4daf-4ea5-8f33-4f4a0a9d95f5",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "nodes",
+                    "usage",
+                    ":node_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "node_id",
+                      "description": "(Required) Id of the node to trigger the purge"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"num_purged\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a8e50de9-37ae-4cb2-aa98-e787c8f23291",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "nodes",
+                    "usage",
+                    ":node_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "node_id",
+                      "description": "(Required) Id of the node to trigger the purge"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1493,\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "01fca707-afc5-46e5-a4b7-abdd87dcad6f",
+    "name": "OpenStorage SDK OpenStorageAlerts OpenStorageNode API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

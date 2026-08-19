@@ -1,0 +1,316 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenStorage SDK OpenStorageAlerts OpenStorageVolume API",
+    "version": "0.186.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "OpenStorageVolume",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Gets the volume catalog of an attached and mounted volume.\nReturns the entire tree up to \"n\"  depth (default is all of it)\nTakes a path that can be used as the new root for the catalog request.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/volume/catalog",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Gets the volume catalog of an attached and mounted volume.\nReturns the entire tree up to \"n\"  depth (default is all of it)\nTakes a path that can be used as the new root for the catalog request."
+        },
+        {
+          "info": {
+            "name": "Enumerate returns a list of volume ids",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/volumes"
+          },
+          "docs": "Enumerate returns a list of volume ids"
+        },
+        {
+          "info": {
+            "name": "Create creates a volume according to the specification provided",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/volumes",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Requires access AccessType.Read when cloning from a parent volume.\n\n##### Example\n{% codetabs name=\"Golang\", type=\"go\" -%}\nid, err := client.Create(context.Background(), &api.SdkVolumeCreateRequest{\n  Name: \"volume-12345-east\",\n  Spec: &api.VolumeSpec {\n    Size: 1234567,\n  },\n})\n{%- language name=\"Python\", type=\"py\" -%}\nen_resp = client.Create(api_pb2.SdkVolumeCreateRequest(\n  name=\"volume-12345-east\",\n  spec=api_pb2.VolumeSpec(size=1234567)))\n{%- endcodetabs %}"
+        },
+        {
+          "info": {
+            "name": "Clone creates a new writable volume cloned from an existing volume",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/volumes/clone",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Requires access AccessType.Read of volume"
+        },
+        {
+          "info": {
+            "name": "Enumerate returns a list of volume ids that match the labels if any are provided.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/volumes/filters",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Enumerate returns a list of volume ids that match the labels if any are provided."
+        },
+        {
+          "info": {
+            "name": "Inspect returns information about a volume",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/volumes/inspect/:volume_id",
+            "params": [
+              {
+                "name": "volume_id",
+                "value": "",
+                "type": "path",
+                "description": "Id of volume to inspect"
+              },
+              {
+                "name": "options.deep",
+                "value": "",
+                "type": "query",
+                "description": "Deep inspection is used to collect more information about\nthe volume. Setting this value may delay the request."
+              }
+            ]
+          },
+          "docs": "Requires access AccessType.Read of volume"
+        },
+        {
+          "info": {
+            "name": "Returns information for a list of volumes that match a filter.\nThis call is a helper function like calling\n`OpenStorageVolume.EnumerateWithFilters` then having it\nreturn the contents of each of those volumes\n`OpenStorageVolume.Inspect()`. Take care in using this call\nwhen requesting large number of volumes because it will\nblock until it has all the information requested before\nreturning.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/volumes/inspectwithfilters",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns information for a list of volumes that match a filter.\nThis call is a helper function like calling\n`OpenStorageVolume.EnumerateWithFilters` then having it\nreturn the contents of each of those volumes\n`OpenStorageVolume.Inspect()`. Take care in using this call\nwhen requesting large number of volumes because it will\nblock until it has all the information requested before\nreturning."
+        },
+        {
+          "info": {
+            "name": "Sets the snapshot schedules. This information is saved in the VolumeSpec.snapshot_schedule\nas `policy=<name>,...`. This function will overwrite any policy values\nin the volume. To delete the policies in the volume send no policies.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/volumes/snapshot/schedules/:volume_id",
+            "params": [
+              {
+                "name": "volume_id",
+                "value": "",
+                "type": "path",
+                "description": "Id of volume"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Requires access AccessType.Write of volume"
+        },
+        {
+          "info": {
+            "name": "SnapshotEnumerate returns a list of snapshots for a specific volume",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/volumes/snapshots",
+            "params": [
+              {
+                "name": "volume_id",
+                "value": "",
+                "type": "query",
+                "description": "Get the snapshots for this volume id."
+              }
+            ]
+          },
+          "docs": "SnapshotEnumerate returns a list of snapshots for a specific volume"
+        },
+        {
+          "info": {
+            "name": "SnapshotCreate creates a snapshot of a volume. This creates an immutable (read-only),\npoint-in-time snapshot of a volume. To create a new writable volume from\na snapshot, please use OpenStorageVolume.Clone().",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/volumes/snapshots",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Requires access AccessType.Read of volume"
+        },
+        {
+          "info": {
+            "name": "SnapshotEnumerate returns a list of snapshots.\nTo filter all the snapshots for a specific volume which may no longer exist,\nspecify a volume id.\nLabels can also be used to filter the snapshot list.\nIf neither are provided all snapshots will be returned.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/volumes/snapshots/filters/:volume_id",
+            "params": [
+              {
+                "name": "volume_id",
+                "value": "",
+                "type": "path",
+                "description": "(optional) Get the snapshots for this volume id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "SnapshotEnumerate returns a list of snapshots.\nTo filter all the snapshots for a specific volume which may no longer exist,\nspecify a volume id.\nLabels can also be used to filter the snapshot list.\nIf neither are provided all snapshots will be returned."
+        },
+        {
+          "info": {
+            "name": "SnapshotRestore restores a volume to a specified snapshot",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/volumes/snapshots/restore",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Requires access AccessType.Write of volume"
+        },
+        {
+          "info": {
+            "name": "Stats returns the statistics for the requested volume",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/volumes/stats/:volume_id",
+            "params": [
+              {
+                "name": "volume_id",
+                "value": "",
+                "type": "path",
+                "description": "Id of the volume to get statistics"
+              },
+              {
+                "name": "not_cumulative",
+                "value": "",
+                "type": "query",
+                "description": "When set to false the stats are in /proc/diskstats style stats.\nWhen set to true the stats are stats for a specific duration."
+              }
+            ]
+          },
+          "docs": "Requires access AccessType.Read of volume"
+        },
+        {
+          "info": {
+            "name": "CapacityUsage returns volume/snapshot's capacity usage details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/volumes/usage/:volume_id",
+            "params": [
+              {
+                "name": "volume_id",
+                "value": "",
+                "type": "path",
+                "description": "Id of the snapshot/volume to get capacity usage details"
+              }
+            ]
+          },
+          "docs": "Requires access AccessType.Read of volume\n\n##### Error codes:\n\n* codes.Aborted : Command was aborted and only total_bytes field is valid\n* code.Unimmplemented : Command is not suported this kernel.Only total_bytes\nfield is valid;"
+        },
+        {
+          "info": {
+            "name": "Update provides a method for manipulating the specification and attributes of a volume.\nSet can be used to resize a volume, update labels, change replica count, and much more.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/v1/volumes/:volume_id",
+            "params": [
+              {
+                "name": "volume_id",
+                "value": "",
+                "type": "path",
+                "description": "Id of the volume to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Requires access AccessType.Write of volume"
+        },
+        {
+          "info": {
+            "name": "Delete deletes the provided volume",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v1/volumes/:volume_id",
+            "params": [
+              {
+                "name": "volume_id",
+                "value": "",
+                "type": "path",
+                "description": "Id of volume to delete"
+              }
+            ]
+          },
+          "docs": "Requires access AccessType.Admin of volume"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

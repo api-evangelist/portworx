@@ -1,0 +1,35 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenStorage SDK OpenStorageAlerts OpenStorageCluster API",
+    "version": "0.186.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "OpenStorageCluster",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "InspectCurrent returns information about the current cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/clusters/inspectcurrent"
+          },
+          "docs": "InspectCurrent returns information about the current cluster"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
