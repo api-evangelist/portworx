@@ -19,6 +19,12 @@ accessModel:
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/portworx.png
 tags:
+  - Cloud-Native
+  - Containers
+  - Data Management
+  - Kubernetes
+  - Storage
+tags_raw:
   - Cloud Native
   - Containers
   - Data Management
