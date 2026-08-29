@@ -4,6 +4,18 @@ description: >-
   Portworx by Pure Storage is a Kubernetes data services platform that provides persistent storage, data protection,
   disaster recovery, and security for containerized applications running in production.
 type: Index
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
