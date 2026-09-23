@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: OpenStorage SDK OpenStorageAlerts OpenStorageSchedulePolicy API
+  title: OpenStorage SDK Open Storage Schedule Policy API
   version: 0.186.0
 security:
 - bearerAuth: []
@@ -47,9 +47,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/runtimeError'
           description: An unexpected error response.
-      summary: 'Create creates a new snapshot schedule. They can be setup daily,
-
-        weekly, or monthly.'
+      summary: Create creates a new snapshot schedule.
       tags:
       - OpenStorageSchedulePolicy
     put:
@@ -130,45 +128,6 @@ paths:
       - OpenStorageSchedulePolicy
 components:
   schemas:
-    apiSdkSchedulePolicyUpdateRequest:
-      properties:
-        schedule_policy:
-          $ref: '#/components/schemas/apiSdkSchedulePolicy'
-      title: Define a request to update a schedule policy
-      type: object
-    protobufAny:
-      properties:
-        type_url:
-          type: string
-        value:
-          format: byte
-          type: string
-      type: object
-    apiSdkSchedulePolicyEnumerateResponse:
-      properties:
-        policies:
-          items:
-            $ref: '#/components/schemas/apiSdkSchedulePolicy'
-          title: List of Schedule Policy
-          type: array
-      title: Defines a schedule policy enumerate response
-      type: object
-    apiSdkSchedulePolicyIntervalMonthly:
-      properties:
-        day:
-          format: int32
-          title: 'Range: 1-28'
-          type: integer
-        hour:
-          format: int32
-          title: 'Range: 0-59'
-          type: integer
-        minute:
-          format: int32
-          title: 'Range: 0-59'
-          type: integer
-      title: Defines a monthly schedule
-      type: object
     apiSdkTimeWeekday:
       default: SdkTimeWeekdaySunday
       description: "- SdkTimeWeekdaySunday: Sunday\n - SdkTimeWeekdayMonday: Monday\n - SdkTimeWeekdayTuesday: Tuesday\n - SdkTimeWeekdayWednesday: Wednesday\n - SdkTimeWeekdayThursday: Thursday\n - SdkTimeWeekdayFriday: Friday\n - SdkTimeWeekdaySaturday: Saturday"
@@ -182,19 +141,36 @@ components:
       - SdkTimeWeekdaySaturday
       title: Defines times of day
       type: string
-    apiSdkSchedulePolicy:
+    apiSdkSchedulePolicyEnumerateResponse:
       properties:
-        name:
-          title: Name of the schedule policy
-          type: string
-        schedules:
+        policies:
           items:
-            $ref: '#/components/schemas/apiSdkSchedulePolicyInterval'
-          title: Schedule policies
+            $ref: '#/components/schemas/apiSdkSchedulePolicy'
+          title: List of Schedule Policy
           type: array
-      title: Defines a schedule policy
+      title: Defines a schedule policy enumerate response
       type: object
-    apiSdkSchedulePolicyDeleteResponse:
+    apiSdkSchedulePolicyIntervalWeekly:
+      properties:
+        day:
+          $ref: '#/components/schemas/apiSdkTimeWeekday'
+        hour:
+          format: int32
+          title: 'Range: 0-23'
+          type: integer
+        minute:
+          format: int32
+          title: 'Range: 0-59'
+          type: integer
+      title: Defines a weekly schedule
+      type: object
+    apiSdkSchedulePolicyUpdateRequest:
+      properties:
+        schedule_policy:
+          $ref: '#/components/schemas/apiSdkSchedulePolicy'
+      title: Define a request to update a schedule policy
+      type: object
+    apiSdkSchedulePolicyCreateResponse:
       title: Empty response
       type: object
     apiSdkSchedulePolicyInterval:
@@ -213,14 +189,59 @@ components:
           $ref: '#/components/schemas/apiSdkSchedulePolicyIntervalWeekly'
       title: Defines a schedule policy interval
       type: object
-    apiSdkSchedulePolicyCreateResponse:
-      title: Empty response
+    apiSdkSchedulePolicyInspectResponse:
+      properties:
+        policy:
+          $ref: '#/components/schemas/apiSdkSchedulePolicy'
+      title: Defines a schedule policy inspection response
+      type: object
+    apiSdkSchedulePolicyIntervalDaily:
+      properties:
+        hour:
+          format: int32
+          title: 'Range: 0-23'
+          type: integer
+        minute:
+          format: int32
+          title: 'Range: 0-59'
+          type: integer
+      title: Defines a daily schedule
       type: object
     apiSdkSchedulePolicyCreateRequest:
       properties:
         schedule_policy:
           $ref: '#/components/schemas/apiSdkSchedulePolicy'
       title: Define a schedule policy request
+      type: object
+    apiSdkSchedulePolicyDeleteResponse:
+      title: Empty response
+      type: object
+    apiSdkSchedulePolicyIntervalMonthly:
+      properties:
+        day:
+          format: int32
+          title: 'Range: 1-28'
+          type: integer
+        hour:
+          format: int32
+          title: 'Range: 0-59'
+          type: integer
+        minute:
+          format: int32
+          title: 'Range: 0-59'
+          type: integer
+      title: Defines a monthly schedule
+      type: object
+    protobufAny:
+      properties:
+        type_url:
+          type: string
+        value:
+          format: byte
+          type: string
+      type: object
+    apiSdkSchedulePolicyUpdateResponse:
+      title: Empty response
       type: object
     runtimeError:
       properties:
@@ -236,40 +257,17 @@ components:
         message:
           type: string
       type: object
-    apiSdkSchedulePolicyIntervalWeekly:
+    apiSdkSchedulePolicy:
       properties:
-        day:
-          $ref: '#/components/schemas/apiSdkTimeWeekday'
-        hour:
-          format: int32
-          title: 'Range: 0-23'
-          type: integer
-        minute:
-          format: int32
-          title: 'Range: 0-59'
-          type: integer
-      title: Defines a weekly schedule
-      type: object
-    apiSdkSchedulePolicyUpdateResponse:
-      title: Empty response
-      type: object
-    apiSdkSchedulePolicyIntervalDaily:
-      properties:
-        hour:
-          format: int32
-          title: 'Range: 0-23'
-          type: integer
-        minute:
-          format: int32
-          title: 'Range: 0-59'
-          type: integer
-      title: Defines a daily schedule
-      type: object
-    apiSdkSchedulePolicyInspectResponse:
-      properties:
-        policy:
-          $ref: '#/components/schemas/apiSdkSchedulePolicy'
-      title: Defines a schedule policy inspection response
+        name:
+          title: Name of the schedule policy
+          type: string
+        schedules:
+          items:
+            $ref: '#/components/schemas/apiSdkSchedulePolicyInterval'
+          title: Schedule policies
+          type: array
+      title: Defines a schedule policy
       type: object
     apiSdkSchedulePolicyIntervalPeriodic:
       properties:

@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: OpenStorage SDK OpenStorageAlerts OpenStorageJob API
+  title: OpenStorage SDK Open Storage Job API
   version: 0.186.0
 security:
 - bearerAuth: []
@@ -109,19 +109,201 @@ paths:
               schema:
                 $ref: '#/components/schemas/runtimeError'
           description: An unexpected error response.
-      summary: 'Update updates an existing job''s state
-
-        Only acceptable state values are
-
-        JobState_PAUSED - acceptable only from running state
-
-        JobState_CANCELLED - acceptable only from running/pause state
-
-        JobState_RUNNING - acceptable only from pause state'
+      summary: Update updates an existing job's state Only acceptable state values are…
       tags:
       - OpenStorageJob
 components:
   schemas:
+    apiDiagsCollectionStatusState:
+      default: UNSPECIFIED
+      description: "- UNSPECIFIED: Unspecified means uninitialized or unknown state\n - PENDING: Pending indicates the diags collection is pending and hasn't started\n - RUNNING: Running indicates diags collection is actively running\n - DONE: Done indicates diags collection has finished\n - FAILED: Failed indicates diags collection has failed"
+      enum:
+      - UNSPECIFIED
+      - PENDING
+      - RUNNING
+      - DONE
+      - FAILED
+      title: State is an enum for state of diags collection on a given node
+      type: string
+    apiDrainAttachmentsSummary:
+      properties:
+        num_volumes_done:
+          format: uint64
+          title: Number of volumes which have been drained
+          type: string
+        num_volumes_pending:
+          format: uint64
+          title: Number of volumes which have not been drained yet
+          type: string
+        num_volumes_total:
+          format: uint64
+          title: Total number of volumes that need to be drained
+          type: string
+      title: 'DrainAttachments summary of the volumes whose attachments need to be drained
+
+        from a node'
+      type: object
+    apiJobState:
+      default: UNSPECIFIED_STATE
+      description: "- UNSPECIFIED_STATE: Unspecified\n - PENDING: Pending indicates job is still pending and has not started work\n - RUNNING: Running indicates job is actively running\n - DONE: Done indicates job has finished processing\n - PAUSED: Paused indicates job is paused\n - CANCELLED: Cancelled indicates job is cancelled\n - FAILED: Failed indicates job has failed"
+      enum:
+      - UNSPECIFIED_STATE
+      - PENDING
+      - RUNNING
+      - DONE
+      - PAUSED
+      - CANCELLED
+      - FAILED
+      title: State is an enum for state of a node drain operation
+      type: string
+    apiSdkEnumerateJobsResponse:
+      properties:
+        jobs:
+          items:
+            $ref: '#/components/schemas/apiJob'
+          title: Jobs is the list of jobs in the response
+          type: array
+      title: Defines a response will all the known jobs
+      type: object
+    apiJobWorkSummary:
+      properties:
+        drain_attachments_summary:
+          $ref: '#/components/schemas/apiDrainAttachmentsSummary'
+      title: JobWorkSummary describes an action taken while performing the hob
+      type: object
+    apiCloudDriveTransferJob:
+      properties:
+        destination_instance_id:
+          title: DestinationInstanceID is the ID of the storageless instance that needs to take over the SourceDriveSetID
+          type: string
+        source_driveset_id:
+          title: SourceDrivesetID is the ID of the current driveset that needs to be transferred
+          type: string
+        status:
+          title: Status describes a helpful status of this operation
+          type: string
+      type: object
+    apiJob:
+      properties:
+        clouddrive_transfer:
+          $ref: '#/components/schemas/apiCloudDriveTransferJob'
+        collect_diags:
+          $ref: '#/components/schemas/apiCollectDiagsJob'
+        create_time:
+          format: date-time
+          title: CreateTime is the time the job was created
+          type: string
+        defrag:
+          $ref: '#/components/schemas/apiDefragJob'
+        drain_attachments:
+          $ref: '#/components/schemas/apiNodeDrainAttachmentsJob'
+        id:
+          title: ID of the job
+          type: string
+        last_update_time:
+          format: date-time
+          title: LastUpdateTime is the time the job was updated
+          type: string
+        state:
+          $ref: '#/components/schemas/apiJobState'
+        type:
+          $ref: '#/components/schemas/apiJobType'
+      title: 'Job is a generic job object that can encapsulate other
+
+        messages which follow the job framework of APIs'
+      type: object
+    runtimeError:
+      properties:
+        code:
+          format: int32
+          type: integer
+        details:
+          items:
+            $ref: '#/components/schemas/protobufAny'
+          type: array
+        error:
+          type: string
+        message:
+          type: string
+      type: object
+    apiSdkGetJobStatusResponse:
+      properties:
+        job:
+          $ref: '#/components/schemas/apiJob'
+        summary:
+          $ref: '#/components/schemas/apiJobSummary'
+      title: Defines the status of an existing job
+      type: object
+    apiCollectDiagsJob:
+      properties:
+        request:
+          $ref: '#/components/schemas/apiSdkDiagsCollectRequest'
+        statuses:
+          items:
+            $ref: '#/components/schemas/apiDiagsCollectionStatus'
+          title: Statuses is a list of statuses for diags collection for each node that is part of the request
+          type: array
+      type: object
+    apiSdkUpdateJobRequest:
+      properties:
+        id:
+          title: ID of the job
+          type: string
+        state:
+          $ref: '#/components/schemas/apiJobState'
+        type:
+          $ref: '#/components/schemas/apiJobType'
+      title: Defines a request to update an existing job
+      type: object
+    protobufAny:
+      properties:
+        type_url:
+          type: string
+        value:
+          format: byte
+          type: string
+      type: object
+    apiSdkUpdateJobResponse:
+      title: Defines the response for an update to an existing job
+      type: object
+    apiDiagsCollectionStatus:
+      properties:
+        message:
+          title: Message is a user friendly message for current status of diags collection
+          type: string
+        node:
+          title: Node is the node that's collecting the diags
+          type: string
+        state:
+          $ref: '#/components/schemas/apiDiagsCollectionStatusState'
+      type: object
+    apiNodeDrainAttachmentsJob:
+      properties:
+        Status:
+          title: Status describes a helpful status of this node drain operation
+          type: string
+        create_time:
+          format: date-time
+          title: CreateTime is the time the job was created
+          type: string
+        issuer:
+          title: 'Issuer is a user friendly name for the caller who is
+
+            invoking the API. It can be used by caller to filter out
+
+            drain requests from a particular issuer'
+          type: string
+        last_update_time:
+          format: date-time
+          title: LastUpdateTime is the time the job was updated
+          type: string
+        node_id:
+          title: NodeID of the node for which this drain job is running
+          type: string
+        parameters:
+          $ref: '#/components/schemas/apiSdkNodeDrainAttachmentsRequest'
+      title: NodeDrainAttachmentsJob describe a job to drain volume attachments from a node
+      type: object
     apiSdkDiagsCollectRequest:
       properties:
         filename:
@@ -154,155 +336,28 @@ components:
 
         nodes based on both and also handle overlaps'
       type: object
-    apiDrainAttachmentsSummary:
+    apiDiagsNodeSelector:
       properties:
-        num_volumes_done:
-          format: uint64
-          title: Number of volumes which have been drained
-          type: string
-        num_volumes_pending:
-          format: uint64
-          title: Number of volumes which have not been drained yet
-          type: string
-        num_volumes_total:
-          format: uint64
-          title: Total number of volumes that need to be drained
-          type: string
-      title: 'DrainAttachments summary of the volumes whose attachments need to be drained
-
-        from a node'
-      type: object
-    apiSdkGetJobStatusResponse:
-      properties:
-        job:
-          $ref: '#/components/schemas/apiJob'
-        summary:
-          $ref: '#/components/schemas/apiJobSummary'
-      title: Defines the status of an existing job
-      type: object
-    apiSdkNodeDrainAttachmentsRequest:
-      properties:
-        issuer:
-          title: 'Issuer is a user friendly name for the caller who is
-
-            invoking the API. It can be used by caller to filter out
-
-            drain requests from a particular issuer'
-          type: string
-        node_id:
-          title: Id of the node to drain
-          type: string
-        only_sharedv4:
-          description: 'Drain only sharedv4 volumes from a node
-
-            By default all volumes will be drained.'
+        all:
+          title: All selects all nodes for diags collection
           type: boolean
-        selector:
-          description: 'Selector is used for selecting volumes whose
-
-            attachment needs to be moved from this node.
-
-            The selector could be a list of volume label
-
-            key value pairs to select a subset of volumes.'
-          items:
-            $ref: '#/components/schemas/apiLabelSelectorRequirement'
-          type: array
-      title: Defines a node drain volume attachments request
-      type: object
-    apiCloudDriveTransferJob:
-      properties:
-        destination_instance_id:
-          title: DestinationInstanceID is the ID of the storageless instance that needs to take over the SourceDriveSetID
-          type: string
-        source_driveset_id:
-          title: SourceDrivesetID is the ID of the current driveset that needs to be transferred
-          type: string
-        status:
-          title: Status describes a helpful status of this operation
-          type: string
-      type: object
-    apiDiagsCollectionStatus:
-      properties:
-        message:
-          title: Message is a user friendly message for current status of diags collection
-          type: string
-        node:
-          title: Node is the node that's collecting the diags
-          type: string
-        state:
-          $ref: '#/components/schemas/apiDiagsCollectionStatusState'
-      type: object
-    apiDiagsVolumeSelector:
-      properties:
-        volume_ids:
+        node_ids:
           items:
             type: string
-          title: 'VolumeIDs selects volumes by their unique IDs and then uses replica and attached nodes for those volumes for diags
-
-            collection'
+          title: NodeIDs are unique IDs fo the nodes for which the diags will be collected
           type: array
-        volume_label_selector:
+        node_label_selector:
           items:
             $ref: '#/components/schemas/apiLabelSelectorRequirement'
-          title: 'VolumeLabelSelector selects volumes by their labels and then uses replica and attached nodes for those volumes for
-
-            diags collection'
+          title: NodeLabelSelector is a label selector used to select the nodes for which diags will be collected
           type: array
-      title: 'DiagsVolumeSelector allows selecting volumes for diags collection
+      title: 'DiagsNodeSelector allows selecting nodes for diags collection
 
-        User can select VolumeLabelSelector AND/OR VolumeIDs. If both are provided, the implementation will select nodes
+        User can select NodeLabelSelector AND/OR NodeIDs. If both are provided, the implementation will select nodes based on
 
-        based on both labels and IDs and also handle overlaps'
-      type: object
-    apiLabelSelectorRequirement:
-      description: 'LabelSelectorRequirement is a selector that contains values, a key, and an operator that
+        both labels and IDs and also handle overlaps
 
-        relates the key and values.'
-      properties:
-        key:
-          description: Key is the label key that the selector applies to.
-          type: string
-        operator:
-          $ref: '#/components/schemas/LabelSelectorRequirementOperator'
-        values:
-          description: 'Values is an array of string values. If the operator is In or NotIn,
-
-            the values array must be non-empty. If the operator is Exists or DoesNotExist,
-
-            the values array must be empty. This array is replaced during a strategic
-
-            merge patch.'
-          items:
-            type: string
-          type: array
-      type: object
-    apiJobSummary:
-      properties:
-        id:
-          title: ID of the job
-          type: string
-        total_runtime_seconds:
-          format: uint64
-          title: Total runtime in seconds
-          type: string
-        work_summaries:
-          items:
-            $ref: '#/components/schemas/apiJobWorkSummary'
-          title: Summary provides more information about the on-going job
-          type: array
-      title: JobSummary provides a summary of a job
-      type: object
-    apiSdkUpdateJobRequest:
-      properties:
-        id:
-          title: ID of the job
-          type: string
-        state:
-          $ref: '#/components/schemas/apiJobState'
-        type:
-          $ref: '#/components/schemas/apiJobType'
-      title: Defines a request to update an existing job
+        If All is set to true, other selectors are ignored since it selects all nodes'
       type: object
     apiDefragJob:
       properties:
@@ -354,37 +409,8 @@ components:
           type: boolean
       title: DefragJob describes a job to run defragmentation on cluster nodes
       type: object
-    apiSdkEnumerateJobsResponse:
+    apiSdkNodeDrainAttachmentsRequest:
       properties:
-        jobs:
-          items:
-            $ref: '#/components/schemas/apiJob'
-          title: Jobs is the list of jobs in the response
-          type: array
-      title: Defines a response will all the known jobs
-      type: object
-    apiSdkUpdateJobResponse:
-      title: Defines the response for an update to an existing job
-      type: object
-    apiCollectDiagsJob:
-      properties:
-        request:
-          $ref: '#/components/schemas/apiSdkDiagsCollectRequest'
-        statuses:
-          items:
-            $ref: '#/components/schemas/apiDiagsCollectionStatus'
-          title: Statuses is a list of statuses for diags collection for each node that is part of the request
-          type: array
-      type: object
-    apiNodeDrainAttachmentsJob:
-      properties:
-        Status:
-          title: Status describes a helpful status of this node drain operation
-          type: string
-        create_time:
-          format: date-time
-          title: CreateTime is the time the job was created
-          type: string
         issuer:
           title: 'Issuer is a user friendly name for the caller who is
 
@@ -392,70 +418,48 @@ components:
 
             drain requests from a particular issuer'
           type: string
-        last_update_time:
-          format: date-time
-          title: LastUpdateTime is the time the job was updated
-          type: string
         node_id:
-          title: NodeID of the node for which this drain job is running
+          title: Id of the node to drain
           type: string
-        parameters:
-          $ref: '#/components/schemas/apiSdkNodeDrainAttachmentsRequest'
-      title: NodeDrainAttachmentsJob describe a job to drain volume attachments from a node
-      type: object
-    apiDiagsCollectionStatusState:
-      default: UNSPECIFIED
-      description: "- UNSPECIFIED: Unspecified means uninitialized or unknown state\n - PENDING: Pending indicates the diags collection is pending and hasn't started\n - RUNNING: Running indicates diags collection is actively running\n - DONE: Done indicates diags collection has finished\n - FAILED: Failed indicates diags collection has failed"
-      enum:
-      - UNSPECIFIED
-      - PENDING
-      - RUNNING
-      - DONE
-      - FAILED
-      title: State is an enum for state of diags collection on a given node
-      type: string
-    runtimeError:
-      properties:
-        code:
-          format: int32
-          type: integer
-        details:
-          items:
-            $ref: '#/components/schemas/protobufAny'
-          type: array
-        error:
-          type: string
-        message:
-          type: string
-      type: object
-    apiJob:
-      properties:
-        clouddrive_transfer:
-          $ref: '#/components/schemas/apiCloudDriveTransferJob'
-        collect_diags:
-          $ref: '#/components/schemas/apiCollectDiagsJob'
-        create_time:
-          format: date-time
-          title: CreateTime is the time the job was created
-          type: string
-        defrag:
-          $ref: '#/components/schemas/apiDefragJob'
-        drain_attachments:
-          $ref: '#/components/schemas/apiNodeDrainAttachmentsJob'
-        id:
-          title: ID of the job
-          type: string
-        last_update_time:
-          format: date-time
-          title: LastUpdateTime is the time the job was updated
-          type: string
-        state:
-          $ref: '#/components/schemas/apiJobState'
-        type:
-          $ref: '#/components/schemas/apiJobType'
-      title: 'Job is a generic job object that can encapsulate other
+        only_sharedv4:
+          description: 'Drain only sharedv4 volumes from a node
 
-        messages which follow the job framework of APIs'
+            By default all volumes will be drained.'
+          type: boolean
+        selector:
+          description: 'Selector is used for selecting volumes whose
+
+            attachment needs to be moved from this node.
+
+            The selector could be a list of volume label
+
+            key value pairs to select a subset of volumes.'
+          items:
+            $ref: '#/components/schemas/apiLabelSelectorRequirement'
+          type: array
+      title: Defines a node drain volume attachments request
+      type: object
+    apiLabelSelectorRequirement:
+      description: 'LabelSelectorRequirement is a selector that contains values, a key, and an operator that
+
+        relates the key and values.'
+      properties:
+        key:
+          description: Key is the label key that the selector applies to.
+          type: string
+        operator:
+          $ref: '#/components/schemas/LabelSelectorRequirementOperator'
+        values:
+          description: 'Values is an array of string values. If the operator is In or NotIn,
+
+            the values array must be non-empty. If the operator is Exists or DoesNotExist,
+
+            the values array must be empty. This array is replaced during a strategic
+
+            merge patch.'
+          items:
+            type: string
+          type: array
       type: object
     LabelSelectorRequirementOperator:
       default: In
@@ -469,56 +473,6 @@ components:
       - Lt
       title: This defines operator types used in a label matching rule
       type: string
-    apiDiagsNodeSelector:
-      properties:
-        all:
-          title: All selects all nodes for diags collection
-          type: boolean
-        node_ids:
-          items:
-            type: string
-          title: NodeIDs are unique IDs fo the nodes for which the diags will be collected
-          type: array
-        node_label_selector:
-          items:
-            $ref: '#/components/schemas/apiLabelSelectorRequirement'
-          title: NodeLabelSelector is a label selector used to select the nodes for which diags will be collected
-          type: array
-      title: 'DiagsNodeSelector allows selecting nodes for diags collection
-
-        User can select NodeLabelSelector AND/OR NodeIDs. If both are provided, the implementation will select nodes based on
-
-        both labels and IDs and also handle overlaps
-
-        If All is set to true, other selectors are ignored since it selects all nodes'
-      type: object
-    apiJobWorkSummary:
-      properties:
-        drain_attachments_summary:
-          $ref: '#/components/schemas/apiDrainAttachmentsSummary'
-      title: JobWorkSummary describes an action taken while performing the hob
-      type: object
-    protobufAny:
-      properties:
-        type_url:
-          type: string
-        value:
-          format: byte
-          type: string
-      type: object
-    apiJobState:
-      default: UNSPECIFIED_STATE
-      description: "- UNSPECIFIED_STATE: Unspecified\n - PENDING: Pending indicates job is still pending and has not started work\n - RUNNING: Running indicates job is actively running\n - DONE: Done indicates job has finished processing\n - PAUSED: Paused indicates job is paused\n - CANCELLED: Cancelled indicates job is cancelled\n - FAILED: Failed indicates job has failed"
-      enum:
-      - UNSPECIFIED_STATE
-      - PENDING
-      - RUNNING
-      - DONE
-      - PAUSED
-      - CANCELLED
-      - FAILED
-      title: State is an enum for state of a node drain operation
-      type: string
     apiJobType:
       default: UNSPECIFIED_TYPE
       description: "- UNSPECIFIED_TYPE: Unspecified\n - NONE: None\n - DRAIN_ATTACHMENTS: Job for draining volume attachments\n - CLOUD_DRIVE_TRANSFER: Job for transferring cloud drives between nodes\n - COLLECT_DIAGS: Job for collecting diags from the cluster nodes\n - DEFRAG: Job for storage defragmentation on cluster nodes"
@@ -531,6 +485,44 @@ components:
       - DEFRAG
       title: Type are the supported job types
       type: string
+    apiDiagsVolumeSelector:
+      properties:
+        volume_ids:
+          items:
+            type: string
+          title: 'VolumeIDs selects volumes by their unique IDs and then uses replica and attached nodes for those volumes for diags
+
+            collection'
+          type: array
+        volume_label_selector:
+          items:
+            $ref: '#/components/schemas/apiLabelSelectorRequirement'
+          title: 'VolumeLabelSelector selects volumes by their labels and then uses replica and attached nodes for those volumes for
+
+            diags collection'
+          type: array
+      title: 'DiagsVolumeSelector allows selecting volumes for diags collection
+
+        User can select VolumeLabelSelector AND/OR VolumeIDs. If both are provided, the implementation will select nodes
+
+        based on both labels and IDs and also handle overlaps'
+      type: object
+    apiJobSummary:
+      properties:
+        id:
+          title: ID of the job
+          type: string
+        total_runtime_seconds:
+          format: uint64
+          title: Total runtime in seconds
+          type: string
+        work_summaries:
+          items:
+            $ref: '#/components/schemas/apiJobWorkSummary'
+          title: Summary provides more information about the on-going job
+          type: array
+      title: JobSummary provides a summary of a job
+      type: object
   securitySchemes:
     bearerAuth:
       type: http

@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: OpenStorage SDK OpenStorageAlerts OpenStorageIdentity API
+  title: OpenStorage SDK Open Storage Identity API
   version: 0.186.0
 security:
 - bearerAuth: []
@@ -23,15 +23,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/runtimeError'
           description: An unexpected error response.
-      summary: 'Capabilities returns the supported services by the cluster.
-
-        This allows SDK implementations to advertise their supported
-
-        services as the API matures. With this information, clients
-
-        can determine supported services from storage clusters at
-
-        different versions.'
+      summary: Capabilities returns the supported services by the cluster.
       tags:
       - OpenStorageIdentity
   /v1/identities/version:
@@ -50,7 +42,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/runtimeError'
           description: An unexpected error response.
-      summary: Version returns version information about the system.
+      summary: Version returns version information about the system
       tags:
       - OpenStorageIdentity
 components:
@@ -70,13 +62,18 @@ components:
           type: string
       title: Version information about the storage system
       type: object
-    protobufAny:
+    apiSdkIdentityVersionResponse:
       properties:
-        type_url:
-          type: string
-        value:
-          format: byte
-          type: string
+        sdk_version:
+          $ref: '#/components/schemas/apiSdkVersion'
+        version:
+          $ref: '#/components/schemas/apiStorageVersion'
+      title: Defines a response containing version information
+      type: object
+    SdkServiceCapabilityOpenStorageService:
+      properties:
+        type:
+          $ref: '#/components/schemas/SdkServiceCapabilityOpenStorageServiceType'
       type: object
     apiSdkVersion:
       description: 'SDK version in Major.Minor.Patch format. The goal of this
@@ -103,6 +100,33 @@ components:
             in `major.minor.patch` format.'
           type: string
       type: object
+    protobufAny:
+      properties:
+        type_url:
+          type: string
+        value:
+          format: byte
+          type: string
+      type: object
+    SdkServiceCapabilityOpenStorageServiceType:
+      default: UNKNOWN
+      enum:
+      - UNKNOWN
+      - CLUSTER
+      - CLOUD_BACKUP
+      - CREDENTIALS
+      - NODE
+      - OBJECT_STORAGE
+      - SCHEDULE_POLICY
+      - VOLUME
+      - ALERTS
+      - MOUNT_ATTACH
+      - ROLE
+      - CLUSTER_PAIR
+      - MIGRATE
+      - STORAGE_POLICY
+      title: "- UNKNOWN: Unknown service\n - CLUSTER: Cluster management\n - CLOUD_BACKUP: Cloud backup of volumes management\n - CREDENTIALS: Credentials management\n - NODE: Node management\n - OBJECT_STORAGE: Object Storage management\n - SCHEDULE_POLICY: Schedule policy management\n - VOLUME: Volume management\n - ALERTS: Alert enumeration\n - MOUNT_ATTACH: Mount/Attach Support\n - ROLE: Role service\n - CLUSTER_PAIR: Cluster Pair service\n - MIGRATE: Migrate service\n - STORAGE_POLICY: StoragePolicy Service"
+      type: string
     apiSdkIdentityCapabilitiesResponse:
       properties:
         capabilities:
@@ -126,43 +150,11 @@ components:
         message:
           type: string
       type: object
-    apiSdkIdentityVersionResponse:
-      properties:
-        sdk_version:
-          $ref: '#/components/schemas/apiSdkVersion'
-        version:
-          $ref: '#/components/schemas/apiStorageVersion'
-      title: Defines a response containing version information
-      type: object
     apiSdkServiceCapability:
       properties:
         service:
           $ref: '#/components/schemas/SdkServiceCapabilityOpenStorageService'
       title: Defines a capability of he cluster
-      type: object
-    SdkServiceCapabilityOpenStorageServiceType:
-      default: UNKNOWN
-      enum:
-      - UNKNOWN
-      - CLUSTER
-      - CLOUD_BACKUP
-      - CREDENTIALS
-      - NODE
-      - OBJECT_STORAGE
-      - SCHEDULE_POLICY
-      - VOLUME
-      - ALERTS
-      - MOUNT_ATTACH
-      - ROLE
-      - CLUSTER_PAIR
-      - MIGRATE
-      - STORAGE_POLICY
-      title: "- UNKNOWN: Unknown service\n - CLUSTER: Cluster management\n - CLOUD_BACKUP: Cloud backup of volumes management\n - CREDENTIALS: Credentials management\n - NODE: Node management\n - OBJECT_STORAGE: Object Storage management\n - SCHEDULE_POLICY: Schedule policy management\n - VOLUME: Volume management\n - ALERTS: Alert enumeration\n - MOUNT_ATTACH: Mount/Attach Support\n - ROLE: Role service\n - CLUSTER_PAIR: Cluster Pair service\n - MIGRATE: Migrate service\n - STORAGE_POLICY: StoragePolicy Service"
-      type: string
-    SdkServiceCapabilityOpenStorageService:
-      properties:
-        type:
-          $ref: '#/components/schemas/SdkServiceCapabilityOpenStorageServiceType'
       type: object
   securitySchemes:
     bearerAuth:
