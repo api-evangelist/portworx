@@ -47,58 +47,24 @@ paths:
       - OpenStorageIdentity
 components:
   schemas:
-    apiStorageVersion:
+    runtimeError:
       properties:
+        code:
+          format: int32
+          type: integer
         details:
-          additionalProperties:
-            type: string
-          title: Extra information provided by the storage system
-          type: object
-        driver:
-          title: OpenStorage driver name
+          items:
+            $ref: '#/components/schemas/protobufAny'
+          type: array
+        error:
           type: string
-        version:
-          title: Version of the server
+        message:
           type: string
-      title: Version information about the storage system
-      type: object
-    apiSdkIdentityVersionResponse:
-      properties:
-        sdk_version:
-          $ref: '#/components/schemas/apiSdkVersion'
-        version:
-          $ref: '#/components/schemas/apiStorageVersion'
-      title: Defines a response containing version information
       type: object
     SdkServiceCapabilityOpenStorageService:
       properties:
         type:
           $ref: '#/components/schemas/SdkServiceCapabilityOpenStorageServiceType'
-      type: object
-    apiSdkVersion:
-      description: 'SDK version in Major.Minor.Patch format. The goal of this
-
-        message is to provide clients a method to determine the SDK
-
-        version run by an SDK server.'
-      properties:
-        major:
-          format: int32
-          title: SDK version major number
-          type: integer
-        minor:
-          format: int32
-          title: SDK version minor number
-          type: integer
-        patch:
-          format: int32
-          title: SDK version patch number
-          type: integer
-        version:
-          description: 'String representation of the SDK version. Must be
-
-            in `major.minor.patch` format.'
-          type: string
       type: object
     protobufAny:
       properties:
@@ -127,6 +93,54 @@ components:
       - STORAGE_POLICY
       title: "- UNKNOWN: Unknown service\n - CLUSTER: Cluster management\n - CLOUD_BACKUP: Cloud backup of volumes management\n - CREDENTIALS: Credentials management\n - NODE: Node management\n - OBJECT_STORAGE: Object Storage management\n - SCHEDULE_POLICY: Schedule policy management\n - VOLUME: Volume management\n - ALERTS: Alert enumeration\n - MOUNT_ATTACH: Mount/Attach Support\n - ROLE: Role service\n - CLUSTER_PAIR: Cluster Pair service\n - MIGRATE: Migrate service\n - STORAGE_POLICY: StoragePolicy Service"
       type: string
+    apiStorageVersion:
+      properties:
+        details:
+          additionalProperties:
+            type: string
+          title: Extra information provided by the storage system
+          type: object
+        driver:
+          title: OpenStorage driver name
+          type: string
+        version:
+          title: Version of the server
+          type: string
+      title: Version information about the storage system
+      type: object
+    apiSdkVersion:
+      description: 'SDK version in Major.Minor.Patch format. The goal of this
+
+        message is to provide clients a method to determine the SDK
+
+        version run by an SDK server.'
+      properties:
+        major:
+          format: int32
+          title: SDK version major number
+          type: integer
+        minor:
+          format: int32
+          title: SDK version minor number
+          type: integer
+        patch:
+          format: int32
+          title: SDK version patch number
+          type: integer
+        version:
+          description: 'String representation of the SDK version. Must be
+
+            in `major.minor.patch` format.'
+          type: string
+      type: object
+    apiSdkIdentityVersionResponse:
+      properties:
+        sdk_version:
+          $ref: '#/components/schemas/apiSdkVersion'
+        version:
+          $ref: '#/components/schemas/apiStorageVersion'
+      title: Defines a response containing version information
+      type: object
     apiSdkIdentityCapabilitiesResponse:
       properties:
         capabilities:
@@ -135,20 +149,6 @@ components:
           title: Provides all the capabilities supported by the cluster
           type: array
       title: Defines a response containing the capabilities of the cluster
-      type: object
-    runtimeError:
-      properties:
-        code:
-          format: int32
-          type: integer
-        details:
-          items:
-            $ref: '#/components/schemas/protobufAny'
-          type: array
-        error:
-          type: string
-        message:
-          type: string
       type: object
     apiSdkServiceCapability:
       properties:

@@ -85,20 +85,20 @@ paths:
       - OpenStorageVerifyChecksum
 components:
   schemas:
-    VerifyChecksumVerifyChecksumStatus:
-      default: VERIFY_CHECKSUM_UNKNOWN
-      description: "- VERIFY_CHECKSUM_UNKNOWN: VerifyChecksum operation is an unknown state\n - VERIFY_CHECKSUM_NOT_RUNNING: VerifyChecksum operation is not running for the specified volume\n - VERIFY_CHECKSUM_STARTED: VerifyChecksum operation started for the specified volume\n - VERIFY_CHECKSUM_STOPPED: VerifyChecksum operation was stopped by the user for the specified volume\n - VERIFY_CHECKSUM_COMPLETED: VerifyChecksum operation completed successfully for the specified volume\n - VERIFY_CHECKSUM_FAILED: VerifyChecksum operation failed"
-      enum:
-      - VERIFY_CHECKSUM_UNKNOWN
-      - VERIFY_CHECKSUM_NOT_RUNNING
-      - VERIFY_CHECKSUM_STARTED
-      - VERIFY_CHECKSUM_STOPPED
-      - VERIFY_CHECKSUM_COMPLETED
-      - VERIFY_CHECKSUM_FAILED
-      title: 'VerifyChecksumStatus represents the status codes returned from
-
-        OpenStorageVerifyChecksum service APIs()'
-      type: string
+    runtimeError:
+      properties:
+        code:
+          format: int32
+          type: integer
+        details:
+          items:
+            $ref: '#/components/schemas/protobufAny'
+          type: array
+        error:
+          type: string
+        message:
+          type: string
+      type: object
     apiSdkVerifyChecksumStatusResponse:
       description: 'SdkVerifyChecksumStatusResponse defines the response for a
 
@@ -109,14 +109,6 @@ components:
           type: string
         status:
           $ref: '#/components/schemas/VerifyChecksumVerifyChecksumStatus'
-      type: object
-    protobufAny:
-      properties:
-        type_url:
-          type: string
-        value:
-          format: byte
-          type: string
       type: object
     apiSdkVerifyChecksumStopRequest:
       properties:
@@ -138,15 +130,28 @@ components:
         status:
           $ref: '#/components/schemas/VerifyChecksumVerifyChecksumStatus'
       type: object
-    apiSdkVerifyChecksumStartRequest:
+    protobufAny:
       properties:
-        resume_from_saved_offset:
-          type: boolean
-        volume_id:
-          title: Id of the volume
+        type_url:
           type: string
-      title: SdkVerifyChecksumStartRequest defines a request to start a background verify checksum operation
+        value:
+          format: byte
+          type: string
       type: object
+    VerifyChecksumVerifyChecksumStatus:
+      default: VERIFY_CHECKSUM_UNKNOWN
+      description: "- VERIFY_CHECKSUM_UNKNOWN: VerifyChecksum operation is an unknown state\n - VERIFY_CHECKSUM_NOT_RUNNING: VerifyChecksum operation is not running for the specified volume\n - VERIFY_CHECKSUM_STARTED: VerifyChecksum operation started for the specified volume\n - VERIFY_CHECKSUM_STOPPED: VerifyChecksum operation was stopped by the user for the specified volume\n - VERIFY_CHECKSUM_COMPLETED: VerifyChecksum operation completed successfully for the specified volume\n - VERIFY_CHECKSUM_FAILED: VerifyChecksum operation failed"
+      enum:
+      - VERIFY_CHECKSUM_UNKNOWN
+      - VERIFY_CHECKSUM_NOT_RUNNING
+      - VERIFY_CHECKSUM_STARTED
+      - VERIFY_CHECKSUM_STOPPED
+      - VERIFY_CHECKSUM_COMPLETED
+      - VERIFY_CHECKSUM_FAILED
+      title: 'VerifyChecksumStatus represents the status codes returned from
+
+        OpenStorageVerifyChecksum service APIs()'
+      type: string
     apiSdkVerifyChecksumStopResponse:
       description: 'SdkVerifyChecksumStopResponse defines the response for a
 
@@ -156,19 +161,14 @@ components:
           title: Text blob containing ASCII text providing details of the operation
           type: string
       type: object
-    runtimeError:
+    apiSdkVerifyChecksumStartRequest:
       properties:
-        code:
-          format: int32
-          type: integer
-        details:
-          items:
-            $ref: '#/components/schemas/protobufAny'
-          type: array
-        error:
+        resume_from_saved_offset:
+          type: boolean
+        volume_id:
+          title: Id of the volume
           type: string
-        message:
-          type: string
+      title: SdkVerifyChecksumStartRequest defines a request to start a background verify checksum operation
       type: object
   securitySchemes:
     bearerAuth:

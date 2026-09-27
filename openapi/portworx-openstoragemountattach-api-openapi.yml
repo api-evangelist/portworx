@@ -113,81 +113,19 @@ paths:
       - OpenStorageMountAttach
 components:
   schemas:
-    apiSdkVolumeAttachResponse:
+    runtimeError:
       properties:
-        device_path:
-          title: Device path where device is exported
+        code:
+          format: int32
+          type: integer
+        details:
+          items:
+            $ref: '#/components/schemas/protobufAny'
+          type: array
+        error:
           type: string
-      title: Defines a response from the node which received the request to attach
-      type: object
-    apiSdkVolumeAttachRequest:
-      properties:
-        driver_options:
-          additionalProperties:
-            type: string
-          description: 'The following options are private to the driver plugin running the
-
-            OpenStorage SDK. Contact your driver developer for any special
-
-            values that need to be provided here.'
-          type: object
-        options:
-          $ref: '#/components/schemas/apiSdkVolumeAttachOptions'
-        volume_id:
-          title: Id of volume
+        message:
           type: string
-      title: Defines a request to attach a volume to the node receiving this request
-      type: object
-    apiSdkVolumeDetachOptions:
-      properties:
-        force:
-          title: Forcefully detach device from the kernel
-          type: boolean
-        redirect:
-          title: redirect the request to the attached node
-          type: boolean
-        unmount_before_detach:
-          title: Unmount the volume before detaching
-          type: boolean
-      type: object
-    apiSdkVolumeUnmountRequest:
-      properties:
-        driver_options:
-          additionalProperties:
-            type: string
-          description: 'The following options are private to the driver plugin running the
-
-            OpenStorage SDK. Contact your driver developer for any special
-
-            values that need to be provided here.'
-          type: object
-        mount_path:
-          title: MountPath for device
-          type: string
-        options:
-          $ref: '#/components/schemas/apiSdkVolumeUnmountOptions'
-        volume_id:
-          title: Id of volume
-          type: string
-      title: Defines a request to unmount a volume on the node receiving this request
-      type: object
-    apiSdkVolumeUnmountOptions:
-      properties:
-        delete_mount_path:
-          title: Delete the mount path on the node after unmounting
-          type: boolean
-        no_delay_before_deleting_mount_path:
-          description: 'Do not wait for a delay before deleting path.
-
-            Normally a storage driver may delay before deleting the mount path,
-
-            which may be necessary to reduce the risk of race conditions. This
-
-            choice will remove that delay. This value is only usable when
-
-            `delete_mount_path` is set.'
-          type: boolean
-      title: Options to unmount device
       type: object
     protobufAny:
       properties:
@@ -219,30 +157,43 @@ components:
           type: string
       title: Options to attach device
       type: object
-    apiSdkVolumeMountResponse:
-      title: Empty response
+    apiSdkVolumeUnmountRequest:
+      properties:
+        driver_options:
+          additionalProperties:
+            type: string
+          description: 'The following options are private to the driver plugin running the
+
+            OpenStorage SDK. Contact your driver developer for any special
+
+            values that need to be provided here.'
+          type: object
+        mount_path:
+          title: MountPath for device
+          type: string
+        options:
+          $ref: '#/components/schemas/apiSdkVolumeUnmountOptions'
+        volume_id:
+          title: Id of volume
+          type: string
+      title: Defines a request to unmount a volume on the node receiving this request
+      type: object
+    apiSdkVolumeDetachOptions:
+      properties:
+        force:
+          title: Forcefully detach device from the kernel
+          type: boolean
+        redirect:
+          title: redirect the request to the attached node
+          type: boolean
+        unmount_before_detach:
+          title: Unmount the volume before detaching
+          type: boolean
       type: object
     apiSdkVolumeDetachResponse:
       title: Empty response
       type: object
-    apiSdkVolumeUnmountResponse:
-      title: Empty response
-      type: object
-    runtimeError:
-      properties:
-        code:
-          format: int32
-          type: integer
-        details:
-          items:
-            $ref: '#/components/schemas/protobufAny'
-          type: array
-        error:
-          type: string
-        message:
-          type: string
-      type: object
-    apiSdkVolumeDetachRequest:
+    apiSdkVolumeAttachRequest:
       properties:
         driver_options:
           additionalProperties:
@@ -254,11 +205,29 @@ components:
             values that need to be provided here.'
           type: object
         options:
-          $ref: '#/components/schemas/apiSdkVolumeDetachOptions'
+          $ref: '#/components/schemas/apiSdkVolumeAttachOptions'
         volume_id:
-          title: Id of the volume
+          title: Id of volume
           type: string
-      title: Defines a request to detach a volume
+      title: Defines a request to attach a volume to the node receiving this request
+      type: object
+    apiSdkVolumeUnmountOptions:
+      properties:
+        delete_mount_path:
+          title: Delete the mount path on the node after unmounting
+          type: boolean
+        no_delay_before_deleting_mount_path:
+          description: 'Do not wait for a delay before deleting path.
+
+            Normally a storage driver may delay before deleting the mount path,
+
+            which may be necessary to reduce the risk of race conditions. This
+
+            choice will remove that delay. This value is only usable when
+
+            `delete_mount_path` is set.'
+          type: boolean
+      title: Options to unmount device
       type: object
     apiSdkVolumeMountRequest:
       properties:
@@ -280,6 +249,37 @@ components:
           title: Id of the volume
           type: string
       title: Defines a request to mount a volume to the node receiving this request
+      type: object
+    apiSdkVolumeAttachResponse:
+      properties:
+        device_path:
+          title: Device path where device is exported
+          type: string
+      title: Defines a response from the node which received the request to attach
+      type: object
+    apiSdkVolumeMountResponse:
+      title: Empty response
+      type: object
+    apiSdkVolumeDetachRequest:
+      properties:
+        driver_options:
+          additionalProperties:
+            type: string
+          description: 'The following options are private to the driver plugin running the
+
+            OpenStorage SDK. Contact your driver developer for any special
+
+            values that need to be provided here.'
+          type: object
+        options:
+          $ref: '#/components/schemas/apiSdkVolumeDetachOptions'
+        volume_id:
+          title: Id of the volume
+          type: string
+      title: Defines a request to detach a volume
+      type: object
+    apiSdkVolumeUnmountResponse:
+      title: Empty response
       type: object
   securitySchemes:
     bearerAuth:

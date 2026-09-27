@@ -168,26 +168,27 @@ paths:
       - OpenStorageFilesystemCheck
 components:
   schemas:
-    apiSdkFilesystemCheckStopRequest:
+    runtimeError:
       properties:
-        volume_id:
-          title: Id of the volume
+        code:
+          format: int32
+          type: integer
+        details:
+          items:
+            $ref: '#/components/schemas/protobufAny'
+          type: array
+        error:
           type: string
-      title: 'SdkFilesystemCheckStopRequest defines a request to stop a background
-
-        filesystem check operation'
+        message:
+          type: string
       type: object
-    apiSdkFilesystemCheckStartRequest:
+    protobufAny:
       properties:
-        mode:
-          title: Mode of operation
+        type_url:
           type: string
-        volume_id:
-          title: Id of the volume
+        value:
+          format: byte
           type: string
-      title: 'SdkFilesystemCheckStartRequest defines a request to start a background
-
-        filesystem consistency check operation'
       type: object
     apiFilesystemHealthStatus:
       default: FS_HEALTH_STATUS_UNKNOWN
@@ -198,33 +199,6 @@ components:
       - FS_HEALTH_STATUS_NEEDS_INSPECTION
       title: "- FS_HEALTH_STATUS_UNKNOWN: filesystem health status is unknown\n - FS_HEALTH_STATUS_HEALTHY: filesystem is a healthy\n - FS_HEALTH_STATUS_SAFE_TO_FIX: filesystem has errors, but can be fixed safely\n - FS_HEALTH_STATUS_NEEDS_INSPECTION: filesystem has errors, these cannot be fixed automatically,\nuser needs to review the reported errors and take appropriate action"
       type: string
-    apiSdkFilesystemCheckStartResponse:
-      description: 'SdkFilesystemCheckStartResponse defines the response for a
-
-        SdkFilesystemCheckStartRequest.'
-      properties:
-        message:
-          title: Text blob containing ASCII text providing details of the operation
-          type: string
-        status:
-          $ref: '#/components/schemas/FilesystemCheckFilesystemCheckStatus'
-      type: object
-    apiSdkFilesystemCheckStatusResponse:
-      description: 'SdkFilesystemCheckStatusResponse defines the response for a
-
-        SdkFilesystemCheckStatusRequest.'
-      properties:
-        health_status:
-          $ref: '#/components/schemas/apiFilesystemHealthStatus'
-        message:
-          title: Text blob containing ASCII text providing details of the operation
-          type: string
-        mode:
-          title: Text string representing the mode of filesystem check operation
-          type: string
-        status:
-          $ref: '#/components/schemas/FilesystemCheckFilesystemCheckStatus'
-      type: object
     apiFilesystemCheckSnapInfo:
       properties:
         volume_snapshot_name:
@@ -234,17 +208,19 @@ components:
 
         filesystem check list snapshots operation'
       type: object
-    apiSdkFilesystemCheckDeleteSnapshotsRequest:
+    apiFilesystemCheckVolInfo:
       properties:
-        node_id:
-          title: Node Id filter
+        fs_status_msg:
+          title: FS status detailed message
           type: string
-        volume_id:
-          title: Id of the volume
+        health_status:
+          $ref: '#/components/schemas/apiFilesystemHealthStatus'
+        volume_name:
+          title: Name of the volume
           type: string
-      title: 'SdkFilesystemCheckDeleteSnapshotsRequest defines a request to delete
+      title: 'FilesystemCheckVolInfo contains the volume info for
 
-        snapshots created by fsck for a volume'
+        filesystem check list volumes operation'
       type: object
     apiSdkFilesystemCheckListSnapshotsResponse:
       properties:
@@ -272,41 +248,73 @@ components:
 
         OpenStorageFilesystemCheck service APIs()'
       type: string
-    protobufAny:
+    apiSdkFilesystemCheckStopRequest:
       properties:
-        type_url:
+        volume_id:
+          title: Id of the volume
           type: string
-        value:
-          format: byte
-          type: string
+      title: 'SdkFilesystemCheckStopRequest defines a request to stop a background
+
+        filesystem check operation'
       type: object
-    apiFilesystemCheckVolInfo:
+    apiSdkFilesystemCheckStartRequest:
       properties:
-        fs_status_msg:
-          title: FS status detailed message
+        mode:
+          title: Mode of operation
           type: string
+        volume_id:
+          title: Id of the volume
+          type: string
+      title: 'SdkFilesystemCheckStartRequest defines a request to start a background
+
+        filesystem consistency check operation'
+      type: object
+    apiSdkFilesystemCheckStopResponse:
+      title: Empty response
+      type: object
+    apiSdkFilesystemCheckStartResponse:
+      description: 'SdkFilesystemCheckStartResponse defines the response for a
+
+        SdkFilesystemCheckStartRequest.'
+      properties:
+        message:
+          title: Text blob containing ASCII text providing details of the operation
+          type: string
+        status:
+          $ref: '#/components/schemas/FilesystemCheckFilesystemCheckStatus'
+      type: object
+    apiSdkFilesystemCheckStatusResponse:
+      description: 'SdkFilesystemCheckStatusResponse defines the response for a
+
+        SdkFilesystemCheckStatusRequest.'
+      properties:
         health_status:
           $ref: '#/components/schemas/apiFilesystemHealthStatus'
-        volume_name:
-          title: Name of the volume
-          type: string
-      title: 'FilesystemCheckVolInfo contains the volume info for
-
-        filesystem check list volumes operation'
-      type: object
-    runtimeError:
-      properties:
-        code:
-          format: int32
-          type: integer
-        details:
-          items:
-            $ref: '#/components/schemas/protobufAny'
-          type: array
-        error:
-          type: string
         message:
+          title: Text blob containing ASCII text providing details of the operation
           type: string
+        mode:
+          title: Text string representing the mode of filesystem check operation
+          type: string
+        status:
+          $ref: '#/components/schemas/FilesystemCheckFilesystemCheckStatus'
+      type: object
+    apiSdkFilesystemCheckDeleteSnapshotsRequest:
+      properties:
+        node_id:
+          title: Node Id filter
+          type: string
+        volume_id:
+          title: Id of the volume
+          type: string
+      title: 'SdkFilesystemCheckDeleteSnapshotsRequest defines a request to delete
+
+        snapshots created by fsck for a volume'
+      type: object
+    apiSdkFilesystemCheckDeleteSnapshotsResponse:
+      title: 'SdkFilesystemCheckDeleteSnapshotsResponse defines a respone to delete
+
+        snapshots created by fsck for a volume'
       type: object
     apiSdkFilesystemCheckListVolumesResponse:
       properties:
@@ -318,14 +326,6 @@ components:
       title: 'SdkFilesystemCheckListVolumesResponse defines a response to list
 
         all volumes needing fsck check/fix'
-      type: object
-    apiSdkFilesystemCheckDeleteSnapshotsResponse:
-      title: 'SdkFilesystemCheckDeleteSnapshotsResponse defines a respone to delete
-
-        snapshots created by fsck for a volume'
-      type: object
-    apiSdkFilesystemCheckStopResponse:
-      title: Empty response
       type: object
   securitySchemes:
     bearerAuth:

@@ -179,36 +179,19 @@ paths:
       - OpenStoragePool
 components:
   schemas:
-    StorageRebalanceAuditStorageRebalanceAction:
-      default: ADD_REPLICA
-      description: "- ADD_REPLICA: Indicates new replica was added\n - REMOVE_REPLICA: Indicates existing replica was removed"
-      enum:
-      - ADD_REPLICA
-      - REMOVE_REPLICA
-      title: StorageRebalanceAction describes type of rebalance action
-      type: string
-    apiStorageRebalanceWorkSummaryType:
-      default: UnbalancedPools
-      description: "- UnbalancedPools: summary for unbalanced pools\n - UnbalancedVolumes: summary for unbalanced volumes\n - UnbalancedProvisionedSpaceBytes: summary for unbalanced provisioned space\n - UnbalancedUsedSpaceBytes: summary for unbalanced used space"
-      enum:
-      - UnbalancedPools
-      - UnbalancedVolumes
-      - UnbalancedProvisionedSpaceBytes
-      - UnbalancedUsedSpaceBytes
-      title: Type is an enum to indicate the type of work summary
-      type: string
-    apiSdkStorageRebalanceResponse:
+    runtimeError:
       properties:
-        actions:
+        code:
+          format: int32
+          type: integer
+        details:
           items:
-            $ref: '#/components/schemas/apiStorageRebalanceAudit'
-          title: Actions describe all the actions taken during this rebalance
+            $ref: '#/components/schemas/protobufAny'
           type: array
-        job:
-          $ref: '#/components/schemas/apiStorageRebalanceJob'
-        summary:
-          $ref: '#/components/schemas/apiStorageRebalanceSummary'
-      title: SdkStorageRebalanceResponse is the response to a storage rebalance request
+        error:
+          type: string
+        message:
+          type: string
       type: object
     apiSdkStoragePoolResizeResponse:
       title: Defines a response when resizing a storage pool
@@ -224,73 +207,28 @@ components:
       - CANCELLED
       title: StorageRebalanceJobState is an enum for state of the current rebalance operation
       type: string
-    runtimeError:
+    apiLabelSelectorRequirement:
+      description: 'LabelSelectorRequirement is a selector that contains values, a key, and an operator that
+
+        relates the key and values.'
       properties:
-        code:
-          format: int32
-          type: integer
-        details:
-          items:
-            $ref: '#/components/schemas/protobufAny'
-          type: array
-        error:
+        key:
+          description: Key is the label key that the selector applies to.
           type: string
-        message:
-          type: string
-      type: object
-    apiSdkEnumerateRebalanceJobsResponse:
-      properties:
-        jobs:
+        operator:
+          $ref: '#/components/schemas/LabelSelectorRequirementOperator'
+        values:
+          description: 'Values is an array of string values. If the operator is In or NotIn,
+
+            the values array must be non-empty. If the operator is Exists or DoesNotExist,
+
+            the values array must be empty. This array is replaced during a strategic
+
+            merge patch.'
           items:
-            $ref: '#/components/schemas/apiStorageRebalanceJob'
-          title: Jobs is the list of rebalance jobs in the response
+            type: string
           type: array
       type: object
-    apiStorageRebalanceAudit:
-      properties:
-        action:
-          $ref: '#/components/schemas/StorageRebalanceAuditStorageRebalanceAction'
-        end_time:
-          format: date-time
-          title: EndTime is time time at which action ended
-          type: string
-        name:
-          title: Name is the name of the volumes which was rebalanced
-          type: string
-        node:
-          title: Node on which this action happened
-          type: string
-        pool:
-          title: Pool on which this action happened
-          type: string
-        replication_set_id:
-          format: uint64
-          title: ReplicationSetId is the ID of the replication set
-          type: string
-        start_time:
-          format: date-time
-          title: StartTime is the time at which action was started
-          type: string
-        state:
-          $ref: '#/components/schemas/apiStorageRebalanceJobState'
-        volume_id:
-          title: VolumeID is the id of the volume which was rebalanced
-          type: string
-        work_summary:
-          items:
-            $ref: '#/components/schemas/apiStorageRebalanceWorkSummary'
-          title: WorkSummary summarizes the work done
-          type: array
-      title: StorageRebalanceAudit describes the action taken during rebalance
-      type: object
-    StorageRebalanceTriggerThresholdMetric:
-      default: PROVISION_SPACE
-      description: "- PROVISION_SPACE: ProvisionSpace indicates rebalance for provisioned space\n - USED_SPACE: UsedSpace indicates rebalance for used space"
-      enum:
-      - PROVISION_SPACE
-      - USED_SPACE
-      title: Metric is an enum that defines the metric to use for rebalance
-      type: string
     apiSdkStorageRebalanceRequestMode:
       default: STORAGE_REBALANCE
       description: "- STORAGE_REBALANCE: StorageRebalance mode: rebalance pools based on provisioned/used space (the default mode)\n - VOLUME_PLACEMENT_FIX: VolumePlacementFix mode: scan all volumes for incorrect placement and fix them\n - POOL_DRAIN: PoolDrain mode: drain all volumes & snapshots on the source pools (optionally to target pools)"
@@ -300,18 +238,17 @@ components:
       - POOL_DRAIN
       title: Mode is an enum that defines the mode of the volume reorg job
       type: string
-    apiStorageRebalanceTriggerThresholdType:
-      default: ABSOLUTE_PERCENT
-      description: "- ABSOLUTE_PERCENT: AbsolutePercent indicates absolute percent comparison.\nExample, 75 % used of capacity, or 50 % provisioned of capacity.\n - DELTA_MEAN_PERCENT: DeltaMeanPercent indicates mean percent comparison threshold.\nExample, 10 % more than mean for cluster."
-      enum:
-      - ABSOLUTE_PERCENT
-      - DELTA_MEAN_PERCENT
-      title: Type is an enum that defines the type fo the trigger threshold
-      type: string
-    apiSdkCreateRebalanceScheduleResponse:
+    apiSdkGetRebalanceJobStatusResponse:
       properties:
-        scheduleInfo:
-          $ref: '#/components/schemas/apiRebalanceScheduleInfo'
+        actions:
+          items:
+            $ref: '#/components/schemas/apiStorageRebalanceAudit'
+          title: Actions describe all the actions taken during this rebalance
+          type: array
+        job:
+          $ref: '#/components/schemas/apiStorageRebalanceJob'
+        summary:
+          $ref: '#/components/schemas/apiStorageRebalanceSummary'
       type: object
     apiStorageRebalanceJob:
       properties:
@@ -334,14 +271,6 @@ components:
           title: Status describes status of pools after rebalance if rebalance did not finish successfully
           type: string
       title: StorageRebalanceJob describes job input and current status
-      type: object
-    protobufAny:
-      properties:
-        type_url:
-          type: string
-        value:
-          format: byte
-          type: string
       type: object
     apiSdkStorageRebalanceRequest:
       properties:
@@ -387,6 +316,16 @@ components:
             $ref: '#/components/schemas/apiStorageRebalanceTriggerThreshold'
           type: array
       type: object
+    StorageRebalanceTriggerThresholdMetric:
+      default: PROVISION_SPACE
+      description: "- PROVISION_SPACE: ProvisionSpace indicates rebalance for provisioned space\n - USED_SPACE: UsedSpace indicates rebalance for used space"
+      enum:
+      - PROVISION_SPACE
+      - USED_SPACE
+      title: Metric is an enum that defines the metric to use for rebalance
+      type: string
+    apiSdkUpdateRebalanceJobResponse:
+      type: object
     apiStorageRebalanceSummary:
       properties:
         total_run_time_seconds:
@@ -400,6 +339,105 @@ components:
           type: array
       title: StorageRebalanceSummary describes summary for the job
       type: object
+    apiStorageRebalanceWorkSummaryType:
+      default: UnbalancedPools
+      description: "- UnbalancedPools: summary for unbalanced pools\n - UnbalancedVolumes: summary for unbalanced volumes\n - UnbalancedProvisionedSpaceBytes: summary for unbalanced provisioned space\n - UnbalancedUsedSpaceBytes: summary for unbalanced used space"
+      enum:
+      - UnbalancedPools
+      - UnbalancedVolumes
+      - UnbalancedProvisionedSpaceBytes
+      - UnbalancedUsedSpaceBytes
+      title: Type is an enum to indicate the type of work summary
+      type: string
+    apiStorageRebalanceAudit:
+      properties:
+        action:
+          $ref: '#/components/schemas/StorageRebalanceAuditStorageRebalanceAction'
+        end_time:
+          format: date-time
+          title: EndTime is time time at which action ended
+          type: string
+        name:
+          title: Name is the name of the volumes which was rebalanced
+          type: string
+        node:
+          title: Node on which this action happened
+          type: string
+        pool:
+          title: Pool on which this action happened
+          type: string
+        replication_set_id:
+          format: uint64
+          title: ReplicationSetId is the ID of the replication set
+          type: string
+        start_time:
+          format: date-time
+          title: StartTime is the time at which action was started
+          type: string
+        state:
+          $ref: '#/components/schemas/apiStorageRebalanceJobState'
+        volume_id:
+          title: VolumeID is the id of the volume which was rebalanced
+          type: string
+        work_summary:
+          items:
+            $ref: '#/components/schemas/apiStorageRebalanceWorkSummary'
+          title: WorkSummary summarizes the work done
+          type: array
+      title: StorageRebalanceAudit describes the action taken during rebalance
+      type: object
+    protobufAny:
+      properties:
+        type_url:
+          type: string
+        value:
+          format: byte
+          type: string
+      type: object
+    apiSdkDeleteRebalanceScheduleResponse:
+      type: object
+    apiSdkEnumerateRebalanceJobsResponse:
+      properties:
+        jobs:
+          items:
+            $ref: '#/components/schemas/apiStorageRebalanceJob'
+          title: Jobs is the list of rebalance jobs in the response
+          type: array
+      type: object
+    StorageRebalanceAuditStorageRebalanceAction:
+      default: ADD_REPLICA
+      description: "- ADD_REPLICA: Indicates new replica was added\n - REMOVE_REPLICA: Indicates existing replica was removed"
+      enum:
+      - ADD_REPLICA
+      - REMOVE_REPLICA
+      title: StorageRebalanceAction describes type of rebalance action
+      type: string
+    apiSdkStorageRebalanceResponse:
+      properties:
+        actions:
+          items:
+            $ref: '#/components/schemas/apiStorageRebalanceAudit'
+          title: Actions describe all the actions taken during this rebalance
+          type: array
+        job:
+          $ref: '#/components/schemas/apiStorageRebalanceJob'
+        summary:
+          $ref: '#/components/schemas/apiStorageRebalanceSummary'
+      title: SdkStorageRebalanceResponse is the response to a storage rebalance request
+      type: object
+    apiSdkGetRebalanceScheduleResponse:
+      properties:
+        scheduleInfo:
+          $ref: '#/components/schemas/apiRebalanceScheduleInfo'
+      type: object
+    apiStorageRebalanceTriggerThresholdType:
+      default: ABSOLUTE_PERCENT
+      description: "- ABSOLUTE_PERCENT: AbsolutePercent indicates absolute percent comparison.\nExample, 75 % used of capacity, or 50 % provisioned of capacity.\n - DELTA_MEAN_PERCENT: DeltaMeanPercent indicates mean percent comparison threshold.\nExample, 10 % more than mean for cluster."
+      enum:
+      - ABSOLUTE_PERCENT
+      - DELTA_MEAN_PERCENT
+      title: Type is an enum that defines the type fo the trigger threshold
+      type: string
     apiRebalanceScheduleInfo:
       properties:
         create_time:
@@ -412,41 +450,23 @@ components:
         schedule:
           type: string
       type: object
-    apiSdkUpdateRebalanceJobResponse:
-      type: object
-    apiLabelSelectorRequirement:
-      description: 'LabelSelectorRequirement is a selector that contains values, a key, and an operator that
-
-        relates the key and values.'
+    apiStorageRebalanceWorkSummary:
       properties:
-        key:
-          description: Key is the label key that the selector applies to.
+        done:
+          format: uint64
+          title: Done is the amount of bytes/work done
           type: string
-        operator:
-          $ref: '#/components/schemas/LabelSelectorRequirementOperator'
-        values:
-          description: 'Values is an array of string values. If the operator is In or NotIn,
-
-            the values array must be non-empty. If the operator is Exists or DoesNotExist,
-
-            the values array must be empty. This array is replaced during a strategic
-
-            merge patch.'
-          items:
-            type: string
-          type: array
+        pending:
+          format: uint64
+          title: Pending is the amount of bytes/work pending. Done + Pending == Total
+          type: string
+        type:
+          $ref: '#/components/schemas/apiStorageRebalanceWorkSummaryType'
       type: object
-    apiSdkGetRebalanceJobStatusResponse:
+    apiSdkCreateRebalanceScheduleResponse:
       properties:
-        actions:
-          items:
-            $ref: '#/components/schemas/apiStorageRebalanceAudit'
-          title: Actions describe all the actions taken during this rebalance
-          type: array
-        job:
-          $ref: '#/components/schemas/apiStorageRebalanceJob'
-        summary:
-          $ref: '#/components/schemas/apiStorageRebalanceSummary'
+        scheduleInfo:
+          $ref: '#/components/schemas/apiRebalanceScheduleInfo'
       type: object
     LabelSelectorRequirementOperator:
       default: In
@@ -482,26 +502,6 @@ components:
             targets for increasing load defined by metric.'
           format: uint64
           type: string
-      type: object
-    apiStorageRebalanceWorkSummary:
-      properties:
-        done:
-          format: uint64
-          title: Done is the amount of bytes/work done
-          type: string
-        pending:
-          format: uint64
-          title: Pending is the amount of bytes/work pending. Done + Pending == Total
-          type: string
-        type:
-          $ref: '#/components/schemas/apiStorageRebalanceWorkSummaryType'
-      type: object
-    apiSdkDeleteRebalanceScheduleResponse:
-      type: object
-    apiSdkGetRebalanceScheduleResponse:
-      properties:
-        scheduleInfo:
-          $ref: '#/components/schemas/apiRebalanceScheduleInfo'
       type: object
   securitySchemes:
     bearerAuth:

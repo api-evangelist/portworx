@@ -239,121 +239,19 @@ paths:
       - OpenStorageNode
 components:
   schemas:
-    apiDiagsCollectionStatusState:
-      default: UNSPECIFIED
-      description: "- UNSPECIFIED: Unspecified means uninitialized or unknown state\n - PENDING: Pending indicates the diags collection is pending and hasn't started\n - RUNNING: Running indicates diags collection is actively running\n - DONE: Done indicates diags collection has finished\n - FAILED: Failed indicates diags collection has failed"
-      enum:
-      - UNSPECIFIED
-      - PENDING
-      - RUNNING
-      - DONE
-      - FAILED
-      title: State is an enum for state of diags collection on a given node
-      type: string
-    apiSdkNodeUncordonAttachmentsResponse:
-      title: 'SdkNodeUncordonAttachmentsRespinse response for enabling new volume
-
-        attachments from a node'
-      type: object
-    apiSdkNodeEnumerateWithFiltersResponse:
+    runtimeError:
       properties:
-        nodes:
+        code:
+          format: int32
+          type: integer
+        details:
           items:
-            $ref: '#/components/schemas/apiStorageNode'
-          title: List of all the nodes in the cluster
+            $ref: '#/components/schemas/protobufAny'
           type: array
-      title: Defines a response with a list of nodes
-      type: object
-    apiSdkJobResponse:
-      properties:
-        job:
-          $ref: '#/components/schemas/apiJob'
-      title: 'Defines a response for an SDK request that spins up a new job
-
-        to perform the request'
-      type: object
-    apiJobState:
-      default: UNSPECIFIED_STATE
-      description: "- UNSPECIFIED_STATE: Unspecified\n - PENDING: Pending indicates job is still pending and has not started work\n - RUNNING: Running indicates job is actively running\n - DONE: Done indicates job has finished processing\n - PAUSED: Paused indicates job is paused\n - CANCELLED: Cancelled indicates job is cancelled\n - FAILED: Failed indicates job has failed"
-      enum:
-      - UNSPECIFIED_STATE
-      - PENDING
-      - RUNNING
-      - DONE
-      - PAUSED
-      - CANCELLED
-      - FAILED
-      title: State is an enum for state of a node drain operation
-      type: string
-    apiCloudDriveTransferJob:
-      properties:
-        destination_instance_id:
-          title: DestinationInstanceID is the ID of the storageless instance that needs to take over the SourceDriveSetID
+        error:
           type: string
-        source_driveset_id:
-          title: SourceDrivesetID is the ID of the current driveset that needs to be transferred
+        message:
           type: string
-        status:
-          title: Status describes a helpful status of this operation
-          type: string
-      type: object
-    openstorageapiStatus:
-      default: STATUS_NONE
-      enum:
-      - STATUS_NONE
-      - STATUS_INIT
-      - STATUS_OK
-      - STATUS_OFFLINE
-      - STATUS_ERROR
-      - STATUS_NOT_IN_QUORUM
-      - STATUS_DECOMMISSION
-      - STATUS_MAINTENANCE
-      - STATUS_STORAGE_DOWN
-      - STATUS_STORAGE_DEGRADED
-      - STATUS_NEEDS_REBOOT
-      - STATUS_STORAGE_REBALANCE
-      - STATUS_STORAGE_DRIVE_REPLACE
-      - STATUS_NOT_IN_QUORUM_NO_STORAGE
-      - STATUS_POOLMAINTENANCE
-      - STATUS_MAX
-      title: '- STATUS_MAX: Add statuses before MAX and update the number for MAX'
-      type: string
-    apiSdkVolumeBytesUsedRequest:
-      properties:
-        ids:
-          items:
-            format: uint64
-            type: string
-          title: volume ids to be found in usage response, can be empty
-          type: array
-        node_id:
-          title: machine uuid of targeted node
-          type: string
-      title: 'SdkVolumeBytesUsedRequest defines a request for fetching per volume utilization
-
-        from multiple volume in a given node'
-      type: object
-    apiStoragePoolOperation:
-      properties:
-        msg:
-          title: Msg is a user friendly message for the operation
-          type: string
-        params:
-          additionalProperties:
-            type: string
-          title: Params for the parameters for the operation
-          type: object
-        status:
-          $ref: '#/components/schemas/SdkStoragePoolOperationStatus'
-        type:
-          $ref: '#/components/schemas/apiSdkStoragePoolOperationType'
-      title: StoragePoolOperation defines an operation being performed on a storage pool
-      type: object
-    apiSdkNodeInspectCurrentResponse:
-      properties:
-        node:
-          $ref: '#/components/schemas/apiStorageNode'
-      title: Defines a response when inspecting a node
       type: object
     apiJob:
       properties:
@@ -384,203 +282,19 @@ components:
 
         messages which follow the job framework of APIs'
       type: object
-    runtimeError:
-      properties:
-        code:
-          format: int32
-          type: integer
-        details:
-          items:
-            $ref: '#/components/schemas/protobufAny'
-          type: array
-        error:
-          type: string
-        message:
-          type: string
-      type: object
-    apiSdkNodeInspectResponse:
-      properties:
-        node:
-          $ref: '#/components/schemas/apiStorageNode'
-      title: Defines a response when inspecting a node
-      type: object
-    apiCollectDiagsJob:
-      properties:
-        request:
-          $ref: '#/components/schemas/apiSdkDiagsCollectRequest'
-        statuses:
-          items:
-            $ref: '#/components/schemas/apiDiagsCollectionStatus'
-          title: Statuses is a list of statuses for diags collection for each node that is part of the request
-          type: array
-      type: object
-    apiSdkStoragePoolOperationType:
-      default: OPERATION_RESIZE
-      description: '- OPERATION_RESIZE: Resize operation'
-      enum:
-      - OPERATION_RESIZE
-      title: OperationType defines the various operations that are performed on a storage pool
-      type: string
-    StorageNodeSecurityStatus:
-      default: UNSPECIFIED
-      description: " - UNSPECIFIED: Security status type is unknown\n - UNSECURED: Node is unsecure\n - SECURED: Node is secured with authentication and authorization\n - SECURED_ALLOW_SECURITY_REMOVAL: Node is secured, but in the process of removing security. This state allows\nother unsecured nodes to join the cluster since the cluster is in the process\nof removing security authentication and authorization."
-      enum:
-      - UNSPECIFIED
-      - UNSECURED
-      - SECURED
-      - SECURED_ALLOW_SECURITY_REMOVAL
-      type: string
-    apiSdkNodeEnumerateResponse:
-      properties:
-        node_ids:
-          items:
-            type: string
-          title: List of all the node ids in the cluster
-          type: array
-      title: Defines a response with a list of node ids
-      type: object
-    apiSchedulerTopology:
-      properties:
-        labels:
-          additionalProperties:
-            type: string
-          title: Key-value pairs defining the topology of the node
-          type: object
-      title: 'SchedulerTopology defines the topology information of the storage node
-
-        in scheduler context'
-      type: object
-    apiSdkNodeRelaxedReclaimPurgeResponse:
-      properties:
-        status:
-          $ref: '#/components/schemas/apiRelaxedReclaimPurge'
-      title: Defines response containing status of the trigger
-      type: object
-    protobufAny:
-      properties:
-        type_url:
-          type: string
-        value:
-          format: byte
-          type: string
-      type: object
-    apiRelaxedReclaimPurge:
-      properties:
-        num_purged:
-          format: uint64
-          title: num_purged returns number of volumes purged
-          type: string
-      title: Purges the RelaxedReclaim queue
-      type: object
-    apiDiagsCollectionStatus:
-      properties:
-        message:
-          title: Message is a user friendly message for current status of diags collection
-          type: string
-        node:
-          title: Node is the node that's collecting the diags
-          type: string
-        state:
-          $ref: '#/components/schemas/apiDiagsCollectionStatusState'
-      type: object
-    apiNodeDrainAttachmentsJob:
-      properties:
-        Status:
-          title: Status describes a helpful status of this node drain operation
-          type: string
-        create_time:
-          format: date-time
-          title: CreateTime is the time the job was created
-          type: string
-        issuer:
-          title: 'Issuer is a user friendly name for the caller who is
-
-            invoking the API. It can be used by caller to filter out
-
-            drain requests from a particular issuer'
-          type: string
-        last_update_time:
-          format: date-time
-          title: LastUpdateTime is the time the job was updated
-          type: string
-        node_id:
-          title: NodeID of the node for which this drain job is running
-          type: string
-        parameters:
-          $ref: '#/components/schemas/apiSdkNodeDrainAttachmentsRequest'
-      title: NodeDrainAttachmentsJob describe a job to drain volume attachments from a node
-      type: object
-    apiStorageMedium:
-      default: STORAGE_MEDIUM_MAGNETIC
-      enum:
-      - STORAGE_MEDIUM_MAGNETIC
-      - STORAGE_MEDIUM_SSD
-      - STORAGE_MEDIUM_NVME
-      title: "- STORAGE_MEDIUM_MAGNETIC: Magnetic spinning disk.\n - STORAGE_MEDIUM_SSD: SSD disk\n - STORAGE_MEDIUM_NVME: NVME disk"
-      type: string
-    apiSdkNodeCordonAttachmentsRequest:
-      properties:
-        node_id:
-          title: Node ID on which any further volume attachments will be disabled
-          type: string
-      title: 'SdkNodeCordonAttachmentsRequest request for disabling new volume
+    apiSdkNodeCordonAttachmentsResponse:
+      title: 'SdkNodeCordonAttachmentsRespinse response for disabling new volume
 
         attachments from a node'
       type: object
-    apiSdkDiagsCollectRequest:
+    apiSdkNodeEnumerateWithFiltersResponse:
       properties:
-        filename:
-          description: Filename is an optional flag only to be used for testing purposes.
-          type: string
-        issuer:
-          title: Issuer is an optional  user friendly name for the caller invoking the API
-          type: string
-        live:
-          title: Live is an optional flag if true will collect live cores from running processes of the driver
-          type: boolean
-        node:
-          $ref: '#/components/schemas/apiDiagsNodeSelector'
-        profile_only:
-          title: 'ProfileOnly is an optional flag if true will only collect the stack and heap profile of the driver and will skip
-
-            other diag components'
-          type: boolean
-        timeout_mins:
-          format: int64
-          title: 'TimeoutMins is the timeout in minutes for the job. This is an optional field and if not provided, the
-
-            implementation of the SDK will use a sane default'
-          type: string
-        volume:
-          $ref: '#/components/schemas/apiDiagsVolumeSelector'
-      title: 'SdkDiagsCollectRequest is the request object that specifies what should be part of the diags that are collected
-
-        User can specify both Node and Volume or just one of them. If both are provided, the implementation will select
-
-        nodes based on both and also handle overlaps'
-      type: object
-    apiDiagsNodeSelector:
-      properties:
-        all:
-          title: All selects all nodes for diags collection
-          type: boolean
-        node_ids:
+        nodes:
           items:
-            type: string
-          title: NodeIDs are unique IDs fo the nodes for which the diags will be collected
+            $ref: '#/components/schemas/apiStorageNode'
+          title: List of all the nodes in the cluster
           type: array
-        node_label_selector:
-          items:
-            $ref: '#/components/schemas/apiLabelSelectorRequirement'
-          title: NodeLabelSelector is a label selector used to select the nodes for which diags will be collected
-          type: array
-      title: 'DiagsNodeSelector allows selecting nodes for diags collection
-
-        User can select NodeLabelSelector AND/OR NodeIDs. If both are provided, the implementation will select nodes based on
-
-        both labels and IDs and also handle overlaps
-
-        If All is set to true, other selectors are ignored since it selects all nodes'
+      title: Defines a response with a list of nodes
       type: object
     apiDefragJob:
       properties:
@@ -632,35 +346,151 @@ components:
           type: boolean
       title: DefragJob describes a job to run defragmentation on cluster nodes
       type: object
-    apiSdkNodeDrainAttachmentsRequest:
+    apiSdkDiagsCollectRequest:
       properties:
+        filename:
+          description: Filename is an optional flag only to be used for testing purposes.
+          type: string
         issuer:
-          title: 'Issuer is a user friendly name for the caller who is
-
-            invoking the API. It can be used by caller to filter out
-
-            drain requests from a particular issuer'
+          title: Issuer is an optional  user friendly name for the caller invoking the API
           type: string
-        node_id:
-          title: Id of the node to drain
-          type: string
-        only_sharedv4:
-          description: 'Drain only sharedv4 volumes from a node
-
-            By default all volumes will be drained.'
+        live:
+          title: Live is an optional flag if true will collect live cores from running processes of the driver
           type: boolean
-        selector:
-          description: 'Selector is used for selecting volumes whose
+        node:
+          $ref: '#/components/schemas/apiDiagsNodeSelector'
+        profile_only:
+          title: 'ProfileOnly is an optional flag if true will only collect the stack and heap profile of the driver and will skip
 
-            attachment needs to be moved from this node.
+            other diag components'
+          type: boolean
+        timeout_mins:
+          format: int64
+          title: 'TimeoutMins is the timeout in minutes for the job. This is an optional field and if not provided, the
 
-            The selector could be a list of volume label
+            implementation of the SDK will use a sane default'
+          type: string
+        volume:
+          $ref: '#/components/schemas/apiDiagsVolumeSelector'
+      title: 'SdkDiagsCollectRequest is the request object that specifies what should be part of the diags that are collected
 
-            key value pairs to select a subset of volumes.'
+        User can specify both Node and Volume or just one of them. If both are provided, the implementation will select
+
+        nodes based on both and also handle overlaps'
+      type: object
+    apiStorageResource:
+      description: StorageResource groups properties of a storage device.
+      properties:
+        cache:
+          title: True if dedicated as cache
+          type: boolean
+        cloud_drive_type:
+          title: Cloud drive type
+          type: string
+        id:
+          description: Id is the LUN identifier.
+          type: string
+        iops:
+          format: uint64
+          title: IOPS
+          type: string
+        last_scan:
+          description: Timestamp of last time this device was scanned.
+          format: date-time
+          type: string
+        medium:
+          $ref: '#/components/schemas/apiStorageMedium'
+        metadata:
+          description: True if dedicated for metadata.
+          type: boolean
+        online:
+          description: True if this device is online.
+          type: boolean
+        path:
+          description: Path device path for this storage resource.
+          type: string
+        pool_metadata_dev:
+          title: True if the resource is used as thin pool metadata disk
+          type: boolean
+        randRW:
+          format: double
+          title: RandRW
+          type: number
+        rotation_speed:
+          description: True if this device is rotational.
+          type: string
+        seq_read:
+          format: double
+          title: SeqRead
+          type: number
+        seq_write:
+          format: double
+          title: SeqWrite
+          type: number
+        size:
+          description: Total size in bytes.
+          format: uint64
+          type: string
+        used:
+          description: Physical Bytes used.
+          format: uint64
+          type: string
+        volume_spec:
+          title: volume spec that created this drive
+          type: string
+      type: object
+    apiDiagsVolumeSelector:
+      properties:
+        volume_ids:
+          items:
+            type: string
+          title: 'VolumeIDs selects volumes by their unique IDs and then uses replica and attached nodes for those volumes for diags
+
+            collection'
+          type: array
+        volume_label_selector:
           items:
             $ref: '#/components/schemas/apiLabelSelectorRequirement'
+          title: 'VolumeLabelSelector selects volumes by their labels and then uses replica and attached nodes for those volumes for
+
+            diags collection'
           type: array
-      title: Defines a node drain volume attachments request
+      title: 'DiagsVolumeSelector allows selecting volumes for diags collection
+
+        User can select VolumeLabelSelector AND/OR VolumeIDs. If both are provided, the implementation will select nodes
+
+        based on both labels and IDs and also handle overlaps'
+      type: object
+    StorageNodeSecurityStatus:
+      default: UNSPECIFIED
+      description: " - UNSPECIFIED: Security status type is unknown\n - UNSECURED: Node is unsecure\n - SECURED: Node is secured with authentication and authorization\n - SECURED_ALLOW_SECURITY_REMOVAL: Node is secured, but in the process of removing security. This state allows\nother unsecured nodes to join the cluster since the cluster is in the process\nof removing security authentication and authorization."
+      enum:
+      - UNSPECIFIED
+      - UNSECURED
+      - SECURED
+      - SECURED_ALLOW_SECURITY_REMOVAL
+      type: string
+    apiLabelSelectorRequirement:
+      description: 'LabelSelectorRequirement is a selector that contains values, a key, and an operator that
+
+        relates the key and values.'
+      properties:
+        key:
+          description: Key is the label key that the selector applies to.
+          type: string
+        operator:
+          $ref: '#/components/schemas/LabelSelectorRequirementOperator'
+        values:
+          description: 'Values is an array of string values. If the operator is In or NotIn,
+
+            the values array must be non-empty. If the operator is Exists or DoesNotExist,
+
+            the values array must be empty. This array is replaced during a strategic
+
+            merge patch.'
+          items:
+            type: string
+          type: array
       type: object
     apiStorageNode:
       properties:
@@ -742,6 +572,49 @@ components:
           $ref: '#/components/schemas/openstorageapiStatus'
       title: StorageNode describes the state of the node
       type: object
+    apiSdkNodeCordonAttachmentsRequest:
+      properties:
+        node_id:
+          title: Node ID on which any further volume attachments will be disabled
+          type: string
+      title: 'SdkNodeCordonAttachmentsRequest request for disabling new volume
+
+        attachments from a node'
+      type: object
+    apiSdkNodeRelaxedReclaimPurgeResponse:
+      properties:
+        status:
+          $ref: '#/components/schemas/apiRelaxedReclaimPurge'
+      title: Defines response containing status of the trigger
+      type: object
+    apiStoragePoolOperation:
+      properties:
+        msg:
+          title: Msg is a user friendly message for the operation
+          type: string
+        params:
+          additionalProperties:
+            type: string
+          title: Params for the parameters for the operation
+          type: object
+        status:
+          $ref: '#/components/schemas/SdkStoragePoolOperationStatus'
+        type:
+          $ref: '#/components/schemas/apiSdkStoragePoolOperationType'
+      title: StoragePoolOperation defines an operation being performed on a storage pool
+      type: object
+    apiCloudDriveTransferJob:
+      properties:
+        destination_instance_id:
+          title: DestinationInstanceID is the ID of the storageless instance that needs to take over the SourceDriveSetID
+          type: string
+        source_driveset_id:
+          title: SourceDrivesetID is the ID of the current driveset that needs to be transferred
+          type: string
+        status:
+          title: Status describes a helpful status of this operation
+          type: string
+      type: object
     apiHardwareType:
       default: UnknownMachine
       enum:
@@ -750,15 +623,117 @@ components:
       - BareMetalMachine
       title: "- UnknownMachine: When we do not know the machine type alsp the default\n - VirtualMachine: when we are running on virtual machine\n - BareMetalMachine: when we are running on physical hardware"
       type: string
-    SdkStoragePoolOperationStatus:
-      default: OPERATION_PENDING
-      description: "- OPERATION_PENDING: Operation pending\n - OPERATION_IN_PROGRESS: Operation is in progress\n - OPERATION_SUCCESSFUL: Operation is successful\n - OPERATION_FAILED: Operation failed"
+    apiSchedulerTopology:
+      properties:
+        labels:
+          additionalProperties:
+            type: string
+          title: Key-value pairs defining the topology of the node
+          type: object
+      title: 'SchedulerTopology defines the topology information of the storage node
+
+        in scheduler context'
+      type: object
+    apiNodeDrainAttachmentsJob:
+      properties:
+        Status:
+          title: Status describes a helpful status of this node drain operation
+          type: string
+        create_time:
+          format: date-time
+          title: CreateTime is the time the job was created
+          type: string
+        issuer:
+          title: 'Issuer is a user friendly name for the caller who is
+
+            invoking the API. It can be used by caller to filter out
+
+            drain requests from a particular issuer'
+          type: string
+        last_update_time:
+          format: date-time
+          title: LastUpdateTime is the time the job was updated
+          type: string
+        node_id:
+          title: NodeID of the node for which this drain job is running
+          type: string
+        parameters:
+          $ref: '#/components/schemas/apiSdkNodeDrainAttachmentsRequest'
+      title: NodeDrainAttachmentsJob describe a job to drain volume attachments from a node
+      type: object
+    apiSdkStoragePoolOperationType:
+      default: OPERATION_RESIZE
+      description: '- OPERATION_RESIZE: Resize operation'
       enum:
-      - OPERATION_PENDING
-      - OPERATION_IN_PROGRESS
-      - OPERATION_SUCCESSFUL
-      - OPERATION_FAILED
-      title: OperationStatus captures the various statuses of a storage pool operation
+      - OPERATION_RESIZE
+      title: OperationType defines the various operations that are performed on a storage pool
+      type: string
+    apiSdkVolumeBytesUsedResponse:
+      properties:
+        vol_util_info:
+          $ref: '#/components/schemas/apiVolumeBytesUsedByNode'
+      title: SdkVolumeBytesUsedResponse defines a response to fetch multiple volume util from a given node
+      type: object
+    apiSdkJobResponse:
+      properties:
+        job:
+          $ref: '#/components/schemas/apiJob'
+      title: 'Defines a response for an SDK request that spins up a new job
+
+        to perform the request'
+      type: object
+    apiVolumeBytesUsed:
+      properties:
+        total_bytes:
+          format: uint64
+          title: size in bytes by the volume/snapshot
+          type: string
+        volume_id:
+          title: id for the volume/snapshot
+          type: string
+      title: VolumeBytesUsed defines volume utilization
+      type: object
+    apiCosType:
+      default: NONE
+      enum:
+      - NONE
+      - LOW
+      - MEDIUM
+      - HIGH
+      type: string
+    apiSdkNodeInspectCurrentResponse:
+      properties:
+        node:
+          $ref: '#/components/schemas/apiStorageNode'
+      title: Defines a response when inspecting a node
+      type: object
+    apiSdkNodeEnumerateResponse:
+      properties:
+        node_ids:
+          items:
+            type: string
+          title: List of all the node ids in the cluster
+          type: array
+      title: Defines a response with a list of node ids
+      type: object
+    protobufAny:
+      properties:
+        type_url:
+          type: string
+        value:
+          format: byte
+          type: string
+      type: object
+    apiDiagsCollectionStatusState:
+      default: UNSPECIFIED
+      description: "- UNSPECIFIED: Unspecified means uninitialized or unknown state\n - PENDING: Pending indicates the diags collection is pending and hasn't started\n - RUNNING: Running indicates diags collection is actively running\n - DONE: Done indicates diags collection has finished\n - FAILED: Failed indicates diags collection has failed"
+      enum:
+      - UNSPECIFIED
+      - PENDING
+      - RUNNING
+      - DONE
+      - FAILED
+      title: State is an enum for state of diags collection on a given node
       type: string
     apiVolumeBytesUsedByNode:
       properties:
@@ -771,174 +746,6 @@ components:
           title: VolumeBytesUsed for each requested volume on the given node
           type: array
       title: VolumeBytesUsedByNode defines volume utilization for multiple volumes in a given node
-      type: object
-    apiLabelSelectorRequirement:
-      description: 'LabelSelectorRequirement is a selector that contains values, a key, and an operator that
-
-        relates the key and values.'
-      properties:
-        key:
-          description: Key is the label key that the selector applies to.
-          type: string
-        operator:
-          $ref: '#/components/schemas/LabelSelectorRequirementOperator'
-        values:
-          description: 'Values is an array of string values. If the operator is In or NotIn,
-
-            the values array must be non-empty. If the operator is Exists or DoesNotExist,
-
-            the values array must be empty. This array is replaced during a strategic
-
-            merge patch.'
-          items:
-            type: string
-          type: array
-      type: object
-    apiSdkNodeUncordonAttachmentsRequest:
-      properties:
-        node_id:
-          title: Node ID on which any further volume attachments will be enabled
-          type: string
-      title: 'SdkNodeUncordonAttachmentsRequest request for re-enabling volume
-
-        attachments for a node'
-      type: object
-    apiSdkVolumeBytesUsedResponse:
-      properties:
-        vol_util_info:
-          $ref: '#/components/schemas/apiVolumeBytesUsedByNode'
-      title: SdkVolumeBytesUsedResponse defines a response to fetch multiple volume util from a given node
-      type: object
-    apiCosType:
-      default: NONE
-      enum:
-      - NONE
-      - LOW
-      - MEDIUM
-      - HIGH
-      type: string
-    LabelSelectorRequirementOperator:
-      default: In
-      description: "- In: In means the value for 'key' should be in one of the given value(s)\n - NotIn: NotIn means the value for 'key' should NOT be in one of the given value(s)\n - Exists: Exists means the 'key' should just exist regardless of the value\n - DoesNotExist: DoesNotExist means the 'key' should NOT exist\n - Gt: Gt means the 'key' should be greater than the value(s)\n - Lt: Lt means the 'key' should be less than the value(s)"
-      enum:
-      - In
-      - NotIn
-      - Exists
-      - DoesNotExist
-      - Gt
-      - Lt
-      title: This defines operator types used in a label matching rule
-      type: string
-    apiSdkNodeCordonAttachmentsResponse:
-      title: 'SdkNodeCordonAttachmentsRespinse response for disabling new volume
-
-        attachments from a node'
-      type: object
-    apiJobType:
-      default: UNSPECIFIED_TYPE
-      description: "- UNSPECIFIED_TYPE: Unspecified\n - NONE: None\n - DRAIN_ATTACHMENTS: Job for draining volume attachments\n - CLOUD_DRIVE_TRANSFER: Job for transferring cloud drives between nodes\n - COLLECT_DIAGS: Job for collecting diags from the cluster nodes\n - DEFRAG: Job for storage defragmentation on cluster nodes"
-      enum:
-      - UNSPECIFIED_TYPE
-      - NONE
-      - DRAIN_ATTACHMENTS
-      - CLOUD_DRIVE_TRANSFER
-      - COLLECT_DIAGS
-      - DEFRAG
-      title: Type are the supported job types
-      type: string
-    apiDiagsVolumeSelector:
-      properties:
-        volume_ids:
-          items:
-            type: string
-          title: 'VolumeIDs selects volumes by their unique IDs and then uses replica and attached nodes for those volumes for diags
-
-            collection'
-          type: array
-        volume_label_selector:
-          items:
-            $ref: '#/components/schemas/apiLabelSelectorRequirement'
-          title: 'VolumeLabelSelector selects volumes by their labels and then uses replica and attached nodes for those volumes for
-
-            diags collection'
-          type: array
-      title: 'DiagsVolumeSelector allows selecting volumes for diags collection
-
-        User can select VolumeLabelSelector AND/OR VolumeIDs. If both are provided, the implementation will select nodes
-
-        based on both labels and IDs and also handle overlaps'
-      type: object
-    apiStorageResource:
-      description: StorageResource groups properties of a storage device.
-      properties:
-        cache:
-          title: True if dedicated as cache
-          type: boolean
-        cloud_drive_type:
-          title: Cloud drive type
-          type: string
-        id:
-          description: Id is the LUN identifier.
-          type: string
-        iops:
-          format: uint64
-          title: IOPS
-          type: string
-        last_scan:
-          description: Timestamp of last time this device was scanned.
-          format: date-time
-          type: string
-        medium:
-          $ref: '#/components/schemas/apiStorageMedium'
-        metadata:
-          description: True if dedicated for metadata.
-          type: boolean
-        online:
-          description: True if this device is online.
-          type: boolean
-        path:
-          description: Path device path for this storage resource.
-          type: string
-        pool_metadata_dev:
-          title: True if the resource is used as thin pool metadata disk
-          type: boolean
-        randRW:
-          format: double
-          title: RandRW
-          type: number
-        rotation_speed:
-          description: True if this device is rotational.
-          type: string
-        seq_read:
-          format: double
-          title: SeqRead
-          type: number
-        seq_write:
-          format: double
-          title: SeqWrite
-          type: number
-        size:
-          description: Total size in bytes.
-          format: uint64
-          type: string
-        used:
-          description: Physical Bytes used.
-          format: uint64
-          type: string
-        volume_spec:
-          title: volume spec that created this drive
-          type: string
-      type: object
-    apiVolumeBytesUsed:
-      properties:
-        total_bytes:
-          format: uint64
-          title: size in bytes by the volume/snapshot
-          type: string
-        volume_id:
-          title: id for the volume/snapshot
-          type: string
-      title: VolumeBytesUsed defines volume utilization
       type: object
     apiStoragePool:
       properties:
@@ -973,6 +780,199 @@ components:
           type: string
       title: StoragePool groups different storage devices based on their CosType
       type: object
+    apiSdkNodeDrainAttachmentsRequest:
+      properties:
+        issuer:
+          title: 'Issuer is a user friendly name for the caller who is
+
+            invoking the API. It can be used by caller to filter out
+
+            drain requests from a particular issuer'
+          type: string
+        node_id:
+          title: Id of the node to drain
+          type: string
+        only_sharedv4:
+          description: 'Drain only sharedv4 volumes from a node
+
+            By default all volumes will be drained.'
+          type: boolean
+        selector:
+          description: 'Selector is used for selecting volumes whose
+
+            attachment needs to be moved from this node.
+
+            The selector could be a list of volume label
+
+            key value pairs to select a subset of volumes.'
+          items:
+            $ref: '#/components/schemas/apiLabelSelectorRequirement'
+          type: array
+      title: Defines a node drain volume attachments request
+      type: object
+    apiSdkNodeInspectResponse:
+      properties:
+        node:
+          $ref: '#/components/schemas/apiStorageNode'
+      title: Defines a response when inspecting a node
+      type: object
+    apiSdkNodeUncordonAttachmentsRequest:
+      properties:
+        node_id:
+          title: Node ID on which any further volume attachments will be enabled
+          type: string
+      title: 'SdkNodeUncordonAttachmentsRequest request for re-enabling volume
+
+        attachments for a node'
+      type: object
+    openstorageapiStatus:
+      default: STATUS_NONE
+      enum:
+      - STATUS_NONE
+      - STATUS_INIT
+      - STATUS_OK
+      - STATUS_OFFLINE
+      - STATUS_ERROR
+      - STATUS_NOT_IN_QUORUM
+      - STATUS_DECOMMISSION
+      - STATUS_MAINTENANCE
+      - STATUS_STORAGE_DOWN
+      - STATUS_STORAGE_DEGRADED
+      - STATUS_NEEDS_REBOOT
+      - STATUS_STORAGE_REBALANCE
+      - STATUS_STORAGE_DRIVE_REPLACE
+      - STATUS_NOT_IN_QUORUM_NO_STORAGE
+      - STATUS_POOLMAINTENANCE
+      - STATUS_MAX
+      title: '- STATUS_MAX: Add statuses before MAX and update the number for MAX'
+      type: string
+    apiJobType:
+      default: UNSPECIFIED_TYPE
+      description: "- UNSPECIFIED_TYPE: Unspecified\n - NONE: None\n - DRAIN_ATTACHMENTS: Job for draining volume attachments\n - CLOUD_DRIVE_TRANSFER: Job for transferring cloud drives between nodes\n - COLLECT_DIAGS: Job for collecting diags from the cluster nodes\n - DEFRAG: Job for storage defragmentation on cluster nodes"
+      enum:
+      - UNSPECIFIED_TYPE
+      - NONE
+      - DRAIN_ATTACHMENTS
+      - CLOUD_DRIVE_TRANSFER
+      - COLLECT_DIAGS
+      - DEFRAG
+      title: Type are the supported job types
+      type: string
+    apiCollectDiagsJob:
+      properties:
+        request:
+          $ref: '#/components/schemas/apiSdkDiagsCollectRequest'
+        statuses:
+          items:
+            $ref: '#/components/schemas/apiDiagsCollectionStatus'
+          title: Statuses is a list of statuses for diags collection for each node that is part of the request
+          type: array
+      type: object
+    apiRelaxedReclaimPurge:
+      properties:
+        num_purged:
+          format: uint64
+          title: num_purged returns number of volumes purged
+          type: string
+      title: Purges the RelaxedReclaim queue
+      type: object
+    apiStorageMedium:
+      default: STORAGE_MEDIUM_MAGNETIC
+      enum:
+      - STORAGE_MEDIUM_MAGNETIC
+      - STORAGE_MEDIUM_SSD
+      - STORAGE_MEDIUM_NVME
+      title: "- STORAGE_MEDIUM_MAGNETIC: Magnetic spinning disk.\n - STORAGE_MEDIUM_SSD: SSD disk\n - STORAGE_MEDIUM_NVME: NVME disk"
+      type: string
+    apiSdkVolumeBytesUsedRequest:
+      properties:
+        ids:
+          items:
+            format: uint64
+            type: string
+          title: volume ids to be found in usage response, can be empty
+          type: array
+        node_id:
+          title: machine uuid of targeted node
+          type: string
+      title: 'SdkVolumeBytesUsedRequest defines a request for fetching per volume utilization
+
+        from multiple volume in a given node'
+      type: object
+    SdkStoragePoolOperationStatus:
+      default: OPERATION_PENDING
+      description: "- OPERATION_PENDING: Operation pending\n - OPERATION_IN_PROGRESS: Operation is in progress\n - OPERATION_SUCCESSFUL: Operation is successful\n - OPERATION_FAILED: Operation failed"
+      enum:
+      - OPERATION_PENDING
+      - OPERATION_IN_PROGRESS
+      - OPERATION_SUCCESSFUL
+      - OPERATION_FAILED
+      title: OperationStatus captures the various statuses of a storage pool operation
+      type: string
+    apiDiagsNodeSelector:
+      properties:
+        all:
+          title: All selects all nodes for diags collection
+          type: boolean
+        node_ids:
+          items:
+            type: string
+          title: NodeIDs are unique IDs fo the nodes for which the diags will be collected
+          type: array
+        node_label_selector:
+          items:
+            $ref: '#/components/schemas/apiLabelSelectorRequirement'
+          title: NodeLabelSelector is a label selector used to select the nodes for which diags will be collected
+          type: array
+      title: 'DiagsNodeSelector allows selecting nodes for diags collection
+
+        User can select NodeLabelSelector AND/OR NodeIDs. If both are provided, the implementation will select nodes based on
+
+        both labels and IDs and also handle overlaps
+
+        If All is set to true, other selectors are ignored since it selects all nodes'
+      type: object
+    apiJobState:
+      default: UNSPECIFIED_STATE
+      description: "- UNSPECIFIED_STATE: Unspecified\n - PENDING: Pending indicates job is still pending and has not started work\n - RUNNING: Running indicates job is actively running\n - DONE: Done indicates job has finished processing\n - PAUSED: Paused indicates job is paused\n - CANCELLED: Cancelled indicates job is cancelled\n - FAILED: Failed indicates job has failed"
+      enum:
+      - UNSPECIFIED_STATE
+      - PENDING
+      - RUNNING
+      - DONE
+      - PAUSED
+      - CANCELLED
+      - FAILED
+      title: State is an enum for state of a node drain operation
+      type: string
+    apiSdkNodeUncordonAttachmentsResponse:
+      title: 'SdkNodeUncordonAttachmentsRespinse response for enabling new volume
+
+        attachments from a node'
+      type: object
+    apiDiagsCollectionStatus:
+      properties:
+        message:
+          title: Message is a user friendly message for current status of diags collection
+          type: string
+        node:
+          title: Node is the node that's collecting the diags
+          type: string
+        state:
+          $ref: '#/components/schemas/apiDiagsCollectionStatusState'
+      type: object
+    LabelSelectorRequirementOperator:
+      default: In
+      description: "- In: In means the value for 'key' should be in one of the given value(s)\n - NotIn: NotIn means the value for 'key' should NOT be in one of the given value(s)\n - Exists: Exists means the 'key' should just exist regardless of the value\n - DoesNotExist: DoesNotExist means the 'key' should NOT exist\n - Gt: Gt means the 'key' should be greater than the value(s)\n - Lt: Lt means the 'key' should be less than the value(s)"
+      enum:
+      - In
+      - NotIn
+      - Exists
+      - DoesNotExist
+      - Gt
+      - Lt
+      title: This defines operator types used in a label matching rule
+      type: string
   securitySchemes:
     bearerAuth:
       type: http
