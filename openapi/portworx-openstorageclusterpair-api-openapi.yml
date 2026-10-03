@@ -168,23 +168,63 @@ paths:
       - OpenStorageClusterPair
 components:
   schemas:
-    runtimeError:
+    apiSdkClusterPairCreateResponse:
       properties:
-        code:
-          format: int32
-          type: integer
-        details:
-          items:
-            $ref: '#/components/schemas/protobufAny'
-          type: array
-        error:
-          type: string
-        message:
-          type: string
+        result:
+          $ref: '#/components/schemas/apiClusterPairCreateResponse'
+      title: Defines a result of the cluster pair
       type: object
-    apiSdkClusterPairDeleteResponse:
-      title: Empty response
+    apiClusterPairTokenGetResponse:
+      properties:
+        token:
+          title: Token used to authenticate clusters
+          type: string
+      title: Response to get the cluster token
       type: object
+    apiClusterPairGetResponse:
+      properties:
+        pair_info:
+          $ref: '#/components/schemas/apiClusterPairInfo'
+      title: Response to get a cluster pair
+      type: object
+    apiSdkClusterPairInspectResponse:
+      properties:
+        result:
+          $ref: '#/components/schemas/apiClusterPairGetResponse'
+      title: Defines a cluster pair inspect response
+      type: object
+    apiSdkClusterPairEnumerateResponse:
+      properties:
+        result:
+          $ref: '#/components/schemas/apiClusterPairsEnumerateResponse'
+      title: Defines a list of cluster pair
+      type: object
+    apiSdkClusterPairGetTokenResponse:
+      properties:
+        result:
+          $ref: '#/components/schemas/apiClusterPairTokenGetResponse'
+      title: Defines a response for the token request
+      type: object
+    apiClusterPairsEnumerateResponse:
+      properties:
+        default_id:
+          title: ID of the default cluster pair
+          type: string
+        pairs:
+          additionalProperties:
+            $ref: '#/components/schemas/apiClusterPairInfo'
+          title: Pairs Info about the cluster pairs
+          type: object
+      title: Response to enumerate all the cluster pairs
+      type: object
+    apiClusterPairModeMode:
+      default: Default
+      enum:
+      - Default
+      - DisasterRecovery
+      - OneTimeMigration
+      title: "- Default: Default pairing mode\n - DisasterRecovery: Paired for DisasterRecovery\n - OneTimeMigration: Paired for one-time migration"
+      type: string
     protobufAny:
       properties:
         type_url:
@@ -193,47 +233,24 @@ components:
           format: byte
           type: string
       type: object
-    apiSdkClusterPairEnumerateResponse:
+    apiClusterPairCreateResponse:
       properties:
-        result:
-          $ref: '#/components/schemas/apiClusterPairsEnumerateResponse'
-      title: Defines a list of cluster pair
-      type: object
-    apiSdkClusterPairResetTokenResponse:
-      properties:
-        result:
-          $ref: '#/components/schemas/apiClusterPairTokenGetResponse'
-      title: Defines a response for the token request
-      type: object
-    apiSdkClusterPairCreateResponse:
-      properties:
-        result:
-          $ref: '#/components/schemas/apiClusterPairCreateResponse'
-      title: Defines a result of the cluster pair
-      type: object
-    apiClusterPairCreateRequest:
-      properties:
-        credential_id:
-          title: 'Use for the cluster pairing, if given
-
-            credential id will be used in ClusterPairCreate service'
+        remote_cluster_id:
+          title: ID of the remote cluster
           type: string
-        mode:
-          $ref: '#/components/schemas/apiClusterPairModeMode'
-        remote_cluster_ip:
-          title: IP of the remote cluster
+        remote_cluster_name:
+          title: Name of the remote cluster
           type: string
-        remote_cluster_port:
-          format: int64
-          title: Port for the remote cluster
-          type: integer
-        remote_cluster_token:
-          title: Token used to authenticate with the remote cluster
-          type: string
-        set_default:
-          title: Set the new pair as the default
-          type: boolean
-      title: Used to send a request to create a cluster pair
+      title: Response for a pair request
+      type: object
+    apiSdkClusterPairDeleteResponse:
+      title: Empty response
+      type: object
+    apiSdkClusterPairCreateRequest:
+      properties:
+        request:
+          $ref: '#/components/schemas/apiClusterPairCreateRequest'
+      title: Defines a request for creating a cluster pair
       type: object
     apiClusterPairInfo:
       properties:
@@ -268,69 +285,52 @@ components:
           type: string
       title: Information about a cluster pair
       type: object
-    apiClusterPairTokenGetResponse:
-      properties:
-        token:
-          title: Token used to authenticate clusters
-          type: string
-      title: Response to get the cluster token
-      type: object
-    apiSdkClusterPairGetTokenResponse:
+    apiSdkClusterPairResetTokenResponse:
       properties:
         result:
           $ref: '#/components/schemas/apiClusterPairTokenGetResponse'
       title: Defines a response for the token request
       type: object
-    apiClusterPairsEnumerateResponse:
-      properties:
-        default_id:
-          title: ID of the default cluster pair
-          type: string
-        pairs:
-          additionalProperties:
-            $ref: '#/components/schemas/apiClusterPairInfo'
-          title: Pairs Info about the cluster pairs
-          type: object
-      title: Response to enumerate all the cluster pairs
-      type: object
     apiSdkClusterPairResetTokenRequest:
       title: Empty request
       type: object
-    apiSdkClusterPairInspectResponse:
+    runtimeError:
       properties:
-        result:
-          $ref: '#/components/schemas/apiClusterPairGetResponse'
-      title: Defines a cluster pair inspect response
-      type: object
-    apiClusterPairGetResponse:
-      properties:
-        pair_info:
-          $ref: '#/components/schemas/apiClusterPairInfo'
-      title: Response to get a cluster pair
-      type: object
-    apiSdkClusterPairCreateRequest:
-      properties:
-        request:
-          $ref: '#/components/schemas/apiClusterPairCreateRequest'
-      title: Defines a request for creating a cluster pair
-      type: object
-    apiClusterPairModeMode:
-      default: Default
-      enum:
-      - Default
-      - DisasterRecovery
-      - OneTimeMigration
-      title: "- Default: Default pairing mode\n - DisasterRecovery: Paired for DisasterRecovery\n - OneTimeMigration: Paired for one-time migration"
-      type: string
-    apiClusterPairCreateResponse:
-      properties:
-        remote_cluster_id:
-          title: ID of the remote cluster
+        code:
+          format: int32
+          type: integer
+        details:
+          items:
+            $ref: '#/components/schemas/protobufAny'
+          type: array
+        error:
           type: string
-        remote_cluster_name:
-          title: Name of the remote cluster
+        message:
           type: string
-      title: Response for a pair request
+      type: object
+    apiClusterPairCreateRequest:
+      properties:
+        credential_id:
+          title: 'Use for the cluster pairing, if given
+
+            credential id will be used in ClusterPairCreate service'
+          type: string
+        mode:
+          $ref: '#/components/schemas/apiClusterPairModeMode'
+        remote_cluster_ip:
+          title: IP of the remote cluster
+          type: string
+        remote_cluster_port:
+          format: int64
+          title: Port for the remote cluster
+          type: integer
+        remote_cluster_token:
+          title: Token used to authenticate with the remote cluster
+          type: string
+        set_default:
+          title: Set the new pair as the default
+          type: boolean
+      title: Used to send a request to create a cluster pair
       type: object
   securitySchemes:
     bearerAuth:

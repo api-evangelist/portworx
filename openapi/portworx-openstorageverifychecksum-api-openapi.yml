@@ -85,57 +85,13 @@ paths:
       - OpenStorageVerifyChecksum
 components:
   schemas:
-    runtimeError:
-      properties:
-        code:
-          format: int32
-          type: integer
-        details:
-          items:
-            $ref: '#/components/schemas/protobufAny'
-          type: array
-        error:
-          type: string
-        message:
-          type: string
-      type: object
-    apiSdkVerifyChecksumStatusResponse:
-      description: 'SdkVerifyChecksumStatusResponse defines the response for a
+    apiSdkVerifyChecksumStopResponse:
+      description: 'SdkVerifyChecksumStopResponse defines the response for a
 
-        SdkVerifyChecksumStatusRequest.'
+        SdkVerifyChecksumStopRequest.'
       properties:
         message:
           title: Text blob containing ASCII text providing details of the operation
-          type: string
-        status:
-          $ref: '#/components/schemas/VerifyChecksumVerifyChecksumStatus'
-      type: object
-    apiSdkVerifyChecksumStopRequest:
-      properties:
-        volume_id:
-          title: Id of the volume
-          type: string
-      title: 'SdkVerifyChecksumStopRequest defines a request to stop a background
-
-        filesystem check operation'
-      type: object
-    apiSdkVerifyChecksumStartResponse:
-      description: 'SdkVerifyChecksumStartResponse defines the response for a
-
-        SdkVerifyChecksumStartRequest.'
-      properties:
-        message:
-          title: Text blob containing ASCII text providing details of the operation
-          type: string
-        status:
-          $ref: '#/components/schemas/VerifyChecksumVerifyChecksumStatus'
-      type: object
-    protobufAny:
-      properties:
-        type_url:
-          type: string
-        value:
-          format: byte
           type: string
       type: object
     VerifyChecksumVerifyChecksumStatus:
@@ -152,14 +108,33 @@ components:
 
         OpenStorageVerifyChecksum service APIs()'
       type: string
-    apiSdkVerifyChecksumStopResponse:
-      description: 'SdkVerifyChecksumStopResponse defines the response for a
+    apiSdkVerifyChecksumStopRequest:
+      properties:
+        volume_id:
+          title: Id of the volume
+          type: string
+      title: 'SdkVerifyChecksumStopRequest defines a request to stop a background
 
-        SdkVerifyChecksumStopRequest.'
+        filesystem check operation'
+      type: object
+    protobufAny:
+      properties:
+        type_url:
+          type: string
+        value:
+          format: byte
+          type: string
+      type: object
+    apiSdkVerifyChecksumStatusResponse:
+      description: 'SdkVerifyChecksumStatusResponse defines the response for a
+
+        SdkVerifyChecksumStatusRequest.'
       properties:
         message:
           title: Text blob containing ASCII text providing details of the operation
           type: string
+        status:
+          $ref: '#/components/schemas/VerifyChecksumVerifyChecksumStatus'
       type: object
     apiSdkVerifyChecksumStartRequest:
       properties:
@@ -169,6 +144,31 @@ components:
           title: Id of the volume
           type: string
       title: SdkVerifyChecksumStartRequest defines a request to start a background verify checksum operation
+      type: object
+    apiSdkVerifyChecksumStartResponse:
+      description: 'SdkVerifyChecksumStartResponse defines the response for a
+
+        SdkVerifyChecksumStartRequest.'
+      properties:
+        message:
+          title: Text blob containing ASCII text providing details of the operation
+          type: string
+        status:
+          $ref: '#/components/schemas/VerifyChecksumVerifyChecksumStatus'
+      type: object
+    runtimeError:
+      properties:
+        code:
+          format: int32
+          type: integer
+        details:
+          items:
+            $ref: '#/components/schemas/protobufAny'
+          type: array
+        error:
+          type: string
+        message:
+          type: string
       type: object
   securitySchemes:
     bearerAuth:

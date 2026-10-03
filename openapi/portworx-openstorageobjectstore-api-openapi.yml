@@ -117,45 +117,6 @@ paths:
       - OpenStorageObjectstore
 components:
   schemas:
-    runtimeError:
-      properties:
-        code:
-          format: int32
-          type: integer
-        details:
-          items:
-            $ref: '#/components/schemas/protobufAny'
-          type: array
-        error:
-          type: string
-        message:
-          type: string
-      type: object
-    protobufAny:
-      properties:
-        type_url:
-          type: string
-        value:
-          format: byte
-          type: string
-      type: object
-    apiSdkObjectstoreUpdateResponse:
-      title: Empty response
-      type: object
-    apiSdkObjectstoreInspectResponse:
-      properties:
-        objectstore_status:
-          $ref: '#/components/schemas/apiObjectstoreInfo'
-      title: Defines a response when inspecting an object store endpoint
-      type: object
-    apiSdkObjectstoreCreateResponse:
-      properties:
-        objectstore_status:
-          $ref: '#/components/schemas/apiObjectstoreInfo'
-      title: 'Defines a response when an object store has been created for a
-
-        specified volume'
-      type: object
     apiObjectstoreInfo:
       properties:
         access_key:
@@ -207,8 +168,13 @@ components:
           type: string
       title: Defines a request to update an object store
       type: object
-    apiSdkObjectstoreDeleteResponse:
-      title: Empty response
+    protobufAny:
+      properties:
+        type_url:
+          type: string
+        value:
+          format: byte
+          type: string
       type: object
     apiSdkObjectstoreCreateRequest:
       properties:
@@ -216,6 +182,40 @@ components:
           title: Volume on which objectstore will be running
           type: string
       title: Defines a request to create an object store
+      type: object
+    apiSdkObjectstoreUpdateResponse:
+      title: Empty response
+      type: object
+    apiSdkObjectstoreCreateResponse:
+      properties:
+        objectstore_status:
+          $ref: '#/components/schemas/apiObjectstoreInfo'
+      title: 'Defines a response when an object store has been created for a
+
+        specified volume'
+      type: object
+    apiSdkObjectstoreDeleteResponse:
+      title: Empty response
+      type: object
+    runtimeError:
+      properties:
+        code:
+          format: int32
+          type: integer
+        details:
+          items:
+            $ref: '#/components/schemas/protobufAny'
+          type: array
+        error:
+          type: string
+        message:
+          type: string
+      type: object
+    apiSdkObjectstoreInspectResponse:
+      properties:
+        objectstore_status:
+          $ref: '#/components/schemas/apiObjectstoreInfo'
+      title: Defines a response when inspecting an object store endpoint
       type: object
   securitySchemes:
     bearerAuth:

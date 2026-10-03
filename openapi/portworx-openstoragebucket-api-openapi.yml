@@ -146,40 +146,15 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    runtimeError:
+    apiBucketCreateResponse:
       properties:
-        code:
-          format: int32
-          type: integer
-        details:
-          items:
-            $ref: '#/components/schemas/protobufAny'
-          type: array
-        error:
-          type: string
-        message:
-          type: string
-      type: object
-    protobufAny:
-      properties:
-        type_url:
-          type: string
-        value:
-          format: byte
-          type: string
-      type: object
-    apiBucketDeleteResponse:
-      title: Empty response
-      type: object
-    apiBucketRevokeAccessRequest:
-      properties:
-        account_id:
-          description: AccountId that is having its access revoked.
-          type: string
         bucket_id:
-          title: Id of bucket to delete
+          title: Id of new bucket
           type: string
-      title: Defines the request to revoke access to the bucket
+      title: Defines a response to the creation of a bucket
+      type: object
+    apiBucketRevokeAccessResponse:
+      title: Empty response
       type: object
     apiBucketCreateRequest:
       description: Defines a request to create a bucket.
@@ -196,16 +171,6 @@ components:
           description: Region in which bucket will be created.
           type: string
       type: object
-    apiBucketRevokeAccessResponse:
-      title: Empty response
-      type: object
-    apiBucketCreateResponse:
-      properties:
-        bucket_id:
-          title: Id of new bucket
-          type: string
-      title: Defines a response to the creation of a bucket
-      type: object
     apiAnonymousBucketAccessMode:
       default: UnknownBucketAccessMode
       description: " - Private: Default, disallow uncredentialed access to the backend storage.\n - ReadOnly: Read only, uncredentialed users can call ListBucket and GetObject.\n - WriteOnly: Write only, uncredentialed users can only call PutObject.\n - ReadWrite: Read/Write, uncredentialed users can read objects as well as PutObject."
@@ -216,6 +181,14 @@ components:
       - WriteOnly
       - ReadWrite
       type: string
+    protobufAny:
+      properties:
+        type_url:
+          type: string
+        value:
+          format: byte
+          type: string
+      type: object
     apiBucketAccessCredentials:
       properties:
         access_key_id:
@@ -225,6 +198,19 @@ components:
           title: Secret access key
           type: string
       title: Defines the bucket access credential object
+      type: object
+    apiBucketRevokeAccessRequest:
+      properties:
+        account_id:
+          description: AccountId that is having its access revoked.
+          type: string
+        bucket_id:
+          title: Id of bucket to delete
+          type: string
+      title: Defines the request to revoke access to the bucket
+      type: object
+    apiBucketDeleteResponse:
+      title: Empty response
       type: object
     apiBucketGrantAccessResponse:
       properties:
@@ -249,6 +235,20 @@ components:
           title: Id of the bucket
           type: string
       title: Defines a request to grant access to the bucket
+      type: object
+    runtimeError:
+      properties:
+        code:
+          format: int32
+          type: integer
+        details:
+          items:
+            $ref: '#/components/schemas/protobufAny'
+          type: array
+        error:
+          type: string
+        message:
+          type: string
       type: object
   securitySchemes:
     bearerAuth:
