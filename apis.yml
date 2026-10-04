@@ -460,6 +460,9 @@ apis:
   - type: APIReference
     url: https://libopenstorage.github.io/
 common:
+  - type: CapabilityMap
+    url: capabilities/portworx-capability-edges.yml
+    name: Portworx Business Capability Map
   - type: AgenticAccess
     url: agentic-access/portworx-agentic-access.yml
   - type: DomainSecurity

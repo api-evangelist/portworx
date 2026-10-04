@@ -1,0 +1,114 @@
+slug: portworx
+provider: Portworx
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 10
+edges:
+- tag: OpenStorageRole
+  spec_file: portworx-openstoragerole-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.8
+  evidence: '"Create a role for users in the system"; schemas apiSdkRole, apiSdkRule'
+  reason: CRUD over roles and access rules governing user permissions in the storage cluster — role-based
+    access control, i.e. Identity & Access Management.
+- tag: OpenStorageVolume
+  spec_file: portworx-openstoragevolume-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.8
+  evidence: POST /v1/volumes "Create creates a volume according to the specification provided"; POST /v1/volumes/snapshots
+    "SnapshotCreate creates a snapshot of a volume"
+  reason: The surface provisions, clones, inspects and snapshots persistent storage volumes — classic
+    storage infrastructure provisioning and lifecycle, i.e. IT Infrastructure Management. Snapshot/restore
+    touches on disaster recovery, but the dominant reading is storage infrastructure management.
+- tag: OpenStorageMountAttach
+  spec_file: portworx-openstoragemountattach-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.78
+  evidence: '"Attach attaches device to the host that the client is communicating with"; "Mount mounts
+    an attached volume in the host"'
+  reason: Block/volume attach-mount operations on hosts are core storage infrastructure provisioning operations
+    under IT Infrastructure Management.
+- tag: OpenStorageNode
+  spec_file: portworx-openstoragenode-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.78
+  evidence: '"Enumerate returns the ids of all the nodes in the current cluster"; "Inspect returns information
+    about the specified node"; schema apiStoragePool'
+  reason: Cluster storage node inventory, cordon/drain of volume attachments and capacity usage — compute/storage
+    infrastructure management.
+- tag: OpenStoragePool
+  spec_file: portworx-openstoragepool-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.78
+  evidence: '"Resize expands the specified storage pool based on the request parameters"; "Rebalance creates
+    a new rebalance task"'
+  reason: Storage pool resize and rebalance scheduling are storage infrastructure capacity operations
+    under IT Infrastructure Management.
+- tag: OpenStorageBucket
+  spec_file: portworx-openstoragebucket-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.75
+  evidence: POST /v1/bucket  OpenStorageBucket_Create  Open storage bucket create; POST /v1/bucket/access/{bucket_id}  OpenStorageBucket_GrantAccess
+  reason: Creation, deletion and access granting/revoking of object-storage buckets with apiBucketAccessCredentials
+    — provisioning and stewardship of storage infrastructure, which maps to IT Infrastructure Management
+    (compute, storage, cloud).
+- tag: OpenStorageObjectstore
+  spec_file: portworx-openstorageobjectstore-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.75
+  evidence: '"Creates creates an object store endpoint on specified volume"'
+  reason: Lifecycle of object-store endpoints backed by storage volumes — storage infrastructure provisioning,
+    not a business-domain capability.
+- tag: OpenStorageMigrate
+  spec_file: portworx-openstoragemigrate-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.72
+  evidence: '"Start a migration operation"; schemas apiCloudMigrateStartResponse, SdkCloudMigrateStartRequestMigrateVolumeGroup'
+  reason: Migration of storage volumes to/between cloud targets is infrastructure (storage/cloud) management,
+    not a line-of-business capability.
+- tag: OpenStorageCloudBackup
+  spec_file: portworx-openstoragecloudbackup-api-openapi.yml
+  capability_id: BC-160.20
+  capability_id_l1: BC-160
+  capability_name: Disaster Recovery Management
+  confidence: 0.7
+  evidence: OpenStorageCloudBackup_Restore  Restore creates a new volume from a backup id.; POST /v1/cloudbackups/schedules  OpenStorageCloudBackup_SchedCreate  Create
+    cloud backup schedule
+  reason: Operations create, enumerate, schedule, delete and restore cloud backups of storage volumes
+    — backup/restore tooling that realises IT disaster recovery. Some ambiguity between generic IT disaster
+    recovery and SaaS-service resilience framing, hence 0.7.
+- tag: OpenStorageFilesystemTrim
+  spec_file: portworx-openstoragefilesystemtrim-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.7
+  evidence: '"Start a filesystem Trim background operation on a mounted volume"; schema apiFstrimVolumeUsageInfo'
+  reason: Operations run and monitor filesystem trim jobs on mounted storage volumes — storage infrastructure
+    maintenance, i.e. IT Infrastructure Management (compute, storage). No business-domain capability is
+    realised.
