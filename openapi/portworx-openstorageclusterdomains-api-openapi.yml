@@ -106,36 +106,6 @@ paths:
       - OpenStorageClusterDomains
 components:
   schemas:
-    apiSdkClusterDomainDeactivateResponse:
-      title: Empty response
-      type: object
-    apiSdkClusterDomainInspectResponse:
-      properties:
-        cluster_domain_name:
-          title: Name of the cluster domain
-          type: string
-        is_active:
-          title: IsActive indicates whether this cluster domain is active
-          type: boolean
-      title: Defines a response to inspecting a cluster domain
-      type: object
-    protobufAny:
-      properties:
-        type_url:
-          type: string
-        value:
-          format: byte
-          type: string
-      type: object
-    apiSdkClusterDomainsEnumerateResponse:
-      properties:
-        cluster_domain_names:
-          items:
-            type: string
-          title: List of names of all the cluster domains in a cluster
-          type: array
-      title: Defines a response when enumerating cluster domains
-      type: object
     runtimeError:
       properties:
         code:
@@ -149,6 +119,36 @@ components:
           type: string
         message:
           type: string
+      type: object
+    apiSdkClusterDomainInspectResponse:
+      properties:
+        cluster_domain_name:
+          title: Name of the cluster domain
+          type: string
+        is_active:
+          title: IsActive indicates whether this cluster domain is active
+          type: boolean
+      title: Defines a response to inspecting a cluster domain
+      type: object
+    apiSdkClusterDomainsEnumerateResponse:
+      properties:
+        cluster_domain_names:
+          items:
+            type: string
+          title: List of names of all the cluster domains in a cluster
+          type: array
+      title: Defines a response when enumerating cluster domains
+      type: object
+    protobufAny:
+      properties:
+        type_url:
+          type: string
+        value:
+          format: byte
+          type: string
+      type: object
+    apiSdkClusterDomainDeactivateResponse:
+      title: Empty response
       type: object
     apiSdkClusterDomainActivateResponse:
       title: Empty response

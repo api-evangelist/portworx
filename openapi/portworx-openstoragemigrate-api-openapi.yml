@@ -90,19 +90,6 @@ paths:
       - OpenStorageMigrate
 components:
   schemas:
-    apiCloudMigrateStartResponse:
-      properties:
-        task_id:
-          title: TaskId assocaiated with the migration that was started
-          type: string
-      title: Response to start a cloud migration
-      type: object
-    apiSdkCloudMigrateStatusResponse:
-      properties:
-        result:
-          $ref: '#/components/schemas/apiCloudMigrateStatusResponse'
-      title: Defines a response for the status request
-      type: object
     apiCloudMigrateInfoList:
       properties:
         list:
@@ -110,15 +97,57 @@ components:
             $ref: '#/components/schemas/apiCloudMigrateInfo'
           type: array
       type: object
-    CloudMigrateStage:
-      default: InvalidStage
-      enum:
-      - InvalidStage
-      - Backup
-      - Restore
-      - VolumeUpdate
-      - Done
-      type: string
+    runtimeError:
+      properties:
+        code:
+          format: int32
+          type: integer
+        details:
+          items:
+            $ref: '#/components/schemas/protobufAny'
+          type: array
+        error:
+          type: string
+        message:
+          type: string
+      type: object
+    protobufAny:
+      properties:
+        type_url:
+          type: string
+        value:
+          format: byte
+          type: string
+      type: object
+    apiCloudMigrateCancelRequest:
+      properties:
+        task_id:
+          title: The id of the task to cancel
+          type: string
+      title: Request to stop a cloud migration
+      type: object
+    apiCloudMigrateStatusResponse:
+      properties:
+        info:
+          additionalProperties:
+            $ref: '#/components/schemas/apiCloudMigrateInfoList'
+          title: Map of cluster id to the status of volumes being migrated
+          type: object
+      title: Response with a status of the cloud migration operations
+      type: object
+    apiSdkCloudMigrateCancelRequest:
+      properties:
+        request:
+          $ref: '#/components/schemas/apiCloudMigrateCancelRequest'
+      title: Defines a request to stop a cloud migration
+      type: object
+    apiCloudMigrateStartResponse:
+      properties:
+        task_id:
+          title: TaskId assocaiated with the migration that was started
+          type: string
+      title: Response to start a cloud migration
+      type: object
     apiCloudMigrateStatus:
       default: InvalidStatus
       enum:
@@ -130,12 +159,17 @@ components:
       - Complete
       - Canceled
       type: string
-    apiCloudMigrateCancelRequest:
+    apiSdkCloudMigrateStatusResponse:
       properties:
-        task_id:
-          title: The id of the task to cancel
-          type: string
-      title: Request to stop a cloud migration
+        result:
+          $ref: '#/components/schemas/apiCloudMigrateStatusResponse'
+      title: Defines a response for the status request
+      type: object
+    apiSdkCloudMigrateCancelResponse:
+      title: Empty Response
+      type: object
+    SdkCloudMigrateStartRequestMigrateAllVolumes:
+      title: Defines a migration request for all volumes in a cluster
       type: object
     SdkCloudMigrateStartRequestMigrateVolume:
       properties:
@@ -143,64 +177,26 @@ components:
           type: string
       title: Defines a migration request for a volume
       type: object
-    apiCloudMigrateStatusResponse:
+    CloudMigrateStage:
+      default: InvalidStage
+      enum:
+      - InvalidStage
+      - Backup
+      - Restore
+      - VolumeUpdate
+      - Done
+      type: string
+    SdkCloudMigrateStartRequestMigrateVolumeGroup:
       properties:
-        info:
-          additionalProperties:
-            $ref: '#/components/schemas/apiCloudMigrateInfoList'
-          title: Map of cluster id to the status of volumes being migrated
-          type: object
-      title: Response with a status of the cloud migration operations
-      type: object
-    SdkCloudMigrateStartRequestMigrateAllVolumes:
-      title: Defines a migration request for all volumes in a cluster
-      type: object
-    apiSdkCloudMigrateCancelResponse:
-      title: Empty Response
-      type: object
-    protobufAny:
-      properties:
-        type_url:
+        group_id:
           type: string
-        value:
-          format: byte
-          type: string
-      type: object
-    apiSdkCloudMigrateStartRequest:
-      properties:
-        all_volumes:
-          $ref: '#/components/schemas/SdkCloudMigrateStartRequestMigrateAllVolumes'
-        cluster_id:
-          title: ID of the cluster to which volumes are to be migrated
-          type: string
-        task_id:
-          title: 'Unique name assocaiated with this migration.
-
-            This is a Optional field for idempotency'
-          type: string
-        volume:
-          $ref: '#/components/schemas/SdkCloudMigrateStartRequestMigrateVolume'
-        volume_group:
-          $ref: '#/components/schemas/SdkCloudMigrateStartRequestMigrateVolumeGroup'
-      title: Defines a migration request
+      title: Defines a migration request for a volume group
       type: object
     apiSdkCloudMigrateStartResponse:
       properties:
         result:
           $ref: '#/components/schemas/apiCloudMigrateStartResponse'
       title: Defines a response for the migration that was started
-      type: object
-    apiSdkCloudMigrateCancelRequest:
-      properties:
-        request:
-          $ref: '#/components/schemas/apiCloudMigrateCancelRequest'
-      title: Defines a request to stop a cloud migration
-      type: object
-    SdkCloudMigrateStartRequestMigrateVolumeGroup:
-      properties:
-        group_id:
-          type: string
-      title: Defines a migration request for a volume group
       type: object
     apiCloudMigrateInfo:
       properties:
@@ -254,19 +250,23 @@ components:
           title: Task id associated with this migration
           type: string
       type: object
-    runtimeError:
+    apiSdkCloudMigrateStartRequest:
       properties:
-        code:
-          format: int32
-          type: integer
-        details:
-          items:
-            $ref: '#/components/schemas/protobufAny'
-          type: array
-        error:
+        all_volumes:
+          $ref: '#/components/schemas/SdkCloudMigrateStartRequestMigrateAllVolumes'
+        cluster_id:
+          title: ID of the cluster to which volumes are to be migrated
           type: string
-        message:
+        task_id:
+          title: 'Unique name assocaiated with this migration.
+
+            This is a Optional field for idempotency'
           type: string
+        volume:
+          $ref: '#/components/schemas/SdkCloudMigrateStartRequestMigrateVolume'
+        volume_group:
+          $ref: '#/components/schemas/SdkCloudMigrateStartRequestMigrateVolumeGroup'
+      title: Defines a migration request
       type: object
   securitySchemes:
     bearerAuth:

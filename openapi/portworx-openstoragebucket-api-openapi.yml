@@ -146,15 +146,19 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    apiBucketCreateResponse:
+    runtimeError:
       properties:
-        bucket_id:
-          title: Id of new bucket
+        code:
+          format: int32
+          type: integer
+        details:
+          items:
+            $ref: '#/components/schemas/protobufAny'
+          type: array
+        error:
           type: string
-      title: Defines a response to the creation of a bucket
-      type: object
-    apiBucketRevokeAccessResponse:
-      title: Empty response
+        message:
+          type: string
       type: object
     apiBucketCreateRequest:
       description: Defines a request to create a bucket.
@@ -189,40 +193,6 @@ components:
           format: byte
           type: string
       type: object
-    apiBucketAccessCredentials:
-      properties:
-        access_key_id:
-          title: Access key id
-          type: string
-        secret_access_key:
-          title: Secret access key
-          type: string
-      title: Defines the bucket access credential object
-      type: object
-    apiBucketRevokeAccessRequest:
-      properties:
-        account_id:
-          description: AccountId that is having its access revoked.
-          type: string
-        bucket_id:
-          title: Id of bucket to delete
-          type: string
-      title: Defines the request to revoke access to the bucket
-      type: object
-    apiBucketDeleteResponse:
-      title: Empty response
-      type: object
-    apiBucketGrantAccessResponse:
-      properties:
-        account_id:
-          description: 'This is the account_id that is being provided access. This will
-
-            This will be required later to revoke access.'
-          type: string
-        credentials:
-          $ref: '#/components/schemas/apiBucketAccessCredentials'
-      title: Defines a response to the creation of a bucket
-      type: object
     apiBucketGrantAccessRequest:
       properties:
         access_policy:
@@ -236,19 +206,49 @@ components:
           type: string
       title: Defines a request to grant access to the bucket
       type: object
-    runtimeError:
+    apiBucketDeleteResponse:
+      title: Empty response
+      type: object
+    apiBucketRevokeAccessRequest:
       properties:
-        code:
-          format: int32
-          type: integer
-        details:
-          items:
-            $ref: '#/components/schemas/protobufAny'
-          type: array
-        error:
+        account_id:
+          description: AccountId that is having its access revoked.
           type: string
-        message:
+        bucket_id:
+          title: Id of bucket to delete
           type: string
+      title: Defines the request to revoke access to the bucket
+      type: object
+    apiBucketCreateResponse:
+      properties:
+        bucket_id:
+          title: Id of new bucket
+          type: string
+      title: Defines a response to the creation of a bucket
+      type: object
+    apiBucketGrantAccessResponse:
+      properties:
+        account_id:
+          description: 'This is the account_id that is being provided access. This will
+
+            This will be required later to revoke access.'
+          type: string
+        credentials:
+          $ref: '#/components/schemas/apiBucketAccessCredentials'
+      title: Defines a response to the creation of a bucket
+      type: object
+    apiBucketRevokeAccessResponse:
+      title: Empty response
+      type: object
+    apiBucketAccessCredentials:
+      properties:
+        access_key_id:
+          title: Access key id
+          type: string
+        secret_access_key:
+          title: Secret access key
+          type: string
+      title: Defines the bucket access credential object
       type: object
   securitySchemes:
     bearerAuth:
