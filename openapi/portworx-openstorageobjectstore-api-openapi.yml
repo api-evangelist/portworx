@@ -117,6 +117,17 @@ paths:
       - OpenStorageObjectstore
 components:
   schemas:
+    apiSdkObjectstoreCreateResponse:
+      properties:
+        objectstore_status:
+          $ref: '#/components/schemas/apiObjectstoreInfo'
+      title: 'Defines a response when an object store has been created for a
+
+        specified volume'
+      type: object
+    apiSdkObjectstoreUpdateResponse:
+      title: Empty response
+      type: object
     runtimeError:
       properties:
         code:
@@ -131,12 +142,11 @@ components:
         message:
           type: string
       type: object
-    apiSdkObjectstoreCreateRequest:
+    apiSdkObjectstoreInspectResponse:
       properties:
-        volume_id:
-          title: Volume on which objectstore will be running
-          type: string
-      title: Defines a request to create an object store
+        objectstore_status:
+          $ref: '#/components/schemas/apiObjectstoreInfo'
+      title: Defines a response when inspecting an object store endpoint
       type: object
     protobufAny:
       properties:
@@ -146,19 +156,22 @@ components:
           format: byte
           type: string
       type: object
-    apiSdkObjectstoreCreateResponse:
+    apiSdkObjectstoreCreateRequest:
       properties:
-        objectstore_status:
-          $ref: '#/components/schemas/apiObjectstoreInfo'
-      title: 'Defines a response when an object store has been created for a
-
-        specified volume'
+        volume_id:
+          title: Volume on which objectstore will be running
+          type: string
+      title: Defines a request to create an object store
       type: object
-    apiSdkObjectstoreInspectResponse:
+    apiSdkObjectstoreUpdateRequest:
       properties:
-        objectstore_status:
-          $ref: '#/components/schemas/apiObjectstoreInfo'
-      title: Defines a response when inspecting an object store endpoint
+        enable:
+          title: enable/disable objectstore
+          type: boolean
+        objectstore_id:
+          title: Objectstore Id to update
+          type: string
+      title: Defines a request to update an object store
       type: object
     apiObjectstoreInfo:
       properties:
@@ -200,19 +213,6 @@ components:
           title: VolumeID of volume used by object store
           type: string
       title: ObjectstoreInfo is a structure that has current objectstore info
-      type: object
-    apiSdkObjectstoreUpdateRequest:
-      properties:
-        enable:
-          title: enable/disable objectstore
-          type: boolean
-        objectstore_id:
-          title: Objectstore Id to update
-          type: string
-      title: Defines a request to update an object store
-      type: object
-    apiSdkObjectstoreUpdateResponse:
-      title: Empty response
       type: object
     apiSdkObjectstoreDeleteResponse:
       title: Empty response

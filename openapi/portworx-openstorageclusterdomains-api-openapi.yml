@@ -106,6 +106,9 @@ paths:
       - OpenStorageClusterDomains
 components:
   schemas:
+    apiSdkClusterDomainActivateResponse:
+      title: Empty response
+      type: object
     runtimeError:
       properties:
         code:
@@ -130,15 +133,6 @@ components:
           type: boolean
       title: Defines a response to inspecting a cluster domain
       type: object
-    apiSdkClusterDomainsEnumerateResponse:
-      properties:
-        cluster_domain_names:
-          items:
-            type: string
-          title: List of names of all the cluster domains in a cluster
-          type: array
-      title: Defines a response when enumerating cluster domains
-      type: object
     protobufAny:
       properties:
         type_url:
@@ -150,8 +144,14 @@ components:
     apiSdkClusterDomainDeactivateResponse:
       title: Empty response
       type: object
-    apiSdkClusterDomainActivateResponse:
-      title: Empty response
+    apiSdkClusterDomainsEnumerateResponse:
+      properties:
+        cluster_domain_names:
+          items:
+            type: string
+          title: List of names of all the cluster domains in a cluster
+          type: array
+      title: Defines a response when enumerating cluster domains
       type: object
   securitySchemes:
     bearerAuth:

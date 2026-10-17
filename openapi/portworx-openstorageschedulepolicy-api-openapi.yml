@@ -128,36 +128,25 @@ paths:
       - OpenStorageSchedulePolicy
 components:
   schemas:
-    apiSdkSchedulePolicyCreateResponse:
-      title: Empty response
-      type: object
-    runtimeError:
+    apiSdkSchedulePolicy:
       properties:
-        code:
-          format: int32
-          type: integer
-        details:
+        name:
+          title: Name of the schedule policy
+          type: string
+        schedules:
           items:
-            $ref: '#/components/schemas/protobufAny'
+            $ref: '#/components/schemas/apiSdkSchedulePolicyInterval'
+          title: Schedule policies
           type: array
-        error:
-          type: string
-        message:
-          type: string
+      title: Defines a schedule policy
       type: object
-    apiSdkSchedulePolicyUpdateRequest:
+    apiSdkSchedulePolicyIntervalPeriodic:
       properties:
-        schedule_policy:
-          $ref: '#/components/schemas/apiSdkSchedulePolicy'
-      title: Define a request to update a schedule policy
-      type: object
-    protobufAny:
-      properties:
-        type_url:
+        seconds:
+          format: int64
+          title: Specify the number of seconds between intervals
           type: string
-        value:
-          format: byte
-          type: string
+      title: Defines a periodic schedule
       type: object
     apiSdkSchedulePolicyDeleteResponse:
       title: Empty response
@@ -175,9 +164,6 @@ components:
       - SdkTimeWeekdaySaturday
       title: Defines times of day
       type: string
-    apiSdkSchedulePolicyUpdateResponse:
-      title: Empty response
-      type: object
     apiSdkSchedulePolicyIntervalWeekly:
       properties:
         day:
@@ -192,17 +178,45 @@ components:
           type: integer
       title: Defines a weekly schedule
       type: object
-    apiSdkSchedulePolicy:
+    apiSdkSchedulePolicyUpdateResponse:
+      title: Empty response
+      type: object
+    runtimeError:
       properties:
-        name:
-          title: Name of the schedule policy
-          type: string
-        schedules:
+        code:
+          format: int32
+          type: integer
+        details:
           items:
-            $ref: '#/components/schemas/apiSdkSchedulePolicyInterval'
-          title: Schedule policies
+            $ref: '#/components/schemas/protobufAny'
           type: array
-      title: Defines a schedule policy
+        error:
+          type: string
+        message:
+          type: string
+      type: object
+    apiSdkSchedulePolicyInspectResponse:
+      properties:
+        policy:
+          $ref: '#/components/schemas/apiSdkSchedulePolicy'
+      title: Defines a schedule policy inspection response
+      type: object
+    apiSdkSchedulePolicyEnumerateResponse:
+      properties:
+        policies:
+          items:
+            $ref: '#/components/schemas/apiSdkSchedulePolicy'
+          title: List of Schedule Policy
+          type: array
+      title: Defines a schedule policy enumerate response
+      type: object
+    protobufAny:
+      properties:
+        type_url:
+          type: string
+        value:
+          format: byte
+          type: string
       type: object
     apiSdkSchedulePolicyInterval:
       properties:
@@ -220,29 +234,6 @@ components:
           $ref: '#/components/schemas/apiSdkSchedulePolicyIntervalWeekly'
       title: Defines a schedule policy interval
       type: object
-    apiSdkSchedulePolicyEnumerateResponse:
-      properties:
-        policies:
-          items:
-            $ref: '#/components/schemas/apiSdkSchedulePolicy'
-          title: List of Schedule Policy
-          type: array
-      title: Defines a schedule policy enumerate response
-      type: object
-    apiSdkSchedulePolicyIntervalPeriodic:
-      properties:
-        seconds:
-          format: int64
-          title: Specify the number of seconds between intervals
-          type: string
-      title: Defines a periodic schedule
-      type: object
-    apiSdkSchedulePolicyCreateRequest:
-      properties:
-        schedule_policy:
-          $ref: '#/components/schemas/apiSdkSchedulePolicy'
-      title: Define a schedule policy request
-      type: object
     apiSdkSchedulePolicyIntervalMonthly:
       properties:
         day:
@@ -259,6 +250,15 @@ components:
           type: integer
       title: Defines a monthly schedule
       type: object
+    apiSdkSchedulePolicyCreateResponse:
+      title: Empty response
+      type: object
+    apiSdkSchedulePolicyCreateRequest:
+      properties:
+        schedule_policy:
+          $ref: '#/components/schemas/apiSdkSchedulePolicy'
+      title: Define a schedule policy request
+      type: object
     apiSdkSchedulePolicyIntervalDaily:
       properties:
         hour:
@@ -271,11 +271,11 @@ components:
           type: integer
       title: Defines a daily schedule
       type: object
-    apiSdkSchedulePolicyInspectResponse:
+    apiSdkSchedulePolicyUpdateRequest:
       properties:
-        policy:
+        schedule_policy:
           $ref: '#/components/schemas/apiSdkSchedulePolicy'
-      title: Defines a schedule policy inspection response
+      title: Define a request to update a schedule policy
       type: object
   securitySchemes:
     bearerAuth:

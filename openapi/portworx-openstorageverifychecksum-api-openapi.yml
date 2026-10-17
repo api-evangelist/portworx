@@ -85,6 +85,26 @@ paths:
       - OpenStorageVerifyChecksum
 components:
   schemas:
+    apiSdkVerifyChecksumStopRequest:
+      properties:
+        volume_id:
+          title: Id of the volume
+          type: string
+      title: 'SdkVerifyChecksumStopRequest defines a request to stop a background
+
+        filesystem check operation'
+      type: object
+    apiSdkVerifyChecksumStatusResponse:
+      description: 'SdkVerifyChecksumStatusResponse defines the response for a
+
+        SdkVerifyChecksumStatusRequest.'
+      properties:
+        message:
+          title: Text blob containing ASCII text providing details of the operation
+          type: string
+        status:
+          $ref: '#/components/schemas/VerifyChecksumVerifyChecksumStatus'
+      type: object
     runtimeError:
       properties:
         code:
@@ -107,10 +127,10 @@ components:
           format: byte
           type: string
       type: object
-    apiSdkVerifyChecksumStatusResponse:
-      description: 'SdkVerifyChecksumStatusResponse defines the response for a
+    apiSdkVerifyChecksumStartResponse:
+      description: 'SdkVerifyChecksumStartResponse defines the response for a
 
-        SdkVerifyChecksumStatusRequest.'
+        SdkVerifyChecksumStartRequest.'
       properties:
         message:
           title: Text blob containing ASCII text providing details of the operation
@@ -135,26 +155,6 @@ components:
           title: Id of the volume
           type: string
       title: SdkVerifyChecksumStartRequest defines a request to start a background verify checksum operation
-      type: object
-    apiSdkVerifyChecksumStartResponse:
-      description: 'SdkVerifyChecksumStartResponse defines the response for a
-
-        SdkVerifyChecksumStartRequest.'
-      properties:
-        message:
-          title: Text blob containing ASCII text providing details of the operation
-          type: string
-        status:
-          $ref: '#/components/schemas/VerifyChecksumVerifyChecksumStatus'
-      type: object
-    apiSdkVerifyChecksumStopRequest:
-      properties:
-        volume_id:
-          title: Id of the volume
-          type: string
-      title: 'SdkVerifyChecksumStopRequest defines a request to stop a background
-
-        filesystem check operation'
       type: object
     VerifyChecksumVerifyChecksumStatus:
       default: VERIFY_CHECKSUM_UNKNOWN

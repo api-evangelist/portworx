@@ -28,6 +28,12 @@ paths:
       - OpenStorageCluster
 components:
   schemas:
+    apiSdkClusterInspectCurrentResponse:
+      properties:
+        cluster:
+          $ref: '#/components/schemas/apiStorageCluster'
+      title: Defines a response when inspecting the current cluster
+      type: object
     runtimeError:
       properties:
         code:
@@ -42,6 +48,14 @@ components:
         message:
           type: string
       type: object
+    protobufAny:
+      properties:
+        type_url:
+          type: string
+        value:
+          format: byte
+          type: string
+      type: object
     apiStorageCluster:
       properties:
         id:
@@ -53,14 +67,6 @@ components:
         status:
           $ref: '#/components/schemas/openstorageapiStatus'
       title: StorageCluster represents the state and information about the cluster
-      type: object
-    protobufAny:
-      properties:
-        type_url:
-          type: string
-        value:
-          format: byte
-          type: string
       type: object
     openstorageapiStatus:
       default: STATUS_NONE
@@ -83,12 +89,6 @@ components:
       - STATUS_MAX
       title: '- STATUS_MAX: Add statuses before MAX and update the number for MAX'
       type: string
-    apiSdkClusterInspectCurrentResponse:
-      properties:
-        cluster:
-          $ref: '#/components/schemas/apiStorageCluster'
-      title: Defines a response when inspecting the current cluster
-      type: object
   securitySchemes:
     bearerAuth:
       type: http

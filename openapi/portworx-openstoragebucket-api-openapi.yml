@@ -146,6 +146,29 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    apiBucketCreateResponse:
+      properties:
+        bucket_id:
+          title: Id of new bucket
+          type: string
+      title: Defines a response to the creation of a bucket
+      type: object
+    apiBucketDeleteResponse:
+      title: Empty response
+      type: object
+    apiBucketGrantAccessRequest:
+      properties:
+        access_policy:
+          title: Access policy to be applied for the account
+          type: string
+        account_name:
+          title: Name of the account to which access to be provided
+          type: string
+        bucket_id:
+          title: Id of the bucket
+          type: string
+      title: Defines a request to grant access to the bucket
+      type: object
     runtimeError:
       properties:
         code:
@@ -193,38 +216,18 @@ components:
           format: byte
           type: string
       type: object
-    apiBucketGrantAccessRequest:
+    apiBucketAccessCredentials:
       properties:
-        access_policy:
-          title: Access policy to be applied for the account
+        access_key_id:
+          title: Access key id
           type: string
-        account_name:
-          title: Name of the account to which access to be provided
+        secret_access_key:
+          title: Secret access key
           type: string
-        bucket_id:
-          title: Id of the bucket
-          type: string
-      title: Defines a request to grant access to the bucket
+      title: Defines the bucket access credential object
       type: object
-    apiBucketDeleteResponse:
+    apiBucketRevokeAccessResponse:
       title: Empty response
-      type: object
-    apiBucketRevokeAccessRequest:
-      properties:
-        account_id:
-          description: AccountId that is having its access revoked.
-          type: string
-        bucket_id:
-          title: Id of bucket to delete
-          type: string
-      title: Defines the request to revoke access to the bucket
-      type: object
-    apiBucketCreateResponse:
-      properties:
-        bucket_id:
-          title: Id of new bucket
-          type: string
-      title: Defines a response to the creation of a bucket
       type: object
     apiBucketGrantAccessResponse:
       properties:
@@ -237,18 +240,15 @@ components:
           $ref: '#/components/schemas/apiBucketAccessCredentials'
       title: Defines a response to the creation of a bucket
       type: object
-    apiBucketRevokeAccessResponse:
-      title: Empty response
-      type: object
-    apiBucketAccessCredentials:
+    apiBucketRevokeAccessRequest:
       properties:
-        access_key_id:
-          title: Access key id
+        account_id:
+          description: AccountId that is having its access revoked.
           type: string
-        secret_access_key:
-          title: Secret access key
+        bucket_id:
+          title: Id of bucket to delete
           type: string
-      title: Defines the bucket access credential object
+      title: Defines the request to revoke access to the bucket
       type: object
   securitySchemes:
     bearerAuth:
